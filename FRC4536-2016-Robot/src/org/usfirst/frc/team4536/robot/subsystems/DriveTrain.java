@@ -3,6 +3,9 @@
 //----------DONT-CONFUSE-FOR-OLD-DRIVETRAIN------------
 //-----------------------------------------------------
 //---------------NEW-DRIVETRAIN-2016-------------------
+
+//TODO: incorporate drive encoders and navX
+
 package org.usfirst.frc.team4536.robot.subsystems;
 import org.usfirst.frc.team4536.robot.commands.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
