@@ -69,6 +69,7 @@ public class Piston extends Subsystem{
 	 * Sets the state of piston to the opposite of its current state and switches timers
 	 */
 	public void flip() {
+		//This method is way more complicated than it needs to be, use extend() and retract() to simplify
 		leftSolenoid.set(!leftSolenoid.get());
 		rightSolenoid.set(!rightSolenoid.get());
 		
