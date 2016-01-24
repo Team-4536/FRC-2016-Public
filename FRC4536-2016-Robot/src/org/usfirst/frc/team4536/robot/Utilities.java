@@ -184,7 +184,7 @@ public class Utilities {
 	}
 	
 	/**
-	 * 
+	 * comments needed here
 	 */
 	public static double getCurrent(int slot) {
 		
