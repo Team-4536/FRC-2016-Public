@@ -8,7 +8,7 @@ public class Piston extends Subsystem{
 	
 	Timer extendedTimer;
 	Timer retractedTimer;
-	Solenoid leftSolenoid;
+	Solenoid leftSolenoid; //extendChannel and retractChannel might be better names for these, since left and right don't really matter
 	Solenoid rightSolenoid;
 	
 	/**
