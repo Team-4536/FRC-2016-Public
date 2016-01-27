@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team4536.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4536.robot.commands.*;
 import org.usfirst.frc.team4536.robot.subsystems.ExampleSubsystem;
 
 /**
@@ -21,6 +21,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
     Command autonomousCommand;
+    Command driveTrainCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -30,6 +31,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
+        driveTrainCommand = new DriveTrainCommand();
     }
 	
 	public void disabledPeriodic() {
@@ -54,6 +56,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        if (driveTrainCommand != null) driveTrainCommand.start();
     }
 
     /**

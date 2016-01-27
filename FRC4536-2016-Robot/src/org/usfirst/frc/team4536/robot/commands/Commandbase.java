@@ -2,11 +2,16 @@ package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+import org.usfirst.frc.team4536.robot.RobotMap;
+import org.usfirst.frc.team4536.robot.subsystems.*;
+
 /**
  *
  */
-public class Commandbase extends Command {
+public abstract class Commandbase extends Command {
 
+	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR, RobotMap.RIGHT_MOTOR, 8, 9, 2, 7);
+	
     public Commandbase() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -19,6 +24,7 @@ public class Commandbase extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     }
+   
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
