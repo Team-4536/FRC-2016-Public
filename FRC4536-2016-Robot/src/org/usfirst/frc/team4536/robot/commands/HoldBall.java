@@ -1,20 +1,18 @@
 package org.usfirst.frc.team4536.robot.commands;
 
-import org.usfirst.frc.team4536.robot.RobotMap;
-import org.usfirst.frc.team4536.robot.subsystems.Intake;
+import org.usfirst.frc.team4536.robot.Constants;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Commandbase extends Command {
-	
-	public static Intake intake = new Intake(RobotMap.INTAKE_CHANNEL);
+public class HoldBall extends Commandbase {
 
-    public Commandbase() {
+    public HoldBall() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(intake);
     }
 
     // Called just before this Command runs the first time
@@ -23,6 +21,8 @@ public class Commandbase extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
+    	intake.setThrottle(Constants.HOLD_SPEED);
     }
 
     // Make this return true when this Command no longer needs to run execute()

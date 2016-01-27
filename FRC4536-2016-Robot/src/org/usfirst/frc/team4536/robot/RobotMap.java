@@ -17,6 +17,12 @@ public class RobotMap {
     // public static int rangefinderModule = 1;
 	
 	/*-------------------------------------Joystick Ports---------------------------------*/
+	
 	public static final int MAIN_STICK = 0;
 	public static final int SECONDARY_STICK = 1;
+	
+	/*-------------------------------------Intake-----------------------------------------*/
+	
+	//TODO Set it to the correct port on the robot
+	public static final int INTAKE_CHANNEL = 0;
 }
