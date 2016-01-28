@@ -32,6 +32,8 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
         driveIntake = new DriveIntakeArm();
+        
+        OI.ButtonHanding();
     }
 	
 	public void disabledPeriodic() {
