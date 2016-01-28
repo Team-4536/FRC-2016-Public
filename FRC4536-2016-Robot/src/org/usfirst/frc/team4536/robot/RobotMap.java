@@ -15,4 +15,11 @@ public class RobotMap {
     public static final int MAIN_STICK = 0; // (Also the left stick for tank drive)
     public static final int SECONDARY_STICK = 1; // (Also the right stick for tank drive)
     
+    // If you are using multiple modules, make sure to define both the port
+    // number and the module. For example you with a rangefinder:
+    // public static int rangefinderPort = 1;
+    // public static int rangefinderModule = 1;
+	
+	public static int leftSolenoid = 2; //Zenith = 2; Onyx = 4?
+	public static int rightSolenoid = 3; //Zenith = 3; Onyx = 7?
 }

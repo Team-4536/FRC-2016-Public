@@ -1,22 +1,20 @@
-
 package org.usfirst.frc.team4536.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-
-import org.usfirst.frc.team4536.robot.Robot;
-
 /**
- *
+ * @ author Kool Guy Donald Trump
  */
-public class ExampleCommand extends Commandbase {
+//if the compressor is run it needs "CompressorSubsystem"
+public class RunCompressor extends Commandbase {
 
-    public ExampleCommand() {
+    public RunCompressor() {
+    	requires(compressorSubsystem);
         // Use requires() here to declare subsystem dependencies
-        requires(exampleSubsystem);
+ 
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	compressorSubsystem.startComp();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -30,10 +28,12 @@ public class ExampleCommand extends Commandbase {
 
     // Called once after isFinished returns true
     protected void end() {
+    	compressorSubsystem.stopComp();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    compressorSubsystem.stopComp();
     }
 }

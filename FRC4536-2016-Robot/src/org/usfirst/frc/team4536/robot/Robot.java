@@ -2,11 +2,14 @@
 package org.usfirst.frc.team4536.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4536.robot.commands.*;
 import org.usfirst.frc.team4536.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team4536.robot.subsystems.Piston;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -18,10 +21,13 @@ import org.usfirst.frc.team4536.robot.subsystems.ExampleSubsystem;
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-	public static OI oi; //This line is unnecessary
+	public static final Piston piston = new Piston(RobotMap.leftSolenoid, RobotMap.rightSolenoid);
+	public static OI oi;
 
     Command autonomousCommand;
     Command driveTrainCommand;
+    Command runCompressor;
+    Command pistonFlipCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -32,6 +38,8 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
         driveTrainCommand = new DriveTrainCommand();
+        runCompressor = new RunCompressor();
+        pistonFlipCommand = new PistonFlipCommand();
     }
 	
 	public void disabledPeriodic() {
@@ -57,6 +65,7 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
         if (driveTrainCommand != null) driveTrainCommand.start();
+        System.out.println("speedCurve(.5,2): "+ Utilities.speedCurve(.5,2));
     }
 
     /**

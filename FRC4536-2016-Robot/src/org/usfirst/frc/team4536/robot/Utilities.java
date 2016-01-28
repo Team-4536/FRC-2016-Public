@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class Utilities {
 	
+	
 	/*-----------------------------------------------------Objects---------------------------------------*/
 	
 	public static PowerDistributionPanel powerDistributionPanel = new PowerDistributionPanel();
@@ -23,7 +24,7 @@ public class Utilities {
 	/*------------------------------------------------------methods---------------------------------------------*/
 	
 	/**
-	 * @ author Olivia
+	 * @ author Kool Guy Donald Trump
 	 * @param input value to be limited.
 	 * @param lowerBound minimum value input will be no greater than.
 	 * @param upperBound maximum value input will be no less than.
@@ -51,7 +52,7 @@ public class Utilities {
 	}
 	
 	/**
-	 * @author Olivia
+	 * @author Kool Guy Donald Trump
 	 * @param input value to be limited
 	 * @return value after being constrained with a maximum value of 1 and a minimum value of -1.
 	 */
@@ -61,7 +62,7 @@ public class Utilities {
 	}
 	
 	/**
-	 * @author Olivia
+	 * @author Kool Guy Donald Trump
 	 * @param input value to be raised to a power (or curved)
 	 * @param curve exponent that the method uses to curve the input (curves smaller than 0.1 are invalid)
 	 * @return input value raised an exponent (curved)
@@ -79,7 +80,7 @@ public class Utilities {
 	}
 
 	/**
-	 * @author Olivia
+	 * @author Kool Guy Donald Trump
 	 * @param input value that needs to be of a certain magnitude
 	 * @param deadZone magnitude the input should be greater than
 	 * @return input if greater than magnitude, 0 if not
@@ -93,7 +94,7 @@ public class Utilities {
 	}
 	
 	/**
-	 *@ author Olivia
+	 *@ author Kool Guy Donald Trump
 	 * Starts the timer.
 	 */
 	public static void startTimer() {
@@ -103,7 +104,7 @@ public class Utilities {
 	}
 	
 	/**
-	 * @author Olivia
+	 * @author Kool Guy Donald Trump
 	 * Resets the timer by making the start time the current time so all time values are then compared to that new more recent time.
 	 */
 	public static void resetTimer() {
@@ -113,7 +114,7 @@ public class Utilities {
 	}
 	
 	/**
-	 * @author Olivia
+	 * @author Kool Guy Donald Trump
 	 * Stops the timer.
 	 */
 	public static void stopTimer() {
@@ -122,7 +123,7 @@ public class Utilities {
 	}
 	
 	/**
-	 * @author Olivia
+	 * @author Kool Guy Donald Trump
 	 * @return the current time of the timer in seconds.
 	 */
 	public static double getTime() {
@@ -131,7 +132,7 @@ public class Utilities {
 	}
 	
 	/**
-	 * @author Olivia
+	 * @author Kool Guy Donald Trump
 	 * Updates the cycle time calculation of our code. This should only be called once per cycle or it will be incorrect.
 	 */
 	public static void updateCycleTime() {
@@ -142,7 +143,7 @@ public class Utilities {
 	}
 	
 	/**
-	 * @author Olivia
+	 * @author Kool Guy Donald Trump
 	 * @return The cycle time of our code in seconds.
 	 */
 	public static double getCycleTime() {
@@ -151,7 +152,7 @@ public class Utilities {
 	}
 	
 	/**
-	 * @author Olivia
+	 * @author Kool Guy Donald Trump
 	 * @param throttle - the throttle of an object.
 	 * @param prevThrottle - Throttle Value from previous cycle of code.
 	 * @param fullSpeedTime - The amount of time it will take the throttle to reach full speed. Range: [0, infinity+). It is a double. 
@@ -175,7 +176,7 @@ public class Utilities {
 	}
 	
 	/**
-	 * @author Olivia
+	 * @author Kool Guy Donald Trump
 	 * @return The total current drawn from the power distribution board from ALL robot systems.
 	 */
 	public static double getTotalCurrent() {

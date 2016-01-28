@@ -6,17 +6,19 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4536.robot.Robot;
 
 /**
- *
+ * @author Sheila
+ * 
  */
-public class ExampleCommand extends Commandbase {
-
-    public ExampleCommand() {
+public class PistonFlipCommand extends Commandbase {
+	
+    public PistonFlipCommand() {
         // Use requires() here to declare subsystem dependencies
-        requires(exampleSubsystem);
+        requires(piston);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	piston.flip();
     }
 
     // Called repeatedly when this Command is scheduled to run
