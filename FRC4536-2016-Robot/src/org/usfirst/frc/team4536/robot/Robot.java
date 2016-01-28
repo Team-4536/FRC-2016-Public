@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4536.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4536.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team4536.robot.commands.DriveIntakeArm;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -20,6 +21,7 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 
     Command autonomousCommand;
+    Command driveIntake;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -29,6 +31,7 @@ public class Robot extends IterativeRobot {
 
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
+        driveIntake = new DriveIntakeArm();
     }
 	
 	public void disabledPeriodic() {
@@ -53,6 +56,11 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        
+        if (driveIntake != null) {
+        	
+        	driveIntake.start();
+        }
     }
 
     /**
