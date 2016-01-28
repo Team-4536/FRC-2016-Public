@@ -4,13 +4,13 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team4536.robot.RobotMap;
 import org.usfirst.frc.team4536.robot.subsystems.*;
+import org.usfirst.frc.team4536.robot.Constants;
 
 /**
  *
  */
 public abstract class Commandbase extends Command {
 
-	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR, RobotMap.RIGHT_MOTOR, 8, 9, 2, 7);
 	public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static CompressorSubsystem compressorSubsystem = new CompressorSubsystem();
 	public static Piston piston = new Piston(RobotMap.leftSolenoid, RobotMap.rightSolenoid);

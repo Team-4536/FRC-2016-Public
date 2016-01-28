@@ -7,10 +7,10 @@
 //TODO: incorporate drive encoders and navX
 
 package org.usfirst.frc.team4536.robot.subsystems;
-import org.usfirst.frc.team4536.robot.commands.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Encoder;
+import org.usfirst.frc.team4536.robot.*;
 
 public class DriveTrain extends Subsystem {
 	
@@ -77,20 +77,20 @@ public class DriveTrain extends Subsystem {
     
     /**
      * @author Audrey
-     * @return left encoder count
+     * @return left encoder distance as inches
      */
-	public int getLeftEncoder() {
+	public double getLeftEncoder() {
 		
-		return leftEncoder.get();
+		return leftEncoder.get()/Constants.DRIVE_ENCODER_PROPORTIONALITY_CONSTANT;
 	}
 
 	/**
 	 * @author Audrey
-	 * @return right encoder count
+	 * @return right encoder distance as inches
 	 */
-	public int getRightEncoder() {
+	public double getRightEncoder() {
 		
-		return rightEncoder.get();
+		return rightEncoder.get()/Constants.DRIVE_ENCODER_PROPORTIONALITY_CONSTANT;
 	}
 
 	   
