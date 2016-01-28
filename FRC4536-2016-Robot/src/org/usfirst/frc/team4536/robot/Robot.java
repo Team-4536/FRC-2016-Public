@@ -18,7 +18,6 @@ import org.usfirst.frc.team4536.robot.subsystems.ExampleSubsystem;
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-	public static OI oi; //This line is unnecessary
 
     Command autonomousCommand;
 
@@ -27,7 +26,7 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI(); //This line is unnecessary
+
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
     }
