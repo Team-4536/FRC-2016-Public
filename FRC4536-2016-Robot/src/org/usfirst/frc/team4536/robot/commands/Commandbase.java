@@ -10,7 +10,6 @@ import org.usfirst.frc.team4536.robot.subsystems.*;
  */
 public abstract class Commandbase extends Command {
 
-	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR, RobotMap.RIGHT_MOTOR, 8, 9, 2, 7);
 	public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static CompressorSubsystem compressorSubsystem = new CompressorSubsystem();
 	public static Piston piston = new Piston(RobotMap.leftSolenoid, RobotMap.rightSolenoid);
