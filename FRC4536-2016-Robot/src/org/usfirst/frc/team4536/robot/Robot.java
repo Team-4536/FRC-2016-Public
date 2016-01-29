@@ -38,7 +38,7 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         driveTrainCommand = new DriveTrainCommand();
         runCompressor = new RunCompressor();
-        pistonFlipCommand = new PistonFlipCommand();
+        //pistonFlipCommand = new PistonFlipCommand();
     }
 	
 	public void disabledPeriodic() {

@@ -13,12 +13,12 @@ public class PistonFlipCommand extends Commandbase {
 	
     public PistonFlipCommand() {
         // Use requires() here to declare subsystem dependencies
-        requires(piston);
+        //requires(piston);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	piston.flip();
+    	//piston.flip();
     }
 
     // Called repeatedly when this Command is scheduled to run
