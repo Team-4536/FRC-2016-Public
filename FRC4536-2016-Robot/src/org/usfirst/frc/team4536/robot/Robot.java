@@ -36,7 +36,6 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI(); //This line is unnecessary
         // instantiate the command used for the autonomous period
-        autonomousCommand = new ExampleCommand();
         driveTrainCommand = new DriveTrainCommand();
         runCompressor = new RunCompressor();
         pistonFlipCommand = new PistonFlipCommand();
