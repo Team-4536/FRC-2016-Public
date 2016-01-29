@@ -21,7 +21,6 @@ import org.usfirst.frc.team4536.robot.subsystems.Piston;
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-	public static final Piston piston = new Piston(RobotMap.leftSolenoid, RobotMap.rightSolenoid);
 	public static OI oi;
 
     Command autonomousCommand;
