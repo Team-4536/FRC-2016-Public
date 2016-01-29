@@ -19,6 +19,10 @@ public class DriveTrain extends Subsystem {
 	Encoder leftEncoder;
 	Encoder rightEncoder;
 	
+	double prevDistance = 0.0;
+	double currentDistance = 0.0;
+	double distanceDifference = 0.0;
+	
 	/**
 	 * @author Max and Audrey 
 	 * @param leftTalonChannel - The PWM channel of the left talon of the drive train
@@ -93,7 +97,23 @@ public class DriveTrain extends Subsystem {
 		return rightEncoder.get()/Constants.DRIVE_ENCODER_PROPORTIONALITY_CONSTANT;
 	}
 
-	   
+	/**
+	 * @author Audrey
+	 * @return right encoder velocity/rate in inches per second
+	 */
+	public double getRightRate() {
+		
+		return rightEncoder.getRate()/Constants.DRIVE_ENCODER_PROPORTIONALITY_CONSTANT;
+	}
+	
+	/**
+	 * @author Audrey
+	 * @return left encoder velocity/rate in inches per second
+	 */
+	public double getLeftRate() {
+		
+		return leftEncoder.getRate()/Constants.DRIVE_ENCODER_PROPORTIONALITY_CONSTANT;
+	}
 
 }
 

@@ -47,6 +47,7 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
+        Utilities.startTimer();
     }
 
     /**
@@ -54,6 +55,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        Utilities.updateCycleTime();
     }
 
     public void teleopInit() {
@@ -63,6 +65,7 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
         if (driveTrainCommand != null) driveTrainCommand.start();
+        Utilities.startTimer();
         System.out.println("speedCurve(.5,2): "+ Utilities.speedCurve(.5,2));
     }
 
@@ -79,6 +82,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        Utilities.updateCycleTime();
     }
     
     /**

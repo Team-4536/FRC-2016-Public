@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import org.usfirst.frc.team4536.robot.OI;
+import org.usfirst.frc.team4536.robot.Utilities;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.Encoder;
@@ -23,7 +24,10 @@ public class DriveTrainCommand extends Commandbase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	driveTrain.arcadeDrive(OI.mainStick.getY(), OI.mainStick.getX());
-    	System.out.println(driveTrain.getRightEncoder());
+    	System.out.println("R " + driveTrain.getRightRate());
+    	/**System.out.println("V " + driveTrain.getRightVelocity());
+    	System.out.println("D " + driveTrain.getRightEncoder());
+    	System.out.println("T " + Utilities.getCycleTime());**/
     }
 
     // Make this return true when this Command no longer needs to run execute()
