@@ -19,10 +19,6 @@ public class DriveTrain extends Subsystem {
 	Encoder leftEncoder;
 	Encoder rightEncoder;
 	
-	double prevDistance = 0.0;
-	double currentDistance = 0.0;
-	double distanceDifference = 0.0;
-	
 	/**
 	 * @author Max and Audrey 
 	 * @param leftTalonChannel - The PWM channel of the left talon of the drive train
