@@ -27,16 +27,19 @@ public class Robot extends IterativeRobot {
     Command driveTrainCommand;
     Command runCompressor;
     Command pistonFlipCommand;
+    Command autoChooser;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
+    	
 		oi = new OI(); //This line is unnecessary
         // instantiate the command used for the autonomous period
         driveTrainCommand = new DriveTrainCommand();
         runCompressor = new RunCompressor();
+        autoChooser = new AutoChooser();
         //pistonFlipCommand = new PistonFlipCommand();
     }
 	
@@ -46,7 +49,15 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+        if (autonomousCommand != null) {
+        	
+        	autonomousCommand.start();
+        }
+        if (autoChooser != null) {
+        	
+        	autoChooser.start();
+        }
+        
         Utilities.startTimer();
     }
 
@@ -63,9 +74,17 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (autonomousCommand != null) autonomousCommand.cancel();
-        if (driveTrainCommand != null) driveTrainCommand.start();
+        if (autonomousCommand != null) {
+        	
+        	autonomousCommand.cancel();
+        }
+        if (driveTrainCommand != null) {
+        	
+        	driveTrainCommand.start();
+        }
+        
         Utilities.startTimer();
+        
         System.out.println("speedCurve(.5,2): "+ Utilities.speedCurve(.5,2));
     }
 
@@ -81,6 +100,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+    	
         Scheduler.getInstance().run();
         Utilities.updateCycleTime();
     }
@@ -89,6 +109,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
+    	
         LiveWindow.run();
     }
 }
