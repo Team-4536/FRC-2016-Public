@@ -1,20 +1,16 @@
 package org.usfirst.frc.team4536.robot.commands;
 
-import org.usfirst.frc.team4536.robot.OI;
-import org.usfirst.frc.team4536.robot.Utilities;
-
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.Encoder;
 
 /**
- *
+ *@author Liam
+ *This Command does nothing, it's for safety and auto modes
  */
-public class DriveTrainCommand extends CommandBase {
+public class DoNothing extends CommandBase {
 
-    public DriveTrainCommand() {
+    public DoNothing() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(driveTrain);
     }
 
     // Called just before this Command runs the first time
@@ -23,11 +19,6 @@ public class DriveTrainCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	driveTrain.arcadeDrive(-OI.mainStick.getY(), OI.mainStick.getX());
-    	System.out.println("R " + driveTrain.getRightRate());
-    	/**System.out.println("V " + driveTrain.getRightVelocity());
-    	System.out.println("D " + driveTrain.getRightEncoder());
-    	System.out.println("T " + Utilities.getCycleTime());**/
     }
 
     // Make this return true when this Command no longer needs to run execute()

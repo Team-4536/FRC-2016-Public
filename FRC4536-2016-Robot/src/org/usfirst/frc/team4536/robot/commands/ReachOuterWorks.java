@@ -1,17 +1,17 @@
 package org.usfirst.frc.team4536.robot.commands;
 
-import org.usfirst.frc.team4536.robot.OI;
-import org.usfirst.frc.team4536.robot.Utilities;
-
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.Encoder;
+import org.usfirst.frc.team4536.robot.Constants;
 
 /**
- *
+ *@author Liam
+ *This commmand reaches the outerworks, scoring 2 points in auto.
  */
-public class DriveTrainCommand extends CommandBase {
+public class ReachOuterWorks extends CommandBase {
+	
+	//TODO add timeout for the comand
 
-    public DriveTrainCommand() {
+    public ReachOuterWorks() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(driveTrain);
@@ -19,28 +19,36 @@ public class DriveTrainCommand extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
+    	setTimeout(Constants.REACH_DEFENSE_TIME_OUT);
+    	
+    	System.out.println("Initiailized");
+    	
+    	driveTrain.arcadeDrive(0.0, 0.0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	driveTrain.arcadeDrive(-OI.mainStick.getY(), OI.mainStick.getX());
-    	System.out.println("R " + driveTrain.getRightRate());
-    	/**System.out.println("V " + driveTrain.getRightVelocity());
-    	System.out.println("D " + driveTrain.getRightEncoder());
-    	System.out.println("T " + Utilities.getCycleTime());**/
+    	
+    	System.out.println("Driving");
+    	driveTrain.arcadeDrive(0.5, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	
+    	driveTrain.arcadeDrive(0.0, 0.0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	
+    	end();
     }
 }

@@ -67,8 +67,8 @@ public class DriveTrain extends Subsystem {
     
     public void arcadeDrive(double forwardThrottle, double turnThrottle) {
     	
-    	double leftTalonThrottle = -forwardThrottle + turnThrottle;
-    	double rightTalonThrottle = forwardThrottle + turnThrottle;
+    	double leftTalonThrottle = forwardThrottle + turnThrottle;
+    	double rightTalonThrottle = -forwardThrottle + turnThrottle;
     	
     	leftTalon.set(leftTalonThrottle);
     	rightTalon.set(rightTalonThrottle);
