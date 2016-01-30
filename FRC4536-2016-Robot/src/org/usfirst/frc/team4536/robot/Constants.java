@@ -18,4 +18,9 @@ public class Constants {
 	public static final int LEFT_ENCODER_CHANNEL_B = 9;
 	public static final int RIGHT_ENCODER_CHANNEL_A = 2;
 	public static final int RIGHT_ENCODER_CHANNEL_B = 7;
+	
+	/*-------------------------------------AutoMode Time Outs---------------------------*/
+	
+	
+	public static final double REACH_DEFENSE_TIME_OUT = 0.9;
 }
