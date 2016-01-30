@@ -48,6 +48,9 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit() {
+    	
+    	System.out.println("Autonomus Init");
+    	
         // schedule the autonomous command (example)
         if (autonomousCommand != null) {
         	
@@ -56,6 +59,8 @@ public class Robot extends IterativeRobot {
         if (autoChooser != null) {
         	
         	autoChooser.start();
+        	
+        	System.out.println("Auto Chooser Entered");
         }
         
         Utilities.startTimer();

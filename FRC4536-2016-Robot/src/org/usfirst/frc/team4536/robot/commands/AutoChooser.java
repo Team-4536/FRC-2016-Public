@@ -32,13 +32,15 @@ public class AutoChooser extends Commandbase {
     	
     	/*-----Selectable Chooser Options----*/
     	
-    	autoChooser.addDefault("DoNothing", "Do Nothing");
-    	autoChooser.addObject("Breach Outer Works",  "Breach Outer Works");
+    	autoChooser.addDefault("DoNothing", 0);
+    	autoChooser.addObject("Breach Outer Works",  1);
     	SmartDashboard.putData("Auto Chooser", autoChooser);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
+    	System.out.println("Auto Number: " + (int) autoChooser.getSelected().hashCode());
     	
     	switch ((int) autoChooser.getSelected().hashCode()) {
     	
@@ -46,12 +48,15 @@ public class AutoChooser extends Commandbase {
     			
     			doNothing.start();
     			
-    		case 1:
+    			System.out.println(0);
     			
+    		case 1:
+    			System.out.println(1);
     			reachOuterWorks.start();
     	
     		default: 
     			
+    			System.out.println("Default");
     			driveTrain.arcadeDrive(0.0, 0.0);
     	}
     	
@@ -59,7 +64,6 @@ public class AutoChooser extends Commandbase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
     	
     	
     }
