@@ -10,6 +10,7 @@ package org.usfirst.frc.team4536.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.AnalogGyro;
 import org.usfirst.frc.team4536.robot.*;
 
 public class DriveTrain extends Subsystem {
@@ -18,6 +19,7 @@ public class DriveTrain extends Subsystem {
 	Talon rightTalon;
 	Encoder leftEncoder;
 	Encoder rightEncoder;
+	AnalogGyro gyro;
 	
 	double prevDistance = 0.0;
 	double currentDistance = 0.0;
@@ -33,12 +35,13 @@ public class DriveTrain extends Subsystem {
 	 * @param rightEncoderChannelB - The second channel of the right encoder of the drive train
 	 */
 	
-	public DriveTrain(int leftTalonChannel, int rightTalonChannel, int leftEncoderChannelA, int leftEncoderChannelB, int rightEncoderChannelA, int rightEncoderChannelB) {
+	public DriveTrain(int leftTalonChannel, int rightTalonChannel, int leftEncoderChannelA, int leftEncoderChannelB, int rightEncoderChannelA, int rightEncoderChannelB, int gyroChannel) {
 		
 		leftTalon = new Talon(leftTalonChannel);
 		rightTalon = new Talon(rightTalonChannel);
 		leftEncoder = new Encoder(leftEncoderChannelA, leftEncoderChannelB);
 		rightEncoder = new Encoder(rightEncoderChannelA, rightEncoderChannelB);
+		gyro = new AnalogGyro(gyroChannel);
 		
     	leftTalon.set(0.0); //Why are these indents so funky?
     	rightTalon.set(0.0);
@@ -114,6 +117,39 @@ public class DriveTrain extends Subsystem {
 		
 		return leftEncoder.getRate()/Constants.DRIVE_ENCODER_PROPORTIONALITY_CONSTANT;
 	}
+	
+	/**
+	 * @author Mairead
+	 * @return gyro angle in degrees
+	 */
+	public double gyroAngle() {
+		
+		return gyro.getAngle();
+	}	
+	
+	/**
+	 * @author Mairead
+	 * @return gyro rate in degrees per seconds
+	 */
+	public double gyroRate() {
+		
+		return gyro.getRate();
+	}		
+
+	public void resetLeftEncoder() {
+		
+		leftEncoder.reset();
+	}
+	
+	public void resetRightEncoder() {
+		
+		rightEncoder.reset();
+	}
+	
+	public void resetGyro() {
+		gyro.reset();
+	}
+	
 
 }
 

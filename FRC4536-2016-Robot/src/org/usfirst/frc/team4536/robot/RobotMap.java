@@ -22,4 +22,12 @@ public class RobotMap {
 	
 	public static int leftSolenoid = 2; //Zenith = 2; Onyx = 4?
 	public static int rightSolenoid = 3; //Zenith = 3; Onyx = 7?
+	
+    /*-------------------------------------Sensor Channels---------------------------------*/	
+	public static final int LEFT_ENCODER_CHANNEL_A = 8;
+	public static final int LEFT_ENCODER_CHANNEL_B = 9;
+	public static final int RIGHT_ENCODER_CHANNEL_A = 2;
+	public static final int RIGHT_ENCODER_CHANNEL_B = 7;
+	public static final int GYRO_CHANNEL = 0;
+	//All the above are for Zenith
 }

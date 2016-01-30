@@ -5,6 +5,7 @@ public class Constants {
 	/*---------------------------------------Drive Train--------------------------------*/
 
 	public static final double SPEED_CURVE = 0.0;
+	public static final double DRIVE_TRAIN_MAX_VELOCITY = 4.1; //In feet per seconds
 	
 	/*---------------------------------------Joystick-----------------------------------*/
 	
@@ -13,9 +14,5 @@ public class Constants {
 	/*---------------------------------------Encoders-----------------------------------*/
 	
 	public static final double DRIVE_ENCODER_PROPORTIONALITY_CONSTANT = 19.0; //Ticks per inch
-	
-	public static final int LEFT_ENCODER_CHANNEL_A = 8;
-	public static final int LEFT_ENCODER_CHANNEL_B = 9;
-	public static final int RIGHT_ENCODER_CHANNEL_A = 2;
-	public static final int RIGHT_ENCODER_CHANNEL_B = 7;
+
 }
