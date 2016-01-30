@@ -23,4 +23,12 @@ public class Constants {
 	
 	
 	public static final double REACH_DEFENSE_TIME_OUT = 0.9;
+	
+	/*---------------------------------------Intake-------------------------------------*/
+	
+	//TODO change these value from test values to values for the intake 
+	public static final double INTAKE_SPEED = -0.7;
+	public static final double EJECT_SPEED = 0.7;
+	public static final double HOLD_SPEED = 0.05;
+	
 }

@@ -19,7 +19,12 @@ public class RobotMap {
     // number and the module. For example you with a rangefinder:
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
-	
+    
 	public static int leftSolenoid = 2; //Zenith = 2; Onyx = 4?
 	public static int rightSolenoid = 3; //Zenith = 3; Onyx = 7?
+	
+	/*-------------------------------------Intake-----------------------------------------*/
+	
+	//TODO Set it to the correct port on the robot
+	public static final int INTAKE_CHANNEL = 12;
 }

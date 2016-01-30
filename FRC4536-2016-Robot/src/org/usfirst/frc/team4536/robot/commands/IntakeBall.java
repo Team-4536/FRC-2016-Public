@@ -1,25 +1,18 @@
 package org.usfirst.frc.team4536.robot.commands;
 
-import org.usfirst.frc.team4536.robot.RobotMap;
-import org.usfirst.frc.team4536.robot.subsystems.Intake;
-import org.usfirst.frc.team4536.robot.subsystems.*;
 import org.usfirst.frc.team4536.robot.Constants;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *@author Liam
  */
-public class CommandBase extends Command {
-	
-	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR, RobotMap.RIGHT_MOTOR, Constants.LEFT_ENCODER_CHANNEL_A, Constants.LEFT_ENCODER_CHANNEL_B, Constants.RIGHT_ENCODER_CHANNEL_A, Constants.RIGHT_ENCODER_CHANNEL_B);
-	public static CompressorSubsystem compressorSubsystem = new CompressorSubsystem();
-	public static Piston piston = new Piston(RobotMap.leftSolenoid, RobotMap.rightSolenoid);
-	public static Intake intake = new Intake(RobotMap.INTAKE_CHANNEL);
+public class IntakeBall extends CommandBase {
 
-    public CommandBase() {
+    public IntakeBall() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(intake);
     }
 
     // Called just before this Command runs the first time
@@ -28,6 +21,8 @@ public class CommandBase extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
+    	intake.setThrottle(Constants.INTAKE_SPEED);
     }
 
     // Make this return true when this Command no longer needs to run execute()

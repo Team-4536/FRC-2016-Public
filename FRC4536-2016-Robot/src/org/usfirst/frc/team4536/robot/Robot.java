@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4536.robot.commands.*;
 import org.usfirst.frc.team4536.robot.subsystems.Piston;
-
+import org.usfirst.frc.team4536.robot.commands.DriveIntakeArm;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -19,26 +19,24 @@ import org.usfirst.frc.team4536.robot.subsystems.Piston;
  */
 public class Robot extends IterativeRobot {
 
-	public static OI oi;
-
-    Command autonomousCommand;
     Command driveTrainCommand;
     Command runCompressor;
     Command pistonFlipCommand;
     Command autoChooser;
+    Command driveIntake;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-    	
-		oi = new OI(); //This line is unnecessary
-        // instantiate the command used for the autonomous period
+
         driveTrainCommand = new DriveTrainCommand();
         runCompressor = new RunCompressor();
         autoChooser = new AutoChooser();
         //pistonFlipCommand = new PistonFlipCommand();
+        driveIntake = new DriveIntakeArm();
+        OI.ButtonHandling();
     }
 	
 	public void disabledPeriodic() {
@@ -50,10 +48,6 @@ public class Robot extends IterativeRobot {
     	System.out.println("Autonomus Init");
     	
         // schedule the autonomous command (example)
-        if (autonomousCommand != null) {
-        	
-        	autonomousCommand.start();
-        }
         if (autoChooser != null) {
         	
         	autoChooser.start();
@@ -77,10 +71,6 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (autonomousCommand != null) {
-        	
-        	autonomousCommand.cancel();
-        }
         if (driveTrainCommand != null) {
         	
         	driveTrainCommand.start();
@@ -88,7 +78,10 @@ public class Robot extends IterativeRobot {
         
         Utilities.startTimer();
         
-        System.out.println("speedCurve(.5,2): "+ Utilities.speedCurve(.5,2));
+        if (driveIntake != null) {
+        	
+        	driveIntake.start();
+        }
     }
 
     /**

@@ -1,7 +1,10 @@
 package org.usfirst.frc.team4536.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import org.usfirst.frc.team4536.robot.commands.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -36,10 +39,33 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 	
 	
-	
+	/*----------------Initializations------------------*/
 	
 	//Joysticks
 	public static Joystick mainStick = new Joystick(RobotMap.MAIN_STICK);
 	public static Joystick secondaryStick = new Joystick(RobotMap.SECONDARY_STICK);
+	
+	//Buttons
+	public static Button intake; 
+	public static Button eject;
+	public static Button hold;
+	
+	/**
+	 * @author Liam
+	 * This instantiates Button handling.
+	 */
+	public static void ButtonHandling () {
+		
+		intake = new JoystickButton(secondaryStick, 5);
+		eject = new JoystickButton(secondaryStick, 6);
+		hold = new JoystickButton(secondaryStick, 7);
+		
+		
+		/*-------------------Actions------------------------*/
+		
+		intake.whenPressed(new IntakeBall());
+		eject.whenPressed(new EjectBall());
+		hold.whenPressed(new HoldBall());
+	}
 }
 

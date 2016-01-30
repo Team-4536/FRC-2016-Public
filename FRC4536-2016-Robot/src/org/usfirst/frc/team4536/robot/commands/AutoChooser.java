@@ -17,7 +17,7 @@ public class AutoChooser extends CommandBase {
 
     public AutoChooser() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        // eg. requires(chassis)
     	
     	/*-----Constructors-----*/
     	
@@ -38,23 +38,18 @@ public class AutoChooser extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	System.out.println("Auto Number: " + (int) autoChooser.getSelected().hashCode());
-    	
     	switch ((int) autoChooser.getSelected().hashCode()) {
     	
     		case 0:
     			
     			doNothing.start();
     			
-    			System.out.println(0);
-    			
     		case 1:
-    			System.out.println(1);
+    			
     			reachOuterWorks.start();
     	
     		default: 
     			
-    			System.out.println("Default");
     			driveTrain.arcadeDrive(0.0, 0.0);
     	}
     	
