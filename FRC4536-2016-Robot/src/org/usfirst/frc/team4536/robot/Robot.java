@@ -33,7 +33,7 @@ public class Robot extends IterativeRobot {
         autonomousCommand = new ExampleCommand();
         driveIntake = new DriveIntakeArm();
         
-        OI.ButtonHanding();
+        OI.ButtonHandling();
     }
 	
 	public void disabledPeriodic() {

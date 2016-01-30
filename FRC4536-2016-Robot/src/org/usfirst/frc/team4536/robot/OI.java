@@ -46,7 +46,7 @@ public class OI {
 	public static Joystick secondaryStick = new Joystick(RobotMap.SECONDARY_STICK);
 	
 	//Buttons
-	public static Button intake = new JoystickButton(secondaryStick, 5); 
+	public static Button intake; 
 	public static Button eject;
 	public static Button hold;
 	
@@ -54,7 +54,7 @@ public class OI {
 	 * @author Liam
 	 * This instantiates Button handling.
 	 */
-	public static void ButtonHanding () {
+	public static void ButtonHandling () {
 		
 		intake = new JoystickButton(secondaryStick, 5);
 		eject = new JoystickButton(secondaryStick, 6);

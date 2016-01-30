@@ -24,5 +24,5 @@ public class RobotMap {
 	/*-------------------------------------Intake-----------------------------------------*/
 	
 	//TODO Set it to the correct port on the robot
-	public static final int INTAKE_CHANNEL = 2;
+	public static final int INTAKE_CHANNEL = 12;
 }
