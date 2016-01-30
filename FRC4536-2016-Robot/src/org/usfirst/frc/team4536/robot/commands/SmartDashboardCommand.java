@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4536.robot.Utilities;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class SmartDashboardCommand extends Commandbase {
+public class SmartDashboardCommand extends CommandBase {
 	
 	/**
 	 * @author Jeremy

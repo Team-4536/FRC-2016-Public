@@ -9,13 +9,13 @@ import org.usfirst.frc.team4536.robot.Constants;
 /**
  *
  */
-public abstract class Commandbase extends Command {
+public abstract class CommandBase extends Command {
 	
 	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR, RobotMap.RIGHT_MOTOR, Constants.LEFT_ENCODER_CHANNEL_A, Constants.LEFT_ENCODER_CHANNEL_B, Constants.RIGHT_ENCODER_CHANNEL_A, Constants.RIGHT_ENCODER_CHANNEL_B);
 	public static CompressorSubsystem compressorSubsystem = new CompressorSubsystem();
 	public static Piston piston = new Piston(RobotMap.leftSolenoid, RobotMap.rightSolenoid);
 	
-    public Commandbase() {
+    public CommandBase() {
         // Use requires() here to declare subsystem dependencies
     }
 

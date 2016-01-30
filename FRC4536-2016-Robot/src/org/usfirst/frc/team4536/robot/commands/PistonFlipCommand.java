@@ -9,7 +9,7 @@ import org.usfirst.frc.team4536.robot.Robot;
  * @author Sheila
  * 
  */
-public class PistonFlipCommand extends Commandbase {
+public class PistonFlipCommand extends CommandBase {
 	
     public PistonFlipCommand() {
         // Use requires() here to declare subsystem dependencies

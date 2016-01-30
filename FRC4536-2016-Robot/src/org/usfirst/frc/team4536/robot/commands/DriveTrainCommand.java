@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.Encoder;
 /**
  *
  */
-public class DriveTrainCommand extends Commandbase {
+public class DriveTrainCommand extends CommandBase {
 
     public DriveTrainCommand() {
         // Use requires() here to declare subsystem dependencies

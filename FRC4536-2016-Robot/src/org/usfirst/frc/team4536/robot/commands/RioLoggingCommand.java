@@ -8,7 +8,7 @@ import org.usfirst.frc.team4536.robot.*;
  * @author Liam
  * This Class is used to handle all printouts from the roboRIO. To be able to graph information in excel we enter printouts in CSV format. We then select all and copy and paste that data into a text document and save it as a CSV file. You can then open it in excel and make a graph.
  */
-public class RioLoggingCommand extends Commandbase {
+public class RioLoggingCommand extends CommandBase {
 
 	/**
 	 * @author Liam

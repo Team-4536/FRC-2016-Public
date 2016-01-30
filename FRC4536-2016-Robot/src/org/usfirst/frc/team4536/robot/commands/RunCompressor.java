@@ -4,7 +4,7 @@ package org.usfirst.frc.team4536.robot.commands;
  * @ author Kool Guy Donald Trump
  */
 //if the compressor is run it needs "CompressorSubsystem"
-public class RunCompressor extends Commandbase {
+public class RunCompressor extends CommandBase {
 
     public RunCompressor() {
     	requires(compressorSubsystem);
