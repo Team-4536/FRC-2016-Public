@@ -12,8 +12,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class AutoChooser extends CommandBase {
 	
 	SendableChooser autoChooser;
-	DoNothing doNothing;
-	ReachOuterWorks reachOuterWorks;
 
     public AutoChooser() {
         // Use requires() here to declare subsystem dependencies
@@ -23,15 +21,10 @@ public class AutoChooser extends CommandBase {
     	
     	autoChooser = new SendableChooser();
     	
-    	/*-----AutonomousModes-----*/
-    	
-    	doNothing = new DoNothing();
-    	reachOuterWorks = new ReachOuterWorks();
-    	
     	/*-----Selectable Chooser Options----*/
     	
     	autoChooser.addDefault("DoNothing", 0);
-    	autoChooser.addObject("Breach Outer Works",  1);
+    	autoChooser.addObject("Reach Outer Works",  1);
     	SmartDashboard.putData("Auto Chooser", autoChooser);
     }
 
@@ -42,11 +35,14 @@ public class AutoChooser extends CommandBase {
     	
     		case 0:
     			
-    			doNothing.start();
+    			
+    			new DoNothing().start();
+    		break;
     			
     		case 1:
     			
-    			reachOuterWorks.start();
+    			new ReachOuterWorks().start();
+    		break;
     	
     		default: 
     			
