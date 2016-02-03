@@ -6,6 +6,8 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc.team4536.robot.commands.*;
 import org.usfirst.frc.team4536.robot.subsystems.Piston;
 import org.usfirst.frc.team4536.robot.commands.DriveIntakeArm;
@@ -24,6 +26,7 @@ public class Robot extends IterativeRobot {
     Command pistonFlipCommand;
     Command autoChooser;
     Command driveIntake;
+    Command smartDashboardCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -36,6 +39,7 @@ public class Robot extends IterativeRobot {
         autoChooser = new AutoChooser();
         //pistonFlipCommand = new PistonFlipCommand();
         driveIntake = new DriveIntakeArm();
+        smartDashboardCommand = new SmartDashboardCommand();
         OI.buttonHandling();
     }
 	
@@ -45,14 +49,10 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
     	
-    	System.out.println("Autonomus Init");
-    	
         // schedule the autonomous command (example)
         if (autoChooser != null) {
         	
         	autoChooser.start();
-        	
-        	System.out.println("Auto Chooser Entered");
         }
         
         Utilities.startTimer();
@@ -89,7 +89,11 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
-
+    	
+        if (smartDashboardCommand != null) {
+        	
+        	smartDashboardCommand.start();
+        }
     }
 
     /**
@@ -99,6 +103,10 @@ public class Robot extends IterativeRobot {
     	
         Scheduler.getInstance().run();
         Utilities.updateCycleTime();
+        
+        System.out.println(SmartDashboard.getNumber("Number: "));
+        
+        //double number = SmartDashboard.getNumber("Your favorite Number: ");
     }
     
     /**

@@ -6,6 +6,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class SmartDashboardCommand extends CommandBase {
 	
+	public static double number;
+	
 	/**
 	 * @author Jeremy
 	 */
@@ -16,6 +18,12 @@ public class SmartDashboardCommand extends CommandBase {
 	 */
 	protected void initialize() {
 		
+		/*-----Display Smart Dashboard Variables For Modifying and Accessing-----*/
+		/* You must first display the value with a default value
+		 * to change and access it later
+		 */
+		SmartDashboard.putNumber("Number: ", 0);
+		
     }
 	
 	/**
@@ -23,6 +31,12 @@ public class SmartDashboardCommand extends CommandBase {
 	 */
     protected void execute() {
     	
+    	/*-----Access Values-----*/
+    	/*@author Liam
+    	 * If you have displayed a number on the SmartDashboard you may
+    	 * change it and access its value.
+    	 */
+    	number = SmartDashboard.getNumber("Number: ");
     }
     
     /**
