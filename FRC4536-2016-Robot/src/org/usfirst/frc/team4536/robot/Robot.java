@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
         autoChooser = new AutoChooser();
         //pistonFlipCommand = new PistonFlipCommand();
         driveIntake = new DriveIntakeArm();
-        OI.ButtonHandling();
+        OI.buttonHandling();
     }
 	
 	public void disabledPeriodic() {
