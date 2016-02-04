@@ -74,8 +74,8 @@ public class DriveTrain extends Subsystem {
     
     public void arcadeDrive(double forwardThrottle, double turnThrottle) {
     	
-    	double leftTalonThrottle = -forwardThrottle + turnThrottle;
-    	double rightTalonThrottle = forwardThrottle + turnThrottle;
+    	double leftTalonThrottle = forwardThrottle + turnThrottle;
+    	double rightTalonThrottle = -forwardThrottle + turnThrottle;
     	
     	leftTalon.set(leftTalonThrottle);
     	rightTalon.set(rightTalonThrottle);
@@ -97,7 +97,7 @@ public class DriveTrain extends Subsystem {
 	 */
 	public double getRightEncoder() {
 		
-		return rightEncoder.get()/Constants.DRIVE_ENCODER_PROPORTIONALITY_CONSTANT;
+		return -rightEncoder.get()/Constants.DRIVE_ENCODER_PROPORTIONALITY_CONSTANT;
 	}
 
 	/**

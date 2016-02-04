@@ -46,9 +46,10 @@ public class DriveRectangleProfile extends Commandbase {
     	
     	time = timer.get();
     	
-    	driveTrain.arcadeDrive(rectangle.throttle(time) + 
-    			0.75*(rectangle.idealDistance(time) - driveTrain.getRightEncoder()/12),
+    	driveTrain.arcadeDrive(rectangle.throttle(time)
+    			+ 0.75*(rectangle.idealDistance(time) - driveTrain.getRightEncoder()/12),
     			-(maxVelocity/24.6)*driveTrain.gyroAngle());
+//    +	0.75*(rectangle.idealDistance(time) - driveTrain.getRightEncoder()/12)
     	//Ask Caleb or Mairead on the implementation of feedforward+feedback
     	
     	System.out.println(driveTrain.getRightEncoder()/12);
