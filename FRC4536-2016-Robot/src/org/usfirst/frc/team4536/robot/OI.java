@@ -54,7 +54,7 @@ public class OI {
 	 * @author Liam
 	 * This instantiates Button handling.
 	 */
-	public static void ButtonHandling () {
+	public static void buttonHandling () {
 		
 		intake = new JoystickButton(secondaryStick, 5);
 		eject = new JoystickButton(secondaryStick, 6);
