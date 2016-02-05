@@ -8,9 +8,14 @@
 
 package org.usfirst.frc.team4536.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SPI;
+
 import org.usfirst.frc.team4536.robot.*;
+
+import com.kauailabs.navx.frc.AHRS;
 
 public class DriveTrain extends Subsystem {
 	
@@ -18,9 +23,10 @@ public class DriveTrain extends Subsystem {
 	Talon rightTalon;
 	Encoder leftEncoder;
 	Encoder rightEncoder;
+	AHRS navX;
 	
-	/**
-	 * @author Max and Audrey 
+	/**                        
+	 * @author Max and Audrey  
 	 * @param leftTalonChannel - The PWM channel of the left talon of the drive train
 	 * @param rightTalonChannel - THe PWM channel of the right talon of the drive train
 	 * @param leftEncoderChannelA - The first channel of the left encoder of the drive train
@@ -35,6 +41,12 @@ public class DriveTrain extends Subsystem {
 		rightTalon = new Talon(rightTalonChannel);
 		leftEncoder = new Encoder(leftEncoderChannelA, leftEncoderChannelB);
 		rightEncoder = new Encoder(rightEncoderChannelA, rightEncoderChannelB);
+		
+		try {
+	          navX = new AHRS(SPI.Port.kMXP); 
+	      } catch (RuntimeException ex ) {
+	          DriverStation.reportError("Error instantiating navX-MXP:  " + ex.getMessage(), true);
+	      }
 		
     	leftTalon.set(0.0); //Why are these indents so funky?
     	rightTalon.set(0.0);
@@ -110,7 +122,11 @@ public class DriveTrain extends Subsystem {
 		
 		return leftEncoder.getRate()/Constants.DRIVE_ENCODER_PROPORTIONALITY_CONSTANT;
 	}
-
+	
+	public double getNavXYaw(){
+		
+		return navX.getYaw();
+	}
 }
 
 
