@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4536.robot;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 public class Constants {
 	
 	/*---------------------------------------Drive Train--------------------------------*/
@@ -21,7 +23,6 @@ public class Constants {
 	
 	/*-------------------------------------AutoMode Time Outs---------------------------*/
 	
-	
 	public static final double REACH_DEFENSE_TIME_OUT = 0.9;
 	
 	/*---------------------------------------Intake-------------------------------------*/
@@ -31,4 +32,15 @@ public class Constants {
 	public static final double EJECT_SPEED = 0.7;
 	public static final double HOLD_SPEED = 0.05;
 	
+	
+	/*-----SmartDashboard Variables-----*/
+	
+	public static double number;
+	
+	/*SmartDashboard.putNumber("Number: ", 0);
+	
+	public void readSmartDashboardValues() {
+		
+		Smart 
+	}*/
 }

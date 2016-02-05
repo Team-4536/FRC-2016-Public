@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CommandBase extends Command {
 	
-	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR, RobotMap.RIGHT_MOTOR, Constants.LEFT_ENCODER_CHANNEL_A, Constants.LEFT_ENCODER_CHANNEL_B, Constants.RIGHT_ENCODER_CHANNEL_A, Constants.RIGHT_ENCODER_CHANNEL_B);
+	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR_BACK, RobotMap.LEFT_MOTOR_FRONT, RobotMap.RIGHT_MOTOR_BACK, RobotMap.RIGHT_MOTOR_FRONT, Constants.LEFT_ENCODER_CHANNEL_A, Constants.LEFT_ENCODER_CHANNEL_B, Constants.RIGHT_ENCODER_CHANNEL_A, Constants.RIGHT_ENCODER_CHANNEL_B);
 	public static CompressorSubsystem compressorSubsystem = new CompressorSubsystem();
 	public static Piston piston = new Piston(RobotMap.leftSolenoid, RobotMap.rightSolenoid);
 	public static Intake intake = new Intake(RobotMap.INTAKE_CHANNEL);

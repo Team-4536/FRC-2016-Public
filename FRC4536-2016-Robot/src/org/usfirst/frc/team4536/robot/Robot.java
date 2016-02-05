@@ -41,6 +41,12 @@ public class Robot extends IterativeRobot {
         driveIntake = new DriveIntakeArm();
         smartDashboardCommand = new SmartDashboardCommand();
         OI.buttonHandling();
+        
+        //Start SmartDashboard so you can modify values
+        if (smartDashboardCommand != null) {
+        	
+        	smartDashboardCommand.start();
+        }
     }
 	
 	public void disabledPeriodic() {
@@ -53,11 +59,6 @@ public class Robot extends IterativeRobot {
         if (autoChooser != null) {
         	
         	autoChooser.start();
-        }
-        
-        if (smartDashboardCommand != null) {
-        	
-        	smartDashboardCommand.start();
         }
         
         Utilities.startTimer();
@@ -79,11 +80,6 @@ public class Robot extends IterativeRobot {
         if (driveTrainCommand != null) {
         	
         	driveTrainCommand.start();
-        }
-        
-        if (smartDashboardCommand != null) {
-        	
-        	smartDashboardCommand.start();
         }
         
         Utilities.startTimer();

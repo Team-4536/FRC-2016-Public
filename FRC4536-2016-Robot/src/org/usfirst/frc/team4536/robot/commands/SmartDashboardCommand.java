@@ -58,8 +58,8 @@ public class SmartDashboardCommand extends CommandBase {
     	 * If you have displayed a number on the SmartDashboard you may
     	 * change it and access its value.
     	 */
-    	number = SmartDashboard.getNumber("Number: ");
     	
+    	number = SmartDashboard.getNumber("Number: ");
 		
 		/*-----Display Values-----*/
 		
