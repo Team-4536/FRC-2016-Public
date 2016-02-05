@@ -8,8 +8,11 @@ package org.usfirst.frc.team4536.robot;
 public class RobotMap {
 	
 	/*-------------------------------------Motor Channels------------------------------------*/	
-    public static final int LEFT_MOTOR = 1;
-    public static final int RIGHT_MOTOR = 0;
+    public static final int LEFT_MOTOR_FRONT = 1;
+    public static final int LEFT_MOTOR_BACK = 0;
+    
+    public static final int RIGHT_MOTOR_FRONT = 2;
+    public static final int RIGHT_MOTOR_BACK = 3;
     
     /*-------------------------------------Joystick Ports---------------------------------*/
     public static final int MAIN_STICK = 0; // (Also the left stick for tank drive)
@@ -25,6 +28,9 @@ public class RobotMap {
 	
 	/*-------------------------------------Intake-----------------------------------------*/
 	
-	//TODO Set it to the correct port on the robot
-	public static final int INTAKE_CHANNEL = 12;
+	public static final int INTAKE_CHANNEL = 4;
+	
+	/*-------------------------------------Scissor Lift Wench-----------------*/
+	
+	public static final int SCISSOR_LIFT_WENCH_CHANNEL = 5;
 }
