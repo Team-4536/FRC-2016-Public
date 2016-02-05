@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Utilities;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -24,6 +26,26 @@ public class SmartDashboardCommand extends CommandBase {
 		 */
 		SmartDashboard.putNumber("Number: ", 0);
 		
+		/*-----Display Values-----*/
+		
+		SmartDashboard.putNumber("Main Joystick Y: ", OI.mainStick.getY());
+		SmartDashboard.putNumber("Main Joystick X: ", OI.mainStick.getX());
+		SmartDashboard.putNumber("Secondary Joystick Y: ", OI.secondaryStick.getY());
+		SmartDashboard.putNumber("Secondary Joystick X: ", OI.secondaryStick.getX());
+		SmartDashboard.putNumber("Voltage: ", Utilities.getVoltage());
+		SmartDashboard.putNumber("Total Current: ", Utilities.getTotalCurrent());
+		SmartDashboard.putNumber("Drive Train Left Encoder: ", driveTrain.getLeftEncoder());
+		SmartDashboard.putNumber("Drive Train Right Encoder: ", driveTrain.getRightEncoder());
+		SmartDashboard.putNumber("Drive Train Right Rate: ", driveTrain.getRightRate());
+		SmartDashboard.putNumber("Drive Train Left Rate: ", driveTrain.getLeftRate());
+		
+		/*-----Running Commands on Subsystems-----*/
+		
+		SmartDashboard.putData(driveTrain);
+		SmartDashboard.putData(intake);
+		SmartDashboard.putData(piston);
+		SmartDashboard.putData(compressorSubsystem);
+		
     }
 	
 	/**
@@ -37,6 +59,27 @@ public class SmartDashboardCommand extends CommandBase {
     	 * change it and access its value.
     	 */
     	number = SmartDashboard.getNumber("Number: ");
+    	
+		
+		/*-----Display Values-----*/
+		
+		SmartDashboard.putNumber("Main Joystick Y: ", OI.mainStick.getY());
+		SmartDashboard.putNumber("Main Joystick X: ", OI.mainStick.getX());
+		SmartDashboard.putNumber("Secondary Joystick Y: ", OI.secondaryStick.getY());
+		SmartDashboard.putNumber("Secondary Joystick X: ", OI.secondaryStick.getX());
+		SmartDashboard.putNumber("Voltage: ", Utilities.getVoltage());
+		SmartDashboard.putNumber("Total Current: ", Utilities.getTotalCurrent());
+		SmartDashboard.putNumber("Drive Train Left Encoder: ", driveTrain.getLeftEncoder());
+		SmartDashboard.putNumber("Drive Train Right Encoder: ", driveTrain.getRightEncoder());
+		SmartDashboard.putNumber("Drive Train Right Rate: ", driveTrain.getRightRate());
+		SmartDashboard.putNumber("Drive Train Left Rate: ", driveTrain.getLeftRate());
+		
+		/*-----Running Commands on Subsystems-----*/
+		
+		SmartDashboard.putData(driveTrain);
+		SmartDashboard.putData(intake);
+		SmartDashboard.putData(piston);
+		SmartDashboard.putData(compressorSubsystem);
     }
     
     /**

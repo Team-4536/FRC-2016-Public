@@ -55,6 +55,11 @@ public class Robot extends IterativeRobot {
         	autoChooser.start();
         }
         
+        if (smartDashboardCommand != null) {
+        	
+        	smartDashboardCommand.start();
+        }
+        
         Utilities.startTimer();
     }
 
@@ -76,6 +81,11 @@ public class Robot extends IterativeRobot {
         	driveTrainCommand.start();
         }
         
+        if (smartDashboardCommand != null) {
+        	
+        	smartDashboardCommand.start();
+        }
+        
         Utilities.startTimer();
         
         if (driveIntake != null) {
@@ -95,6 +105,14 @@ public class Robot extends IterativeRobot {
         	smartDashboardCommand.start();
         }
     }
+    
+    /**
+     * 
+     */
+    public void autonmousDisabledInit() {
+    	
+    	
+    }
 
     /**
      * This function is called periodically during operator control
@@ -103,8 +121,6 @@ public class Robot extends IterativeRobot {
     	
         Scheduler.getInstance().run();
         Utilities.updateCycleTime();
-        
-        System.out.println(SmartDashboard.getNumber("Number: "));
         
         //double number = SmartDashboard.getNumber("Your favorite Number: ");
     }
