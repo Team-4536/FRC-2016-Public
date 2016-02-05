@@ -185,10 +185,20 @@ public class Utilities {
 	}
 	
 	/**
-	 * comments needed here
+	 *@author Liam
+	 *@param slot the slot in the power distribution panel 
+	 * for which you want to know the current.
 	 */
 	public static double getCurrent(int slot) {
 		
 		return powerDistributionPanel.getCurrent(slot);
+	}
+	
+	/**
+	 * @author Liam
+	 */
+	public static double getVoltage() {
+		
+		return powerDistributionPanel.getVoltage();
 	}
 }
