@@ -45,6 +45,12 @@ public class Robot extends IterativeRobot {
         driveIntake = new DriveIntakeArm();
         smartDashboardCommand = new SmartDashboardCommand();
         OI.buttonHandling();
+        
+        //Start SmartDashboard so you can modify values
+        if (smartDashboardCommand != null) {
+        	
+        	smartDashboardCommand.start();
+        }
     }
 	
 	public void disabledPeriodic() {
@@ -99,6 +105,14 @@ public class Robot extends IterativeRobot {
         	smartDashboardCommand.start();
         }
     }
+    
+    /**
+     * 
+     */
+    public void autonmousDisabledInit() {
+    	
+    	
+    }
 
     /**
      * This function is called periodically during operator control
@@ -107,8 +121,6 @@ public class Robot extends IterativeRobot {
     	
         Scheduler.getInstance().run();
         Utilities.updateCycleTime();
-        
-        System.out.println(SmartDashboard.getNumber("Number: "));
         
         //double number = SmartDashboard.getNumber("Your favorite Number: ");
     }
