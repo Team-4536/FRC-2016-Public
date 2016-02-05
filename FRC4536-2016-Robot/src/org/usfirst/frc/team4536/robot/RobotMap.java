@@ -32,5 +32,14 @@ public class RobotMap {
 	
 	/*-------------------------------------Scissor Lift Wench-----------------*/
 	
-	public static final int SCISSOR_LIFT_WENCH_CHANNEL = 5;
+	public static final int SCISSOR_LIFT_WINCH_CHANNEL = 5;
+	
+    /*-------------------------------------Sensor Channels---------------------------------*/	
+	
+	public static final int LEFT_ENCODER_CHANNEL_A = 8; //Set of 3 wires in one port for left encoder
+	public static final int LEFT_ENCODER_CHANNEL_B = 9; //Set of 3 wires in one port for left encoder
+	public static final int RIGHT_ENCODER_CHANNEL_A = 2; //Set of 3 wires in one port for right encoder
+	public static final int RIGHT_ENCODER_CHANNEL_B = 7; //Set of 3 wires in one port for right encoder
+
+	public static final int GYRO_CHANNEL = 0;
 }

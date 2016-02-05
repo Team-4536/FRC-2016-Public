@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.AnalogGyro;
 import org.usfirst.frc.team4536.robot.*;
 
 public class DriveTrain extends Subsystem {
@@ -22,6 +23,7 @@ public class DriveTrain extends Subsystem {
 	
 	Encoder leftEncoder;
 	Encoder rightEncoder;
+	AnalogGyro gyro;
 	
 	/**
 	 * @author Max and Audrey 
@@ -33,7 +35,11 @@ public class DriveTrain extends Subsystem {
 	 * @param rightEncoderChannelB - The second channel of the right encoder of the drive train
 	 */
 	
-	public DriveTrain(int leftBackVictorSPChannel, int leftFrontVictorSPChannel, int rightBackVictorSPChannel, int rightFrontVictorSPChannel, int leftEncoderChannelA, int leftEncoderChannelB, int rightEncoderChannelA, int rightEncoderChannelB) {
+	public DriveTrain(int leftBackVictorSPChannel, int leftFrontVictorSPChannel,
+						int rightBackVictorSPChannel, int rightFrontVictorSPChannel,
+						int leftEncoderChannelA, int leftEncoderChannelB,
+						int rightEncoderChannelA, int rightEncoderChannelB,
+						int gyroChannel) {
 		
 		leftBackVictorSP = new VictorSP(leftBackVictorSPChannel);
 		leftFrontVictorSP = new VictorSP(leftFrontVictorSPChannel);
@@ -41,6 +47,7 @@ public class DriveTrain extends Subsystem {
 		rightFrontVictorSP = new VictorSP(rightFrontVictorSPChannel);
 		leftEncoder = new Encoder(leftEncoderChannelA, leftEncoderChannelB);
 		rightEncoder = new Encoder(rightEncoderChannelA, rightEncoderChannelB);
+		gyro = new AnalogGyro(gyroChannel);
 		
 		leftBackVictorSP.set(0.0);
 		leftFrontVictorSP.set(0.0);
@@ -76,7 +83,6 @@ public class DriveTrain extends Subsystem {
      */
     
     public void arcadeDrive(double forwardThrottle, double turnThrottle) {
-    	
     	double leftVictorSPThrottle = forwardThrottle + turnThrottle;
     	double rightVictorSPThrottle = -forwardThrottle + turnThrottle;
     	
@@ -102,7 +108,7 @@ public class DriveTrain extends Subsystem {
 	 */
 	public double getRightEncoder() {
 		
-		return rightEncoder.get()/Constants.DRIVE_ENCODER_PROPORTIONALITY_CONSTANT;
+		return -rightEncoder.get()/Constants.DRIVE_ENCODER_PROPORTIONALITY_CONSTANT;
 	}
 
 	/**
@@ -122,6 +128,39 @@ public class DriveTrain extends Subsystem {
 		
 		return leftEncoder.getRate()/Constants.DRIVE_ENCODER_PROPORTIONALITY_CONSTANT;
 	}
+	
+	/**
+	 * @author Mairead
+	 * @return gyro angle in degrees
+	 */
+	public double gyroAngle() {
+		
+		return gyro.getAngle();
+	}	
+	
+	/**
+	 * @author Mairead
+	 * @return gyro rate in degrees per seconds
+	 */
+	public double gyroRate() {
+		
+		return gyro.getRate();
+	}		
+
+	public void resetLeftEncoder() {
+		
+		leftEncoder.reset();
+	}
+	
+	public void resetRightEncoder() {
+		
+		rightEncoder.reset();
+	}
+	
+	public void resetGyro() {
+		gyro.reset();
+	}
+	
 
 }
 
