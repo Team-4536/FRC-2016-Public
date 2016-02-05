@@ -23,7 +23,7 @@ public class DriveTrainCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	driveTrain.arcadeDrive(-OI.mainStick.getY(), OI.mainStick.getX());
+    	driveTrain.arcadeDrive(OI.mainStick.getY(), OI.mainStick.getX());
     	System.out.println("R " + driveTrain.getRightRate());
     	/**System.out.println("V " + driveTrain.getRightVelocity());
     	System.out.println("D " + driveTrain.getRightEncoder());
