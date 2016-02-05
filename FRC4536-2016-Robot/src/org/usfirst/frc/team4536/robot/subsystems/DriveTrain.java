@@ -8,36 +8,44 @@
 
 package org.usfirst.frc.team4536.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.Talon;
+
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.Encoder;
 import org.usfirst.frc.team4536.robot.*;
 
 public class DriveTrain extends Subsystem {
 	
-	Talon leftTalon;
-	Talon rightTalon;
+	VictorSP leftBackVictorSP;
+	VictorSP leftFrontVictorSP;
+	VictorSP rightBackVictorSP;
+	VictorSP rightFrontVictorSP;
+	
 	Encoder leftEncoder;
 	Encoder rightEncoder;
 	
 	/**
 	 * @author Max and Audrey 
-	 * @param leftTalonChannel - The PWM channel of the left talon of the drive train
-	 * @param rightTalonChannel - THe PWM channel of the right talon of the drive train
+	 * @param leftVictorSPChannel - The PWM channel of the left VictorSP of the drive train
+	 * @param rightVictorSPChannel - THe PWM channel of the right VictorSP of the drive train
 	 * @param leftEncoderChannelA - The first channel of the left encoder of the drive train
 	 * @param leftEncoderChannelB - The second channel of the left encoder of the drive train
 	 * @param rightEncoderChannelA - The first channel of the right encoder of the drive train
 	 * @param rightEncoderChannelB - The second channel of the right encoder of the drive train
 	 */
 	
-	public DriveTrain(int leftTalonChannel, int rightTalonChannel, int leftEncoderChannelA, int leftEncoderChannelB, int rightEncoderChannelA, int rightEncoderChannelB) {
+	public DriveTrain(int leftBackVictorSPChannel, int leftFrontVictorSPChannel, int rightBackVictorSPChannel, int rightFrontVictorSPChannel, int leftEncoderChannelA, int leftEncoderChannelB, int rightEncoderChannelA, int rightEncoderChannelB) {
 		
-		leftTalon = new Talon(leftTalonChannel);
-		rightTalon = new Talon(rightTalonChannel);
+		leftBackVictorSP = new VictorSP(leftBackVictorSPChannel);
+		leftFrontVictorSP = new VictorSP(leftFrontVictorSPChannel);
+		rightBackVictorSP = new VictorSP(rightBackVictorSPChannel);
+		rightFrontVictorSP = new VictorSP(rightFrontVictorSPChannel);
 		leftEncoder = new Encoder(leftEncoderChannelA, leftEncoderChannelB);
 		rightEncoder = new Encoder(rightEncoderChannelA, rightEncoderChannelB);
 		
-    	leftTalon.set(0.0); //Why are these indents so funky?
-    	rightTalon.set(0.0);
+		leftBackVictorSP.set(0.0);
+		leftFrontVictorSP.set(0.0);
+		rightBackVictorSP.set(0.0);
+		rightFrontVictorSP.set(0.0);
 	}
 	
     public void initDefaultCommand() {
@@ -55,8 +63,10 @@ public class DriveTrain extends Subsystem {
     
     public void tankDrive(double leftThrottle, double rightThrottle) {
     	
-    	leftTalon.set(-leftThrottle);
-    	rightTalon.set(rightThrottle);
+    	leftBackVictorSP.set(-leftThrottle);
+    	leftFrontVictorSP.set(-leftThrottle);
+    	rightBackVictorSP.set(rightThrottle);
+    	rightFrontVictorSP.set(rightThrottle);
     }
     
     /**
@@ -67,11 +77,13 @@ public class DriveTrain extends Subsystem {
     
     public void arcadeDrive(double forwardThrottle, double turnThrottle) {
     	
-    	double leftTalonThrottle = forwardThrottle + turnThrottle;
-    	double rightTalonThrottle = -forwardThrottle + turnThrottle;
+    	double leftVictorSPThrottle = forwardThrottle + turnThrottle;
+    	double rightVictorSPThrottle = -forwardThrottle + turnThrottle;
     	
-    	leftTalon.set(leftTalonThrottle);
-    	rightTalon.set(rightTalonThrottle);
+    	leftBackVictorSP.set(leftVictorSPThrottle);
+    	leftFrontVictorSP.set(leftVictorSPThrottle);
+    	rightBackVictorSP.set(rightVictorSPThrottle);
+    	rightFrontVictorSP.set(rightVictorSPThrottle);
     	
     }
     
