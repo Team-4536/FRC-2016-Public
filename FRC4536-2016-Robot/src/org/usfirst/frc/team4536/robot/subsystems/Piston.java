@@ -17,18 +17,18 @@ public class Piston extends Subsystem{
 	 * @param rightSolenoidChannel channel that the right solenoid is plugged into on the roboRIO
 	 */
 	public Piston(int leftSolenoidChannel, int rightSolenoidChannel) {
-		//leftSolenoid = new Solenoid(2);
-		//rightSolenoid = new Solenoid(rightSolenoidChannel);
+		leftSolenoid = new Solenoid(leftSolenoidChannel);
+		rightSolenoid = new Solenoid(rightSolenoidChannel);
 		
 		extendedTimer = new Timer();
 		retractedTimer = new Timer();
 		
-		/**if(isExtended()) {
+		if(isExtended()) {
 			extendedTimer.start();
 		}
 		if(isRetracted()) {
 			retractedTimer.start();
-		}**/
+		}
 	}
 	
 	public void initDefaultCommand() {

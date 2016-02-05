@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4536.robot.commands.*;
+import org.usfirst.frc.team4536.robot.subsystems.ElectricalSolenoid;
 import org.usfirst.frc.team4536.robot.subsystems.Piston;
 import org.usfirst.frc.team4536.robot.commands.DriveIntakeArm;
 
@@ -24,6 +25,7 @@ public class Robot extends IterativeRobot {
     Command driveTrainCommand;
     Command runCompressor;
     Command pistonFlipCommand;
+    //Command flipElecSolenoid;
     Command autoChooser;
     Command driveIntake;
     Command smartDashboardCommand;
@@ -33,11 +35,13 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-
+		//oi = new OI(); 
+        // instantiate the command used for the autonomous period
         driveTrainCommand = new DriveTrainCommand();
         runCompressor = new RunCompressor();
         autoChooser = new AutoChooser();
-        //pistonFlipCommand = new PistonFlipCommand();
+        pistonFlipCommand = new PistonFlipCommand();
+        //flipElecSolenoid = new FlipElectricalSolenoid();
         driveIntake = new DriveIntakeArm();
         smartDashboardCommand = new SmartDashboardCommand();
         OI.buttonHandling();

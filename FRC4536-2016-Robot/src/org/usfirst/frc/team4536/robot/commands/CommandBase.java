@@ -16,7 +16,8 @@ public class CommandBase extends Command {
 	public static CompressorSubsystem compressorSubsystem = new CompressorSubsystem();
 	public static Piston piston = new Piston(RobotMap.leftSolenoid, RobotMap.rightSolenoid);
 	public static Intake intake = new Intake(RobotMap.INTAKE_CHANNEL);
-
+	//public static ElectricalSolenoid elecSolenoid = new ElectricalSolenoid(RobotMap.leftSolenoid, RobotMap.rightSolenoid);
+	
     public CommandBase() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
