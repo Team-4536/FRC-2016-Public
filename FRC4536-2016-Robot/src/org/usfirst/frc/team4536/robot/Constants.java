@@ -6,7 +6,7 @@ public class Constants {
 	
 	/*---------------------------------------Drive Train--------------------------------*/
 
-	public static final double SPEED_CURVE = 0.0;
+	public static final double SPEED_CURVE = 2.5;
 	public static final double DRIVE_TRAIN_MAX_VELOCITY = 4.1; //In feet per seconds
 	
 	/*---------------------------------------Joystick-----------------------------------*/
@@ -28,15 +28,21 @@ public class Constants {
 	public static final double EJECT_SPEED = 0.7;
 	public static final double HOLD_SPEED = 0.05;
 	
+	/*-----Access Values-----*/
+	/*@author Liam
+	 * If you have displayed a number on the SmartDashboard you may
+	 * change it and access its value.
+	 */
 	
-	/*-----SmartDashboard Variables-----*/
+	public static double speedCurve = 2.5;
 	
-	public static double number;
-	
-	/*SmartDashboard.putNumber("Number: ", 0);
-	
-	public void readSmartDashboardValues() {
+	public static void displaySmartDashboard() {
 		
-		Smart 
-	}*/
+		SmartDashboard.putNumber("Speed Curve: ", 2.5);
+	}
+	
+	public static void updateVariables() {
+		
+		speedCurve = SmartDashboard.getNumber("Speed Curve: ");
+	}
 }

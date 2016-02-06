@@ -8,35 +8,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class SmartDashboardCommand extends CommandBase {
 	
-	public static double number;
-	
 	public SmartDashboardCommand() {
-	
-		requires(driveTrain);
 		
 	}
 	
 	protected void initialize() {
-		
-		/*-----Display Smart Dashboard Variables For Modifying and Accessing-----*/
-		/* You must first display the value with a default value
-		 * to change and access it later
-		 */
-		SmartDashboard.putNumber("Number: ", 0);
 	
 		
     }
 	
     protected void execute() {
-    	
-    	
-    	/*-----Access Values-----*/
-    	/*@author Liam
-    	 * If you have displayed a number on the SmartDashboard you may
-    	 * change it and access its value.
-    	 */
-    	
-    	number = SmartDashboard.getNumber("Number: ");
 		
 		/*-----Display Values-----*/
 		
@@ -63,6 +44,7 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putData(intake);
 		SmartDashboard.putData(piston);
 		SmartDashboard.putData(compressorSubsystem);
+		SmartDashboard.putData(scissorLift);
     }
     
     /**

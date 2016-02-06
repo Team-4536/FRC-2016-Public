@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.commands.*;
 import org.usfirst.frc.team4536.robot.subsystems.ElectricalSolenoid;
 import org.usfirst.frc.team4536.robot.subsystems.Piston;
@@ -49,6 +49,8 @@ public class Robot extends IterativeRobot {
         driveScissorLift = new DriveScissorLift();
         OI.buttonHandling();
         
+        Constants.displaySmartDashboard();
+        
         //Start SmartDashboard so you can modify values
         if (smartDashboardCommand != null) {
         	
@@ -80,6 +82,7 @@ public class Robot extends IterativeRobot {
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
         Utilities.updateCycleTime();
+        Constants.updateVariables();
     }
 
     public void teleopInit() {
@@ -90,11 +93,6 @@ public class Robot extends IterativeRobot {
         if (driveTrainCommand != null) {
         	
         	driveTrainCommand.start();
-        }
-        
-        if (smartDashboard != null) {
-        	
-        	smartDashboard.start();
         }
         
         if (driveIntake != null) {
@@ -137,6 +135,7 @@ public class Robot extends IterativeRobot {
     	
         Scheduler.getInstance().run();
         Utilities.updateCycleTime();
+        Constants.updateVariables();
         
         //double number = SmartDashboard.getNumber("Your favorite Number: ");
     }
