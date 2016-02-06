@@ -29,6 +29,7 @@ public class Robot extends IterativeRobot {
     Command autoChooser;
     Command driveIntake;
     Command smartDashboardCommand;
+    Command smartDashboard;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -51,6 +52,9 @@ public class Robot extends IterativeRobot {
         	
         	smartDashboardCommand.start();
         }
+
+        smartDashboard = new SmartDashboardCommand();
+        //pistonFlipCommand = new PistonFlipCommand();
     }
 	
 	public void disabledPeriodic() {
@@ -84,6 +88,10 @@ public class Robot extends IterativeRobot {
         if (driveTrainCommand != null) {
         	
         	driveTrainCommand.start();
+        }
+        if (smartDashboard != null) {
+        	
+        	smartDashboard.start();
         }
         
         Utilities.startTimer();

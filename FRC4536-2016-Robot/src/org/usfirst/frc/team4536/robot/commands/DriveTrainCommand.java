@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.Encoder;
 /**
  *
  */
+//TODO Print Yaw, Pitch, and Roll to smartdashboard
+
 public class DriveTrainCommand extends CommandBase {
 
     public DriveTrainCommand() {
@@ -19,15 +21,12 @@ public class DriveTrainCommand extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	driveTrain.arcadeDrive(-OI.mainStick.getY(), OI.mainStick.getX());
-    	System.out.println("R " + driveTrain.getRightRate());
-    	/**System.out.println("V " + driveTrain.getRightVelocity());
-    	System.out.println("D " + driveTrain.getRightEncoder());
-    	System.out.println("T " + Utilities.getCycleTime());**/
     }
 
     // Make this return true when this Command no longer needs to run execute()

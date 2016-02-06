@@ -10,14 +10,12 @@ public class SmartDashboardCommand extends CommandBase {
 	
 	public static double number;
 	
-	/**
-	 * @author Jeremy
-	 */
-	public SmartDashboardCommand() {}
+	public SmartDashboardCommand() {
 	
-	/**
-	 * @author Jeremy
-	 */
+		requires(driveTrain);
+		
+	}
+	
 	protected void initialize() {
 		
 		/*-----Display Smart Dashboard Variables For Modifying and Accessing-----*/
@@ -48,10 +46,10 @@ public class SmartDashboardCommand extends CommandBase {
 		
     }
 	
-	/**
-	 * @author Jeremy
-	 */
     protected void execute() {
+    	SmartDashboard.putNumber("Yaw: ", driveTrain.getNavXYaw());
+    	SmartDashboard.putNumber("Pitch: ", driveTrain.getNavXPitch());
+    	SmartDashboard.putNumber("Roll: ", driveTrain.getNavXRoll());
     	
     	/*-----Access Values-----*/
     	/*@author Liam

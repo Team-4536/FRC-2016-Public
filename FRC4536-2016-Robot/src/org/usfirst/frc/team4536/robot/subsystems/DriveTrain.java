@@ -10,9 +10,13 @@ package org.usfirst.frc.team4536.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.SPI;
 import org.usfirst.frc.team4536.robot.*;
+import com.kauailabs.navx.frc.AHRS;
 
 public class DriveTrain extends Subsystem {
 	
@@ -20,10 +24,11 @@ public class DriveTrain extends Subsystem {
 	VictorSP leftFrontVictorSP;
 	VictorSP rightBackVictorSP;
 	VictorSP rightFrontVictorSP;
-	
 	Encoder leftEncoder;
 	Encoder rightEncoder;
 	AnalogGyro gyro;
+	AHRS navX;
+
 	
 	/**
 	 * @author Max and Audrey 
@@ -47,7 +52,15 @@ public class DriveTrain extends Subsystem {
 		rightFrontVictorSP = new VictorSP(rightFrontVictorSPChannel);
 		leftEncoder = new Encoder(leftEncoderChannelA, leftEncoderChannelB);
 		rightEncoder = new Encoder(rightEncoderChannelA, rightEncoderChannelB);
+
 		gyro = new AnalogGyro(gyroChannel);
+
+		
+		try {
+	          navX = new AHRS(SPI.Port.kMXP); 
+	      } catch (RuntimeException ex ) {
+	          DriverStation.reportError("Error instantiating navX-MXP:  " + ex.getMessage(), true);
+	      }
 		
 		leftBackVictorSP.set(0.0);
 		leftFrontVictorSP.set(0.0);
@@ -130,6 +143,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	/**
+<<<<<<< HEAD
 	 * @author Mairead
 	 * @return gyro angle in degrees
 	 */
@@ -161,6 +175,39 @@ public class DriveTrain extends Subsystem {
 		gyro.reset();
 	}
 	
+
+	/**
+	 * @author Audrey
+	 * @return NavX Yaw or the angle of the robot around a vertical axis
+	 * @return If output is positive, robot is turning right
+	 * @return If output is negative, robot is turning left
+	 */
+	public double getNavXYaw(){
+		
+		return navX.getYaw();
+	}
+	
+	/**
+	 * @author Audrey
+	 * @return NavX Pitch or the angle of the robot around an axis from left to right
+	 * @return If output is positive, robot is tilting forward
+	 * @return If output is negative, robot is tilting backwards
+	 */
+	public double getNavXPitch(){
+		
+		return navX.getPitch();
+	}
+	
+	/**
+	 * @author Audrey
+	 * @return NavX Roll or the angle of the robot around an axis from front to back
+	 * @return If output is positive, robot is tilting right
+	 * @return If output is negative, robot is tilting left
+	 */
+	public double getNavXRoll(){
+		
+		return navX.getRoll();
+	}
 
 }
 

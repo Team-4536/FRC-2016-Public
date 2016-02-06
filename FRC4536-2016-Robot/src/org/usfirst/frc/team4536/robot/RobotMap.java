@@ -8,6 +8,7 @@ package org.usfirst.frc.team4536.robot;
 public class RobotMap {
 	
 	/*-------------------------------------Motor Channels------------------------------------*/	
+
     public static final int LEFT_MOTOR_FRONT = 1;
     public static final int LEFT_MOTOR_BACK = 0;
     
