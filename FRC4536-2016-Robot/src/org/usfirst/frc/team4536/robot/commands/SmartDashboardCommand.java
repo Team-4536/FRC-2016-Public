@@ -6,22 +6,20 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class SmartDashboardCommand extends CommandBase {
 	
-	/**
-	 * @author Jeremy
-	 */
-	public SmartDashboardCommand() {}
+	public SmartDashboardCommand() {
 	
-	/**
-	 * @author Jeremy
-	 */
+		requires(driveTrain);
+		
+	}
+	
 	protected void initialize() {
 		
     }
 	
-	/**
-	 * @author Jeremy
-	 */
     protected void execute() {
+    	SmartDashboard.putNumber("Yaw: ", driveTrain.getNavXYaw());
+    	SmartDashboard.putNumber("Pitch: ", driveTrain.getNavXPitch());
+    	SmartDashboard.putNumber("Roll: ", driveTrain.getNavXRoll());
     	
     }
     

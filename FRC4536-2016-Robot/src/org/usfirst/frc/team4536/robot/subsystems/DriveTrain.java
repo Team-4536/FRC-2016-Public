@@ -123,10 +123,39 @@ public class DriveTrain extends Subsystem {
 		return leftEncoder.getRate()/Constants.DRIVE_ENCODER_PROPORTIONALITY_CONSTANT;
 	}
 	
+	/**
+	 * @author Audrey
+	 * @return NavX Yaw or the angle of the robot around a vertical axis
+	 * @return If output is positive, robot is turning right
+	 * @return If output is negative, robot is turning left
+	 */
 	public double getNavXYaw(){
 		
 		return navX.getYaw();
 	}
+	
+	/**
+	 * @author Audrey
+	 * @return NavX Pitch or the angle of the robot around an axis from left to right
+	 * @return If output is positive, robot is tilting forward
+	 * @return If output is negative, robot is tilting backwards
+	 */
+	public double getNavXPitch(){
+		
+		return navX.getPitch();
+	}
+	
+	/**
+	 * @author Audrey
+	 * @return NavX Roll or the angle of the robot around an axis from front to back
+	 * @return If output is positive, robot is tilting right
+	 * @return If output is negative, robot is tilting left
+	 */
+	public double getNavXRoll(){
+		
+		return navX.getRoll();
+	}
+	
 }
 
 
