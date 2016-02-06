@@ -201,4 +201,24 @@ public class Utilities {
 		
 		return powerDistributionPanel.getVoltage();
 	}
+	/**
+	 *@author Mairead
+	 *@param startingAngle The angle the robot is turning from
+	 *@param desiredAngle The angle the robot is turning to
+	 *@return The difference between those two angles as a number from -180 to 180
+	 * Example: If you want to get to 0, and your actual angle is 20, it will return
+	 * -20
+	 */
+	public static double angleDifference(double startingAngle, double desiredAngle){
+		double difference;
+		difference = startingAngle - desiredAngle;
+		if (difference > -180 && difference <= 180)
+			return -difference;
+		else if (difference <= -180)
+			return -(difference + 360);
+		else if (difference > 180)
+			return -(difference - 360);
+		else 
+			return 0;
+	}
 }
