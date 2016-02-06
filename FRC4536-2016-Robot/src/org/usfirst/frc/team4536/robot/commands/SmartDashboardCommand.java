@@ -23,33 +23,12 @@ public class SmartDashboardCommand extends CommandBase {
 		 * to change and access it later
 		 */
 		SmartDashboard.putNumber("Number: ", 0);
-		
-		/*-----Display Values-----*/
-		
-		SmartDashboard.putNumber("Main Joystick Y: ", OI.mainStick.getY());
-		SmartDashboard.putNumber("Main Joystick X: ", OI.mainStick.getX());
-		SmartDashboard.putNumber("Secondary Joystick Y: ", OI.secondaryStick.getY());
-		SmartDashboard.putNumber("Secondary Joystick X: ", OI.secondaryStick.getX());
-		SmartDashboard.putNumber("Voltage: ", Utilities.getVoltage());
-		SmartDashboard.putNumber("Total Current: ", Utilities.getTotalCurrent());
-		SmartDashboard.putNumber("Drive Train Left Encoder: ", driveTrain.getLeftEncoder());
-		SmartDashboard.putNumber("Drive Train Right Encoder: ", driveTrain.getRightEncoder());
-		SmartDashboard.putNumber("Drive Train Right Rate: ", driveTrain.getRightRate());
-		SmartDashboard.putNumber("Drive Train Left Rate: ", driveTrain.getLeftRate());
-		
-		/*-----Running Commands on Subsystems-----*/
-		
-		SmartDashboard.putData(driveTrain);
-		SmartDashboard.putData(intake);
-		SmartDashboard.putData(piston);
-		SmartDashboard.putData(compressorSubsystem);
+	
 		
     }
 	
     protected void execute() {
-    	SmartDashboard.putNumber("Yaw: ", driveTrain.getNavXYaw());
-    	SmartDashboard.putNumber("Pitch: ", driveTrain.getNavXPitch());
-    	SmartDashboard.putNumber("Roll: ", driveTrain.getNavXRoll());
+    	
     	
     	/*-----Access Values-----*/
     	/*@author Liam
@@ -71,6 +50,12 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putNumber("Drive Train Right Encoder: ", driveTrain.getRightEncoder());
 		SmartDashboard.putNumber("Drive Train Right Rate: ", driveTrain.getRightRate());
 		SmartDashboard.putNumber("Drive Train Left Rate: ", driveTrain.getLeftRate());
+		
+		/*-----Display NavX Values-----*/
+		
+		SmartDashboard.putNumber("Yaw: ", driveTrain.getNavXYaw());
+    		SmartDashboard.putNumber("Pitch: ", driveTrain.getNavXPitch());
+    		SmartDashboard.putNumber("Roll: ", driveTrain.getNavXRoll());
 		
 		/*-----Running Commands on Subsystems-----*/
 		
