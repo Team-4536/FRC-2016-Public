@@ -30,6 +30,8 @@ public class DriveTrain extends Subsystem {
 	AHRS navX;
 
 	
+	
+	
 	/**
 	 * @author Max and Audrey 
 	 * @param leftVictorSPChannel - The PWM channel of the left VictorSP of the drive train
@@ -147,10 +149,24 @@ public class DriveTrain extends Subsystem {
 	 * @author Mairead
 	 * @return gyro angle in degrees
 	 */
-	public double gyroAngle() {
+	public double getTrueGyroAngle() {
 		
 		return gyro.getAngle();
 	}	
+	
+	/**
+	 * @author Mairead
+	 * @return gyro angle in degrees between -180 and 180
+	 */
+	public double getGyroAngle() {
+		double angle;
+		angle = this.getTrueGyroAngle()%360;
+		
+		if (angle < 0)
+			return(angle + 360);
+		else
+			return (angle);		
+	}
 	
 	/**
 	 * @author Mairead
