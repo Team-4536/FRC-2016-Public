@@ -26,6 +26,7 @@ public class Robot extends IterativeRobot {
     Command runCompressor;
     Command pistonFlipCommand;
     Command autoChooser;
+    Command smartDashboard;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -38,6 +39,7 @@ public class Robot extends IterativeRobot {
         driveTrainCommand = new DriveTrainCommand();
         runCompressor = new RunCompressor();
         autoChooser = new AutoChooser();
+        smartDashboard = new SmartDashboardCommand();
         //pistonFlipCommand = new PistonFlipCommand();
     }
 	
@@ -84,6 +86,10 @@ public class Robot extends IterativeRobot {
         if (driveTrainCommand != null) {
         	
         	driveTrainCommand.start();
+        }
+        if (smartDashboard != null) {
+        	
+        	smartDashboard.start();
         }
         
         Utilities.startTimer();
