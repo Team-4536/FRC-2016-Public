@@ -14,8 +14,8 @@ public class CommandBase extends Command {
 	
 	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR_BACK, RobotMap.LEFT_MOTOR_FRONT,
 															RobotMap.RIGHT_MOTOR_BACK, RobotMap.RIGHT_MOTOR_FRONT,
-															Constants.LEFT_ENCODER_CHANNEL_A, Constants.LEFT_ENCODER_CHANNEL_B,
-															Constants.RIGHT_ENCODER_CHANNEL_A, Constants.RIGHT_ENCODER_CHANNEL_B,
+															RobotMap.LEFT_ENCODER_CHANNEL_A, RobotMap.LEFT_ENCODER_CHANNEL_B,
+															RobotMap.RIGHT_ENCODER_CHANNEL_A, RobotMap.RIGHT_ENCODER_CHANNEL_B,
 															RobotMap.GYRO_CHANNEL);
 	public static CompressorSubsystem compressorSubsystem = new CompressorSubsystem();
 	public static Piston piston = new Piston(RobotMap.leftSolenoid, RobotMap.rightSolenoid);
