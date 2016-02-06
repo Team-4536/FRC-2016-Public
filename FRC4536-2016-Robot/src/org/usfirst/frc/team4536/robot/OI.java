@@ -18,6 +18,7 @@ public class OI {
 	//Joysticks
 	public static Joystick mainStick = new Joystick(RobotMap.MAIN_STICK);
 	public static Joystick secondaryStick = new Joystick(RobotMap.SECONDARY_STICK);
+	public static Joystick tertiaryStick = new Joystick(RobotMap.TERTIARY_STICK);
 	
 	//Buttons
 	public static Button intake; 

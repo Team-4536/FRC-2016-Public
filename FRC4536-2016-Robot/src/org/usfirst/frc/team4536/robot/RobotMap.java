@@ -18,6 +18,7 @@ public class RobotMap {
     /*-------------------------------------Joystick Ports---------------------------------*/
     public static final int MAIN_STICK = 0; // (Also the left stick for tank drive)
     public static final int SECONDARY_STICK = 1; // (Also the right stick for tank drive)
+    public static final int TERTIARY_STICK = 2; //Scissor Lift
     
     // If you are using multiple modules, make sure to define both the port
     // number and the module. For example you with a rangefinder:
@@ -33,7 +34,7 @@ public class RobotMap {
 	
 	/*-------------------------------------Scissor Lift Wench-----------------*/
 	
-	public static final int SCISSOR_LIFT_WINCH_CHANNEL = 5;
+	public static final int SCISSOR_MOTOR = 5;
 	
     /*-------------------------------------Sensor Channels---------------------------------*/	
 	

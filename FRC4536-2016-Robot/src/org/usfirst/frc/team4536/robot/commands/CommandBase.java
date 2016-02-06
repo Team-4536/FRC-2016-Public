@@ -20,6 +20,7 @@ public class CommandBase extends Command {
 	public static CompressorSubsystem compressorSubsystem = new CompressorSubsystem();
 	public static Piston piston = new Piston(RobotMap.leftSolenoid, RobotMap.rightSolenoid);
 	public static Intake intake = new Intake(RobotMap.INTAKE_CHANNEL);
+	public static ScissorLift scissorLift = new ScissorLift(RobotMap.SCISSOR_MOTOR);
 	//public static ElectricalSolenoid elecSolenoid = new ElectricalSolenoid(RobotMap.leftSolenoid, RobotMap.rightSolenoid);
 	
     public CommandBase() {
