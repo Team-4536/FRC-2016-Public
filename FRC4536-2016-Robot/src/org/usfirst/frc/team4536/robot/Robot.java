@@ -119,14 +119,6 @@ public class Robot extends IterativeRobot {
         	smartDashboardCommand.start();
         }
     }
-    
-    /**
-     * 
-     */
-    public void autonmousDisabledInit() {
-    	
-    	
-    }
 
     /**
      * This function is called periodically during operator control
