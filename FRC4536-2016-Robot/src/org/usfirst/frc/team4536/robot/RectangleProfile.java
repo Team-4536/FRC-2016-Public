@@ -9,17 +9,20 @@ public class RectangleProfile {
 	
 	/**
 	 * @author Mairead
-	 * @param distance The desired distance the robot should travel
-	 * @param desiredMaxVelocity The speed the robot should be traveling at
+	 * @param distance The desired distance the robot should travel in feet
+	 * @param desiredMaxVelocity The speed the robot should be traveling at in feet per second, always positive
 	 */
 	public RectangleProfile (double distance, double desiredMaxVelocity) {
-		// distance is in feet
-		// desiredMaxVelocity is in feet per second
 
 		this.desiredMaxVelocity = desiredMaxVelocity;
 		this.distance = distance;
-		throttle = desiredMaxVelocity / Constants.DRIVE_TRAIN_MAX_VELOCITY; // Converts the desired velocity into a throttle value to send to the motors
-		timeNeeded = distance / desiredMaxVelocity; // Uses physics to calculate the time needed
+		if(distance > 0){
+			throttle = desiredMaxVelocity / Constants.DRIVE_TRAIN_MAX_VELOCITY;
+		} // Converts the desired velocity into a throttle value to send to the motors
+		if(distance < 0){
+			throttle = -desiredMaxVelocity / Constants.DRIVE_TRAIN_MAX_VELOCITY;
+		}
+		timeNeeded = Math.abs(distance / desiredMaxVelocity); // Uses physics to calculate the time needed
 
 	}
 
@@ -29,7 +32,6 @@ public class RectangleProfile {
 	 * @returns The throttle the robot should be at
 	 */
 	public double throttle(double time) {
-		// Returns the throttle value if the desired time has not passed
 
 		if (time > 0 && time < timeNeeded) {
 			return throttle;
@@ -42,9 +44,10 @@ public class RectangleProfile {
 	/**
 	 * @author Mairead
 	 * @param time The amount of time since the profile has started
-	 * @returns The veloctiy the robout should be at
+	 * @returns The veloctiy the robot should be at
 	 */
 	public double idealRate(double time) {
+		
 		if (time > 0 && time < timeNeeded) {
 			return desiredMaxVelocity;
 		} else
@@ -54,13 +57,17 @@ public class RectangleProfile {
 	/**
 	 * @author Mairead
 	 * @param time The amount of time since the profile has started
-	 * @returns The distance the robout should be at
+	 * @returns The distance the robot should be at
 	 */
 	public double idealDistance(double time) {
-		//For interfacing, returns the distance the robot SHOULD be at
-		if (time > 0 && time < timeNeeded) {
+		
+		if (time > 0 && time < timeNeeded && distance > 0) {
 			return desiredMaxVelocity * time;
-		} else
+		} 
+		if (time > 0 && time < timeNeeded && distance < 0) {
+			return desiredMaxVelocity * -time;
+		} 
+		else
 			return distance;
 	}
 
