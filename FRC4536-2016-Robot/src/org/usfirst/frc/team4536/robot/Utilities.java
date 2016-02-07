@@ -18,7 +18,7 @@ public class Utilities {
 	public static double cycleTime = 0.0;
 	
 	/*-----AccelerationLimit-----*/
-	private static double prevDriveTrainThrottle, prevElevatorThrottle, throttleDiff, accelerationLimit = 0.0;
+	private static double throttleDiff, accelerationLimit = 0.0;
 	public static double finalThrottle = 0.0;
 	
 	/*------------------------------------------------------methods---------------------------------------------*/
