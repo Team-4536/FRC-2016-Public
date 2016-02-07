@@ -78,9 +78,9 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
-     * @ author Max
-     * @ param leftThrottle - The throttle input into the left motor
-     * @ param rightTHrottle - The throttle input into the right motor
+     * @ author Max and Liam
+     * @ param leftThrottle - The throttle input into the left motors
+     * @ param rightTHrottle - The throttle input into the right motors
      */
     
     public void tankDrive(double leftThrottle, double rightThrottle) {
@@ -92,7 +92,7 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
-     * @author Max
+     * @author Max and Liam
      * @param forwardThrottle - Throttle for forward motion of the drivetrain (+ forward, - backwards) 
      * @param turnThrottle - Throttle for horizontal motion of the drivetrain (+ right, - left)
      */
@@ -145,7 +145,6 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	/**
-<<<<<<< HEAD
 	 * @author Mairead
 	 * @return gyro angle in degrees
 	 */
