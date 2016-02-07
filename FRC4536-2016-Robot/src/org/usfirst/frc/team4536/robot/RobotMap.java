@@ -32,7 +32,7 @@ public class RobotMap {
 	
 	public static final int INTAKE_CHANNEL = 4;
 	
-	/*-------------------------------------Scissor Lift Wench-----------------*/
+	/*-------------------------------------Scissor Lift Winch-----------------*/
 	
 	public static final int SCISSOR_MOTOR = 5;
 	
