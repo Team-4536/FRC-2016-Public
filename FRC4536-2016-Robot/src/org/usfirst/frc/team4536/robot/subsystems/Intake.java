@@ -29,9 +29,15 @@ public class Intake extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
+    /**
+     * @author Liam
+     * @param throttle The signal value [-1, 1] sent to the scissor lift motor.
+     * Positive values eject the ball and negative values intake the ball so it's
+     * intuitive for a joystick interface.
+     */
     public void setThrottle(double throttle) {
     	
-    	intake.set(throttle);
+    	intake.set(-throttle);
     }
 }
 
