@@ -2,6 +2,11 @@ package org.usfirst.frc.team4536.robot.subsystems;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+/**
+ * 
+ * @author Liam
+ *
+ */
 public class ScissorLift extends Subsystem {
 	
 	VictorSP scissorLift;
@@ -12,6 +17,11 @@ public class ScissorLift extends Subsystem {
 			
 		}
 		
+		/**
+		 * @author Liam
+		 * @param Throttle the value [-1, 1] sent to the motor. Negative values make it climb.
+		 * Positive values make it go down.
+		 */
 		public void driveLift(double Throttle) {
 			scissorLift.set(Throttle);
 			
