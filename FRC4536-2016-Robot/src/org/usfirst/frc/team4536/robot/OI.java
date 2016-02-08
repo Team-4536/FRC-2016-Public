@@ -40,10 +40,16 @@ public class OI {
 		
 		/*-------------------Actions------------------------*/
 		
-		intake.whileHeld(new IntakeBall());
-		eject.whileHeld(new EjectBall());
-		hold.whileHeld(new HoldBall());
+		intake.whenPressed(new IntakeBall());
+		eject.whenPressed(new EjectBall());
+		hold.whenPressed(new HoldBall());
 		tangleTest.whenPressed(new DriveRectangleProfile(-2,1));
+		
+		/*------------------Canceling actions--------------*/
+		
+		intake.whenReleased(new DriveIntakeArm());
+		eject.whenReleased(new DriveIntakeArm());
+		hold.whenReleased(new DriveIntakeArm());
 	}
 }
 
