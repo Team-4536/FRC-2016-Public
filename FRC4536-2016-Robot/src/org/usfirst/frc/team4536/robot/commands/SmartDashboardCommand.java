@@ -10,6 +10,7 @@ public class SmartDashboardCommand extends CommandBase {
 	
 	public SmartDashboardCommand() {
 		
+		
 	}
 	
 	protected void initialize() {
@@ -42,7 +43,6 @@ public class SmartDashboardCommand extends CommandBase {
 		
 		SmartDashboard.putData(driveTrain);
 		SmartDashboard.putData(intake);
-		SmartDashboard.putData(piston);
 		SmartDashboard.putData(compressorSubsystem);
 		SmartDashboard.putData(scissorLift);
     }
