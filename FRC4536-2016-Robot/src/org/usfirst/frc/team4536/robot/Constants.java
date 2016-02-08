@@ -6,7 +6,7 @@ public class Constants {
 	
 	/*---------------------------------------Drive Train--------------------------------*/
 
-	public static final double SPEED_CURVE = 2.5;
+	public static final double SPEED_CURVE = 2.4;
 	public static final double DRIVE_TRAIN_MAX_VELOCITY = 4.1; //In feet per seconds
 	
 	/*---------------------------------------Joystick-----------------------------------*/
