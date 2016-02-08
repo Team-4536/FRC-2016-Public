@@ -29,7 +29,6 @@ public class Robot extends IterativeRobot {
     Command autoChooser;
     Command driveIntake;
     Command smartDashboardCommand;
-    Command smartDashboard;
     Command driveScissorLift;
 
     /**
@@ -51,13 +50,6 @@ public class Robot extends IterativeRobot {
         
         Constants.displaySmartDashboard();
         
-        //Start SmartDashboard so you can modify values
-        if (smartDashboardCommand != null) {
-        	
-        	smartDashboardCommand.start();
-        }
-
-        smartDashboard = new SmartDashboardCommand();
         //pistonFlipCommand = new PistonFlipCommand();
     }
 	
@@ -71,6 +63,11 @@ public class Robot extends IterativeRobot {
         if (autoChooser != null) {
         	
         	autoChooser.start();
+        }
+        
+        if (smartDashboardCommand != null) {
+        	
+        	smartDashboardCommand.start();
         }
         
         Utilities.startTimer();
@@ -93,6 +90,11 @@ public class Robot extends IterativeRobot {
         if (driveTrainCommand != null) {
         	
         	driveTrainCommand.start();
+        }
+        
+        if (smartDashboardCommand != null) {
+        	
+        	smartDashboardCommand.start();
         }
         
         if (driveIntake != null) {
@@ -128,8 +130,6 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         Utilities.updateCycleTime();
         Constants.updateVariables();
-        
-        //double number = SmartDashboard.getNumber("Your favorite Number: ");
     }
     
     /**
