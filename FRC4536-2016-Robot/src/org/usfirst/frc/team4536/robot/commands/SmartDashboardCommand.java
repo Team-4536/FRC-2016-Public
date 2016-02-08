@@ -36,8 +36,8 @@ public class SmartDashboardCommand extends CommandBase {
 		/*-----Display NavX Values-----*/
 		
 		SmartDashboard.putNumber("Yaw: ", driveTrain.getNavXYaw());
-    		SmartDashboard.putNumber("Pitch: ", driveTrain.getNavXPitch());
-    		SmartDashboard.putNumber("Roll: ", driveTrain.getNavXRoll());
+    	SmartDashboard.putNumber("Pitch: ", driveTrain.getNavXPitch());
+    	SmartDashboard.putNumber("Roll: ", driveTrain.getNavXRoll());
 		
 		/*-----Running Commands on Subsystems-----*/
 		
