@@ -8,6 +8,8 @@ public class Constants {
 
 	public static final double SPEED_CURVE = 2.4;
 	public static final double DRIVE_TRAIN_MAX_VELOCITY = 4.1; //In feet per seconds
+	public static final double FORWARD_STICTION = 0.07; //No climber with fully charged battery
+	public static final double TURN_STICTION = 0.3; //No climber with fully charged battery, one motor not functional
 	
 	/*---------------------------------------Joystick-----------------------------------*/
 	
@@ -34,15 +36,18 @@ public class Constants {
 	 * change it and access its value.
 	 */
 	
-	public static double speedCurve = 2.5;
+	public static double variable1 = 0.0;
+	public static double variable2 = 0.0;
 	
 	public static void displaySmartDashboard() {
 		
-		SmartDashboard.putNumber("Speed Curve: ", 2.5);
+		SmartDashboard.putNumber("Variable 1: ", 0.0);
+		SmartDashboard.putNumber("Variable 2: ", 0.0);
 	}
 	
 	public static void updateVariables() {
 		
-		speedCurve = SmartDashboard.getNumber("Speed Curve: ");
+		variable1 = SmartDashboard.getNumber("Variable 1: ");
+		variable2 = SmartDashboard.getNumber("Variable 2: ");
 	}
 }
