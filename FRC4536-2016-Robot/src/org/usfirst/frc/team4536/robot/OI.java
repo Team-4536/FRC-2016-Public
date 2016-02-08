@@ -40,9 +40,9 @@ public class OI {
 		
 		/*-------------------Actions------------------------*/
 		
-		intake.whenPressed(new IntakeBall());
-		eject.whenPressed(new EjectBall());
-		hold.whenPressed(new HoldBall());
+		intake.whileHeld(new IntakeBall());
+		eject.whileHeld(new EjectBall());
+		hold.whileHeld(new HoldBall());
 		tangleTest.whenPressed(new DriveRectangleProfile(-2,1));
 	}
 }
