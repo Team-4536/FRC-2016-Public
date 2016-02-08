@@ -8,7 +8,7 @@
 
 package org.usfirst.frc.team4536.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
-
+import org.usfirst.frc.team4536.robot.commands.DriveTrainCommand;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Talon;
@@ -75,6 +75,7 @@ public class DriveTrain extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand())
     	//setDefaultCommand(new Drive());
+    	setDefaultCommand(new DriveTrainCommand());
     }
     
     /**
