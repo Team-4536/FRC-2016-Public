@@ -2,11 +2,15 @@ package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Utilities;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 
 public class SmartDashboardCommand extends CommandBase {
+	
+	TrapezoidProfile trapezoid;
 	
 	public SmartDashboardCommand() {
 		
@@ -20,6 +24,8 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putData(new IntakeBall());
 		SmartDashboard.putData(new EjectBall());
 		SmartDashboard.putData(new HoldBall());
+		SmartDashboard.putData(new DriveTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3));
+		trapezoid = new TrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
     }
 	
     protected void execute() {
@@ -49,6 +55,14 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putData(intake);
 		SmartDashboard.putData(compressorSubsystem);
 		SmartDashboard.putData(scissorLift);
+		
+		/*-----Test Outputs-----*/
+		
+		SmartDashboard.putNumber("Test Output 1: ", trapezoid.idealVelocity(1));
+		SmartDashboard.putNumber("Test Output 2: ", trapezoid.idealVelocity(2));
+		SmartDashboard.putNumber("Test Output 3: ", trapezoid.timeNeeded);
+		SmartDashboard.putNumber("Test Output 4: ", trapezoid.criticalDistance);
+		SmartDashboard.putNumber("Test Output 5: ", trapezoid.criticalTime);
     }
     
     /**

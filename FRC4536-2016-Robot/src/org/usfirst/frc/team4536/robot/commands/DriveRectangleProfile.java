@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Timer;
 
 /**
- *
+ *@author Mairead
  */
 public class DriveRectangleProfile extends CommandBase {
 	

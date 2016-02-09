@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4536.robot;
 
-public class RectangleProfile {
+public class RectangleProfile extends Profile {
 
 	public double distance;
 	public double timeNeeded;
@@ -46,7 +46,7 @@ public class RectangleProfile {
 	 * @param time The amount of time since the profile has started
 	 * @returns The veloctiy the robot should be at
 	 */
-	public double idealRate(double time) {
+	public double idealVelocity(double time) {
 		
 		if (time > 0 && time < timeNeeded) {
 			return desiredMaxVelocity;

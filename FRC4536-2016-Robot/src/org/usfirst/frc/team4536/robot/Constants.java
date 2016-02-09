@@ -39,16 +39,25 @@ public class Constants {
 	
 	public static double variable1 = 0.0;
 	public static double variable2 = 0.0;
+	public static double variable3 = 0.0;
+	public static double variable4 = 0.0;
+	public static double variable5 = 0.0;
 	
 	public static void displaySmartDashboard() {
 		
 		SmartDashboard.putNumber("Variable 1: ", 0.0);
 		SmartDashboard.putNumber("Variable 2: ", 0.0);
+		SmartDashboard.putNumber("Variable 3: ", 0.0);
+		SmartDashboard.putNumber("Variable 4: ", 0.0);
+		SmartDashboard.putNumber("Variable 5: ", 0.0);
 	}
 	
 	public static void updateVariables() {
 		
 		variable1 = SmartDashboard.getNumber("Variable 1: ");
 		variable2 = SmartDashboard.getNumber("Variable 2: ");
+		variable3 = SmartDashboard.getNumber("Variable 3: ");
+		variable4 = SmartDashboard.getNumber("Variable 4: ");
+		variable5 = SmartDashboard.getNumber("Variable 5: ");
 	}
 }
