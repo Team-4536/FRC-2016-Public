@@ -27,7 +27,7 @@ public class DriveTrainCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	driveTrain.arcadeDrive(-Utilities.speedCurve(OI.mainStick.getY(), Constants.speedCurve), Utilities.speedCurve(OI.mainStick.getX(), Constants.speedCurve));
+    	driveTrain.arcadeDrive(-Utilities.speedCurve(OI.mainStick.getY(), Constants.SPEED_CURVE), Utilities.speedCurve(OI.mainStick.getX(), Constants.SPEED_CURVE));
     }
 
     // Make this return true when this Command no longer needs to run execute()
