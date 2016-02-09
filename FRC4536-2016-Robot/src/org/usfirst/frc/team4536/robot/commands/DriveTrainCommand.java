@@ -27,7 +27,19 @@ public class DriveTrainCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	driveTrain.arcadeDrive(-Utilities.speedCurve(OI.mainStick.getY(), Constants.SPEED_CURVE), Utilities.speedCurve(OI.mainStick.getX(), Constants.SPEED_CURVE));
+    	double mainStickY = -OI.mainStick.getY();
+    	double mainStickX = OI.mainStick.getX();
+    	
+    	mainStickY = Utilities.deadZone(mainStickY, Constants.DEAD_ZONE);
+    	mainStickX = Utilities.deadZone(mainStickX, Constants.DEAD_ZONE);
+    	
+    	mainStickY = Utilities.limit(mainStickY, Constants.SPEED_LIMIT);
+    	mainStickX = Utilities.limit(mainStickX, Constants.SPEED_LIMIT);
+    	
+    	mainStickY = Utilities.speedCurve(mainStickY, Constants.SPEED_CURVE_STRAIGHT);
+    	mainStickX = Utilities.speedCurve(mainStickX, Constants.SPEED_CURVE_TURN);
+    	
+    	driveTrain.arcadeDrive(mainStickY, mainStickX);
     }
 
     // Make this return true when this Command no longer needs to run execute()
