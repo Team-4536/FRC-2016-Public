@@ -31,6 +31,8 @@ public class Constants {
 	public static final double HOLD_SPEED = 0.00;
 	public static final double INTAKE_STICTION = 0.06; //Full battery
 	
+	public static final int MAX_ULTRA_CONVERSION = 92;
+	
 	/*-----Access Values-----*/
 	/*@author Liam
 	 * If you have displayed a number on the SmartDashboard you may

@@ -44,4 +44,6 @@ public class RobotMap {
 	public static final int RIGHT_ENCODER_CHANNEL_B = 7; //Set of 3 wires in one port for right encoder
 
 	public static final int GYRO_CHANNEL = 0;
+	
+	public static final int ULTRA_CHANNEL = 1;
 }

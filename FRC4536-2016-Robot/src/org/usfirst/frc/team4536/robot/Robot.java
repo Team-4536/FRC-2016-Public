@@ -30,6 +30,7 @@ public class Robot extends IterativeRobot {
     Command driveIntake;
     Command smartDashboardCommand;
     Command driveScissorLift;
+    Command runUltraCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -49,6 +50,8 @@ public class Robot extends IterativeRobot {
         OI.buttonHandling();
         
         Constants.displaySmartDashboard();
+        
+        runUltraCommand = new RunUltra();
         
         //pistonFlipCommand = new PistonFlipCommand();
     }
@@ -120,6 +123,8 @@ public class Robot extends IterativeRobot {
         	
         	smartDashboardCommand.start();
         }
+        
+        runUltraCommand.cancel();
     }
 
     /**
@@ -130,6 +135,8 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         Utilities.updateCycleTime();
         Constants.updateVariables();
+        
+        runUltraCommand.start();
     }
     
     /**
