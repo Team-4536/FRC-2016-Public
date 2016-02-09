@@ -6,14 +6,16 @@ public class Constants {
 	
 	/*---------------------------------------Drive Train--------------------------------*/
 
-	public static final double SPEED_CURVE = 2.4;
+	public static final double SPEED_CURVE_STRAIGHT = 2.4;
+	public static final double SPEED_CURVE_TURN = 2.0;
+	public static final double SPEED_LIMIT = 1;
 	public static final double DRIVE_TRAIN_MAX_VELOCITY = 4.1; //In feet per seconds
 	public static final double FORWARD_STICTION = 0.07; //No climber with fully charged battery
 	public static final double TURN_STICTION = 0.3; //No climber with fully charged battery, one motor not functional
 	
 	/*---------------------------------------Joystick-----------------------------------*/
 	
-	public static final double DEAD_ZONE = 0.0;
+	public static final double DEAD_ZONE = 0.05;
 	
 	/*---------------------------------------Encoders-----------------------------------*/
 	
