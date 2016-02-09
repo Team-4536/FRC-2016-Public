@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4536.robot.commands;
 
+import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.OI;
+import org.usfirst.frc.team4536.robot.Utilities;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -21,8 +23,13 @@ public class DriveIntakeArm extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double intakeY = OI.secondaryStick.getY();
     	
-    	intake.setThrottle(OI.secondaryStick.getY());
+    	intakeY = Utilities.deadZone(intakeY, Constants.DEAD_ZONE);
+    	intakeY = Utilities.limit(intakeY);
+    	intakeY = Utilities.speedCurve(intakeY, Constants.INTAKE_SPEED_CURVE);
+    	
+    	intake.setThrottle(intakeY);
     }
 
     // Make this return true when this Command no longer needs to run execute()
