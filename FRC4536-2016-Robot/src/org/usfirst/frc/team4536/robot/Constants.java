@@ -32,6 +32,7 @@ public class Constants {
 	public static final double EJECT_SPEED = -1.0;
 	public static final double HOLD_SPEED = 0.00;
 	public static final double INTAKE_STICTION = 0.06; //Full battery
+	public static final double INTAKE_SPEED_CURVE = 1;
 	
 	/*-----Access Values-----*/
 	/*@author Liam
