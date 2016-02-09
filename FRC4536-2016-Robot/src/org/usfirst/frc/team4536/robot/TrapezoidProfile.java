@@ -40,7 +40,7 @@ public class TrapezoidProfile {
 		}
 		else {
 			
-			this.timeNeeded = (2*criticalTime) + (Math.abs(this.distance) - criticalDistance/this.desiredMaxSpeed);
+			this.timeNeeded = (2*criticalTime) + ((Math.abs(this.distance) - criticalDistance)/this.desiredMaxSpeed);
 		}
 	}
 		
