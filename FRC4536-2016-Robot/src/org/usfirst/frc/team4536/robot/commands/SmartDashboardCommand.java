@@ -63,6 +63,15 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putNumber("Test Output 3: ", trapezoid.timeNeeded);
 		SmartDashboard.putNumber("Test Output 4: ", trapezoid.criticalDistance);
 		SmartDashboard.putNumber("Test Output 5: ", trapezoid.criticalTime);
+		
+		if (trapezoid.isTriangle()) {
+			
+			SmartDashboard.putString("Triangle or Trapezoid: ", "Triangle");
+		}
+		else {
+			
+			SmartDashboard.putString("Triangle or Trapezoid: ", "Trapezoid");
+		}
     }
     
     /**
