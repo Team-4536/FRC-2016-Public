@@ -109,4 +109,9 @@ public class TrapezoidProfile {
 				return velocity;
 			}
 		}
+		
+		public boolean isTriangle() {
+			
+			return triangle;
+		}
 }
