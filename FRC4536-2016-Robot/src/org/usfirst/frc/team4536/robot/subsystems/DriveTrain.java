@@ -28,9 +28,9 @@ public class DriveTrain extends Subsystem {
 	Encoder rightEncoder;
 	AnalogGyro gyro;
 	AHRS navX;
-
 	
-	
+	public double oldForwardThrottle;
+	double oldTurnThrottle;
 	
 	/**
 	 * @author Max and Audrey 
@@ -85,7 +85,6 @@ public class DriveTrain extends Subsystem {
      */
     
     public void tankDrive(double leftThrottle, double rightThrottle) {
-    	
     	leftBackVictorSP.set(-leftThrottle);
     	leftFrontVictorSP.set(-leftThrottle);
     	rightBackVictorSP.set(rightThrottle);
@@ -101,13 +100,29 @@ public class DriveTrain extends Subsystem {
     public void arcadeDrive(double forwardThrottle, double turnThrottle) {
     	double leftVictorSPThrottle = forwardThrottle + turnThrottle;
     	double rightVictorSPThrottle = -forwardThrottle + turnThrottle;
+
+    	oldForwardThrottle = forwardThrottle;
+    	oldTurnThrottle = turnThrottle;
     	
-    	leftBackVictorSP.set(leftVictorSPThrottle);
-    	leftFrontVictorSP.set(leftVictorSPThrottle);
-    	rightBackVictorSP.set(rightVictorSPThrottle);
-    	rightFrontVictorSP.set(rightVictorSPThrottle);
+    	tankDrive(-leftVictorSPThrottle, rightVictorSPThrottle);
     	
     }
+    
+    /**
+     * @author Sheila 
+     * @param forwardThrottle - see arcadeDrive
+     * @param turnThrottle - see arcadeDrive
+     */
+    public void arcadeDriveAccelLimit(double forwardThrottle, double turnThrottle) {
+    	System.out.println("Forward Throttle: "+forwardThrottle);
+    	System.out.println("Old Forward Throttle: "+oldForwardThrottle);
+    	System.out.println("Turn Throttle: "+turnThrottle);
+    	System.out.println("Old Turn Throttle: "+oldTurnThrottle);
+    	forwardThrottle = Utilities.accelLimit(forwardThrottle, oldForwardThrottle, Constants.ACCEL_LIMIT);
+    	turnThrottle = Utilities.accelLimit(turnThrottle, oldTurnThrottle, Constants.ACCEL_LIMIT);
+    	arcadeDrive(forwardThrottle, turnThrottle);
+    }
+    
     
     /**
      * @author Audrey

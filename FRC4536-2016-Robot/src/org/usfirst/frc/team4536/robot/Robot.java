@@ -30,6 +30,7 @@ public class Robot extends IterativeRobot {
     Command driveIntake;
     Command smartDashboardCommand;
     Command driveScissorLift;
+    Command accelLimitDrive;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -46,6 +47,7 @@ public class Robot extends IterativeRobot {
         driveIntake = new DriveIntakeArm();
         smartDashboardCommand = new SmartDashboardCommand();
         driveScissorLift = new DriveScissorLift();
+        accelLimitDrive = new AccelLimitDrive();
         OI.buttonHandling();
         
         Constants.displaySmartDashboard();
@@ -87,9 +89,9 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (driveTrainCommand != null) {
+        if (accelLimitDrive != null) {
         	
-        	driveTrainCommand.start();
+        	accelLimitDrive.start();
         }
         
         if (smartDashboardCommand != null) {
