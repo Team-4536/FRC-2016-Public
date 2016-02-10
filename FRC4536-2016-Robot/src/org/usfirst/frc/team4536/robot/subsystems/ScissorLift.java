@@ -1,4 +1,6 @@
 package org.usfirst.frc.team4536.robot.subsystems;
+import org.usfirst.frc.team4536.robot.Utilities;
+
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -14,7 +16,7 @@ public class ScissorLift extends Subsystem {
 		public ScissorLift(int motorChannel){
 	
 			scissorLift = new VictorSP(motorChannel);
-			
+				
 		}
 		
 		/**
@@ -22,10 +24,13 @@ public class ScissorLift extends Subsystem {
 		 * @param Throttle the value [-1, 1] sent to the motor. Negative values make it climb.
 		 * Positive values make it go down.
 		 */
-		public void driveLift(double Throttle) {
-			scissorLift.set(Throttle);
+		public void driveLift(double throttle) {
+			scissorLift.set(throttle);
 			
 	    }
+		public void safeDrive(double throttle) {
+			driveLift(Utilities.limit(throttle, 0.0, -1.0));
+		}
 			
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
