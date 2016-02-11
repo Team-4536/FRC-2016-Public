@@ -36,6 +36,7 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putNumber("Drive Train Right Encoder: ", driveTrain.getRightEncoder());
 		SmartDashboard.putNumber("Drive Train Right Rate: ", driveTrain.getRightRate());
 		SmartDashboard.putNumber("Drive Train Left Rate: ", driveTrain.getLeftRate());
+		SmartDashboard.putNumber("Previous Forward Throttle", driveTrain.oldForwardThrottle);
 		
 		/*-----Display NavX Values-----*/
 		

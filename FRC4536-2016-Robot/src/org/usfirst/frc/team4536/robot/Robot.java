@@ -30,6 +30,8 @@ public class Robot extends IterativeRobot {
     Command driveIntake;
     Command smartDashboardCommand;
     Command driveScissorLift;
+    Command driveAccelLimited;
+    Command intakeAccelLimited;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -44,8 +46,10 @@ public class Robot extends IterativeRobot {
         pistonFlipCommand = new PistonFlipCommand();
         //flipElecSolenoid = new FlipElectricalSolenoid();
         driveIntake = new DriveIntakeArm();
+        intakeAccelLimited = new DriveIntakeArmAccelLimited(); //TODO work on this name...
         smartDashboardCommand = new SmartDashboardCommand();
         driveScissorLift = new DriveScissorLift();
+        driveAccelLimited = new DriveAccelLimited();
         OI.buttonHandling();
         
         Constants.displaySmartDashboard();
@@ -87,9 +91,9 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (driveTrainCommand != null) {
+        if (driveAccelLimited != null) {
         	
-        	driveTrainCommand.start();
+        	driveAccelLimited.start();
         }
         
         if (smartDashboardCommand != null) {
@@ -97,9 +101,9 @@ public class Robot extends IterativeRobot {
         	smartDashboardCommand.start();
         }
         
-        if (driveIntake != null) {
+        if (intakeAccelLimited != null) {
         	
-        	driveIntake.start();
+        	intakeAccelLimited.start();
         }
         
         if (driveScissorLift != null) {
