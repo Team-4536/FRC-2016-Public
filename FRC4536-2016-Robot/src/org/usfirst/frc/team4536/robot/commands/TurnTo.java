@@ -29,12 +29,13 @@ public class TurnTo extends CommandBase {
     	difference = Utilities.angleDifference(currentAngle, desiredAngle);
     	rectangle = new RectangleProfileForTurning(difference, velocity);
     	
-    	timer.reset();
-    	timer.start();
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	timer.reset();
+    	timer.start();
     	
     	
     	

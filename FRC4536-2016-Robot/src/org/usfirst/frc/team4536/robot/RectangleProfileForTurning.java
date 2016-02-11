@@ -58,9 +58,9 @@ public class RectangleProfileForTurning {
 	/**
 	 * @author Mairead
 	 * @param time The amount of time since the profile has started
-	 * @returns The distance the robot should be at
+	 * @returns The angle the robot should be at
 	 */
-	public double idealDistance(double time) {
+	public double idealAngle(double time) {
 		
 		if (time > 0 && time < timeNeeded && angle > 0) {
 			return desiredMaxAngularVelocity * time;
