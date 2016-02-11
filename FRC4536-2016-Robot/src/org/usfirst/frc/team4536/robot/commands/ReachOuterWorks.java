@@ -1,54 +1,33 @@
 package org.usfirst.frc.team4536.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4536.robot.Constants;
+
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *@author Liam
- *This commmand reaches the outerworks, scoring 2 points in auto.
+ *This command group reaches the outerworks
  */
-public class ReachOuterWorks extends CommandBase {
-	
-	//TODO add timeout for the comand
+public class ReachOuterWorks extends CommandGroup {
+    
+    public  ReachOuterWorks() {
+        // Add Commands here:
+        // e.g. addSequential(new Command1());
+        //      addSequential(new Command2());
+        // these will run in order.
 
-    public ReachOuterWorks() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(driveTrain);
-    }
+        // To run multiple commands at the same time,
+        // use addParallel()
+        // e.g. addParallel(new Command1());
+        //      addSequential(new Command2());
+        // Command1 and Command2 will run in parallel.
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
+        // A command group will require all of the subsystems that each member
+        // would require.
+        // e.g. if Command1 requires chassis, and Command2 requires arm,
+        // a CommandGroup containing them would require both the chassis and the
+        // arm.
     	
-    	setTimeout(Constants.REACH_DEFENSE_TIME_OUT);
-    	
-    	System.out.println("Initiailized");
-    	
-    	driveTrain.arcadeDrive(0.0, 0.0);
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	
-    	System.out.println("Driving");
-    	driveTrain.arcadeDrive(0.5, 0);
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return isTimedOut();
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    	
-    	driveTrain.arcadeDrive(0.0, 0.0);
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	
-    	end();
+    	addSequential(new DriveRectangleProfile(Constants.REACH_DEFENSE_DISTANCE, Constants.REACH_DEFENSE_VELOCITY));
     }
 }

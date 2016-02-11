@@ -27,6 +27,11 @@ public class Constants {
 	
 	public static final double REACH_DEFENSE_TIME_OUT = 0.9;
 	
+	/*-------------------------------------Auto Mode Distances-----------------------*/
+	
+	public static final double REACH_DEFENSE_DISTANCE = 2.0;
+	public static final double REACH_DEFENSE_VELOCITY = 1.0;
+	
 	/*---------------------------------------Intake-------------------------------------*/
 	
 	//TODO change these value from test values to values for the intake 
