@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-
+import edu.wpi.first.wpilibj.Timer;
 import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Utilities;
@@ -11,13 +11,17 @@ import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 public class SmartDashboardCommand extends CommandBase {
 	
 	TrapezoidProfile trapezoid;
+	DriveTrapezoidProfile driveTrapezoid;
 	
 	public SmartDashboardCommand() {
 		
 		
 	}
 	
+	
 	protected void initialize() {
+		
+		driveTrapezoid = new DriveTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
 	
 		/*-----Commands to Run-----*/
 		
@@ -32,6 +36,7 @@ public class SmartDashboardCommand extends CommandBase {
 		
 		/*-----Display Values-----*/
 		
+    	SmartDashboard.putNumber("Time: ", Utilities.getTime());
 		SmartDashboard.putNumber("Main Joystick Y: ", OI.mainStick.getY());
 		SmartDashboard.putNumber("Main Joystick X: ", OI.mainStick.getX());
 		SmartDashboard.putNumber("Secondary Joystick Y: ", OI.secondaryStick.getY());
@@ -63,6 +68,7 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putNumber("Test Output 3: ", trapezoid.timeNeeded);
 		SmartDashboard.putNumber("Test Output 4: ", trapezoid.criticalDistance);
 		SmartDashboard.putNumber("Test Output 5: ", trapezoid.criticalTime);
+		SmartDashboard.putNumber("Test Output 6: ", trapezoid.idealVelocity(Utilities.getTime()-5));
 		
 		if (trapezoid.isTriangle()) {
 			

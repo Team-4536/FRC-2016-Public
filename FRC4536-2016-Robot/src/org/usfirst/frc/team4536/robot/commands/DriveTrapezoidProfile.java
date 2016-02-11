@@ -28,6 +28,11 @@ public class DriveTrapezoidProfile extends CommandBase {
     	trapezoid = new TrapezoidProfile(distance, maxVelocity, maxAcceleration);
     	this.maxVelocity = maxVelocity;
     }
+    
+    public double getTime() {
+    	
+    	return timer.get();
+    }
 
  // Called just before this Command runs the first time
     protected void initialize() {
