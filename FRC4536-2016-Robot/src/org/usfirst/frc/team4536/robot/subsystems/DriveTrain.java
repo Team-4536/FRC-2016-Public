@@ -1,9 +1,3 @@
-//---------------NEW-DRIVETRAIN-2016-------------------
-//-----------------------------------------------------
-//----------DONT-CONFUSE-FOR-OLD-DRIVETRAIN------------
-//-----------------------------------------------------
-//---------------NEW-DRIVETRAIN-2016-------------------
-
 //TODO: incorporate drive encoders and navX
 
 package org.usfirst.frc.team4536.robot.subsystems;
