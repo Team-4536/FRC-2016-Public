@@ -21,6 +21,7 @@ public class MaxboticUltra extends Subsystem {
 	
 	public double getRange() {
 		range = ultra.getValue() / Constants.MAX_ULTRA_CONVERSION;
+		System.out.println(range);
 		return range;
 	}
 	

@@ -6,6 +6,7 @@ public class AutoIntake extends CommandBase {
 	
 	Timer time = new Timer();
 	boolean finished;
+	double range;
 	
 	public AutoIntake() {
 		requires(intake);
@@ -13,23 +14,27 @@ public class AutoIntake extends CommandBase {
 	}
 	
 	public void initialize() {
-		time.reset();
 		time.start();
-		finished = false;
 	}
 	
 	public void execute() {
+		range = maxUltra.getRange();
 		if (time.get() < 5) {
-			if (maxUltra.getRange() > .25) {
-				intake.setThrottle(1);
+			if (range > .75) {
+				intake.setThrottle(.75);
 				finished = false;
+			}
+			else if (range > .55 && range <= .75) {
+				intake.setThrottle(.35);
 			}
 			else {
 				intake.setThrottle(0);
+				time.reset();
 				finished = true;
 			}
 		}
 		else {
+			time.reset();
 			finished = true;
 		}
 	}

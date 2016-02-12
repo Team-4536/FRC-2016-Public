@@ -49,6 +49,8 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putData(intake);
 		SmartDashboard.putData(compressorSubsystem);
 		SmartDashboard.putData(scissorLift);
+		
+		SmartDashboard.putNumber("range", maxUltra.getRange());
     }
     
     /**
