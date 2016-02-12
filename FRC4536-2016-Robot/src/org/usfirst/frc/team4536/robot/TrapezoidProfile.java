@@ -25,7 +25,7 @@ public class TrapezoidProfile {
 		criticalTime = this.desiredMaxSpeed/this.desiredMaxAcceleration;
 		criticalDistance = criticalTime * this.desiredMaxSpeed/2;
 		
-		if (this.distance > criticalDistance) {
+ 		if (this.distance > criticalDistance) {
 			
 			triangle = false;
 		}
@@ -40,7 +40,7 @@ public class TrapezoidProfile {
 		}
 		else {
 			
-			this.timeNeeded = (2*criticalTime) + ((Math.abs(this.distance) - criticalDistance)/this.desiredMaxSpeed);
+			this.timeNeeded = (2*criticalTime) + ((Math.abs(this.distance) - 2*criticalDistance)/this.desiredMaxSpeed);
 		}
 	}
 		
@@ -50,8 +50,15 @@ public class TrapezoidProfile {
 		 * @returns The throttle the robot should be at
 		 */
 		public double throttle(double time) {
+			
+			System.out.println(Utilities.adjustForStiction(idealVelocity(time), Constants.FORWARD_STICTION, Constants.DRIVE_TRAIN_MAX_VELOCITY));
 
-			return idealVelocity(time)/Constants.DRIVE_TRAIN_MAX_VELOCITY;
+			return Utilities.adjustForStiction(idealVelocity(time), Constants.variable5, Constants.DRIVE_TRAIN_MAX_VELOCITY);
+		}
+		
+		public double getTimeNeeded() {
+			
+			return this.timeNeeded;
 		}
 		
 		/**
