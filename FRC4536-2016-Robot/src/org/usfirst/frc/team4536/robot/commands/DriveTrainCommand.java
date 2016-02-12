@@ -39,7 +39,7 @@ public class DriveTrainCommand extends CommandBase {
     	mainStickY = Utilities.speedCurve(mainStickY, Constants.SPEED_CURVE_STRAIGHT);
     	mainStickX = Utilities.speedCurve(mainStickX, Constants.SPEED_CURVE_TURN);
     	
-    	driveTrain.arcadeDrive(mainStickY, mainStickX);
+    	driveTrain.arcadeDriveAccelLimit(mainStickY, mainStickX);
     }
 
     // Make this return true when this Command no longer needs to run execute()

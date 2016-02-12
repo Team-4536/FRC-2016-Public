@@ -18,7 +18,7 @@ public class Constants {
 	
 	/*---------------------------------------Joystick-----------------------------------*/
 	
-	public static final double DEAD_ZONE = 0.05;
+	public static final double DEAD_ZONE = 0.1;
 	
 	/*---------------------------------------Encoders-----------------------------------*/
 	
@@ -41,6 +41,8 @@ public class Constants {
 	public static final double HOLD_SPEED = 0.00;
 	public static final double INTAKE_STICTION = 0.06; //Full battery
 	public static final double INTAKE_SPEED_CURVE = 1;
+	
+	public static final double MAX_ULTRA_CONVERSION = 92.0;
 	
 	/*-----Access Values-----*/
 	/*@author Liam

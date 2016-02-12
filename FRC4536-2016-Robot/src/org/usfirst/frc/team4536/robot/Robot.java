@@ -124,6 +124,8 @@ public class Robot extends IterativeRobot {
         	
         	smartDashboardCommand.start();
         }
+        
+        //runUltraCommand.cancel();
     }
 
     /**
@@ -134,6 +136,8 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         Utilities.updateCycleTime();
         Constants.updateVariables();
+        
+        //runUltraCommand.start();
     }
     
     /**

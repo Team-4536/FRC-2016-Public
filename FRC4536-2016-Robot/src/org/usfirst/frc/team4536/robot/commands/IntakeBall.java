@@ -15,6 +15,7 @@ public class IntakeBall extends CommandBase {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(intake);
+    	requires(maxUltra);
     }
 
     // Called just before this Command runs the first time
@@ -23,8 +24,13 @@ public class IntakeBall extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    if (maxUltra.getRange() < .25) {
+    		intake.setThrottle(0);
+    	}
+    	else {
+    		intake.setThrottle(Constants.INTAKE_SPEED);
+    	}
     	
-    	intake.setThrottle(Constants.INTAKE_SPEED);
     }
 
     // Make this return true when this Command no longer needs to run execute()

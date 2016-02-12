@@ -22,6 +22,8 @@ public class CommandBase extends Command {
 	public static ScissorLift scissorLift = new ScissorLift(RobotMap.SCISSOR_MOTOR);
 	//public static ElectricalSolenoid elecSolenoid = new ElectricalSolenoid(RobotMap.leftSolenoid, RobotMap.rightSolenoid);
 	
+	public static MaxboticUltra maxUltra = new MaxboticUltra(RobotMap.ULTRA_CHANNEL);
+	
     public CommandBase() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

@@ -25,6 +25,7 @@ public class OI {
 	public static Button eject;
 	public static Button hold;
 	public static Button tangleTest;
+	public static Button autoIntake;
 	
 	/**
 	 * @author Liam
@@ -36,6 +37,7 @@ public class OI {
 		eject = new JoystickButton(secondaryStick, 6);
 		hold = new JoystickButton(secondaryStick, 7);
 		tangleTest = new JoystickButton(mainStick, 11);
+		autoIntake = new JoystickButton(secondaryStick, 8);
 		
 		
 		/*-------------------Actions------------------------*/
@@ -44,6 +46,7 @@ public class OI {
 		eject.whenPressed(new EjectBallAccelLimited());
 		hold.whenPressed(new HoldBallAccelLimited());
 		tangleTest.whenPressed(new DriveRectangleProfile(-2,1));
+		autoIntake.whenPressed(new AutoIntake());
 		
 		/*------------------Canceling actions--------------*/
 		

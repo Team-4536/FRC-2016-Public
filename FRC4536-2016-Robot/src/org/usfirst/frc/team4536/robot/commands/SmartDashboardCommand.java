@@ -30,7 +30,7 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putNumber("Main Joystick X: ", OI.mainStick.getX());
 		SmartDashboard.putNumber("Secondary Joystick Y: ", OI.secondaryStick.getY());
 		SmartDashboard.putNumber("Secondary Joystick X: ", OI.secondaryStick.getX());
-		SmartDashboard.putNumber("Voltage: ", Utilities.getVoltage());
+		//SmartDashboard.putNumber("Voltage: ", Utilities.getVoltage());
 		//SmartDashboard.putNumber("Total Current: ", Utilities.getTotalCurrent());
 		SmartDashboard.putNumber("Drive Train Left Encoder: ", driveTrain.getLeftEncoder());
 		SmartDashboard.putNumber("Drive Train Right Encoder: ", driveTrain.getRightEncoder());
@@ -50,6 +50,8 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putData(intake);
 		SmartDashboard.putData(compressorSubsystem);
 		SmartDashboard.putData(scissorLift);
+		
+		SmartDashboard.putNumber("range", maxUltra.getRange());
     }
     
     /**
