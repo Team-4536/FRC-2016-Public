@@ -118,8 +118,8 @@ public class DriveTrain extends Subsystem {
     	System.out.println("Old Forward Throttle: "+oldForwardThrottle);
     	System.out.println("Turn Throttle: "+turnThrottle);
     	System.out.println("Old Turn Throttle: "+oldTurnThrottle);
-    	forwardThrottle = Utilities.accelLimit(forwardThrottle, oldForwardThrottle, Constants.ACCEL_LIMIT);
-    	turnThrottle = Utilities.accelLimit(turnThrottle, oldTurnThrottle, Constants.ACCEL_LIMIT);
+    	forwardThrottle = Utilities.accelLimit(forwardThrottle, oldForwardThrottle, Constants.ACCEL_LIMIT_DRIVE);
+    	turnThrottle = Utilities.accelLimit(turnThrottle, oldTurnThrottle, Constants.ACCEL_LIMIT_DRIVE);
     	arcadeDrive(forwardThrottle, turnThrottle);
     }
     

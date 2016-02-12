@@ -9,12 +9,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *@author Liam
  */
-public class DriveIntakeArmAccelLimited extends CommandBase {
+public class DriveIntakeAccelLimited extends CommandBase {
 	
-	double nowThrottle;
-	double oldThrottle;
-	
-    public DriveIntakeArmAccelLimited() {
+    public DriveIntakeAccelLimited() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(intake);
@@ -22,15 +19,11 @@ public class DriveIntakeArmAccelLimited extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	nowThrottle = 0.0;
-    	oldThrottle = 0.0;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	nowThrottle = Utilities.accelLimit(OI.secondaryStick.getY(), oldThrottle, Constants.ACCEL_LIMIT);
-    	intake.setThrottle(nowThrottle);
-    	oldThrottle = nowThrottle;
+    	intake.setThrottleAccelLimited(OI.secondaryStick.getY());
     }
 
     // Make this return true when this Command no longer needs to run execute()

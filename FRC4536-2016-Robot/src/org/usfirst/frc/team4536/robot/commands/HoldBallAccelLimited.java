@@ -1,17 +1,15 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import org.usfirst.frc.team4536.robot.Constants;
-import org.usfirst.frc.team4536.robot.OI;
-import org.usfirst.frc.team4536.robot.Utilities;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *@author Liam
  */
-public class IntakeBall extends CommandBase {
-	
-    public IntakeBall() {
+public class HoldBallAccelLimited extends CommandBase {
+
+    public HoldBallAccelLimited() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(intake);
@@ -24,7 +22,7 @@ public class IntakeBall extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	intake.setThrottle(Constants.INTAKE_SPEED);
+    	intake.setThrottleAccelLimited(Constants.HOLD_SPEED);
     }
 
     // Make this return true when this Command no longer needs to run execute()
