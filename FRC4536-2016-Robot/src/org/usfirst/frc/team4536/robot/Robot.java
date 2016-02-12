@@ -46,7 +46,7 @@ public class Robot extends IterativeRobot {
         pistonFlipCommand = new PistonFlipCommand();
         //flipElecSolenoid = new FlipElectricalSolenoid();
         driveIntake = new DriveIntakeArm();
-        intakeAccelLimited = new DriveIntakeArmAccelLimited(); //TODO work on this name...
+        intakeAccelLimited = new DriveIntakeAccelLimited(); //TODO work on this name...
         smartDashboardCommand = new SmartDashboardCommand();
         driveScissorLift = new DriveScissorLift();
         driveAccelLimited = new DriveAccelLimited();
