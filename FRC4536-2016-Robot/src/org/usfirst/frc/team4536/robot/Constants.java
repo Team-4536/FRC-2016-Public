@@ -10,10 +10,11 @@ public class Constants {
 	public static final double FORWARD_STICTION = 0.07; //No climber with fully charged battery
 	public static final double TURN_STICTION = 0.3; //No climber with fully charged battery, one motor not functional
 	public static final double DRIVE_TRAIN_MAX_VELOCITY = 13.; //Feet per second, measured on blocks, 12.68 Battery Voltage
-	
+	public static final double TRAPEZOID_FORWARD_PROPORTIONALITY = 0.005;
 	//Zenith
-	public static final double ZENITH_FORWARD_STICTION = 0.085;
-	public static final double ZENITH_TURN_STICTION = 0.12;
+	//TODO change Zenith stiction back
+	public static final double ZENITH_FORWARD_STICTION = 0.00; // 0.04
+	public static final double ZENITH_TURN_STICTION = 0.1;
 	public static final double ZENITH_DRIVE_TRAIN_MAX_VELOCITY = 4.1; //In feet per seconds
 	
 	/*---------------------------------------Joystick-----------------------------------*/
