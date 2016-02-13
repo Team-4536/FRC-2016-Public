@@ -34,6 +34,7 @@ public class Robot extends IterativeRobot {
     Command driveAccelLimited;
     Command intakeAccelLimited;
     Command flipRelay;
+    Command safeDriveScissorLift;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -53,6 +54,7 @@ public class Robot extends IterativeRobot {
         driveScissorLift = new DriveScissorLift();
         driveAccelLimited = new DriveAccelLimited();
         flipRelay = new FlipScissorRelay();
+        safeDriveScissorLift = new SafeDriveScissorLift();
         OI.buttonHandling();
         
         Constants.displaySmartDashboard();
@@ -115,9 +117,9 @@ public class Robot extends IterativeRobot {
         	intakeAccelLimited.start();
         }
         
-        if (driveScissorLift != null) {
+        if (safeDriveScissorLift != null) {
         	
-        	driveScissorLift.start();
+        	safeDriveScissorLift.start();
         }
         
         Utilities.startTimer();

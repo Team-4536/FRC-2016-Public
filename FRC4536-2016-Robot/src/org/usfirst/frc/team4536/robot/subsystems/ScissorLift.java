@@ -1,7 +1,9 @@
 package org.usfirst.frc.team4536.robot.subsystems;
+
 import org.usfirst.frc.team4536.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Relay;
+import org.usfirst.frc.team4536.robot.Utilities;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -19,7 +21,6 @@ public class ScissorLift extends Subsystem {
 	
 			scissorLift = new VictorSP(motorChannel);
 			relay = new Relay(RobotMap.SCISSOR_RELAY, Relay.Direction.kForward);
-			
 		}
 		
 		/**
@@ -27,8 +28,8 @@ public class ScissorLift extends Subsystem {
 		 * @param Throttle the value [-1, 1] sent to the motor. Negative values make it climb.
 		 * Positive values make it go down.
 		 */
-		public void driveLift(double Throttle) {
-			scissorLift.set(Throttle);
+		public void driveLift(double throttle) {
+			scissorLift.set(throttle);
 			
 	    }
 		
@@ -47,6 +48,9 @@ public class ScissorLift extends Subsystem {
 			} else {
 				relayOff();
 			}
+		}
+		public void safeDrive(double throttle) {
+			driveLift(Utilities.limit(throttle, -1.0, 0.0));
 		}
 			
     public void initDefaultCommand() {
