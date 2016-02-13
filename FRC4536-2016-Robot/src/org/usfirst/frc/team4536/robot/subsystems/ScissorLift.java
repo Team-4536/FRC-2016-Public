@@ -18,7 +18,7 @@ public class ScissorLift extends Subsystem {
 		public ScissorLift(int motorChannel){
 	
 			scissorLift = new VictorSP(motorChannel);
-			relay = new Relay(RobotMap.RELAY_CHANNEL, Relay.Direction.kForward);
+			relay = new Relay(RobotMap.SCISSOR_RELAY, Relay.Direction.kForward);
 			
 		}
 		
@@ -32,6 +32,9 @@ public class ScissorLift extends Subsystem {
 			
 	    }
 		
+		/**
+		 * @author Sheila
+		 */
 		public void relayOn() {
 			relay.set(Relay.Value.kOn);
 		}

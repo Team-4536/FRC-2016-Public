@@ -39,7 +39,8 @@ public class RobotMap {
 
 	/*-------------------------------------Relay Solenoid-----------------*/
 	
-	public static final int RELAY_CHANNEL = 0; //this goes in the relay port, electricians; not PWM or DIM
+	public static final int SCISSOR_RELAY = 0; //these go in the relay port, 
+	public static final int INTAKE_RELAY = 1; //electricians; not PWM or DIM 
 	
     /*-------------------------------------Sensor Channels---------------------------------*/	
 	
