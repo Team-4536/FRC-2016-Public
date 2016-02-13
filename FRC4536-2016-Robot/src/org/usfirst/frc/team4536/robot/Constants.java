@@ -6,9 +6,12 @@ public class Constants {
 	
 	/*---------------------------------------Drive Train--------------------------------*/
 
-	public static final double SPEED_CURVE = 0.0;
-	public static final double DRIVE_TRAIN_MAX_VELOCITY = 4.1; //In feet per seconds
-	
+	//Zenith
+	public static final double SPEED_CURVE = 2.4;
+	public static final double FORWARD_STICTION = 0.085;
+	public static final double TURN_STICTION = 0.12; 
+	public static final double DRIVE_TRAIN_MAX_VELOCITY = 4.1;
+	public static final double DRIVE_TRAIN_MAX_ANGULAR_VELOCITY = 400;
 	/*---------------------------------------Joystick-----------------------------------*/
 	
 	public static final double DEAD_ZONE = 0.0;
