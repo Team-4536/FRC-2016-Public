@@ -4,6 +4,7 @@ public class RectangleProfileForTurning {
 
 	public double angle;
 	public double timeNeeded;
+	public double stictionAdjustment;
 	public double throttle;
 	public double desiredMaxAngularVelocity;
 	
@@ -17,11 +18,12 @@ public class RectangleProfileForTurning {
 
 		this.desiredMaxAngularVelocity = desiredMaxAngularVelocity;
 		this.angle = angle;
+		stictionAdjustment = Utilities.adjustForStiction(desiredMaxAngularVelocity, Constants.TURN_STICTION, Constants.DRIVE_TRAIN_MAX_ANGULAR_VELOCITY);
 		if(angle > 0){
-			throttle = desiredMaxAngularVelocity / Constants.DRIVE_TRAIN_MAX_ANGULAR_VELOCITY;
+			throttle = stictionAdjustment;
 		} // Converts the desired velocity into a throttle value to send to the motors
 		if(angle < 0){
-			throttle = -desiredMaxAngularVelocity / Constants.DRIVE_TRAIN_MAX_ANGULAR_VELOCITY;
+			throttle = -stictionAdjustment;
 		}
 		timeNeeded = Math.abs(angle / desiredMaxAngularVelocity); // Uses physics to calculate the time needed
 
