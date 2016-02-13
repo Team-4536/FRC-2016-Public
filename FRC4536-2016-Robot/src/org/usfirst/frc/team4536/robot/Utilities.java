@@ -228,6 +228,13 @@ public class Utilities {
 		
 		double focusedRange = 1 - stiction;
 		
-		return velocityToThrottle*focusedRange + stiction;
+		if (velocity < 0) {
+			
+			return velocityToThrottle*focusedRange - stiction;
+		}
+		else {
+			
+			return velocityToThrottle*focusedRange + stiction;
+		}
 	}
 }

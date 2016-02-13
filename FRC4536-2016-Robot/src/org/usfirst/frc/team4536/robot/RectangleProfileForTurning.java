@@ -18,7 +18,7 @@ public class RectangleProfileForTurning {
 
 		this.desiredMaxAngularVelocity = desiredMaxAngularVelocity;
 		this.angle = angle;
-		stictionAdjustment = Utilities.adjustForStiction(desiredMaxAngularVelocity, Constants.ZENITH_TURN_STICTION, Constants.DRIVE_TRAIN_MAX_ANGULAR_VELOCITY);
+		stictionAdjustment = Utilities.adjustForStiction(desiredMaxAngularVelocity, Constants.ZENITH_TURN_STICTION, Constants.ZENITH_DRIVE_TRAIN_MAX_ANGULAR_VELOCITY);
 		if(angle > 0){
 			throttle = stictionAdjustment;
 		} // Converts the desired velocity into a throttle value to send to the motors

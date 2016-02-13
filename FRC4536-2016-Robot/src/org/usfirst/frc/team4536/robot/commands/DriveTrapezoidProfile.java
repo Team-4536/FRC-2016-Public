@@ -1,36 +1,41 @@
 package org.usfirst.frc.team4536.robot.commands;
 
-import org.usfirst.frc.team4536.robot.OI;
-import org.usfirst.frc.team4536.robot.RectangleProfile;
+import org.usfirst.frc.team4536.robot.Constants;
+import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 import org.usfirst.frc.team4536.robot.Utilities;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *@author Mairead
+ *@author Liam
  */
-public class DriveRectangleProfile extends CommandBase {
+public class DriveTrapezoidProfile extends CommandBase {
 	
 	Timer timer = new Timer();
-	double time;
-	double desiredDistance;
-	double maxVelocity;
-	RectangleProfile rectangle;
+	TrapezoidProfile trapezoid;
+	public double maxVelocity;
 	
 	/**
-	 * @author Mairead
+	 * @author Liam
 	 * @param distance The desired distance the robot should travel
 	 * @param desiredMaxVelocity The speed the robot should be traveling at
 	 */
 
-    public DriveRectangleProfile(double distance, double maxVelocity) {
+    public DriveTrapezoidProfile(double distance, double maxVelocity, double maxAcceleration) {
 
     	requires(driveTrain);
-    	rectangle = new RectangleProfile(distance, maxVelocity);
-    	this.desiredDistance = distance;
+    	trapezoid = new TrapezoidProfile(distance, maxVelocity, maxAcceleration);
     	this.maxVelocity = maxVelocity;
+    }
+    
+    /**
+     * @author Liam
+     * @return time
+     */
+    public double getTime() {
+    	
+    	return timer.get();
     }
 
  // Called just before this Command runs the first time
@@ -44,11 +49,8 @@ public class DriveRectangleProfile extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	time = timer.get();
-    	
-    	driveTrain.arcadeDrive(rectangle.throttle(time)
-    			+ 0.75*(rectangle.idealDistance(time) - driveTrain.getRightEncoder()/12),
-    			(maxVelocity/24.6)*Utilities.angleDifference(driveTrain.getNavXYaw() , 0));
+    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * (trapezoid.idealDistance(timer.get())*12 - driveTrain.getRightEncoder())),
+    							(Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY * driveTrain.getNavXYaw()));
     	//Ask Caleb or Mairead on the implementation of feedforward+feedback
     	
     	System.out.println(driveTrain.getRightEncoder()/12);
@@ -58,14 +60,7 @@ public class DriveRectangleProfile extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(Math.abs(driveTrain.getRightEncoder() - desiredDistance) < 0.04
-    			//in feet, true if the robot is within half of an inch away from the desired distance
-    		&& Math.abs(driveTrain.getRightRate()) < 0.5)
-    			//in inches, true in the robot is moving at a steep of less than half an inch
-    	{
-    		return true;
-    	}
-    	else
+
     		return false;
     }
 

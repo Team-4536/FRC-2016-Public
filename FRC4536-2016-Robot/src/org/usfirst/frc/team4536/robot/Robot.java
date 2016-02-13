@@ -92,14 +92,22 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
+
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
     	
+    	CommandBase.driveTrain.resetNavX();
+    	
         if (flipRelay != null) {
         	
         	flipRelay.start();
+        }
+    	
+        if (driveTrainCommand != null) {
+
+        	driveTrainCommand.start();
         }
     	
         if (driveAccelLimited != null) {
