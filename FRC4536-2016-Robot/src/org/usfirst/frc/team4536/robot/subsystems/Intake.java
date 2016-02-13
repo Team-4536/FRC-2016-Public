@@ -4,8 +4,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team4536.robot.commands.DriveIntakeArm;
 import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.OI;
+import org.usfirst.frc.team4536.robot.RobotMap;
 import org.usfirst.frc.team4536.robot.Utilities;
 
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Talon;
 
 /**
@@ -16,10 +18,13 @@ public class Intake extends Subsystem {
 	
 	Talon intake;
 	double oldThrottle;
+	Relay relay;
 	
 	public Intake(int talonChannel) {
 		
 		intake = new Talon(talonChannel);
+
+		relay = new Relay(RobotMap.INTAKE_RELAY, Relay.Direction.kForward);
 		
 		intake.set(0.0);
 		
@@ -58,5 +63,22 @@ public class Intake extends Subsystem {
     	oldThrottle = throttle;
     	setThrottle(throttle);
     }
+    
+    /**
+     * @author Sheila
+     */
+	public void relayOn() {
+		relay.set(Relay.Value.kOn);
+	}
+	public void relayOff() {
+		relay.set(Relay.Value.kOff);
+	}
+	public void relayFlip() {
+		if (relay.get() == Relay.Value.kOn){
+			relayOn();
+		} else {
+			relayOff();
+		}
+	}
 }
 

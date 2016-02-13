@@ -27,6 +27,8 @@ public class OI {
 	public static Button tangleTest;
 	public static Button autoIntake;
 	public static Button turnTest;
+	public static Button deployScissors;
+	//public static Button releaseIntake;
 	
 	/**
 	 * @author Liam
@@ -41,6 +43,7 @@ public class OI {
 		
 		turnTest = new JoystickButton(mainStick, 12);
 		tangleTest = new JoystickButton(mainStick, 11);
+		deployScissors = new JoystickButton(tertiaryStick, 1);
 		
 		/*-------------------Actions------------------------*/
 
@@ -50,14 +53,22 @@ public class OI {
 		autoIntake.whenPressed(new AutoIntake());
 		
 		tangleTest.whenPressed(new DriveRectangleProfile(-2,1));
+<<<<<<< HEAD
 		turnTest.whenPressed(new TurnTo( 90, 30));
+=======
+		deployScissors.whenPressed(new StartScissorRelay());
+>>>>>>> refs/remotes/origin/relay
 		
 		/*------------------Canceling actions--------------*/
 		
 		intake.whenReleased(new DriveIntakeAccelLimited());
 		eject.whenReleased(new DriveIntakeAccelLimited());
 		hold.whenReleased(new DriveIntakeAccelLimited());
+<<<<<<< HEAD
 
+=======
+		deployScissors.whenReleased(new StopScissorRelay());
+>>>>>>> refs/remotes/origin/relay
 	}
 }
 
