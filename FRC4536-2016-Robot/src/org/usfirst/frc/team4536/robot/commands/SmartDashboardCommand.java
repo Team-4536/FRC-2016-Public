@@ -41,7 +41,7 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putNumber("Secondary Joystick Y: ", OI.secondaryStick.getY());
 		SmartDashboard.putNumber("Secondary Joystick X: ", OI.secondaryStick.getX());
 		//SmartDashboard.putNumber("Voltage: ", Utilities.getVoltage());
-		//SmartDashboard.putNumber("Total Current: ", Utilities.getTotalCurrent());
+		SmartDashboard.putNumber("Total Current: ", Utilities.getTotalCurrent());
 		SmartDashboard.putNumber("Drive Train Left Encoder: ", driveTrain.getLeftEncoder());
 		SmartDashboard.putNumber("Drive Train Right Encoder: ", driveTrain.getRightEncoder());
 		SmartDashboard.putNumber("Drive Train Right Rate: ", driveTrain.getRightRate());
