@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4536.robot.commands;
 
+import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.OI;
+import org.usfirst.frc.team4536.robot.Utilities;
 
 /**
  * @author Sheila
@@ -20,7 +22,10 @@ public class DriveAccelLimited extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	driveTrain.arcadeDriveAccelLimit(OI.mainStick.getY(), OI.mainStick.getX());
+    	driveTrain.arcadeDriveAccelLimit(Utilities.speedCurve(
+    			Utilities.deadZone(OI.mainStick.getY(), Constants.DEAD_ZONE), Constants.SPEED_CURVE_STRAIGHT), 
+    			Utilities.speedCurve(
+    			Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE),Constants.SPEED_CURVE_TURN));
     }
 
     // Make this return true when this Command no longer needs to run execute()
