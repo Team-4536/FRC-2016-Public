@@ -12,9 +12,15 @@ public class Constants {
 	public static final double SPEED_LIMIT = 1;
 	public static final double ACCEL_LIMIT_DRIVE = 0.2;
 	public static final double ACCEL_LIMIT_INTAKE = 2.0;
-	public static final double DRIVE_TRAIN_MAX_VELOCITY = 4.1; //In feet per seconds
 	public static final double FORWARD_STICTION = 0.07; //No climber with fully charged battery
 	public static final double TURN_STICTION = 0.3; //No climber with fully charged battery, one motor not functional
+	
+
+	//Zenith
+	public static final double ZENITH_FORWARD_STICTION = 0.085;
+	public static final double ZENITH_TURN_STICTION = 0.12; 
+	public static final double DRIVE_TRAIN_MAX_VELOCITY = 4.1; //In feet per seconds
+	public static final double DRIVE_TRAIN_MAX_ANGULAR_VELOCITY = 400;
 	
 	/*---------------------------------------Joystick-----------------------------------*/
 	
