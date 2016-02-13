@@ -23,7 +23,7 @@ public class DriveIntakeArm extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double intakeY = OI.secondaryStick.getY();
+    	double intakeY = -OI.secondaryStick.getY();
     	
     	intakeY = Utilities.deadZone(intakeY, Constants.DEAD_ZONE);
     	intakeY = Utilities.limit(intakeY);
