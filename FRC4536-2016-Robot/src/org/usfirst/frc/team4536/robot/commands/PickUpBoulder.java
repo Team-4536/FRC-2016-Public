@@ -28,6 +28,6 @@ public class PickUpBoulder extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new IntakeBall());
+    	addSequential(new IntakeBall(), Constants.PICK_UP_BALL_TIME_OUT);
     }
 }
