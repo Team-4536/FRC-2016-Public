@@ -51,9 +51,9 @@ public class TrapezoidProfile {
 		 */
 		public double throttle(double time) {
 			
-			System.out.println(Utilities.adjustForStiction(idealVelocity(time), Constants.FORWARD_STICTION, Constants.DRIVE_TRAIN_MAX_VELOCITY));
+			System.out.println(Utilities.adjustForStiction(idealVelocity(time), Constants.FORWARD_STICTION, Constants.ZENITH_DRIVE_TRAIN_MAX_VELOCITY));
 
-			return Utilities.adjustForStiction(idealVelocity(time), Constants.variable5, Constants.DRIVE_TRAIN_MAX_VELOCITY);
+			return Utilities.adjustForStiction(idealVelocity(time), Constants.FORWARD_STICTION, Constants.DRIVE_TRAIN_MAX_VELOCITY);
 		}
 		
 		public double getTimeNeeded() {
@@ -115,6 +115,60 @@ public class TrapezoidProfile {
 				
 				return velocity;
 			}
+		}
+		
+		/**
+		 * @author Liam
+		 * @return distance the robot should be at by that time
+		 */
+		public double idealDistance(double time) {
+			
+			double distance;
+			
+			if (triangle) {
+				
+				if (time >= 0 && time <= timeNeeded/2) { // First Half, before timeNeeded divided by 2
+					
+					distance = idealVelocity(time) * time / 2;
+				}
+				else if (time > timeNeeded/2 && time <= timeNeeded) { // Second Half, after timeNeeded divided by 2
+					
+					distance = this.distance - (timeNeeded - time)*idealVelocity(time);
+				}
+				else if (time > timeNeeded) { // TimeNeeded or greater
+					
+					distance = this.distance;
+				}
+				else { // Negative Time
+					
+					distance = 0;
+				}
+			}
+			else { // Trapezoid
+				
+				if (time >= 0 && time <= criticalTime) { // The first leg of the trapezoid
+					
+					distance = idealVelocity(time)*time/2;
+				}
+				else if (time > criticalTime && time <= (timeNeeded - criticalTime)) { // The body of the trapezoid
+					
+					distance = this.desiredMaxSpeed * (time - criticalTime) + criticalDistance;
+				}
+				else if (time > (timeNeeded - criticalTime) && time <= timeNeeded) { // The last leg of the trapezoid
+					
+					distance = idealVelocity(timeNeeded - time) * (timeNeeded - time) + criticalDistance + this.desiredMaxSpeed*(timeNeeded - 2*criticalTime);
+				}
+				else if (time > timeNeeded) { // After timeNeeded when the distance should have been covered
+					
+					distance = this.distance;
+				}
+				else { // Garbage negative values
+					
+					distance = 0;
+				}
+			}
+			
+			return distance;
 		}
 		
 		public boolean isTriangle() {

@@ -68,7 +68,8 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putNumber("Test Output 3: ", trapezoid.timeNeeded);
 		SmartDashboard.putNumber("Test Output 4: ", trapezoid.criticalDistance);
 		SmartDashboard.putNumber("Test Output 5: ", trapezoid.criticalTime);
-		SmartDashboard.putNumber("Test Output 6: ", trapezoid.idealVelocity(Utilities.getTime()-5));
+		SmartDashboard.putNumber("Test Output 6: ", trapezoid.idealVelocity(Utilities.getTime()));
+		SmartDashboard.putNumber("Test Output 7: ", trapezoid.idealDistance(Utilities.getTime()));
 		
 		if (trapezoid.isTriangle()) {
 			
