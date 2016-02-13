@@ -7,9 +7,14 @@ public class Constants {
 	/*---------------------------------------Drive Train--------------------------------*/
 
 	public static final double SPEED_CURVE = 2.4;
-	public static final double DRIVE_TRAIN_MAX_VELOCITY = 4.1; //In feet per seconds
 	public static final double FORWARD_STICTION = 0.07; //No climber with fully charged battery
 	public static final double TURN_STICTION = 0.3; //No climber with fully charged battery, one motor not functional
+	public static final double DRIVE_TRAIN_MAX_VELOCITY = 13.; //Feet per second, measured on blocks, 12.68 Battery Voltage
+	
+	//Zenith
+	public static final double ZENITH_FORWARD_STICTION = 0.085;
+	public static final double ZENITH_TURN_STICTION = 0.12;
+	public static final double ZENITH_DRIVE_TRAIN_MAX_VELOCITY = 4.1; //In feet per seconds
 	
 	/*---------------------------------------Joystick-----------------------------------*/
 	
