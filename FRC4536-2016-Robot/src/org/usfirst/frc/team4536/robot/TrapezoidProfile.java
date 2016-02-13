@@ -53,7 +53,7 @@ public class TrapezoidProfile {
 			
 			System.out.println(Utilities.adjustForStiction(idealVelocity(time), Constants.FORWARD_STICTION, Constants.ZENITH_DRIVE_TRAIN_MAX_VELOCITY));
 
-			return Utilities.adjustForStiction(idealVelocity(time), Constants.FORWARD_STICTION, Constants.DRIVE_TRAIN_MAX_VELOCITY);
+			return Utilities.adjustForStiction(idealVelocity(time), Constants.ZENITH_FORWARD_STICTION, Constants.ZENITH_DRIVE_TRAIN_MAX_VELOCITY);
 		}
 		
 		public double getTimeNeeded() {
@@ -80,7 +80,7 @@ public class TrapezoidProfile {
 					
 					double maxTriangleVelocity = this.desiredMaxAcceleration*timeNeeded/2;
 					
-					velocity = this.desiredMaxAcceleration*time + 2*maxTriangleVelocity;
+					velocity = -this.desiredMaxAcceleration*(timeNeeded - time) + 2*maxTriangleVelocity;
 				}
 				else {
 					
@@ -133,7 +133,7 @@ public class TrapezoidProfile {
 				}
 				else if (time > timeNeeded/2 && time <= timeNeeded) { // Second Half, after timeNeeded divided by 2
 					
-					distance = this.distance - (timeNeeded - time)*idealVelocity(time);
+					distance = this.distance - (idealVelocity(timeNeeded-time)* (timeNeeded-time))/2;
 				}
 				else if (time > timeNeeded) { // TimeNeeded or greater
 					
@@ -156,7 +156,7 @@ public class TrapezoidProfile {
 				}
 				else if (time > (timeNeeded - criticalTime) && time <= timeNeeded) { // The last leg of the trapezoid
 					
-					distance = idealVelocity(timeNeeded - time) * (timeNeeded - time) + criticalDistance + this.desiredMaxSpeed*(timeNeeded - 2*criticalTime);
+					distance = this.distance - (idealVelocity(timeNeeded - time) * (timeNeeded - time))/2;
 				}
 				else if (time > timeNeeded) { // After timeNeeded when the distance should have been covered
 					
