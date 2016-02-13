@@ -25,6 +25,8 @@ public class OI {
 	public static Button eject;
 	public static Button hold;
 	public static Button tangleTest;
+	public static Button deployScissors;
+	//public static Button releaseIntake;
 	
 	/**
 	 * @author Liam
@@ -36,6 +38,7 @@ public class OI {
 		eject = new JoystickButton(secondaryStick, 6);
 		hold = new JoystickButton(secondaryStick, 7);
 		tangleTest = new JoystickButton(mainStick, 11);
+		deployScissors = new JoystickButton(tertiaryStick, 1);
 		
 		
 		/*-------------------Actions------------------------*/
@@ -44,12 +47,14 @@ public class OI {
 		eject.whenPressed(new EjectBallAccelLimited());
 		hold.whenPressed(new HoldBallAccelLimited());
 		tangleTest.whenPressed(new DriveRectangleProfile(-2,1));
+		deployScissors.whenPressed(new StartScissorRelay());
 		
 		/*------------------Canceling actions--------------*/
 		
 		intake.whenReleased(new DriveIntakeAccelLimited());
 		eject.whenReleased(new DriveIntakeAccelLimited());
 		hold.whenReleased(new DriveIntakeAccelLimited());
+		deployScissors.whenReleased(new StopScissorRelay());
 	}
 }
 

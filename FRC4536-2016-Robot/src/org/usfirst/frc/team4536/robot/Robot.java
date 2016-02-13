@@ -11,6 +11,7 @@ import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.commands.*;
 import org.usfirst.frc.team4536.robot.subsystems.ElectricalSolenoid;
 import org.usfirst.frc.team4536.robot.subsystems.Piston;
+import org.usfirst.frc.team4536.robot.subsystems.ScissorLift;
 import org.usfirst.frc.team4536.robot.commands.DriveIntakeArm;
 
 /**
@@ -32,6 +33,7 @@ public class Robot extends IterativeRobot {
     Command driveScissorLift;
     Command driveAccelLimited;
     Command intakeAccelLimited;
+    Command flipRelay;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -50,6 +52,7 @@ public class Robot extends IterativeRobot {
         smartDashboardCommand = new SmartDashboardCommand();
         driveScissorLift = new DriveScissorLift();
         driveAccelLimited = new DriveAccelLimited();
+        flipRelay = new FlipScissorRelay();
         OI.buttonHandling();
         
         Constants.displaySmartDashboard();
@@ -91,6 +94,12 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
+    	
+        if (flipRelay != null) {
+        	
+        	flipRelay.start();
+        }
+    	
         if (driveAccelLimited != null) {
         	
         	driveAccelLimited.start();

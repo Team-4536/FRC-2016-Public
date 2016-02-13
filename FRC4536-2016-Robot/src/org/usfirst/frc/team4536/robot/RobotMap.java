@@ -36,6 +36,11 @@ public class RobotMap {
 	
 	public static final int SCISSOR_MOTOR = 5;
 	
+
+	/*-------------------------------------Relay Solenoid-----------------*/
+	
+	public static final int RELAY_CHANNEL = 0; //this goes in the relay port, electricians; not PWM or DIM
+	
     /*-------------------------------------Sensor Channels---------------------------------*/	
 	
 	public static final int LEFT_ENCODER_CHANNEL_A = 8; //Set of 3 wires in one port for left encoder
