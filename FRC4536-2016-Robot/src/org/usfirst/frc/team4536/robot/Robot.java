@@ -29,7 +29,7 @@ public class Robot extends IterativeRobot {
     Command autoChooser;
     Command driveIntake;
     Command smartDashboardCommand;
-    Command driveScissorLift;
+    Command safeDriveScissorLift;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -45,7 +45,7 @@ public class Robot extends IterativeRobot {
         //flipElecSolenoid = new FlipElectricalSolenoid();
         driveIntake = new DriveIntakeArm();
         smartDashboardCommand = new SmartDashboardCommand();
-        driveScissorLift = new DriveScissorLift();
+        safeDriveScissorLift = new SafeDriveScissorLift();
         OI.buttonHandling();
         
         Constants.displaySmartDashboard();
@@ -102,9 +102,9 @@ public class Robot extends IterativeRobot {
         	driveIntake.start();
         }
         
-        if (driveScissorLift != null) {
+        if (safeDriveScissorLift != null) {
         	
-        	driveScissorLift.start();
+        	safeDriveScissorLift.start();
         }
         
         Utilities.startTimer();

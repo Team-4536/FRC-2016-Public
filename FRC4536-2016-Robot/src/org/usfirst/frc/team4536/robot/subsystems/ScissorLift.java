@@ -29,7 +29,7 @@ public class ScissorLift extends Subsystem {
 			
 	    }
 		public void safeDrive(double throttle) {
-			driveLift(Utilities.limit(throttle, 0.0, -1.0));
+			driveLift(Utilities.limit(throttle, -1.0, 0.0));
 		}
 			
     public void initDefaultCommand() {
