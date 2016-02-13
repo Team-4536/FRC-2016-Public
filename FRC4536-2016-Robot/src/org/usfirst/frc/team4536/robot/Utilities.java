@@ -221,4 +221,13 @@ public class Utilities {
 		else 
 			return 0;
 	}
+	
+	public static double adjustForStiction(double velocity, double stiction, double maxVelocity) {
+		
+		double velocityToThrottle = velocity/maxVelocity;
+		
+		double focusedRange = 1 - stiction;
+		
+		return velocityToThrottle*focusedRange + stiction;
+	}
 }
