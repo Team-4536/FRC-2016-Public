@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class ReachOuterWorks extends CommandGroup {
     
-    public  ReachOuterWorks() {
+    public  ReachOuterWorks(boolean forward) {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -28,6 +28,13 @@ public class ReachOuterWorks extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new DriveRectangleProfile(Constants.REACH_DEFENSE_DISTANCE, Constants.REACH_DEFENSE_VELOCITY));
+    	if (forward) {
+    		
+    		addSequential(new DriveTrapezoidProfile(Constants.REACH_DEFENSE_DISTANCE, Constants.REACH_DEFENSE_VELOCITY, Constants.REACH_DEFENSE_ACCELERATION));
+    	}
+    	else {//TODO Fix negative Reach Outer Works
+    		
+    		addSequential(new DriveTrapezoidProfile(-Constants.REACH_DEFENSE_DISTANCE, Constants.REACH_DEFENSE_VELOCITY, Constants.REACH_DEFENSE_ACCELERATION));
+    	}
     }
 }
