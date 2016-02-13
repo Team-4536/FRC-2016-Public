@@ -49,8 +49,8 @@ public class DriveTrapezoidProfile extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.variable4 * (trapezoid.idealDistance(timer.get()) - driveTrain.getRightEncoder())),
-    							(Constants.variable5 * driveTrain.getNavXYaw()));
+    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * (trapezoid.idealDistance(timer.get())*12 - driveTrain.getRightEncoder())),
+    							(Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY * driveTrain.getNavXYaw()));
     	//Ask Caleb or Mairead on the implementation of feedforward+feedback
     	
     	System.out.println(driveTrain.getRightEncoder()/12);
