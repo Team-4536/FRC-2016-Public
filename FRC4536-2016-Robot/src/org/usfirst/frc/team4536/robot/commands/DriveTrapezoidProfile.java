@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4536.robot.commands;
 
+import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 import org.usfirst.frc.team4536.robot.Utilities;
 
@@ -7,17 +8,16 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *@author Mairead
+ *@author Liam
  */
 public class DriveTrapezoidProfile extends CommandBase {
 	
 	Timer timer = new Timer();
-	double time;
 	TrapezoidProfile trapezoid;
 	public double maxVelocity;
 	
 	/**
-	 * @author Mairead
+	 * @author Liam
 	 * @param distance The desired distance the robot should travel
 	 * @param desiredMaxVelocity The speed the robot should be traveling at
 	 */
@@ -29,6 +29,10 @@ public class DriveTrapezoidProfile extends CommandBase {
     	this.maxVelocity = maxVelocity;
     }
     
+    /**
+     * @author Liam
+     * @return time
+     */
     public double getTime() {
     	
     	return timer.get();
@@ -45,9 +49,8 @@ public class DriveTrapezoidProfile extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	time = timer.get();
-    	
-    	driveTrain.arcadeDrive(trapezoid.throttle(time), 0);
+    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.variable4 * (trapezoid.idealDistance(timer.get()) - driveTrain.getRightEncoder())),
+    							(Constants.variable5 * driveTrain.getNavXYaw()));
     	//Ask Caleb or Mairead on the implementation of feedforward+feedback
     	
     	System.out.println(driveTrain.getRightEncoder()/12);
