@@ -53,22 +53,15 @@ public class OI {
 		autoIntake.whenPressed(new AutoIntake());
 		
 		tangleTest.whenPressed(new DriveRectangleProfile(-2,1));
-<<<<<<< HEAD
 		turnTest.whenPressed(new TurnTo( 90, 30));
-=======
 		deployScissors.whenPressed(new StartScissorRelay());
->>>>>>> refs/remotes/origin/relay
 		
 		/*------------------Canceling actions--------------*/
 		
 		intake.whenReleased(new DriveIntakeAccelLimited());
 		eject.whenReleased(new DriveIntakeAccelLimited());
 		hold.whenReleased(new DriveIntakeAccelLimited());
-<<<<<<< HEAD
-
-=======
 		deployScissors.whenReleased(new StopScissorRelay());
->>>>>>> refs/remotes/origin/relay
 	}
 }
 
