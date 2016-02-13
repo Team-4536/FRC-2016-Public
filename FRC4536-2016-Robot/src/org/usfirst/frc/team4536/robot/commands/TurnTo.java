@@ -15,8 +15,9 @@ public class TurnTo extends CommandBase {
 	double currentAngle;
 	double difference;
 	double time;
+	double throttle;
 	
-	Timer timer;
+	Timer timer = new Timer();
 	RectangleProfileForTurning rectangle;
 
 
@@ -25,6 +26,7 @@ public class TurnTo extends CommandBase {
         // eg. requires(chassis);
     	requires(driveTrain);
     	
+    	this.desiredAngle = desiredAngle;
     	currentAngle = driveTrain.getGyroAngle();
     	difference = Utilities.angleDifference(currentAngle, desiredAngle);
     	rectangle = new RectangleProfileForTurning(difference, velocity);
@@ -45,13 +47,21 @@ public class TurnTo extends CommandBase {
     protected void execute() {
     	time = timer.get();
     	
-    	driveTrain.arcadeDrive(0, rectangle.throttle(time));
+    	throttle = rectangle.throttle(time) - 0.009*(Utilities.angleDifference(rectangle.idealAngle(time), driveTrain.getGyroAngle()));
+    	
+    	driveTrain.arcadeDrive(0, throttle);
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	if(((driveTrain.getGyroAngle() - desiredAngle) < 1) 
+    		&& driveTrain.gyroRate() < 1){
+    		return true;
+    	}
+    	
+    	else  
+    		return false;
     }
 
     // Called once after isFinished returns true
