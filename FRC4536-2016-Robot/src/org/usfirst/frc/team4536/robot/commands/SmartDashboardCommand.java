@@ -16,7 +16,6 @@ public class SmartDashboardCommand extends CommandBase {
 	protected void initialize() {
 	
 		/*-----Commands to Run-----*/
-		
 		SmartDashboard.putData(new IntakeBall());
 		SmartDashboard.putData(new EjectBall());
 		SmartDashboard.putData(new HoldBall());

@@ -25,6 +25,7 @@ public class AutoChooser extends CommandBase {
     	
     	autoChooser.addDefault("DoNothing", 0);
     	autoChooser.addObject("Reach Outer Works",  1);
+    	autoChooser.addObject("PickUpBoulder", 2);
     	SmartDashboard.putData("Auto Chooser", autoChooser);
     }
 
@@ -42,6 +43,11 @@ public class AutoChooser extends CommandBase {
     		case 1:
     			
     			new ReachOuterWorks().start();
+    		break;
+    		
+    		case 2:
+    			
+    			new PickUpBoulder().start();
     		break;
     	
     		default: 
