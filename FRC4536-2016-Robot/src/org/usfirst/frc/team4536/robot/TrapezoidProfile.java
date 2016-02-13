@@ -50,8 +50,6 @@ public class TrapezoidProfile {
 		 * @returns The throttle the robot should be at
 		 */
 		public double throttle(double time) {
-			
-			System.out.println(Utilities.adjustForStiction(idealVelocity(time), Constants.FORWARD_STICTION, Constants.ZENITH_DRIVE_TRAIN_MAX_VELOCITY));
 
 			return Utilities.adjustForStiction(idealVelocity(time), Constants.ZENITH_FORWARD_STICTION, Constants.ZENITH_DRIVE_TRAIN_MAX_VELOCITY);
 		}
