@@ -225,6 +225,14 @@ public class DriveTrain extends Subsystem {
 		return navX.getRoll();
 	}
 
+	/**
+	 * @author Liam
+	 * Resets the NavX
+	 */
+	public void resetNavX() {
+		
+		navX.reset();
+	}
 }
 
 
