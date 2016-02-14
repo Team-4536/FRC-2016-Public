@@ -222,6 +222,13 @@ public class Utilities {
 			return 0;
 	}
 	
+	/**
+	 * @author Liam
+	 * @param velocity The current velocity of the motor system in feet per second
+	 * @param stiction The static friction of the motor system in throttle
+	 * @param maxVelocity The max velocity of the motor system in feet per second
+	 * @return throttle A throttle within the focused range of values which will actuate
+	 */
 	public static double adjustForStiction(double velocity, double stiction, double maxVelocity) {
 		
 		double velocityToThrottle = velocity/maxVelocity;
