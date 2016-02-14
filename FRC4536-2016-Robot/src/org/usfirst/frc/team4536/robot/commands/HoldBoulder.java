@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *@author Liam
  */
-public class HoldBall extends CommandBase {
+public class HoldBoulder extends CommandBase {
 
-    public HoldBall() {
+    public HoldBoulder() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(intake);

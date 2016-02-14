@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *@author Liam
  */
-public class EjectBallAccelLimited extends CommandBase {
+public class EjectBoulderAccelLimited extends CommandBase {
 
-    public EjectBallAccelLimited() {
+    public EjectBoulderAccelLimited() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(intake);
