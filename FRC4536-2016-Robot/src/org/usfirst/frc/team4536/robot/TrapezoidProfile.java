@@ -8,14 +8,20 @@ import java.lang.Math;
  */
 public class TrapezoidProfile {
 
-	public double distance;
-	public double timeNeeded;
-	public double desiredMaxSpeed;
-	public double desiredMaxAcceleration;
-	public double criticalDistance; //This determines whether the profile is a triangle or a trapezoid.
-	public double criticalTime; //This is the time it takes to reach maxSpeed
-	public boolean triangle;
+	public double distance; // The distance the profile will travel in feet
+	public double timeNeeded; // The time needed to execute the profile In seconds
+	public double desiredMaxSpeed; // The max speed the profile may go in feet per second
+	public double desiredMaxAcceleration; // The max acceleration the speed may change by in feet per second squared
+	public double criticalDistance; // This determines whether the profile is a triangle or a trapezoid.
+	public double criticalTime; // This is the time it takes to reach maxSpeed if it is reached
+	public boolean triangle; // Whether the profile develops a triangle or trapezoid profile
 	
+	/**
+	 * @author Liam
+	 * @param distance The distance the profile should travel in feet
+	 * @param maxSpeed The maximum speed the profile may achieve in feet per second
+	 * @param maxAcceleration The maximum acceleration the speed can change by in feet per second squared
+	 */
 	public TrapezoidProfile (double distance, double maxSpeed, double maxAcceleration) {
 		
 		this.distance = distance;
@@ -54,6 +60,10 @@ public class TrapezoidProfile {
 			return Utilities.adjustForStiction(idealVelocity(time), Constants.ZENITH_FORWARD_STICTION, Constants.ZENITH_DRIVE_TRAIN_MAX_VELOCITY);
 		}
 		
+		/**
+		 * @author Liam
+		 * @return timeNeeded the theoretical time need for the profile to execute without correction
+		 */
 		public double getTimeNeeded() {
 			
 			return this.timeNeeded;
@@ -62,7 +72,7 @@ public class TrapezoidProfile {
 		/**
 		 * @author Liam
 		 * @param time The amount of time since the profile has started
-		 * @returns The veloctiy the robot should be at
+		 * @returns The velocity the robot should be at
 		 */
 		public double idealVelocity(double time) {
 			
@@ -169,6 +179,10 @@ public class TrapezoidProfile {
 			return distance;
 		}
 		
+		/**
+		 * @author Liam
+		 * @return triangle whether the profile has developed a triangle or trapezoid profile
+		 */
 		public boolean isTriangle() {
 			
 			return triangle;
