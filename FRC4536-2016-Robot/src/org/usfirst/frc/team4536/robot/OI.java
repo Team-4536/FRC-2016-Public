@@ -48,7 +48,7 @@ public class OI {
 		/*-------------------Actions------------------------*/
 
 		intake.whenPressed(new IntakeBallAccelLimited());
-		eject.whenPressed(new EjectBallAccelLimited());
+		eject.whenPressed(new EjectBoulderAccelLimited());
 		hold.whenPressed(new HoldBallAccelLimited());
 		autoIntake.whenPressed(new AutoIntake());
 		
