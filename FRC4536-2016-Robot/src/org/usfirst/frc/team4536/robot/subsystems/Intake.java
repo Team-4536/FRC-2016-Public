@@ -42,12 +42,13 @@ public class Intake extends Subsystem {
     
     /**
      * @author Liam
-     * @param throttle The signal value [-1, 1] sent to the scissor lift motor.
+     * @param throttle The signal value [-1, 1] sent to the intake motor.
      * Positive values eject the ball and negative values intake the ball so it's
      * intuitive for a joystick interface.
      */
     public void setThrottle(double throttle) {
     	
+    	oldThrottle = throttle;
     	intake.set(-throttle);
     }
     /**
@@ -59,8 +60,8 @@ public class Intake extends Subsystem {
      * joystick interface.
      */
     public void setThrottleAccelLimited(double throttle) {
+    	
     	throttle = Utilities.accelLimit(throttle, oldThrottle, Constants.ACCEL_LIMIT_INTAKE);
-    	oldThrottle = throttle;
     	setThrottle(throttle);
     }
     
@@ -68,15 +69,23 @@ public class Intake extends Subsystem {
      * @author Sheila
      */
 	public void relayOn() {
+		
 		relay.set(Relay.Value.kOn);
 	}
+	
 	public void relayOff() {
+		
 		relay.set(Relay.Value.kOff);
 	}
+	
 	public void relayFlip() {
+		
 		if (relay.get() == Relay.Value.kOn){
+			
 			relayOn();
-		} else {
+		} 
+		else {
+			
 			relayOff();
 		}
 	}
