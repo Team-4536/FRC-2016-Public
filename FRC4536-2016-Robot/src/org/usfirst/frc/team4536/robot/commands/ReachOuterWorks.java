@@ -37,4 +37,9 @@ public class ReachOuterWorks extends CommandGroup {
     		addSequential(new DriveTrapezoidProfile(-Constants.REACH_DEFENSE_DISTANCE, Constants.REACH_DEFENSE_VELOCITY, Constants.REACH_DEFENSE_ACCELERATION));
     	}
     }
+    
+	public ReachOuterWorks() {
+		
+		this(true);
+	}
 }
