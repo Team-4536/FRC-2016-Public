@@ -16,8 +16,8 @@ public class Constants {
 	public static final double TURN_STICTION = 0.3; //No climber with fully charged battery, one motor not functional
 	
 	public static final double DRIVE_TRAIN_MAX_VELOCITY = 13.; //Feet per second, measured on blocks, 12.68 Battery Voltage
-	public static final double TRAPEZOID_FORWARD_PROPORTIONALITY = 0.05; // Unitless correction factor
-	public static final double TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY = -0.015; // Unitless correction factor
+	public static final double TRAPEZOID_FORWARD_PROPORTIONALITY = 0.05; // units of throttle per inch
+	public static final double TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY = -0.015; // Units of throttle per degree
 	
 	//Zenith
 	public static final double ZENITH_DRIVE_TRAIN_MAX_ANGULAR_VELOCITY = 400;
