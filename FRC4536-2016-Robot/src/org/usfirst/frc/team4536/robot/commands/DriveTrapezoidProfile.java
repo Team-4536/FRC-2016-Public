@@ -14,24 +14,22 @@ public class DriveTrapezoidProfile extends CommandBase {
 	
 	Timer timer = new Timer();
 	TrapezoidProfile trapezoid;
-	public double maxVelocity;
 	
 	/**
 	 * @author Liam
-	 * @param distance The desired distance the robot should travel
-	 * @param desiredMaxVelocity The speed the robot should be traveling at
+	 * @param distance The desired distance the robot should travel. May be negative or positive to indicate direction.
+	 * @param maxSpeed The maximum possible speed the robot could be traveling at. Always positive.
+	 * @param maxAcceleration The maximum possible acceleration the speed can change by. Always positive.
 	 */
-
-    public DriveTrapezoidProfile(double distance, double maxVelocity, double maxAcceleration) {
+    public DriveTrapezoidProfile(double distance, double maxSpeed, double maxAcceleration) {
 
     	requires(driveTrain);
-    	trapezoid = new TrapezoidProfile(distance, maxVelocity, maxAcceleration);
-    	this.maxVelocity = maxVelocity;
+    	trapezoid = new TrapezoidProfile(distance, maxSpeed, maxAcceleration);
     }
     
     /**
      * @author Liam
-     * @return time
+     * @return time time in seconds since the command was started
      */
     public double getTime() {
     	
