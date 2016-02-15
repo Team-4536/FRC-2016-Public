@@ -44,6 +44,10 @@ public class Constants {
 	public static final double REACH_DEFENSE_VELOCITY = 1.0; //Feet per second
 	public static final double REACH_DEFENSE_ACCELERATION = 2.0; // Feet per second squared
 	
+	public static final double CROSS_LOWBAR_DISTANCE = 10.0;
+	public static final double CROSS_LOWBAR_VELOCITY = 3.0;
+	public static final double CROSS_LOWBAR_ACCEL_LIMIT = 3.0;
+	
 	/*---------------------------------------Intake-------------------------------------*/
 	
 	public static final double INTAKE_SPEED = 1.0; // In throttle

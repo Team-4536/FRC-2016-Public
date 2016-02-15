@@ -36,6 +36,15 @@ public class DriveTrapezoidProfile extends CommandBase {
     	
     	return timer.get();
     }
+    
+    /**
+     * @author Audrey
+     * @return time needed from the trapezoid profile method
+     */
+    public double getNeededTime(){
+    	
+    	return trapezoid.getTimeNeeded();
+    }
 
  // Called just before this Command runs the first time
     protected void initialize() {
