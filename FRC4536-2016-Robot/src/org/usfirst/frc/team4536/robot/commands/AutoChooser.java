@@ -27,6 +27,7 @@ public class AutoChooser extends CommandBase {
     	autoChooser.addObject("Reach Outer Works",  1);
     	autoChooser.addObject("PickUpBoulder", 2);
     	autoChooser.addObject("CrossLowBar", 3);
+    	autoChooser.addObject("CrossRockWall", 5);
     	SmartDashboard.putData("Auto Chooser", autoChooser);
     }
 
@@ -56,6 +57,11 @@ public class AutoChooser extends CommandBase {
     			new CrossLowBar(true).start();
     		break;
     	
+    		case 5:
+    			
+    			new CrossRockWall(true).start();
+    		break;
+    		
     		default: 
     			
     			driveTrain.arcadeDrive(0.0, 0.0);
