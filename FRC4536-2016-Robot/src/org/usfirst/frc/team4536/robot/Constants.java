@@ -48,6 +48,10 @@ public class Constants {
 	public static final double CROSS_LOWBAR_VELOCITY = 3.0;
 	public static final double CROSS_LOWBAR_ACCEL_LIMIT = 3.0;
 	
+	public static final double CROSS_ROCKWALL_DISTANCE = 12.0;
+	public static final double CROSS_ROCKWALL_VELOCITY = 5.0;
+	public static final double CROSS_ROCKWALL_ACCEL_LIMIT = 3.0;
+	
 	/*---------------------------------------Intake-------------------------------------*/
 	
 	public static final double INTAKE_SPEED = 1.0; // In throttle
