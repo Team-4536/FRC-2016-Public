@@ -71,8 +71,6 @@ public class Robot extends IterativeRobot {
         
         CommandBase.driveTrain.resetNavX();
     	
-    	CommandBase.driveTrain.resetNavX();
-    	
         // schedule the autonomous command (example)
         if (autoChooser != null) {
         	
