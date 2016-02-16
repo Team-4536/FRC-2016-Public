@@ -23,7 +23,12 @@ public class DriveIntakeAccelLimited extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	intake.setThrottleAccelLimited(-OI.secondaryStick.getY());
+    	double intakeY = -OI.secondaryStick.getY();
+    	
+    	intakeY = Utilities.deadZone(intakeY, Constants.DEAD_ZONE);
+    	intakeY = Utilities.speedCurve(intakeY, Constants.INTAKE_SPEED_CURVE);
+    	
+    	intake.setThrottleAccelLimited(intakeY);
     }
 
     // Make this return true when this Command no longer needs to run execute()
