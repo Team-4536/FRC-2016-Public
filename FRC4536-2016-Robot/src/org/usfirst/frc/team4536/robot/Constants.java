@@ -37,6 +37,9 @@ public class Constants {
 	
 	public static final double REACH_DEFENSE_TIME_OUT = 0.9; // In seconds
 	public static final double PICK_UP_BALL_TIME_OUT = 0.1; // In seconds
+	public static final double CROSS_LOWBAR_EXTRA_TIME = 1.0; //In seconds
+	public static final double CROSS_ROCKWALL_EXTRA_TIME = 2.0; //In seconds
+	public static final double CROSS_MOAT_EXTRA_TIME = 4.0;
 	
 	/*-------------------------------------Auto Mode Distances-----------------------*/
 	
