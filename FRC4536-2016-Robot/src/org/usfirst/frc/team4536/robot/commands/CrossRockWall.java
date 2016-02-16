@@ -13,11 +13,11 @@ public  CrossRockWall(boolean foward) {
 		
     	if (foward){
         	crossRockWall = new DriveTrapezoidProfile(Constants.CROSS_ROCKWALL_DISTANCE, Constants.CROSS_ROCKWALL_VELOCITY, Constants.CROSS_ROCKWALL_ACCEL_LIMIT);
-        	double maxTime = crossRockWall.getNeededTime() + 2;
+        	double maxTime = crossRockWall.getNeededTime() + Constants.CROSS_ROCKWALL_EXTRA_TIME;
     		addSequential(crossRockWall, maxTime);
     	}else{
         	crossRockWall = new DriveTrapezoidProfile(-Constants.CROSS_ROCKWALL_DISTANCE, Constants.CROSS_ROCKWALL_VELOCITY, Constants.CROSS_ROCKWALL_ACCEL_LIMIT);
-        	double maxTime = crossRockWall.getNeededTime() + 2;
+        	double maxTime = crossRockWall.getNeededTime() + Constants.CROSS_ROCKWALL_EXTRA_TIME;
     		addSequential(crossRockWall, maxTime);
     	}
 }
