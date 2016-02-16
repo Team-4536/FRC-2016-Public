@@ -31,7 +31,7 @@ public class Constants {
 	
 	/*---------------------------------------Encoders-----------------------------------*/
 	
-	public static final double DRIVE_ENCODER_PROPORTIONALITY_CONSTANT = 14.; //Ticks per inch
+	public static final double DRIVE_ENCODER_PROPORTIONALITY_CONSTANT = 16.; //Ticks per inch
 	
 	/*-------------------------------------AutoMode Time Outs---------------------------*/
 	

@@ -70,6 +70,8 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         
         CommandBase.driveTrain.resetNavX();
+        
+        CommandBase.driveTrain.resetRightEncoder();
     	
         // schedule the autonomous command (example)
         if (autoChooser != null) {
@@ -102,6 +104,8 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
     	
     	CommandBase.driveTrain.resetNavX();
+    	
+    	CommandBase.driveTrain.resetRightEncoder();
     	
         if (flipRelay != null) {
         	
