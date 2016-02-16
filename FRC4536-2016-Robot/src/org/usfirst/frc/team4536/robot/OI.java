@@ -52,7 +52,6 @@ public class OI {
 		hold.whenPressed(new HoldBallAccelLimited());
 		autoIntake.whenPressed(new AutoIntake());
 		
-		tangleTest.whenPressed(new DriveRectangleProfile(-2,1));
 		turnTest.whenPressed(new TurnTo( 90, 30));
 		deployScissors.whenPressed(new StartScissorRelay());
 		
