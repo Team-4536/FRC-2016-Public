@@ -28,6 +28,7 @@ public class AutoChooser extends CommandBase {
     	autoChooser.addObject("PickUpBoulder", 2);
     	autoChooser.addObject("CrossLowBar", 3);
     	autoChooser.addObject("CrossRockWall", 5);
+    	autoChooser.addObject("CrossRoughTerrain", 4);
     	SmartDashboard.putData("Auto Chooser", autoChooser);
     }
 
@@ -50,6 +51,11 @@ public class AutoChooser extends CommandBase {
     		case 2:
     			
     			new PickUpBoulder().start();
+    		break;
+    		
+    		case 4:
+    			
+    			new CrossRoughTerrain().start();
     		break;
     	
     		case 3:

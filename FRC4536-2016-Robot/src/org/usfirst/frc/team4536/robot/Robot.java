@@ -26,7 +26,6 @@ public class Robot extends IterativeRobot {
     Command driveTrainCommand;
     Command runCompressor;
     Command pistonFlipCommand;
-    //Command flipElecSolenoid;
     Command autoChooser;
     Command driveIntake;
     Command smartDashboardCommand;
@@ -35,6 +34,8 @@ public class Robot extends IterativeRobot {
     Command intakeAccelLimited;
     Command flipRelay;
     Command safeDriveScissorLift;
+    
+    Command crossRoughTerrain;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -47,7 +48,6 @@ public class Robot extends IterativeRobot {
         runCompressor = new RunCompressor();
         autoChooser = new AutoChooser();
         pistonFlipCommand = new PistonFlipCommand();
-        //flipElecSolenoid = new FlipElectricalSolenoid();
         driveIntake = new DriveIntakeArm();
         intakeAccelLimited = new DriveIntakeAccelLimited(); //TODO work on this name...
         smartDashboardCommand = new SmartDashboardCommand();
@@ -56,6 +56,7 @@ public class Robot extends IterativeRobot {
         flipRelay = new FlipScissorRelay();
         safeDriveScissorLift = new SafeDriveScissorLift();
         OI.buttonHandling();
+        crossRoughTerrain = new CrossRoughTerrain();
         
         Constants.displaySmartDashboard();
         
@@ -67,6 +68,8 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit() {
+        
+        CommandBase.driveTrain.resetNavX();
     	
     	CommandBase.driveTrain.resetNavX();
     	
