@@ -18,6 +18,7 @@ public class Constants {
 	public static final double DRIVE_TRAIN_MAX_VELOCITY = 13.; //Feet per second, measured on blocks, 12.68 Battery Voltage
 	public static final double TRAPEZOID_FORWARD_PROPORTIONALITY = 0.05; // units of throttle per inch
 	public static final double TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY = -0.03; // Units of throttle per degree
+	//about the max the robot will reasonably allow is -0.1 (damped oscillation at end)
 	
 	//Zenith
 	public static final double ZENITH_DRIVE_TRAIN_MAX_ANGULAR_VELOCITY = 400;
@@ -51,6 +52,15 @@ public class Constants {
 	public static final double CROSS_ROCKWALL_DISTANCE = 12.0;
 	public static final double CROSS_ROCKWALL_VELOCITY = 5.0;
 	public static final double CROSS_ROCKWALL_ACCEL_LIMIT = 3.0;
+
+	public static final double CROSS_ROUGHTERRAIN_DISTANCE = 14.5;
+	public static final double CROSS_ROUGHTERRAIN_VELOCITY = 3.0;
+	public static final double CROSS_ROUGHTERRAIN_ACCEL_LIMIT = 3.0;
+	
+	public static final double CROSS_RAMPARTS_DISTANCE = 18.0;
+	public static final double CROSS_RAMPARTS_VELOCITY = 5.0;
+	public static final double CROSS_RAMPARTS_ACCEL_LIMIT = 3.0;
+	public static final double CROSS_RAMPARTS_GYRO_PROPORTIONALITY = -0.05;
 	
 	/*---------------------------------------Intake-------------------------------------*/
 	

@@ -23,13 +23,14 @@ public class AutoChooser extends CommandBase {
     	
     	/*-----Selectable Chooser Options----*/
     	
-    	autoChooser.addDefault("DoNothing", 0);
-    	autoChooser.addObject("Reach Outer Works",  1);
-    	autoChooser.addObject("PickUpBoulder", 2);
-    	autoChooser.addObject("CrossLowBar", 3);
-    	autoChooser.addObject("CrossRockWall", 5);
-    	autoChooser.addObject("CrossRoughTerrain", 4);
-    	SmartDashboard.putData("Auto Chooser", autoChooser);
+    	autoChooser.addDefault(" DoNothing", 0);
+    	autoChooser.addObject(" Reach Outer Works",  1);
+    	autoChooser.addObject(" PickUpBoulder", 2);
+    	autoChooser.addObject(" CrossLowBar", 3);
+    	autoChooser.addObject(" CrossRockWall", 5);
+    	autoChooser.addObject(" CrossRoughTerrain", 4);
+    	autoChooser.addObject(" CrossRamparts", 7);
+    	SmartDashboard.putData(" Auto Chooser", autoChooser);
     }
 
     // Called just before this Command runs the first time
@@ -52,21 +53,25 @@ public class AutoChooser extends CommandBase {
     			
     			new PickUpBoulder().start();
     		break;
-    		
-    		case 4:
-    			
-    			new CrossRoughTerrain().start();
-    		break;
     	
     		case 3:
     			
     			new CrossLowBar(true).start();
+    		break;
+    		
+    		case 4:
+    			
+    			new CrossRoughTerrain(true).start();
     		break;
     	
     		case 5:
     			
     			new CrossRockWall(true).start();
     		break;
+    		
+    		case 7:
+    			
+    			new CrossRamparts(true).start();
     		
     		default: 
     			

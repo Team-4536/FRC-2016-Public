@@ -31,11 +31,11 @@ public class CrossRoughTerrain extends CommandGroup {
     	DriveTrapezoidProfile crossRoughTerrain;
     	
     	if (forward) {
-    		crossRoughTerrain = new DriveTrapezoidProfile(14.5, 3.0, 3.0);
+    		crossRoughTerrain = new DriveTrapezoidProfile(Constants.CROSS_ROUGHTERRAIN_DISTANCE, Constants.CROSS_ROUGHTERRAIN_VELOCITY, Constants.CROSS_ROUGHTERRAIN_ACCEL_LIMIT);
     		double maxTime = crossRoughTerrain.getNeededTime() + 1;
     		addSequential(crossRoughTerrain, maxTime);
     	} else {
-    		crossRoughTerrain = new DriveTrapezoidProfile(-14.5, 3.0, 3.0);
+    		crossRoughTerrain = new DriveTrapezoidProfile(-Constants.CROSS_ROUGHTERRAIN_DISTANCE, Constants.CROSS_ROUGHTERRAIN_VELOCITY, Constants.CROSS_ROUGHTERRAIN_ACCEL_LIMIT);
     		double maxTime = crossRoughTerrain.getNeededTime() + 1;
     		addSequential(crossRoughTerrain, maxTime);
     	}
