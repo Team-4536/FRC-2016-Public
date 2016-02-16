@@ -103,7 +103,7 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
-     * @author Sheila 
+     * @author Sheila and Audrey
      * @param forwardThrottle - see arcadeDrive
      * @param turnThrottle - see arcadeDrive
      */
@@ -116,10 +116,8 @@ public class DriveTrain extends Subsystem {
     	turnThrottle = Utilities.accelLimit(turnThrottle, oldTurnThrottle, Constants.ACCEL_LIMIT_DRIVE);
     	oldForwardThrottle = forwardThrottle;
     	oldTurnThrottle = turnThrottle;
-    	leftBackVictorSP.set(-forwardThrottle + turnThrottle);
-    	leftFrontVictorSP.set(-forwardThrottle + turnThrottle);
-    	rightBackVictorSP.set(forwardThrottle + turnThrottle);
-    	rightFrontVictorSP.set(forwardThrottle + turnThrottle);
+    
+    	arcadeDrive(forwardThrottle, turnThrottle);
     }
     
     
