@@ -28,6 +28,7 @@ public class Constants {
 	/*---------------------------------------Joystick-----------------------------------*/
 	
 	public static final double DEAD_ZONE = 0.13; // In throttle
+	public static final double SCISSOR_DEAD_ZONE = 0.13; // In throttle
 	
 	/*---------------------------------------Encoders-----------------------------------*/
 	
