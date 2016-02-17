@@ -31,7 +31,7 @@ public class TrapezoidProfile {
 		criticalTime = this.desiredMaxSpeed/this.desiredMaxAcceleration;
 		criticalDistance = criticalTime * this.desiredMaxSpeed/2;
 		
- 		if (this.distance > criticalDistance) {
+ 		if (Math.abs(this.distance) > criticalDistance) {
 			
 			triangle = false;
 		}
@@ -80,17 +80,17 @@ public class TrapezoidProfile {
 			
 			if (triangle) {
 				
-				if(time <= timeNeeded/2 && time > 0) {
+				if(time <= timeNeeded/2 && time > 0) { // first leg of triangle
 					
 					velocity =  this.desiredMaxAcceleration*time;
 				}
-				else if (time > timeNeeded/2 && time <= timeNeeded){
+				else if (time > timeNeeded/2 && time <= timeNeeded){ // second leg of triangle
 					
 					double maxTriangleVelocity = this.desiredMaxAcceleration*timeNeeded/2;
 					
-					velocity = -this.desiredMaxAcceleration*(timeNeeded - time) + 2*maxTriangleVelocity;
+					velocity = -this.desiredMaxAcceleration*(time - timeNeeded/2) + maxTriangleVelocity;
 				}
-				else {
+				else { // garbage
 					
 					velocity = 0.0;
 				}
@@ -140,7 +140,7 @@ public class TrapezoidProfile {
 					distance = idealVelocity(time) * time / 2;
 				}
 				else if (time > timeNeeded/2 && time <= timeNeeded) { // Second Half, after timeNeeded divided by 2
-					
+						
 					distance = this.distance - (idealVelocity(timeNeeded-time)* (timeNeeded-time))/2;
 				}
 				else if (time > timeNeeded) { // TimeNeeded or greater
@@ -160,7 +160,14 @@ public class TrapezoidProfile {
 				}
 				else if (time > criticalTime && time <= (timeNeeded - criticalTime)) { // The body of the trapezoid
 					
-					distance = this.desiredMaxSpeed * (time - criticalTime) + criticalDistance;
+					if (this.distance > 0) {
+						
+						distance = this.desiredMaxSpeed * (time - criticalTime) + criticalDistance;
+					}
+					else {
+						
+						distance = -this.desiredMaxSpeed * (time - criticalTime) - criticalDistance;
+					}
 				}
 				else if (time > (timeNeeded - criticalTime) && time <= timeNeeded) { // The last leg of the trapezoid
 					
@@ -176,7 +183,24 @@ public class TrapezoidProfile {
 				}
 			}
 			
-			return distance;
+			if (this.distance < 0) {
+				
+				if (distance < 0) {
+					
+					return distance;
+				}
+				
+				return -distance;
+			}
+			else {
+				
+				if (distance < 0) {
+					
+					return -distance;
+				}
+				
+				return distance;
+			}
 		}
 		
 		/**
