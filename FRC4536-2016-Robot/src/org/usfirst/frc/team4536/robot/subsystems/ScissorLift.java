@@ -30,7 +30,7 @@ public class ScissorLift extends Subsystem {
 	 */
 	public void driveLift(double throttle) {
 		
-		scissorLift.set(throttle);
+		scissorLift.set(-throttle);
     }
 	
 	/**
