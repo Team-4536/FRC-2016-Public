@@ -244,4 +244,10 @@ public class Utilities {
 			return velocityToThrottle*focusedRange + stiction;
 		}
 	}
+	
+	/**
+	 * @author Audrey
+	 * Numbered 0-4
+	 */
+	public enum Defense{LOW_BAR, MOAT, ROCK_WALL, ROUGH_TERRAIN, RAMPARTS};
 }
