@@ -74,15 +74,15 @@ public class DriveTrain extends Subsystem {
     
     /**
      * @ author Max and Liam
-     * @ param leftThrottle - The throttle input into the left motors
-     * @ param rightTHrottle - The throttle input into the right motors
+     * @ param leftThrottle - The throttle input into the left motors, positive value is left/forward
+     * @ param rightThrottle - The throttle input into the right motors, positive value is right/forward
      */
     
     public void tankDrive(double leftThrottle, double rightThrottle) {
-    	leftBackVictorSP.set(-leftThrottle);
-    	leftFrontVictorSP.set(-leftThrottle);
-    	rightBackVictorSP.set(rightThrottle);
-    	rightFrontVictorSP.set(rightThrottle);
+    	leftBackVictorSP.set(leftThrottle);
+    	leftFrontVictorSP.set(leftThrottle);
+    	rightBackVictorSP.set(-rightThrottle);
+    	rightFrontVictorSP.set(-rightThrottle);
     }
     
     /**
@@ -92,13 +92,11 @@ public class DriveTrain extends Subsystem {
      */
     
     public void arcadeDrive(double forwardThrottle, double turnThrottle) {
-    	double leftVictorSPThrottle = forwardThrottle + turnThrottle;
-    	double rightVictorSPThrottle = -forwardThrottle + turnThrottle;
 
     	oldForwardThrottle = forwardThrottle;
     	oldTurnThrottle = turnThrottle;
     	
-    	tankDrive(-leftVictorSPThrottle, rightVictorSPThrottle);
+    	tankDrive(forwardThrottle + turnThrottle, forwardThrottle - turnThrottle);
     	
     }
     
@@ -114,8 +112,7 @@ public class DriveTrain extends Subsystem {
     	System.out.println("Old Turn Throttle: "+oldTurnThrottle);
     	forwardThrottle = Utilities.accelLimit(forwardThrottle, oldForwardThrottle, Constants.ACCEL_LIMIT_DRIVE);
     	turnThrottle = Utilities.accelLimit(turnThrottle, oldTurnThrottle, Constants.ACCEL_LIMIT_DRIVE);
-    	oldForwardThrottle = forwardThrottle;
-    	oldTurnThrottle = turnThrottle;
+
     
     	arcadeDrive(forwardThrottle, turnThrottle);
     }
