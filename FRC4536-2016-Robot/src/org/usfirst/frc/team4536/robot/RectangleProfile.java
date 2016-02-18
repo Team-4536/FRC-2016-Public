@@ -64,7 +64,7 @@ public class RectangleProfile extends Profile {
 		if (time > 0 && time < timeNeeded && distance > 0) {
 			return desiredMaxVelocity * time;
 		} 
-		if (time > 0 && time < timeNeeded && distance < 0) {
+		else if (time > 0 && time < timeNeeded && distance < 0) {
 			return desiredMaxVelocity * -time;
 		} 
 		else
