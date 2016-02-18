@@ -242,6 +242,15 @@ public class DriveTrain extends Subsystem {
 		
 		navX.reset();
 	}
+	
+	/**
+	 * @author Liam
+	 * @return the rate of turning in degrees per second
+	 */
+	public double getYawRate() {
+		
+		return navX.getRawGyroZ();
+	}
 }
 
 
