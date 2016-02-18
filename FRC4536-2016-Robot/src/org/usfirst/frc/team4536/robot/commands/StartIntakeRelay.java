@@ -3,7 +3,9 @@ package org.usfirst.frc.team4536.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * @author Sheila
+ * 
+ * turns the intake relay on, releasing the intake
  */
 public class StartIntakeRelay extends CommandBase {
 

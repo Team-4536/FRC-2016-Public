@@ -3,7 +3,9 @@ package org.usfirst.frc.team4536.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * @author Sheila
+ * 
+ * turns the scissor lift relay on, releasing the scissor lift
  */
 public class StartScissorRelay extends CommandBase {
 

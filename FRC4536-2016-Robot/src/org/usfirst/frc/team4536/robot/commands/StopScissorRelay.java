@@ -3,7 +3,9 @@ package org.usfirst.frc.team4536.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * @author Sheila
+ * 
+ * set the scissor lift relay off, so it stops the scissor lift from moving through it
  */
 public class StopScissorRelay extends CommandBase {
 
