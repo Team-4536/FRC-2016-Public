@@ -251,6 +251,20 @@ public class DriveTrain extends Subsystem {
 		
 		return navX.getRawGyroZ();
 	}
+	
+	/**
+	 * @author Mairead
+	 * @return The angle the robot is at from 0 to 360
+	 */
+	public double getAngle(){
+		double modifiedYaw;
+		modifiedYaw = navX.getYaw()%360;
+		
+		if (modifiedYaw < 0)
+			return(modifiedYaw + 360);
+		else
+			return (modifiedYaw);	
+	}
 }
 
 
