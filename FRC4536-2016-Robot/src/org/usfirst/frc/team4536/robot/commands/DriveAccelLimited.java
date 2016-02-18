@@ -23,7 +23,7 @@ public class DriveAccelLimited extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	driveTrain.arcadeDriveAccelLimit(Utilities.speedCurve(
-    			Utilities.deadZone(OI.mainStick.getY(), Constants.DEAD_ZONE), Constants.SPEED_CURVE_STRAIGHT), 
+    			Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE), Constants.SPEED_CURVE_STRAIGHT), 
     			Utilities.speedCurve(
     			Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE),Constants.SPEED_CURVE_TURN));
     }
