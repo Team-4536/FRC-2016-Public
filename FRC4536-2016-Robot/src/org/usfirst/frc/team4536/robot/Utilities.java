@@ -1,4 +1,5 @@
 package org.usfirst.frc.team4536.robot;
+
 import java.lang.Math;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Timer;
@@ -197,10 +198,11 @@ public class Utilities {
 	/**
 	 * @author Liam
 	 */
-	//public static double getVoltage() {
+	public static double getVoltage() {
 		
-		//return powerDistributionPanel.getVoltage();
-	//}
+		return powerDistributionPanel.getVoltage();
+	}
+	
 	/**
 	 *@author Mairead
 	 *@param startingAngle The angle the robot is turning from

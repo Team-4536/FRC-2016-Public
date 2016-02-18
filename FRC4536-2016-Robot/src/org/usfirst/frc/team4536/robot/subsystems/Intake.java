@@ -1,14 +1,12 @@
 package org.usfirst.frc.team4536.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import org.usfirst.frc.team4536.robot.commands.DriveIntakeArm;
-import org.usfirst.frc.team4536.robot.Constants;
-import org.usfirst.frc.team4536.robot.OI;
-import org.usfirst.frc.team4536.robot.RobotMap;
-import org.usfirst.frc.team4536.robot.Utilities;
-
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Talon;
+import org.usfirst.frc.team4536.robot.commands.DriveIntakeArm;
+import org.usfirst.frc.team4536.robot.Constants;
+import org.usfirst.frc.team4536.robot.Utilities;
 
 /**
  *@author Liam
@@ -18,25 +16,26 @@ public class Intake extends Subsystem {
 	
 	Talon intake;
 	double oldThrottle;
+	
 	Relay relay;
 	
-	public Intake(int talonChannel) {
+	AnalogInput irSensor;
+	double irDist;
+	
+	public Intake(int talonChannel, int relayChannel, int irChannel) {
 		
 		intake = new Talon(talonChannel);
-
-		relay = new Relay(RobotMap.INTAKE_RELAY, Relay.Direction.kForward);
+		
+		relay = new Relay(relayChannel, Relay.Direction.kForward);
+		
+		irSensor = new AnalogInput(irChannel);
 		
 		intake.set(0.0);
 		
 		oldThrottle = 0.0;
 	}
-    
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new DriveIntakeArm());
     }
     
@@ -51,6 +50,7 @@ public class Intake extends Subsystem {
     	oldThrottle = throttle;
     	intake.set(-throttle);
     }
+    
     /**
      * @author Sheila
      * 
@@ -67,17 +67,26 @@ public class Intake extends Subsystem {
     
     /**
      * @author Sheila
+     * Activates the relay
      */
 	public void relayOn() {
 		
 		relay.set(Relay.Value.kOn);
 	}
 	
+	/**
+	 * @author Noah
+	 * Deactivates the relay
+	 */
 	public void relayOff() {
 		
 		relay.set(Relay.Value.kOff);
 	}
 	
+	/**
+	 * @author Noah
+	 * Flips the relay
+	 */
 	public void relayFlip() {
 		
 		if (relay.get() == Relay.Value.kOn){
@@ -89,5 +98,15 @@ public class Intake extends Subsystem {
 			relayOff();
 		}
 	}
+	
+	/**
+	 * @author Noah
+	 * @return IR distance in inches
+	 */
+	public double getdistance() {
+		irDist = 21 - (10 * (irSensor.getVoltage()));
+		return irDist;
+	}
+	
 }
 

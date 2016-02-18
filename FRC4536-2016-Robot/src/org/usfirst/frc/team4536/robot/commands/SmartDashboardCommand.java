@@ -1,7 +1,5 @@
 package org.usfirst.frc.team4536.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.Timer;
 import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Utilities;
@@ -14,7 +12,6 @@ public class SmartDashboardCommand extends CommandBase {
 	DriveTrapezoidProfile driveTrapezoid;
 	
 	public SmartDashboardCommand() {
-		
 		
 	}
 	
@@ -40,7 +37,7 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putNumber("Main Joystick X: ", OI.mainStick.getX());
 		SmartDashboard.putNumber("Secondary Joystick Y: ", OI.secondaryStick.getY());
 		SmartDashboard.putNumber("Secondary Joystick X: ", OI.secondaryStick.getX());
-		//SmartDashboard.putNumber("Voltage: ", Utilities.getVoltage());
+		SmartDashboard.putNumber("Voltage: ", Utilities.getVoltage());
 		SmartDashboard.putNumber("Total Current: ", Utilities.getTotalCurrent());
 		SmartDashboard.putNumber("Drive Train Left Encoder: ", driveTrain.getLeftEncoder());
 		SmartDashboard.putNumber("Drive Train Right Encoder: ", driveTrain.getRightEncoder());
@@ -48,7 +45,6 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putNumber("Drive Train Left Rate: ", driveTrain.getLeftRate());
 		SmartDashboard.putNumber("Previous Forward Throttle", driveTrain.oldForwardThrottle);
 		SmartDashboard.putNumber("Turn Rate in Degrees per Second: ", driveTrain.getYawRate());
-		SmartDashboard.putNumber("range", maxUltra.getRange());
 		
 		/*-----Display NavX Values-----*/
 		
@@ -60,7 +56,6 @@ public class SmartDashboardCommand extends CommandBase {
 		
 		SmartDashboard.putData(driveTrain);
 		SmartDashboard.putData(intake);
-		SmartDashboard.putData(compressorSubsystem);
 		SmartDashboard.putData(scissorLift);
 		
 		/*-----Test Outputs-----*/
@@ -85,24 +80,14 @@ public class SmartDashboardCommand extends CommandBase {
 		}
     }
     
-    /**
-	 * @author Jeremy
-	 * @return Whether the command is safe to be finished (true if it can be finished)
-	 */
     protected boolean isFinished() {
         return false;
     }
     
-    /**
-	 * @author Jeremy
-	 */
     protected void end() {
     	
     }
     
-    /**
-	 * @author Jeremy
-	 */
     protected void interrupted() {
     	end();
     }

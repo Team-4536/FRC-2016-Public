@@ -1,4 +1,5 @@
 package org.usfirst.frc.team4536.robot;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -15,7 +16,7 @@ public class RobotMap {
     public static final int RIGHT_MOTOR_FRONT = 2;
     public static final int RIGHT_MOTOR_BACK = 3;
     
-    public static final int INTAKE_CHANNEL = 4;
+    public static final int INTAKE_MOTOR_CHANNEL = 4;
     
     public static final int SCISSOR_MOTOR = 5;
     
@@ -37,7 +38,9 @@ public class RobotMap {
 	public static final int RIGHT_ENCODER_CHANNEL_B = 7; //Set of 3 wires in one port for right encoder
 
 	 /*-------------------------------------Analog Sensor Channels---------------------------------*/
-	public static final int GYRO_CHANNEL = 0;
+	public static final int FRONT_ULTRA_CHANNEL = 0;
+	public static final int BACK_ULTRA_CHANNEL = 1;
+	public static final int LEFT_IR_CHANNEL = 2;
+	public static final int INTAKE_IR_CHANNEL = 3;
 	
-	public static final int ULTRA_CHANNEL = 1;
 }

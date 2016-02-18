@@ -1,15 +1,13 @@
-//TODO: incorporate drive encoders and navX
-
 package org.usfirst.frc.team4536.robot.subsystems;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
-import org.usfirst.frc.team4536.robot.commands.DriveTrainCommand;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.AnalogInput;
 import org.usfirst.frc.team4536.robot.*;
+import org.usfirst.frc.team4536.robot.commands.DriveTrainCommand;
 import com.kauailabs.navx.frc.AHRS;
 
 public class DriveTrain extends Subsystem {
@@ -20,27 +18,41 @@ public class DriveTrain extends Subsystem {
 	VictorSP rightFrontVictorSP;
 	Encoder leftEncoder;
 	Encoder rightEncoder;
-	AnalogGyro gyro;
 	AHRS navX;
+	AnalogInput frontUltra;
+	AnalogInput backUltra;
+	AnalogInput leftIR;
 	
 	public double oldForwardThrottle;
 	double oldTurnThrottle;
 	
+	/*---------Sensor Values---------*/
+	
+	double backDist, frontDist; //These are in feet
+	double leftDist; //This is in inches
+	double prevNavXYaw;
+	
 	/**
-	 * @author Max and Audrey 
-	 * @param leftVictorSPChannel - The PWM channel of the left VictorSP of the drive train
-	 * @param rightVictorSPChannel - THe PWM channel of the right VictorSP of the drive train
-	 * @param leftEncoderChannelA - The first channel of the left encoder of the drive train
-	 * @param leftEncoderChannelB - The second channel of the left encoder of the drive train
-	 * @param rightEncoderChannelA - The first channel of the right encoder of the drive train
-	 * @param rightEncoderChannelB - The second channel of the right encoder of the drive train
+	 * @author Noah
+	 * @param leftBackVictorSPChannel
+	 * @param leftFrontVictorSPChannel
+	 * @param rightBackVictorSPChannel
+	 * @param rightFrontVictorSPChannel
+	 * @param leftEncoderChannelA
+	 * @param leftEncoderChannelB
+	 * @param rightEncoderChannelA
+	 * @param rightEncoderChannelB
+	 * @param frontUltraChannel
+	 * @param backUltraChannel
+	 * @param leftIRChannel
 	 */
 	
-	public DriveTrain(int leftBackVictorSPChannel, int leftFrontVictorSPChannel,
+	public DriveTrain(  int leftBackVictorSPChannel,  int leftFrontVictorSPChannel,
 						int rightBackVictorSPChannel, int rightFrontVictorSPChannel,
-						int leftEncoderChannelA, int leftEncoderChannelB,
-						int rightEncoderChannelA, int rightEncoderChannelB,
-						int gyroChannel) {
+						int leftEncoderChannelA,      int leftEncoderChannelB,
+						int rightEncoderChannelA,     int rightEncoderChannelB,
+						int frontUltraChannel,		  int backUltraChannel,
+						int leftIRChannel) {
 		
 		leftBackVictorSP = new VictorSP(leftBackVictorSPChannel);
 		leftFrontVictorSP = new VictorSP(leftFrontVictorSPChannel);
@@ -48,8 +60,9 @@ public class DriveTrain extends Subsystem {
 		rightFrontVictorSP = new VictorSP(rightFrontVictorSPChannel);
 		leftEncoder = new Encoder(leftEncoderChannelA, leftEncoderChannelB);
 		rightEncoder = new Encoder(rightEncoderChannelA, rightEncoderChannelB);
-
-		gyro = new AnalogGyro(gyroChannel);
+		frontUltra = new AnalogInput(frontUltraChannel);
+		backUltra = new AnalogInput(backUltraChannel);
+		leftIR = new AnalogInput(leftIRChannel);
 
 		
 		try {
@@ -65,10 +78,6 @@ public class DriveTrain extends Subsystem {
 	}
 	
     public void initDefaultCommand() {
-    	
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand())
-    	//setDefaultCommand(new Drive());
     	setDefaultCommand(new DriveTrainCommand());
     }
     
@@ -77,7 +86,6 @@ public class DriveTrain extends Subsystem {
      * @ param leftThrottle - The throttle input into the left motors, positive value is left/forward
      * @ param rightThrottle - The throttle input into the right motors, positive value is right/forward
      */
-    
     public void tankDrive(double leftThrottle, double rightThrottle) {
     	leftBackVictorSP.set(leftThrottle);
     	leftFrontVictorSP.set(leftThrottle);
@@ -90,7 +98,6 @@ public class DriveTrain extends Subsystem {
      * @param forwardThrottle - Throttle for forward motion of the drivetrain (+ forward, - backwards) 
      * @param turnThrottle - Throttle for horizontal motion of the drivetrain (+ right, - left)
      */
-    
     public void arcadeDrive(double forwardThrottle, double turnThrottle) {
 
     	oldForwardThrottle = forwardThrottle;
@@ -106,10 +113,10 @@ public class DriveTrain extends Subsystem {
      * @param turnThrottle - see arcadeDrive
      */
     public void arcadeDriveAccelLimit(double forwardThrottle, double turnThrottle) {
-    	System.out.println("Forward Throttle: "+forwardThrottle);
-    	System.out.println("Old Forward Throttle: "+oldForwardThrottle);
-    	System.out.println("Turn Throttle: "+turnThrottle);
-    	System.out.println("Old Turn Throttle: "+oldTurnThrottle);
+    	System.out.println("Forward Throttle: "+ forwardThrottle);
+    	System.out.println("Old Forward Throttle: "+ oldForwardThrottle);
+    	System.out.println("Turn Throttle: "+ turnThrottle);
+    	System.out.println("Old Turn Throttle: "+ oldTurnThrottle);
     	forwardThrottle = Utilities.accelLimit(forwardThrottle, oldForwardThrottle, Constants.ACCEL_LIMIT_DRIVE);
     	turnThrottle = Utilities.accelLimit(turnThrottle, oldTurnThrottle, Constants.ACCEL_LIMIT_DRIVE);
 
@@ -155,49 +162,21 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	/**
-	 * @author Mairead
-	 * @return gyro angle in degrees
+	 * @author Noah
+	 * Resets the left encoder
 	 */
-	public double getTrueGyroAngle() {
-		
-		return gyro.getAngle();
-	}	
-	
-	/**
-	 * @author Mairead
-	 * @return gyro angle in degrees between -180 and 180
-	 */
-	public double getGyroAngle() {
-		double angle;
-		angle = this.getTrueGyroAngle()%360;
-		
-		if (angle < 0)
-			return(angle + 360);
-		else
-			return (angle);		
-	}
-	
-	/**
-	 * @author Mairead
-	 * @return gyro rate in degrees per seconds
-	 */
-	public double gyroRate() {
-		
-		return gyro.getRate();
-	}		
-
 	public void resetLeftEncoder() {
 		
 		leftEncoder.reset();
 	}
 	
+	/**
+	 * @author Noah
+	 * Resets the right encoder
+	 */
 	public void resetRightEncoder() {
 		
 		rightEncoder.reset();
-	}
-	
-	public void resetGyro() {
-		gyro.reset();
 	}
 	
 
@@ -251,6 +230,34 @@ public class DriveTrain extends Subsystem {
 		
 		return navX.getRawGyroZ();
 	}
+	
+	/**
+	 * @author Noah
+	 * @return The distance in front of the robot in feet
+	 */
+	public double getFrontDist() {
+		frontDist = frontUltra.getValue() / Constants.MAX_ULTRA_CONVERSION;
+		return frontDist;
+	}
+	
+	/**
+	 * @author Noah
+	 * @return The distance behind the robot in feet
+	 */
+	public double getBackDist() {
+		backDist = backUltra.getValue() / Constants.MAX_ULTRA_CONVERSION;
+		return backDist;
+	}
+	
+	/**
+	 * @author Noah
+	 * @return The distance to the left of the robot in inches
+	 */
+	public double getleftDist() {
+		leftDist = 21 - (10 * (leftIR.getVoltage()));
+		return leftDist;
+	}
+	
 }
 
 
