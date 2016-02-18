@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -27,8 +29,9 @@ public class AutoChooser extends CommandBase {
     	autoChooser.addObject(" Reach Outer Works",  1);
     	autoChooser.addObject(" PickUpBoulder", 2);
     	autoChooser.addObject(" CrossLowBar", 3);
-    	autoChooser.addObject(" CrossRockWall", 5);
     	autoChooser.addObject(" CrossRoughTerrain", 4);
+    	autoChooser.addObject(" CrossRockWall", 5);
+    	autoChooser.addObject(" CrossMoat", 6);
     	autoChooser.addObject(" CrossRamparts", 7);
     	SmartDashboard.putData(" Auto Chooser", autoChooser);
     }
