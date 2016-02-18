@@ -34,7 +34,7 @@ public class RectangleProfileForTurning {
 	 * @param time The amount of time since the profile has started
 	 * @returns The throttle the robot should be at
 	 */
-	public double throttle(double time) {
+	public double getThrottle(double time) {
 
 		if (time > 0 && time < timeNeeded) {
 			return throttle;
@@ -49,7 +49,7 @@ public class RectangleProfileForTurning {
 	 * @param time The amount of time since the profile has started
 	 * @returns The veloctiy the robot should be at
 	 */
-	public double idealRate(double time) {
+	public double getIdealRate(double time) {
 		
 		if (time > 0 && time < timeNeeded) {
 			return desiredMaxAngularVelocity;
@@ -62,7 +62,7 @@ public class RectangleProfileForTurning {
 	 * @param time The amount of time since the profile has started
 	 * @returns The angle the robot should be at
 	 */
-	public double idealAngle(double time) {
+	public double getIdealAngle(double time) {
 		
 		if (time > 0 && time < timeNeeded && angle > 0) {
 			return desiredMaxAngularVelocity * time;

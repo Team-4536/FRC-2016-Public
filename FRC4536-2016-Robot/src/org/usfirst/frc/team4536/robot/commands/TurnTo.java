@@ -47,7 +47,7 @@ public class TurnTo extends CommandBase {
     protected void execute() {
     	time = timer.get();
     	
-    	throttle = rectangle.throttle(time) - 0.009*(Utilities.angleDifference(rectangle.idealAngle(time), driveTrain.getGyroAngle()));
+    	throttle = rectangle.getThrottle(time) - 0.009*(Utilities.angleDifference(rectangle.getIdealAngle(time), driveTrain.getGyroAngle()));
     	
     	driveTrain.arcadeDrive(0, throttle);
     	

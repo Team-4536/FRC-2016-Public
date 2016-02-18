@@ -7,19 +7,19 @@ public abstract class Profile {
 	 * @param time The amount of time since the profile has started
 	 * @returns The throttle the robot should be at
 	 */
-	public abstract double throttle(double time);
+	public abstract double getThrottle(double time);
 	
 	/**
 	 * @author Mairead and Liam
 	 * @param time The amount of time since the profile has started
 	 * @returns The veloctiy the robot should be at
 	 */
-	public abstract double idealVelocity(double time);
+	public abstract double getIdealVelocity(double time);
 
 	/**
 	 * @author Mairead and Liam
 	 * @param time The amount of time since the profile has started
 	 * @returns The distance the robot should be at
 	 */
-	public abstract double idealDistance(double time);
+	public abstract double getIdealDistance(double time);
 }
