@@ -14,6 +14,7 @@ public class SafeDriveScissorLift extends CommandBase {
     public SafeDriveScissorLift(){
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        requires(scissorLift);
     }
 
     // Called just before this Command runs the first time
