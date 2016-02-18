@@ -58,6 +58,7 @@ public class Robot extends IterativeRobot {
         OI.buttonHandling();
         crossRoughTerrain = new CrossRoughTerrain();
         
+        
         Constants.displaySmartDashboard();
         
         //pistonFlipCommand = new PistonFlipCommand();
@@ -112,10 +113,6 @@ public class Robot extends IterativeRobot {
         	flipRelay.start();
         }
     	
-        if (driveTrainCommand != null) {
-
-        	driveTrainCommand.start();
-        }
     	
         if (driveAccelLimited != null) {
         	
@@ -138,6 +135,8 @@ public class Robot extends IterativeRobot {
         }
         
         Utilities.startTimer();
+        
+        
     }
 
     /**
