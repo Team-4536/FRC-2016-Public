@@ -165,7 +165,7 @@ public class DriveTrain extends Subsystem {
 	
 	/**
 	 * @author Mairead
-	 * @return gyro angle in degrees between -180 and 180
+	 * @return gyro angle in degrees between 0 and 360
 	 */
 	public double getGyroAngle() {
 		double angle;
