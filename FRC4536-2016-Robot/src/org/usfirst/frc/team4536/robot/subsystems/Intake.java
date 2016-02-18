@@ -1,7 +1,8 @@
 package org.usfirst.frc.team4536.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import org.usfirst.frc.team4536.robot.commands.DriveIntakeArm;
+
+import org.usfirst.frc.team4536.robot.commands.DriveIntakeAccelLimited;
 import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.RobotMap;
@@ -37,7 +38,7 @@ public class Intake extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new DriveIntakeArm());
+    	setDefaultCommand(new DriveIntakeAccelLimited());
     }
     
     /**
