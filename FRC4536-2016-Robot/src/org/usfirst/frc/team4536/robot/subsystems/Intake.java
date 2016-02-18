@@ -1,7 +1,8 @@
 package org.usfirst.frc.team4536.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import org.usfirst.frc.team4536.robot.commands.DriveIntakeArm;
+
+import org.usfirst.frc.team4536.robot.commands.DriveIntakeAccelLimited;
 import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.RobotMap;
@@ -37,7 +38,7 @@ public class Intake extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new DriveIntakeArm());
+    	setDefaultCommand(new DriveIntakeAccelLimited());
     }
     
     /**
@@ -64,23 +65,35 @@ public class Intake extends Subsystem {
     	throttle = Utilities.accelLimit(throttle, oldThrottle, Constants.ACCEL_LIMIT_INTAKE);
     	setThrottle(throttle);
     }
-    
-    /**
-     * @author Sheila
-     */
+
+	/**
+	 * @author Sheila
+	 * 
+	 * sets the relay to the 'on' position (releases the intake)
+	 */
 	public void relayOn() {
 		
 		relay.set(Relay.Value.kOn);
 	}
 	
+	/**
+	 * @author Sheila
+	 * 
+	 * sets the relay to the 'off' position (holds the intake up... or down?)
+	 */
 	public void relayOff() {
 		
 		relay.set(Relay.Value.kOff);
 	}
 	
+	/**
+	 * @author Sheila
+	 * 
+	 * checks whether the relay is off or on, and switches it
+	 */
 	public void relayFlip() {
 		
-		if (relay.get() == Relay.Value.kOn){
+		if (relay.get() == Relay.Value.kOff){
 			
 			relayOn();
 		} 

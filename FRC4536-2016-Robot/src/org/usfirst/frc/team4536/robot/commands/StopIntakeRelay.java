@@ -3,7 +3,9 @@ package org.usfirst.frc.team4536.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * @author Sheila
+ * 
+ * sets the intake relay off, so it stops the intake from moving through it
  */
 public class StopIntakeRelay extends CommandBase {
 
