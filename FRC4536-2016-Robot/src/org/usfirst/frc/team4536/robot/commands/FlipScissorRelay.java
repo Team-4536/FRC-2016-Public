@@ -3,7 +3,10 @@ package org.usfirst.frc.team4536.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * @author Sheila
+ * 
+ * checks whether the scissor lift's relay is off, and flips it once
+ * (if it is off turn it on, if it is on turn it off)
  */
 public class FlipScissorRelay extends CommandBase {
 
