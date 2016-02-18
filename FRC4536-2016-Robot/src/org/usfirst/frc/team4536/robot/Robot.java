@@ -73,6 +73,8 @@ public class Robot extends IterativeRobot {
         CommandBase.driveTrain.resetNavX();
         
         CommandBase.driveTrain.resetRightEncoder();
+        
+        CommandBase.driveTrain.resetAccelValues();
     	
         // schedule the autonomous command (example)
         if (autoChooser != null) {
@@ -107,6 +109,8 @@ public class Robot extends IterativeRobot {
     	CommandBase.driveTrain.resetNavX();
     	
     	CommandBase.driveTrain.resetRightEncoder();
+    	
+    	CommandBase.driveTrain.resetAccelValues();
     	
         if (flipRelay != null) {
         	
@@ -144,6 +148,8 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
+    	
+    	CommandBase.driveTrain.resetAccelValues();
     	
         if (smartDashboardCommand != null) {
         	
