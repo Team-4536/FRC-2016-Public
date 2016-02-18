@@ -24,7 +24,7 @@ public class DriveTrain extends Subsystem {
 	AHRS navX;
 	
 	public double oldForwardThrottle;
-	double oldTurnThrottle;
+	public double oldTurnThrottle;
 	
 	/**
 	 * @author Max and Audrey 
@@ -200,6 +200,15 @@ public class DriveTrain extends Subsystem {
 		gyro.reset();
 	}
 	
+	/**
+	 * @author Liam
+	 * 
+	 */
+	public void resetAccelValues() {
+		
+		oldForwardThrottle = 0.0;
+		oldTurnThrottle = 0.0;
+	}
 
 	/**
 	 * @author Audrey
