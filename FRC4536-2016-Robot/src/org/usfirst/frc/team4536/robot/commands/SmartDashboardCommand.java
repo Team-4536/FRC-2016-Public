@@ -47,6 +47,7 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putNumber("Drive Train Right Rate: ", driveTrain.getRightRate());
 		SmartDashboard.putNumber("Drive Train Left Rate: ", driveTrain.getLeftRate());
 		SmartDashboard.putNumber("Previous Forward Throttle", driveTrain.oldForwardThrottle);
+		SmartDashboard.putNumber("Turn Rate in Degrees per Second: ", driveTrain.getYawRate());
 		SmartDashboard.putNumber("range", maxUltra.getRange());
 		
 		/*-----Display NavX Values-----*/
@@ -64,8 +65,8 @@ public class SmartDashboardCommand extends CommandBase {
 		
 		/*-----Test Outputs-----*/
 		
-		SmartDashboard.putNumber("Test Output 1: ", trapezoid.idealVelocity(1));
-		SmartDashboard.putNumber("Test Output 2: ", trapezoid.idealVelocity(2));
+		SmartDashboard.putNumber("Test Output 1: ", 0);
+		SmartDashboard.putNumber("Test Output 2: ", 0);
 		SmartDashboard.putNumber("Test Output 3: ", trapezoid.timeNeeded);
 		SmartDashboard.putNumber("Test Output 4: ", trapezoid.criticalDistance);
 		SmartDashboard.putNumber("Test Output 5: ", trapezoid.criticalTime);
