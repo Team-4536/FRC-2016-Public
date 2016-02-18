@@ -4,7 +4,11 @@ import org.usfirst.frc.team4536.robot.Constants;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-
+/**
+ * @author Sheila
+ * 
+ * @param forward	are we crossing this defense forward(true) or backward(false)?
+ */
 public class CrossRamparts extends CommandGroup {
     
 	public  CrossRamparts(boolean foward) {

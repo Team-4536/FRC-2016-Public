@@ -5,8 +5,10 @@ import org.usfirst.frc.team4536.robot.Constants;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *@author Sheila
- *This command group crosses the rough terrain
+ * @author Sheila
+ * This command group crosses the rough terrain
+ * 
+ * @param forward	are we crossing this defense forward(true) or backward(false)?
  */
 public class CrossRoughTerrain extends CommandGroup {
     
