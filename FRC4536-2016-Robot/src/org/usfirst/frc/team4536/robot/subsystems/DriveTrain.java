@@ -206,6 +206,7 @@ public class DriveTrain extends Subsystem {
 	 * @return NavX Yaw or the angle of the robot around a vertical axis
 	 * @return If output is positive, robot is turning right
 	 * @return If output is negative, robot is turning left
+	 * Range of [-180, 180)
 	 */
 	public double getNavXYaw(){
 		
