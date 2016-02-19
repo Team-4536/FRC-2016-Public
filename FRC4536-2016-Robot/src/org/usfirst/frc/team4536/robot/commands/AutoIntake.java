@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4536.robot.commands;
 
+import org.usfirst.frc.team4536.robot.Constants;
+
 import edu.wpi.first.wpilibj.Timer;
 
 public class AutoIntake extends CommandBase {
@@ -18,13 +20,13 @@ public class AutoIntake extends CommandBase {
 	
 	public void execute() {
 		range = intake.getdistance();
-		if (time.get() < 5) {
-			if (range > .75) {
-				intake.setThrottle(.75);
+		if (time.get() < Constants.AUTO_INTAKE_TIMEOUT) {
+			if (range > Constants.AUTO_INTAKE_FAR_DIST) {
+				intake.setThrottle(Constants.AUTO_INTAKE_FAST_SPEED);
 				finished = false;
 			}
-			else if (range > .55 && range <= .75) {
-				intake.setThrottle(.35);
+			else if (range > Constants.AUTO_INTAKE_CLOSE_DIST && range <= Constants.AUTO_INTAKE_FAR_DIST) {
+				intake.setThrottle(Constants.AUTO_INTAKE_SLOW_SPEED);
 			}
 			else {
 				intake.setThrottle(0);

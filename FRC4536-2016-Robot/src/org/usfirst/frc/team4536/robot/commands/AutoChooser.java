@@ -76,7 +76,7 @@ public class AutoChooser extends CommandBase {
     		
     		default: 
     			
-    			driveTrain.arcadeDrive(0.0, 0.0);
+    			new DoNothing().start();
     		break;
     	}
     	

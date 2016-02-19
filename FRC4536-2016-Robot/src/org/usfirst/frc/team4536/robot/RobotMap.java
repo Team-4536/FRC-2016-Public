@@ -32,10 +32,10 @@ public class RobotMap {
 	
     /*-------------------------------------Digital Sensor Channels---------------------------------*/	
 	
-	public static final int LEFT_ENCODER_CHANNEL_A = 8; //Set of 3 wires in one port for left encoder
-	public static final int LEFT_ENCODER_CHANNEL_B = 9; //Set of 3 wires in one port for left encoder
-	public static final int RIGHT_ENCODER_CHANNEL_A = 6; //Set of 3 wires in one port for right encoder
-	public static final int RIGHT_ENCODER_CHANNEL_B = 7; //Set of 3 wires in one port for right encoder
+	public static final int LEFT_ENCODER_CHANNEL_A = 8; //1 yellow wire in signal for left encoder
+	public static final int LEFT_ENCODER_CHANNEL_B = 9; //Set of 3 wires blue in signal, then orange and brown for left encoder
+	public static final int RIGHT_ENCODER_CHANNEL_A = 6; //1 yellow wire in signal for right encoder
+	public static final int RIGHT_ENCODER_CHANNEL_B = 7; //Set of 3 wires blue in signal, then orange and brown for right encoder
 
 	 /*-------------------------------------Analog Sensor Channels---------------------------------*/
 	public static final int FRONT_ULTRA_CHANNEL = 0;

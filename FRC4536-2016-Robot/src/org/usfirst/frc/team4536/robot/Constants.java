@@ -55,26 +55,26 @@ public class Constants {
 	public static final double REACH_DEFENSE_VELOCITY = 1.0; //Feet per second
 	public static final double REACH_DEFENSE_ACCELERATION = 2.0; // Feet per second squared
 	
-	public static final double CROSS_LOWBAR_DISTANCE = 13.0;
-	public static final double CROSS_LOWBAR_VELOCITY = 3.0;
-	public static final double CROSS_LOWBAR_ACCEL_LIMIT = 3.0;
+	public static final double CROSS_LOWBAR_DISTANCE = 13.0; //Feet
+	public static final double CROSS_LOWBAR_VELOCITY = 3.0; //Feet per second
+	public static final double CROSS_LOWBAR_ACCEL_LIMIT = 3.0; // Feet per second squared
 	
-	public static final double CROSS_ROCKWALL_DISTANCE = 12.0;
-	public static final double CROSS_ROCKWALL_VELOCITY = 5.0;
-	public static final double CROSS_ROCKWALL_ACCEL_LIMIT = 3.0;
+	public static final double CROSS_ROCKWALL_DISTANCE = 12.0; //Feet
+	public static final double CROSS_ROCKWALL_VELOCITY = 5.0; //Feet per second
+	public static final double CROSS_ROCKWALL_ACCEL_LIMIT = 3.0; // Feet per second squared
 
-	public static final double CROSS_ROUGHTERRAIN_DISTANCE = 13;
-	public static final double CROSS_ROUGHTERRAIN_VELOCITY = 3.0;
-	public static final double CROSS_ROUGHTERRAIN_ACCEL_LIMIT = 3.0;
+	public static final double CROSS_ROUGHTERRAIN_DISTANCE = 13; //Feet
+	public static final double CROSS_ROUGHTERRAIN_VELOCITY = 3.0; //Feet per second
+	public static final double CROSS_ROUGHTERRAIN_ACCEL_LIMIT = 3.0; // Feet per second squared
 	
-	public static final double CROSS_RAMPARTS_DISTANCE = 15.0;
-	public static final double CROSS_RAMPARTS_VELOCITY = 5.0;
-	public static final double CROSS_RAMPARTS_ACCEL_LIMIT = 3.0;
+	public static final double CROSS_RAMPARTS_DISTANCE = 15.0; //Feet
+	public static final double CROSS_RAMPARTS_VELOCITY = 5.0; //Feet per second
+	public static final double CROSS_RAMPARTS_ACCEL_LIMIT = 3.0; // Feet per second squared
 	public static final double CROSS_RAMPARTS_GYRO_PROPORTIONALITY = -0.05;
 	
-	public static final double CROSS_MOAT_DISTANCE = 16.0;
-	public static final double CROSS_MOAT_VELOCITY = 8.0;
-	public static final double CROSS_MOAT_ACCEL_LIMIT = 6.0;
+	public static final double CROSS_MOAT_DISTANCE = 16.0; //Feet
+	public static final double CROSS_MOAT_VELOCITY = 8.0; //Feet per second
+	public static final double CROSS_MOAT_ACCEL_LIMIT = 6.0; // Feet per second squared
 	
 	/*---------------------------------------Intake-------------------------------------*/
 	
@@ -83,6 +83,14 @@ public class Constants {
 	public static final double HOLD_SPEED = 0.00; // In throttle
 	public static final double INTAKE_STICTION = 0.06; //Full battery
 	public static final double INTAKE_SPEED_CURVE = 1; // Unitless exponent
+	
+	/*----------------------------------Auto Intake Constants----------------------------*/
+	
+	public static final int AUTO_INTAKE_TIMEOUT = 5;
+	public static final double AUTO_INTAKE_FAR_DIST = .75;
+	public static final double AUTO_INTAKE_CLOSE_DIST = .25;
+	public static final double AUTO_INTAKE_FAST_SPEED = .75;
+	public static final double AUTO_INTAKE_SLOW_SPEED = .35;
 	
 	/*-----------------------------------Sensor Constants-------------------------------*/
 	
