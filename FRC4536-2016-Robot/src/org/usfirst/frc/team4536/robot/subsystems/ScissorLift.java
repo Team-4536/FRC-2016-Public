@@ -1,28 +1,31 @@
 package org.usfirst.frc.team4536.robot.subsystems;
 
 import org.usfirst.frc.team4536.robot.RobotMap;
-
-import edu.wpi.first.wpilibj.Relay;
 import org.usfirst.frc.team4536.robot.Utilities;
+import edu.wpi.first.wpilibj.Relay;
 import org.usfirst.frc.team4536.robot.commands.SafeDriveScissorLift;
 
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- * 
  * @author Liam
- *
+ * A system for lifting the robot
  */
 public class ScissorLift extends Subsystem {
 	
 	VictorSP scissorLift;
 	Relay relay;
 	
+	public void initDefaultCommand() {
+    	setDefaultCommand(new SafeDriveScissorLift());
+    }
+	
 	public ScissorLift(int motorChannel){
 
 		scissorLift = new VictorSP(motorChannel);
 		relay = new Relay(RobotMap.SCISSOR_RELAY, Relay.Direction.kForward);
+		
 	}
 		
 	/**
@@ -65,13 +68,13 @@ public class ScissorLift extends Subsystem {
 			relayOff();
 		}
 	}
+	
+	/**
+	 * @author Noah
+	 * @param throttle Speed to set the motor ro
+	 * Drives the motor safely
+	 */
 	public void safeDrive(double throttle) {
 		driveLift(Utilities.limit(throttle, -1.0, 0.0));
 	}
-			
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new SafeDriveScissorLift());
-    }
 }

@@ -10,7 +10,6 @@ public class AutoIntake extends CommandBase {
 	
 	public AutoIntake() {
 		requires(intake);
-		requires(maxUltra);
 	}
 	
 	public void initialize() {
@@ -18,7 +17,7 @@ public class AutoIntake extends CommandBase {
 	}
 	
 	public void execute() {
-		range = maxUltra.getRange();
+		range = intake.getdistance();
 		if (time.get() < 5) {
 			if (range > .75) {
 				intake.setThrottle(.75);

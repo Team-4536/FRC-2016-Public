@@ -49,7 +49,7 @@ public class Constants {
 	public static final double CROSS_ROCKWALL_EXTRA_TIME = 2.0; //In seconds
 	public static final double CROSS_MOAT_EXTRA_TIME = 4.0;
 	
-	/*-------------------------------------Auto Mode Distances-----------------------*/
+	/*-------------------------------------Auto Mode Distances--------------------------*/
 	
 	public static final double REACH_DEFENSE_DISTANCE = 3.0; //Feet
 	public static final double REACH_DEFENSE_VELOCITY = 1.0; //Feet per second
@@ -83,6 +83,8 @@ public class Constants {
 	public static final double HOLD_SPEED = 0.00; // In throttle
 	public static final double INTAKE_STICTION = 0.06; //Full battery
 	public static final double INTAKE_SPEED_CURVE = 1; // Unitless exponent
+	
+	/*-----------------------------------Sensor Constants-------------------------------*/
 	
 	public static final double MAX_ULTRA_CONVERSION = 92.0;
 	

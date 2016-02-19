@@ -3,8 +3,6 @@ package org.usfirst.frc.team4536.robot.commands;
 import org.usfirst.frc.team4536.robot.RobotMap;
 import org.usfirst.frc.team4536.robot.subsystems.Intake;
 import org.usfirst.frc.team4536.robot.subsystems.*;
-import org.usfirst.frc.team4536.robot.Constants;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -12,17 +10,14 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CommandBase extends Command {
 	
-	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR_BACK, RobotMap.LEFT_MOTOR_FRONT,
-															RobotMap.RIGHT_MOTOR_BACK, RobotMap.RIGHT_MOTOR_FRONT,
-															RobotMap.LEFT_ENCODER_CHANNEL_A, RobotMap.LEFT_ENCODER_CHANNEL_B,
+	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR_BACK, 			  RobotMap.LEFT_MOTOR_FRONT,
+															RobotMap.RIGHT_MOTOR_BACK, 		  RobotMap.RIGHT_MOTOR_FRONT,
+															RobotMap.LEFT_ENCODER_CHANNEL_A,  RobotMap.LEFT_ENCODER_CHANNEL_B,
 															RobotMap.RIGHT_ENCODER_CHANNEL_A, RobotMap.RIGHT_ENCODER_CHANNEL_B,
-															RobotMap.GYRO_CHANNEL);
-	public static CompressorSubsystem compressorSubsystem = new CompressorSubsystem();
-	public static Intake intake = new Intake(RobotMap.INTAKE_CHANNEL);
+															RobotMap.FRONT_ULTRA_CHANNEL, 	  RobotMap.BACK_ULTRA_CHANNEL,
+															RobotMap.LEFT_IR_CHANNEL);
+	public static Intake intake = new Intake(RobotMap.INTAKE_MOTOR_CHANNEL, RobotMap.INTAKE_RELAY, RobotMap.INTAKE_IR_CHANNEL);
 	public static ScissorLift scissorLift = new ScissorLift(RobotMap.SCISSOR_MOTOR);
-	//public static ElectricalSolenoid elecSolenoid = new ElectricalSolenoid(RobotMap.leftSolenoid, RobotMap.rightSolenoid);
-	
-	public static MaxboticUltra maxUltra = new MaxboticUltra(RobotMap.ULTRA_CHANNEL);
 	
     public CommandBase() {
         // Use requires() here to declare subsystem dependencies
