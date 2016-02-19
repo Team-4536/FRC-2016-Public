@@ -9,25 +9,25 @@ import java.lang.Math;
  */
 public class TrapezoidProfile {
 
-	private double distance; // The distance the profile will travel in feet
+	private double distance; // distance The distance the profile should travel in feet. Negative distances move backwards, positive forwards.
 	private double timeNeeded; // The time needed to execute the profile In seconds
-	private double desiredMaxSpeed; // The max speed the profile may go in feet per second
-	private double desiredMaxAcceleration; // The max acceleration the speed may change by in feet per second squared
+	private double desiredMaxSpeed; // maxSpeed The maximum speed the profile may achieve in feet per second. Speed is a scalar so it's always positive.
+	private double desiredMaxAcceleration; // The maximum acceleration the speed can change by in feet per second squared. We treat acceleration as the raw change in speed and thus as a scalar so it is always positive.
 	private double criticalDistance; // This determines whether the profile is a triangle or a trapezoid.
 	private double criticalTime; // This is the time it takes to reach maxSpeed if it is reached
 	private boolean triangle; // Whether the profile develops a triangle or trapezoid profile
 	
 	/**
 	 * @author Liam
-	 * @param distance The distance the profile should travel in feet
-	 * @param maxSpeed The maximum speed the profile may achieve in feet per second
-	 * @param maxAcceleration The maximum acceleration the speed can change by in feet per second squared
+	 * @param distance The distance the profile should travel in feet. Negative distances move backwards, positive forwards.
+	 * @param maxSpeed The maximum speed the profile may achieve in feet per second. Speed is a scalar so it's always positive.
+	 * @param maxAcceleration The maximum acceleration the speed can change by in feet per second squared. We treat acceleration as the raw change in speed and thus as a scalar so it is always positive.
 	 */
 	public TrapezoidProfile (double distance, double maxSpeed, double maxAcceleration) {
 		
 		this.distance = distance;
-		this.desiredMaxSpeed = maxSpeed;
-		this.desiredMaxAcceleration = maxAcceleration;
+		this.desiredMaxSpeed = Math.abs(maxSpeed);
+		this.desiredMaxAcceleration = Math.abs(maxAcceleration);
 		
 		criticalTime = this.desiredMaxSpeed/this.desiredMaxAcceleration;
 		criticalDistance = criticalTime * this.desiredMaxSpeed/2;
