@@ -8,13 +8,13 @@ import java.lang.Math;
  */
 public class TrapezoidProfile {
 
-	public double distance; // The distance the profile will travel in feet
-	public double timeNeeded; // The time needed to execute the profile In seconds
-	public double desiredMaxSpeed; // The max speed the profile may go in feet per second
-	public double desiredMaxAcceleration; // The max acceleration the speed may change by in feet per second squared
-	public double criticalDistance; // This determines whether the profile is a triangle or a trapezoid.
-	public double criticalTime; // This is the time it takes to reach maxSpeed if it is reached
-	public boolean triangle; // Whether the profile develops a triangle or trapezoid profile
+	private double distance; // The distance the profile will travel in feet
+	private double timeNeeded; // The time needed to execute the profile In seconds
+	private double desiredMaxSpeed; // The max speed the profile may go in feet per second
+	private double desiredMaxAcceleration; // The max acceleration the speed may change by in feet per second squared
+	private double criticalDistance; // This determines whether the profile is a triangle or a trapezoid.
+	private double criticalTime; // This is the time it takes to reach maxSpeed if it is reached
+	private boolean triangle; // Whether the profile develops a triangle or trapezoid profile
 	
 	/**
 	 * @author Liam
@@ -210,5 +210,14 @@ public class TrapezoidProfile {
 		public boolean isTriangle() {
 			
 			return triangle;
+		}
+		
+		/**
+		 * @author Liam
+		 * @return the distance the profile will travel
+		 */
+		public double getDistance() {
+			
+			return distance;
 		}
 }

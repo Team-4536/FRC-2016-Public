@@ -59,6 +59,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     	timer.start();
     	driveTrain.resetRightEncoder();
     	startingAngle = driveTrain.getNavXYaw();
+    	setTimeout(trapezoid.getTimeNeeded() + Constants.TRAPEZOID_PROFILE_TIMEOUT);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -75,8 +76,22 @@ public class DriveTrapezoidProfile extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-
-    		return false;
+    	
+    	if ((driveTrain.getRightEncoder() >= (trapezoid.getDistance()*12 - Constants.TRAPEZOID_DISTANCE_THRESHOLD) &&
+    			driveTrain.getRightEncoder() <= (trapezoid.getDistance()*12 + Constants.TRAPEZOID_DISTANCE_THRESHOLD)) &&
+        	(driveTrain.getRightRate() >= -Constants.TRAPEZOID_SPEED_THRESHOLD
+    			&& driveTrain.getRightRate() <= Constants.TRAPEZOID_SPEED_THRESHOLD) &&
+    		(driveTrain.getNavXYaw() >= -Constants.TRAPEZOID_ANGLE_THRESHOLD
+    				&& driveTrain.getNavXYaw() <= Constants.TRAPEZOID_ANGLE_THRESHOLD) && 
+    		(driveTrain.getYawRate() >= -Constants.TRAPEZOID_ANGULAR_SPEED_THRESHOLD
+    				&& driveTrain.getYawRate() <= Constants.TRAPEZOID_ANGULAR_SPEED_THRESHOLD)){ //conditions may cancel
+    		
+    		return true;
+    	}
+    	else { //Timeout may cancel
+    		
+    		return isTimedOut();
+    	}
     }
 
     // Called once after isFinished returns true
@@ -87,5 +102,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	
+    	end();
     }
 }
