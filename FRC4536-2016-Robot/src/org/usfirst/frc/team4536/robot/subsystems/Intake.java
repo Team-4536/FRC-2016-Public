@@ -104,6 +104,15 @@ public class Intake extends Subsystem {
 	}
 	
 	/**
+	 * @author Liam
+	 * 
+	 */
+	public void resetAccelValues() {
+		
+		oldThrottle = 0.0;
+	}
+	
+	/**
 	 * @author Noah
 	 * @return IR distance in inches
 	 */
