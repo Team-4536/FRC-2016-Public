@@ -19,10 +19,15 @@ public class Constants {
 	public static final double DRIVE_TRAIN_MAX_ANGUAR_VELOCITY = 400; // Degrees per second, measured on carpet, 12.83 Battery Voltage
 	public static final double TRAPEZOID_FORWARD_PROPORTIONALITY = 0.05; // units of throttle per inch
 	public static final double TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY = -0.03; // Units of throttle per degree
+	public static final double TRAPEZOID_PROFILE_TIMEOUT = 2.0; // In seconds
+	public static final double TRAPEZOID_DISTANCE_THRESHOLD = 1.0; // In inches
+	public static final double TRAPEZOID_SPEED_THRESHOLD = 1.0; // In inches per second
+	public static final double TRAPEZOID_ANGLE_THRESHOLD = 1.0; // In degrees
+	public static final double TRAPEZOID_ANGULAR_SPEED_THRESHOLD = 1.0; // In degrees per second
 	//about the max the robot will reasonably allow is -0.1 (damped oscillation at end)
 	
 	//Zenith
-	public static final double ZENITH_DRIVE_TRAIN_MAX_ANGULAR_VELOCITY = 400;
+	public static final double ZENITH_DRIVE_TRAIN_MAX_ANGULAR_VELOCITY = 400; // In degrees per second
 	public static final double ZENITH_FORWARD_STICTION = 0.00; // 0.04
 	public static final double ZENITH_TURN_STICTION = 0.1; // In throttle
 	public static final double ZENITH_DRIVE_TRAIN_MAX_VELOCITY = 4.1; //In feet per seconds
