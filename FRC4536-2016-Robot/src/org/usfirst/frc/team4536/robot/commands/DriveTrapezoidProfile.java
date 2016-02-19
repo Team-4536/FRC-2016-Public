@@ -42,7 +42,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     
     /**
      * @author Liam
-     * @return time time in seconds since the command was started
+     * @return time in seconds since the command was started
      */
     public double getTime() {
     	
