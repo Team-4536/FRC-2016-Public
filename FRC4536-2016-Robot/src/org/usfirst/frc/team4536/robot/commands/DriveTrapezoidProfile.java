@@ -27,9 +27,16 @@ public class DriveTrapezoidProfile extends CommandBase {
     	trapezoid = new TrapezoidProfile(distance, maxSpeed, maxAcceleration);
     }
     
+	/**
+	 * @author Liam
+	 * @param distance The desired distance the robot should travel. May be negative or positive to indicate direction.
+	 * @param maxSpeed The maximum possible speed the robot could be traveling at. Always positive.
+	 * @param maxAcceleration The maximum possible acceleration the speed can change by. Always positive.
+	 * @param custom gyro proportionality constant to override the default. Useful for command groups that may require more correction due to terrain.
+	 */
     public DriveTrapezoidProfile(double distance, double maxSpeed, double maxAcceleration, double gyroProportionality) {
-    	requires(driveTrain);
-    	trapezoid = new TrapezoidProfile(distance, maxSpeed, maxAcceleration);
+    	
+    	this(distance, maxSpeed, maxAcceleration);
     	proportionalityConstant = gyroProportionality;
     }
     
