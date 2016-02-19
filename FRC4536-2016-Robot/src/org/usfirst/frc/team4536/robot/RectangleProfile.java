@@ -31,7 +31,7 @@ public class RectangleProfile extends Profile {
 	 * @param time The amount of time since the profile has started
 	 * @returns The throttle the robot should be at
 	 */
-	public double getThrottle(double time) {
+	public double throttle(double time) {
 
 		if (time > 0 && time < timeNeeded) {
 			return throttle;
@@ -46,7 +46,7 @@ public class RectangleProfile extends Profile {
 	 * @param time The amount of time since the profile has started
 	 * @returns The veloctiy the robot should be at
 	 */
-	public double getIdealVelocity(double time) {
+	public double idealVelocity(double time) {
 		
 		if (time > 0 && time < timeNeeded) {
 			return desiredMaxVelocity;
@@ -59,7 +59,7 @@ public class RectangleProfile extends Profile {
 	 * @param time The amount of time since the profile has started
 	 * @returns The distance the robot should be at
 	 */
-	public double getIdealDistance(double time) {
+	public double idealDistance(double time) {
 		
 		if (time > 0 && time < timeNeeded && distance > 0) {
 			return desiredMaxVelocity * time;
