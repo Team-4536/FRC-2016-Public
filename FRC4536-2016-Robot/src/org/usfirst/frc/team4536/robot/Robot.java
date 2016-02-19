@@ -66,6 +66,8 @@ public class Robot extends IterativeRobot {
         CommandBase.driveTrain.resetRightEncoder();
         
         CommandBase.driveTrain.resetAccelValues();
+        
+        CommandBase.intake.resetAccelValues();
     	
         if (autoChooser != null) {
         	
@@ -101,6 +103,8 @@ public class Robot extends IterativeRobot {
     	CommandBase.driveTrain.resetRightEncoder();
     	
     	CommandBase.driveTrain.resetAccelValues();
+    	
+    	CommandBase.intake.resetAccelValues();
     	
         if (flipRelay != null) {
         	
