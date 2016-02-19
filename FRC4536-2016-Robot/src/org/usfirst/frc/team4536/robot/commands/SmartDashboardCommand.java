@@ -21,9 +21,6 @@ public class SmartDashboardCommand extends CommandBase {
 		driveTrapezoid = new DriveTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
 	
 		/*-----Commands to Run-----*/
-		SmartDashboard.putData(new IntakeBoulder());
-		SmartDashboard.putData(new EjectBoulder());
-		SmartDashboard.putData(new HoldBoulder());
 		SmartDashboard.putData(new DriveTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3));
 		trapezoid = new TrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
     }

@@ -11,6 +11,6 @@ public class PickUpBoulder extends CommandGroup {
     
     public  PickUpBoulder() {
     	
-    	addSequential(new IntakeBoulder(), Constants.PICK_UP_BALL_TIME_OUT);
+    	addSequential(new IntakeBallAccelLimited(), Constants.PICK_UP_BALL_TIME_OUT);
     }
 }
