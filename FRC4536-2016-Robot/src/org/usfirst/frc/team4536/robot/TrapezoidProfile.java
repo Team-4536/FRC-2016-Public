@@ -7,7 +7,7 @@ import java.lang.Math;
  * @author Liam
  *
  */
-public class TrapezoidProfile {
+public class TrapezoidProfile extends Profile{
 
 	private double distance; // distance The distance the profile should travel in feet. Negative distances move backwards, positive forwards.
 	private double timeNeeded; // The time needed to execute the profile In seconds
