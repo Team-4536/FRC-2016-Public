@@ -18,7 +18,7 @@ public class TurnTrapezoidProfile extends CommandBase {
 
 	/**
 	 * @author Liam
-	 * @param angle The desired angle the robot should travel to. May be negative or positive to indicate direction on the range [-180, 180].
+	 * @param angle The desired angle the robot should travel to. May be negative or positive to indicate direction on the range [-180, 180]. Negative is left and positive is right.
 	 * @param maxAngularSpeed The maximum possible angular speed the robot could be traveling at. Always positive.
 	 * @param maxAngularAcceleration The maximum possible angular acceleration the speed can change by. Always positive.
 	 */
