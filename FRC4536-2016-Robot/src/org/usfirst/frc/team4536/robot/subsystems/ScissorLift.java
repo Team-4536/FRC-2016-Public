@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4536.robot.subsystems;
 
+import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.RobotMap;
 import org.usfirst.frc.team4536.robot.Utilities;
 import edu.wpi.first.wpilibj.Relay;
@@ -16,6 +17,8 @@ public class ScissorLift extends Subsystem {
 	
 	VictorSP scissorLift;
 	Relay relay;
+	private double oldThrottle;
+	private double currentThrottle;
 	
 	public void initDefaultCommand() {
     	setDefaultCommand(new SafeDriveScissorLift());
@@ -26,6 +29,8 @@ public class ScissorLift extends Subsystem {
 		scissorLift = new VictorSP(motorChannel);
 		relay = new Relay(RobotMap.SCISSOR_RELAY, Relay.Direction.kForward);
 		
+		currentThrottle = 0.0;
+		oldThrottle = 0.0;
 	}
 		
 	/**
@@ -75,6 +80,11 @@ public class ScissorLift extends Subsystem {
 	 * Drives the motor safely
 	 */
 	public void safeDrive(double throttle) {
-		driveLift(Utilities.limit(throttle, -1.0, 0.0));
+		
+		currentThrottle = Utilities.limit(throttle, -1.0, 0.0);
+		
+		driveLift(Utilities.accelLimit(currentThrottle, oldThrottle, Constants.SCISSOR_SAFE_FULL_SPEED_TIME));
+		
+		oldThrottle = currentThrottle;
 	}
 }
