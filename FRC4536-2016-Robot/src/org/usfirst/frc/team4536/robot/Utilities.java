@@ -233,17 +233,24 @@ public class Utilities {
 	 */
 	public static double adjustForStiction(double velocity, double stiction, double maxVelocity) {
 		
-		double velocityToThrottle = velocity/maxVelocity;
-		
-		double focusedRange = 1 - stiction;
-		
-		if (velocity < 0) {
+		if (velocity > -0.001 && velocity < 0.001) {
 			
-			return velocityToThrottle*focusedRange - stiction;
+			return 0.0;
 		}
 		else {
 			
-			return velocityToThrottle*focusedRange + stiction;
+			double velocityToThrottle = velocity/maxVelocity;
+			
+			double focusedRange = 1 - stiction;
+			
+			if (velocity < 0) {
+				
+				return velocityToThrottle*focusedRange - stiction;
+			}
+			else {
+				
+				return velocityToThrottle*focusedRange + stiction;
+			}
 		}
 	}
 }
