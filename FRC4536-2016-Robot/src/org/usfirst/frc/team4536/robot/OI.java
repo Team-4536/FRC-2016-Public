@@ -57,5 +57,6 @@ public class OI {
 		eject.whenReleased(new DriveIntakeAccelLimited());
 		hold.whenReleased(new DriveIntakeAccelLimited());
 		deployScissors.whenReleased(new StopScissorRelay());
+		autoIntake.whenReleased(new DriveIntakeAccelLimited());
 	}
 }
