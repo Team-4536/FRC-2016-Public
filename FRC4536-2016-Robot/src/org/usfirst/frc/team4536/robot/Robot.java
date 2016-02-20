@@ -62,7 +62,7 @@ public class Robot extends IterativeRobot {
         
         CommandBase.driveTrain.resetNavX();
         
-        CommandBase.driveTrain.resetRightEncoder();
+        CommandBase.driveTrain.resetEncoders();
         
         CommandBase.driveTrain.resetAccelValues();
         
@@ -99,7 +99,7 @@ public class Robot extends IterativeRobot {
     	
     	CommandBase.driveTrain.resetNavX();
     	
-    	CommandBase.driveTrain.resetRightEncoder();
+    	CommandBase.driveTrain.resetEncoders();
     	
     	CommandBase.driveTrain.resetAccelValues();
     	
