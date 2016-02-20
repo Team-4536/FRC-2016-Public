@@ -23,7 +23,7 @@ public class DoNothing extends CommandBase {
     	
     	driveTrain.arcadeDriveAccelLimit(0.0, 0.0);
     	intake.setThrottleAccelLimited(0.0);
-    	scissorLift.driveLift(0.0);
+    	scissorLift.safeDrive(0.0);
     }
     
     protected boolean isFinished() {
