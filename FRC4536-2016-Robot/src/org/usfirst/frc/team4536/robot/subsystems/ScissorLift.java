@@ -33,7 +33,7 @@ public class ScissorLift extends Subsystem {
 	 * @param Throttle the value [-1, 1] sent to the motor. Negative values make it climb.
 	 * Positive values make it go down.
 	 */
-	public void driveLift(double throttle) {
+	private void driveLift(double throttle) {
 		
 		scissorLift.set(-throttle);
     }
