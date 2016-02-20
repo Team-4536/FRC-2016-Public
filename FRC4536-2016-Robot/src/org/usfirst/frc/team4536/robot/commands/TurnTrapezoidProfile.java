@@ -25,7 +25,6 @@ public class TurnTrapezoidProfile extends CommandBase {
     public TurnTrapezoidProfile(double angle, double angularSpeed, double angularAcceleration) {
     	
     	proportionalityConstant = Constants.TURNING_TRAPEOID_GYRO_PROPORTIONALITY;
-    	//this.angleDiff = Utilities.angleDifference(driveTrain.getNavXYaw(), angle);
     	requires(driveTrain);
     	timer = new Timer();
     	turnProfile = new TurningTrapezoidProfile(angle, angularSpeed, angularAcceleration);
@@ -69,7 +68,7 @@ public class TurnTrapezoidProfile extends CommandBase {
     	
     	timer.reset();
     	timer.start();
-    	//setTimeout(turnProfile.timeNeeded() + Constants.TRAPEZOID_PROFILE_TIMEOUT_OFFSET);
+    	setTimeout(turnProfile.timeNeeded() + Constants.TURNING_TRAPEZOID_TIMEOUT_OFFSET);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -85,8 +84,7 @@ public class TurnTrapezoidProfile extends CommandBase {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
-    	return false;
-        //return isTimedOut();
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
