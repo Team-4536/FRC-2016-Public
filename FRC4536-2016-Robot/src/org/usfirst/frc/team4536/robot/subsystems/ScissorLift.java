@@ -56,14 +56,13 @@ public class ScissorLift extends Subsystem {
 	 * safeDrive, but only activated after the match only has 20 seconds left
 	 */
 	public void superSafeDrive(double throttle) {
-		//The full match time (150 seconds) - the time we have available to scale
-		//this keeps us from violating the rules about extensions
+		//The teleop time (120 seconds) minus the time we have available to scale
+		//this keeps us from violating the rules about extending before the end
 		if(Utilities.getTime()>120-Constants.SCALE_TIME_LIMIT) {
 			safeDrive(throttle);
 		} else {
 			System.out.println("Hey! The match is still going! No climbing yet!");
 		}
-		
 	}
 	
 	/**
