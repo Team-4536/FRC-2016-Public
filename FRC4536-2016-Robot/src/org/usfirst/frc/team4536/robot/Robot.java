@@ -69,7 +69,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         
-        CommandBase.driveTrain.resetNavX();
+        CommandBase.driveTrain.resetNavX(0.0);
         
         CommandBase.driveTrain.resetRightEncoder();
         
@@ -110,7 +110,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
     	
-    	CommandBase.driveTrain.resetNavX();
+    	CommandBase.driveTrain.resetNavX(0.0);
     	
     	CommandBase.driveTrain.resetRightEncoder();
     	
