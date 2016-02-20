@@ -41,6 +41,7 @@ public class ScissorLift extends Subsystem {
 		//The full match time (150 seconds) - the time we have available to scale
 		//this keeps us from violating the rules about extensions
 		if(Utilities.getTime()>150-Constants.SCALE_TIME_LIMIT) {
+			scissorLift.set(-throttle);
 			oldThrottle = throttle;
 		} else {
 			System.out.println("Hey! The match is still going! No climbing yet!");
