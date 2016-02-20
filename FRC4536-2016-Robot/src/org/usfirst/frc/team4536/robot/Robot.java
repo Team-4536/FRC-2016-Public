@@ -42,7 +42,6 @@ public class Robot extends IterativeRobot {
         driveIntake = new DriveIntakeArm();
         intakeAccelLimited = new DriveIntakeAccelLimited();
         smartDashboardCommand = new SmartDashboardCommand();
-        driveScissorLift = new DriveScissorLift();
         driveAccelLimited = new DriveAccelLimited();
         flipRelay = new FlipScissorRelay();
         safeDriveScissorLift = new SafeDriveScissorLift();
