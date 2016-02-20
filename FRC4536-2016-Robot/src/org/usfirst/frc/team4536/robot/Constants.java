@@ -33,10 +33,10 @@ public class Constants {
 	
 	//Turning Trapezoid
 	//TODO assign values after testing
-	public static final double TURNING_TRAPEOID_GYRO_PROPORTIONALITY = 0.0;
-	public static final double TURNING_TRAPEZOID_TIMEOUT_OFFSET = 0.0;
-	public static final double TURNING_TRAPEZOID_ANGLE_THRESHOLD = 0.0;
-	public static final double TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD = 0.0;
+	public static final double TURNING_TRAPEOID_GYRO_PROPORTIONALITY = 0.03; // Throttle per degree
+	public static final double TURNING_TRAPEZOID_TIMEOUT_OFFSET = 0.0; // in seconds, added to the base timeout time which is the time needed
+	public static final double TURNING_TRAPEZOID_ANGLE_THRESHOLD = 0.0; // in degrees
+	public static final double TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD = 0.0; // in degrees per second
 	
 	//Zenith
 	public static final double ZENITH_DRIVE_TRAIN_MAX_ANGULAR_VELOCITY = 400; // In degrees per second
