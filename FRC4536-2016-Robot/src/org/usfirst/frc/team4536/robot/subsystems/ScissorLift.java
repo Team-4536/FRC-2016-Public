@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4536.robot.subsystems;
 
+import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Relay;
@@ -17,11 +18,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class ScissorLift extends Subsystem {
 	
 	VictorSP scissorLift;
+	double oldThrottle;
 	Relay relay;
 	
 	public ScissorLift(int motorChannel){
 
 		scissorLift = new VictorSP(motorChannel);
+		oldThrottle = 0.0;
 		relay = new Relay(RobotMap.SCISSOR_RELAY, Relay.Direction.kForward);
 	}
 		
@@ -33,7 +36,16 @@ public class ScissorLift extends Subsystem {
 	public void driveLift(double throttle) {
 		
 		scissorLift.set(-throttle);
+		oldThrottle = throttle;
     }
+	
+	public void safeDrive(double throttle) {
+		double tempVar = throttle;
+		throttle = Utilities.accelLimit(throttle, oldThrottle, Constants.ACCEL_LIMIT_DRIVE);
+		throttle = Utilities.limit(throttle, -1.0, 0.0);
+		driveLift(throttle);
+		oldThrottle = tempVar;
+	}
 	
 	/**
 	 * @author Sheila
@@ -59,14 +71,11 @@ public class ScissorLift extends Subsystem {
 	 * checks whether the relay is off, and sets it to whatever it's not
 	 */
 	public void relayFlip() {
-		if (relay.get() == Relay.Value.kOff){
+		if (relay.get() == Relay.Value.kOff){ 
 			relayOn();
 		} else {
 			relayOff();
 		}
-	}
-	public void safeDrive(double throttle) {
-		driveLift(Utilities.limit(throttle, -1.0, 0.0));
 	}
 			
     public void initDefaultCommand() {
