@@ -42,6 +42,7 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putNumber("Drive Train Left Rate: ", driveTrain.getLeftRate());
 		SmartDashboard.putNumber("Previous Forward Throttle", driveTrain.oldForwardThrottle);
 		SmartDashboard.putNumber("Turn Rate in Degrees per Second: ", driveTrain.getYawRate());
+		SmartDashboard.putNumber("Ball Distance: ", intake.getdistance());
 		
 		/*-----Display NavX Values-----*/
 		
