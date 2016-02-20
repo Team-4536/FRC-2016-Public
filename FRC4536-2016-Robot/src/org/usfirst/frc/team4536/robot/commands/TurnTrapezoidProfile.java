@@ -13,7 +13,7 @@ public class TurnTrapezoidProfile extends CommandBase {
 	
 	Timer timer;
 	TurningTrapezoidProfile turnProfile;
-	private double proportionalityConstant = 0.0; //TODO assign after testing profile
+	private double proportionalityConstant;
 	private double angleDiff;
 
 	/**
@@ -84,8 +84,8 @@ public class TurnTrapezoidProfile extends CommandBase {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
-    	if ((driveTrain.getNavXYaw() >= turnProfile.getDistance()-Constants.TURNING_TRAPEZOID_ANGLE_THRESHOLD &&
-    			driveTrain.getNavXYaw() <= turnProfile.getDistance() + Constants.TURNING_TRAPEZOID_ANGLE_THRESHOLD) &&
+    	if ((driveTrain.getNavXYaw() >= turnProfile.getAngle()-Constants.TURNING_TRAPEZOID_ANGLE_THRESHOLD &&
+    			driveTrain.getNavXYaw() <= turnProfile.getAngle() + Constants.TURNING_TRAPEZOID_ANGLE_THRESHOLD) &&
     		(driveTrain.getYawRate() >= -Constants.TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD &&
     			driveTrain.getYawRate() <= Constants.TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD)){ // Conditions may end
     		
