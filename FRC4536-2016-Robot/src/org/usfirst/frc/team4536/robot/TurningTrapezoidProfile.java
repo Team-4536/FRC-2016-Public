@@ -8,31 +8,32 @@ import java.lang.Math;
  *
  */
 public class TurningTrapezoidProfile extends Profile{
-
-	private double distance; // distance The distance the profile should travel in feet. Negative distances move backwards, positive forwards.
+	
+	//TODO label direction
+	private double angle; // angle The angle the profile should travel in degrees. Negative angles turn left, positive right.
 	private double timeNeeded; // The time needed to execute the profile In seconds
-	private double desiredMaxSpeed; // maxSpeed The maximum speed the profile may achieve in feet per second. Speed is a scalar so it's always positive.
-	private double desiredMaxAcceleration; // The maximum acceleration the speed can change by in feet per second squared. We treat acceleration as the raw change in speed and thus as a scalar so it is always positive.
-	private double criticalDistance; // This determines whether the profile is a triangle or a trapezoid.
+	private double desiredMaxAngularSpeed; // The maximum angular speed the profile may achieve in degrees per second. Angular speed is a scalar so it's always positive because we don't care about direction.
+	private double desiredMaxAngularAcceleration; // The maximum angular acceleration the angular speed can change by in degrees per second squared. We treat acceleration as the raw change in speed and thus as a scalar so it is always positive.
+	private double criticalAngle; // This determines whether the profile is a triangle or a trapezoid.
 	private double criticalTime; // This is the time it takes to reach maxSpeed if it is reached
 	private boolean triangle; // Whether the profile develops a triangle or trapezoid profile
 	
 	/**
 	 * @author Liam
-	 * @param distance The distance the profile should travel in feet. Negative distances move backwards, positive forwards.
-	 * @param maxSpeed The maximum speed the profile may achieve in feet per second. Speed is a scalar so it's always positive.
-	 * @param maxAcceleration The maximum acceleration the speed can change by in feet per second squared. We treat acceleration as the raw change in speed and thus as a scalar so it is always positive.
+	 * @param angle The angle the profile should travel in degrees. Negative angles turn left, positive right.
+	 * @param maxAngularSpeed The maximum speed the profile may achieve in degrees per second. Angular speed is a scalar so it's always positive.
+	 * @param maxAngularAcceleration The maximum angular acceleration the angular speed can change by in degrees per second squared. We treat acceleration as the raw change in angular speed and thus as a scalar so it is always positive.
 	 */
-	public TurningTrapezoidProfile (double distance, double maxSpeed, double maxAcceleration) {
+	public TurningTrapezoidProfile (double angle, double maxAngularSpeed, double maxAngularAcceleration) {
 		
-		this.distance = distance;
-		this.desiredMaxSpeed = maxSpeed;
-		this.desiredMaxAcceleration = maxAcceleration;
+		this.angle = angle;
+		this.desiredMaxAngularSpeed = maxAngularSpeed;
+		this.desiredMaxAngularAcceleration = maxAngularAcceleration;
 		
-		criticalTime = this.desiredMaxSpeed/this.desiredMaxAcceleration;
-		criticalDistance = criticalTime * this.desiredMaxSpeed/2;
+		criticalTime = this.desiredMaxAngularSpeed/this.desiredMaxAngularAcceleration;
+		criticalAngle = criticalTime * this.desiredMaxAngularSpeed/2;
 		
- 		if (Math.abs(this.distance) > criticalDistance) {
+ 		if (Math.abs(this.angle) > criticalAngle) {
 			
 			triangle = false;
 		}
@@ -43,17 +44,17 @@ public class TurningTrapezoidProfile extends Profile{
 		
 		if (triangle) {
 			
-			this.timeNeeded = 2*Math.sqrt(Math.abs(this.distance/this.desiredMaxAcceleration));
+			this.timeNeeded = 2*Math.sqrt(Math.abs(this.angle/this.desiredMaxAngularAcceleration));
 		}
 		else {
 			
-			this.timeNeeded = (2*criticalTime) + ((Math.abs(this.distance) - 2*criticalDistance)/this.desiredMaxSpeed);
+			this.timeNeeded = (2*criticalTime) + ((Math.abs(this.angle) - 2*criticalAngle)/this.desiredMaxAngularSpeed);
 		}
 	}
 		
 		/**
 		 * @author Liam
-		 * @param time The amount of time since the profile has started
+		 * @param The amount of time since the profile has started
 		 * @returns The throttle the robot should be at
 		 */
 		public double throttle(double time) {
@@ -73,7 +74,7 @@ public class TurningTrapezoidProfile extends Profile{
 		/**
 		 * @author Liam
 		 * @param time The amount of time since the profile has started
-		 * @returns The velocity the robot should be at
+		 * @returns The angular velocity the robot should be at
 		 */
 		public double idealVelocity(double time) {
 			
@@ -83,13 +84,13 @@ public class TurningTrapezoidProfile extends Profile{
 				
 				if(time <= timeNeeded/2 && time > 0) { // first leg of triangle
 					
-					velocity =  this.desiredMaxAcceleration*time;
+					velocity =  this.desiredMaxAngularAcceleration*time;
 				}
 				else if (time > timeNeeded/2 && time <= timeNeeded){ // second leg of triangle
 					
-					double maxTriangleVelocity = this.desiredMaxAcceleration*timeNeeded/2;
+					double maxTriangleVelocity = this.desiredMaxAngularAcceleration*timeNeeded/2;
 					
-					velocity = -this.desiredMaxAcceleration*(time - timeNeeded/2) + maxTriangleVelocity;
+					velocity = -this.desiredMaxAngularAcceleration*(time - timeNeeded/2) + maxTriangleVelocity;
 				}
 				else { // garbage
 					
@@ -100,15 +101,15 @@ public class TurningTrapezoidProfile extends Profile{
 				
 				if(time <= criticalTime && time >= 0) {//0 to max velocity
 					
-					velocity = this.desiredMaxAcceleration*time;
+					velocity = this.desiredMaxAngularAcceleration*time;
 				}
 				else if (time > criticalTime && time < (timeNeeded - criticalTime)) {//max velocity
 					
-					velocity = this.desiredMaxSpeed;
+					velocity = this.desiredMaxAngularSpeed;
 				}
 				else if (time >= (timeNeeded - criticalTime) && time <= timeNeeded) {//max velocity to 0
 					
-					velocity = this.desiredMaxAcceleration*(timeNeeded - time);
+					velocity = this.desiredMaxAngularAcceleration*(timeNeeded - time);
 				}
 				else {//Garbage
 					
@@ -116,7 +117,7 @@ public class TurningTrapezoidProfile extends Profile{
 				}
 			}
 			
-			if (distance < 0) {
+			if (angle < 0) {
 				
 				return -velocity;
 			}
@@ -128,79 +129,79 @@ public class TurningTrapezoidProfile extends Profile{
 		
 		/**
 		 * @author Liam
-		 * @return distance the robot should be at by that time
+		 * @return angle the robot should be at by that time
 		 */
 		public double idealDistance(double time) {
 			
-			double distance;
+			double angle;
 			
 			if (triangle) {
 				
 				if (time >= 0 && time <= timeNeeded/2) { // First Half, before timeNeeded divided by 2
 					
-					distance = idealVelocity(time) * time / 2;
+					angle = idealVelocity(time) * time / 2;
 				}
 				else if (time > timeNeeded/2 && time <= timeNeeded) { // Second Half, after timeNeeded divided by 2
 						
-					distance = this.distance - (idealVelocity(timeNeeded-time)* (timeNeeded-time))/2;
+					angle = this.angle - (idealVelocity(timeNeeded-time)* (timeNeeded-time))/2;
 				}
 				else if (time > timeNeeded) { // TimeNeeded or greater
 					
-					distance = this.distance;
+					angle = this.angle;
 				}
 				else { // Negative Time
 					
-					distance = 0;
+					angle = 0;
 				}
 			}
 			else { // Trapezoid
 				
 				if (time >= 0 && time <= criticalTime) { // The first leg of the trapezoid
 					
-					distance = idealVelocity(time)*time/2;
+					angle = idealVelocity(time)*time/2;
 				}
 				else if (time > criticalTime && time <= (timeNeeded - criticalTime)) { // The body of the trapezoid
 					
-					if (this.distance > 0) {
+					if (this.angle > 0) {
 						
-						distance = this.desiredMaxSpeed * (time - criticalTime) + criticalDistance;
+						angle = this.desiredMaxAngularSpeed * (time - criticalTime) + criticalAngle;
 					}
 					else {
 						
-						distance = -this.desiredMaxSpeed * (time - criticalTime) - criticalDistance;
+						angle = -this.desiredMaxAngularSpeed * (time - criticalTime) - criticalAngle;
 					}
 				}
 				else if (time > (timeNeeded - criticalTime) && time <= timeNeeded) { // The last leg of the trapezoid
 					
-					distance = this.distance - (idealVelocity(timeNeeded - time) * (timeNeeded - time))/2;
+					angle = this.angle - (idealVelocity(timeNeeded - time) * (timeNeeded - time))/2;
 				}
-				else if (time > timeNeeded) { // After timeNeeded when the distance should have been covered
+				else if (time > timeNeeded) { // After timeNeeded when the angle should have been covered
 					
-					distance = this.distance;
+					angle = this.angle;
 				}
 				else { // Garbage negative values
 					
-					distance = 0;
+					angle = 0;
 				}
 			}
 			
-			if (this.distance < 0) {
+			if (this.angle < 0) {
 				
-				if (distance < 0) {
+				if (angle < 0) {
 					
-					return distance;
+					return angle;
 				}
 				
-				return -distance;
+				return -angle;
 			}
 			else {
 				
-				if (distance < 0) {
+				if (angle < 0) {
 					
-					return -distance;
+					return -angle;
 				}
 				
-				return distance;
+				return angle;
 			}
 		}
 		
@@ -215,10 +216,10 @@ public class TurningTrapezoidProfile extends Profile{
 		
 		/**
 		 * @author Liam
-		 * @return the distance the profile will travel
+		 * @return the angle the profile will travel to
 		 */
-		public double getDistance() {
+		public double getAngle() { //TODO change to getAngle
 			
-			return distance;
+			return angle;
 		}
 }
