@@ -17,14 +17,26 @@ public class Constants {
 	
 	public static final double DRIVE_TRAIN_MAX_VELOCITY = 13.; //Feet per second, measured on blocks, 12.68 Battery Voltage
 	public static final double DRIVE_TRAIN_MAX_ANGUAR_VELOCITY = 400; // Degrees per second, measured on carpet, 12.83 Battery Voltage
+	
+	/*--------------------------------------Profiles----------------------------------*/
+	
+	//Trapezoid
+	
 	public static final double TRAPEZOID_FORWARD_PROPORTIONALITY = 0.05; // units of throttle per inch
 	public static final double TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY = -0.03; // Units of throttle per degree
-	public static final double TRAPEZOID_PROFILE_TIMEOUT = 2.0; // In seconds
+	public static final double TRAPEZOID_PROFILE_TIMEOUT_OFFSET = 2.0; // In seconds. Increases the timeout which is timeNeeded by this offset.
 	public static final double TRAPEZOID_DISTANCE_THRESHOLD = 1.0; // In inches
 	public static final double TRAPEZOID_SPEED_THRESHOLD = 1.0; // In inches per second
 	public static final double TRAPEZOID_ANGLE_THRESHOLD = 1.0; // In degrees
 	public static final double TRAPEZOID_ANGULAR_SPEED_THRESHOLD = 1.0; // In degrees per second
 	//about the max the robot will reasonably allow is -0.1 (damped oscillation at end)
+	
+	//Turning Trapezoid
+	//TODO assign values after testing
+	public static final double TURNING_TRAPEOID_GYRO_PROPORTIONALITY = 0.0;
+	public static final double TURNING_TRAPEZOID_TIMEOUT_OFFSET = 0.0;
+	public static final double TURNING_TRAPEZOID_ANGLE_THRESHOLD = 0.0;
+	public static final double TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD = 0.0;
 	
 	//Zenith
 	public static final double ZENITH_DRIVE_TRAIN_MAX_ANGULAR_VELOCITY = 400; // In degrees per second
