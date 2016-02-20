@@ -63,7 +63,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     	timer.start();
     	driveTrain.resetRightEncoder();
     	startingAngle = driveTrain.getNavXYaw();
-    	setTimeout(trapezoid.getTimeNeeded() + Constants.TRAPEZOID_PROFILE_TIMEOUT);
+    	setTimeout(trapezoid.getTimeNeeded() + Constants.TRAPEZOID_PROFILE_TIMEOUT_OFFSET);
     }
     
     protected void execute() {
