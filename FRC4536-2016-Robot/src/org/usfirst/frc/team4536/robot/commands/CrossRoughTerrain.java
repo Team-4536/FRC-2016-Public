@@ -12,6 +12,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class CrossRoughTerrain extends CommandGroup {
     
     public  CrossRoughTerrain(boolean forward) {
+    	
+    	addSequential(new ReleaseIntake());
+    	
     	DriveTrapezoidProfile crossRoughTerrain;
     	
     	if (forward) {

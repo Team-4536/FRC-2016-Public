@@ -11,6 +11,8 @@ public class CrossRockWall extends CommandGroup {
  	* @param forward boolean if true, it goes forward if false, it goes backward
  	*/   
 	public  CrossRockWall(boolean forward) {
+		
+		addSequential(new ReleaseIntake());
     	
 		DriveTrapezoidProfile crossRockWall;
 		

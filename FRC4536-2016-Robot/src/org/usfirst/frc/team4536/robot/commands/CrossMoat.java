@@ -11,6 +11,8 @@ public class CrossMoat extends CommandGroup {
 	 */
     public  CrossMoat(boolean forward) {
     	
+    	addSequential(new ReleaseIntake());
+    	
 		DriveTrapezoidProfile crossMoat;
 		
     	if (forward){
