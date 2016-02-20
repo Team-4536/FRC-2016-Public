@@ -9,7 +9,6 @@ import java.lang.Math;
  */
 public class TurningTrapezoidProfile extends Profile{
 	
-	//TODO label direction
 	private double angle; // angle The angle the profile should travel in degrees. Negative angles turn left, positive right.
 	private double timeNeeded; // The time needed to execute the profile In seconds
 	private double desiredMaxAngularSpeed; // The maximum angular speed the profile may achieve in degrees per second. Angular speed is a scalar so it's always positive because we don't care about direction.
@@ -218,7 +217,7 @@ public class TurningTrapezoidProfile extends Profile{
 		 * @author Liam
 		 * @return the angle the profile will travel to
 		 */
-		public double getAngle() { //TODO change to getAngle
+		public double getAngle() {
 			
 			return angle;
 		}
