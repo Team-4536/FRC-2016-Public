@@ -41,7 +41,7 @@ public class CrossDefense extends CommandGroup {
     	
     	case RAMPARTS:
     		
-    		//TODO Add ramparts to cross defend command group
+    		new CrossRamparts(forward).start();
     		
     	break;
     	
