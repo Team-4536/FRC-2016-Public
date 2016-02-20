@@ -23,6 +23,7 @@ public class DriveTrain extends Subsystem {
 	AnalogInput backUltra;
 	AnalogInput leftIR;
 	
+	private double offset = 0.0;
 	public double oldForwardThrottle;
 	public double oldTurnThrottle;
 	
@@ -254,10 +255,15 @@ public class DriveTrain extends Subsystem {
 	/**
 	 * @author Liam
 	 * Resets the NavX
+	 * 
+	 * @author Sheila
+	 * Adds yawOffset to the current navX offset (in degrees 0-360, 
+	 * but don't worry about going over we've got code for that)
 	 */
-	public void resetNavX() {
+	public void resetNavX(double yawOffset) {
 		
 		navX.reset();
+		addOffset(yawOffset);
 	}
 	
 	/**
@@ -270,17 +276,39 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	/**
-	 * @author Mairead
+	 * @author Sheila
+	 * 
+	 * this sets the offset of the navX angle; this is meant to be used 
+	 * for setting the starting angle. It will add this number to the 
+	 * angle when you use getAngle().
+	 */
+	public void addOffset(double offset) {
+		this.offset += offset;
+	}
+	
+	/**
+	 * @author Sheila
+	 * 
+	 * this gets the offset of the navX angle; the offset is meant to be 
+	 * used for setting a custom starting angle. 
+	 */
+	public double getOffset() {
+		return offset;
+	}
+	
+	/**
+	 * @author Mairead (and later Sheila)
 	 * @return The angle the robot is at from 0 to 360
 	 */
 	public double getAngle(){
 		double modifiedYaw;
-		modifiedYaw = navX.getYaw()%360;
+		modifiedYaw = (navX.getYaw()+offset)%360;
 		
-		if (modifiedYaw < 0)
+		if (modifiedYaw < 0) {
 			return(modifiedYaw + 360);
-		else
-			return (modifiedYaw);	
+		} else {
+			return (modifiedYaw);
+		}
 	}
 	
 	/**

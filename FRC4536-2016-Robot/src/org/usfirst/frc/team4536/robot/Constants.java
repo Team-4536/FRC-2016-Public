@@ -89,9 +89,9 @@ public class Constants {
 	
 	/*---------------------------------------Intake-------------------------------------*/
 	
-	public static final double INTAKE_SPEED = 1.0; // In throttle
-	public static final double EJECT_SPEED = -1.0; // In throttle
-	public static final double HOLD_SPEED = 0.00; // In throttle
+	public static final double INTAKE_SPEED = 1.0; // Throttle value; full speed in
+	public static final double EJECT_SPEED = -1.0; // Throttle value; full speed out
+	public static final double HOLD_SPEED = 0.00; // Throttle value; not moving
 	public static final double INTAKE_STICTION = 0.06; //Full battery
 	public static final double INTAKE_SPEED_CURVE = 1; // Unitless exponent
 	

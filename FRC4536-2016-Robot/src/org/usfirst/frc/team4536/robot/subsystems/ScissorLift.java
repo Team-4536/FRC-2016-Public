@@ -18,7 +18,6 @@ public class ScissorLift extends Subsystem {
 	VictorSP scissorLift;
 	Relay relay;
 	private double oldThrottle;
-	private double currentThrottle;
 	
 	public void initDefaultCommand() {
     	setDefaultCommand(new SafeDriveScissorLift());
@@ -27,9 +26,9 @@ public class ScissorLift extends Subsystem {
 	public ScissorLift(int motorChannel){
 
 		scissorLift = new VictorSP(motorChannel);
+		oldThrottle = 0.0;
 		relay = new Relay(RobotMap.SCISSOR_RELAY, Relay.Direction.kForward);
 		
-		currentThrottle = 0.0;
 		oldThrottle = 0.0;
 	}
 		
@@ -41,7 +40,16 @@ public class ScissorLift extends Subsystem {
 	private void driveLift(double throttle) {
 		
 		scissorLift.set(-throttle);
+		oldThrottle = throttle;
     }
+	
+	public void safeDrive(double throttle) {
+		double tempVar = throttle;
+		throttle = Utilities.limit(throttle, -1.0, 0.0);
+		throttle = Utilities.accelLimit(throttle, oldThrottle, Constants.ACCEL_LIMIT_DRIVE);
+		driveLift(throttle);
+		oldThrottle = tempVar;
+	}
 	
 	/**
 	 * @author Sheila
@@ -67,7 +75,7 @@ public class ScissorLift extends Subsystem {
 	 * checks whether the relay is off, and sets it to whatever it's not
 	 */
 	public void relayFlip() {
-		if (relay.get() == Relay.Value.kOff){
+		if (relay.get() == Relay.Value.kOff){ 
 			relayOn();
 		} else {
 			relayOff();
@@ -80,20 +88,5 @@ public class ScissorLift extends Subsystem {
 	public void resetValues() {
 		
 		oldThrottle = 0.0;
-		currentThrottle = 0.0;
-	}
-	
-	/**
-	 * @author Noah
-	 * @param throttle Speed to set the motor
-	 * Drives the motor safely
-	 */
-	public void safeDrive(double throttle) {
-		
-		currentThrottle = Utilities.limit(throttle, -1.0, 0.0);
-		
-		driveLift(Utilities.accelLimit(currentThrottle, oldThrottle, Constants.SCISSOR_SAFE_FULL_SPEED_TIME));
-		
-		oldThrottle = currentThrottle;
 	}
 }

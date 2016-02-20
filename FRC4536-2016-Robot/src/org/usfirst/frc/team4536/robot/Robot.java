@@ -60,7 +60,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         
-        CommandBase.driveTrain.resetNavX();
+        CommandBase.driveTrain.resetNavX(0.0);
         
         CommandBase.driveTrain.resetEncoders();
         
@@ -97,7 +97,7 @@ public class Robot extends IterativeRobot {
 
     public void teleopInit() {
     	
-    	CommandBase.driveTrain.resetNavX();
+    	CommandBase.driveTrain.resetNavX(0.0);
     	
     	CommandBase.driveTrain.resetEncoders();
     	

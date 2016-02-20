@@ -61,15 +61,16 @@ public class DriveTrapezoidProfile extends CommandBase {
     protected void initialize() {
     	timer.reset();
     	timer.start();
+    	
     	driveTrain.resetEncoders();
-    	startingAngle = driveTrain.getNavXYaw();
+    	startingAngle = driveTrain.getAngle();
     	setTimeout(trapezoid.getTimeNeeded() + Constants.TRAPEZOID_PROFILE_TIMEOUT_OFFSET);
     }
     
     protected void execute() {
     	
-    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * (trapezoid.idealDistance(timer.get())*12 - driveTrain.getEncoder())),
-    							(proportionalityConstant * Utilities.angleDifference(startingAngle,driveTrain.getNavXYaw())));
+    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * (trapezoid.idealDistance(timer.get())*12 - driveTrain.getRightEncoder())),
+    							(proportionalityConstant * Utilities.angleDifference(startingAngle,driveTrain.getAngle())));
     	//Ask Caleb or Mairead on the implementation of feedforward+feedback
     	
     	System.out.println(driveTrain.getEncoder()/12);
