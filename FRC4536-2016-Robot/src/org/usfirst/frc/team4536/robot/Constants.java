@@ -32,7 +32,6 @@ public class Constants {
 	//about the max the robot will reasonably allow is -0.1 (damped oscillation at end)
 	
 	//Turning Trapezoid
-	//TODO assign values after testing
 	public static final double TURNING_TRAPEOID_GYRO_PROPORTIONALITY = 0.03; // Throttle per degree
 	public static final double TURNING_TRAPEZOID_TIMEOUT_OFFSET = 2.0; // in seconds, added to the base timeout time which is the time needed
 	public static final double TURNING_TRAPEZOID_ANGLE_THRESHOLD = 1; // in degrees

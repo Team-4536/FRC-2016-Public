@@ -40,9 +40,6 @@ public class ScissorLift extends Subsystem {
 	 */
 	private void driveLift(double throttle) {
 		
-		//TODO Remove DEBUG printouts
-		System.out.println("Final Throttle: " + -throttle);
-		
 		scissorLift.set(-throttle);
     }
 	
@@ -95,16 +92,8 @@ public class ScissorLift extends Subsystem {
 		
 		currentThrottle = Utilities.limit(throttle, -1.0, 0.0);
 		
-		
-		//TODO Remove DEBUG printouts
-		System.out.println("Current Throttle: " + currentThrottle);
-		
-		System.out.println("Accel Throttle: " + Utilities.accelLimit(currentThrottle, oldThrottle, Constants.SCISSOR_SAFE_FULL_SPEED_TIME));
-		
 		driveLift(Utilities.accelLimit(currentThrottle, oldThrottle, Constants.SCISSOR_SAFE_FULL_SPEED_TIME));
 		
 		oldThrottle = currentThrottle;
-		
-		System.out.println(oldThrottle);
 	}
 }
