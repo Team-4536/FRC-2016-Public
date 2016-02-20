@@ -84,7 +84,17 @@ public class TurnTrapezoidProfile extends CommandBase {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
-        return isTimedOut();
+    	if ((driveTrain.getNavXYaw() >= turnProfile.getDistance()-Constants.TURNING_TRAPEZOID_ANGLE_THRESHOLD &&
+    			driveTrain.getNavXYaw() <= turnProfile.getDistance() + Constants.TURNING_TRAPEZOID_ANGLE_THRESHOLD) &&
+    		(driveTrain.getYawRate() >= -Constants.TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD &&
+    			driveTrain.getYawRate() <= Constants.TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD)){ // Conditions may end
+    		
+    		return true;
+    	}
+    	else { // time out may end
+    		
+    		return isTimedOut();
+    	}
     }
 
     // Called once after isFinished returns true
