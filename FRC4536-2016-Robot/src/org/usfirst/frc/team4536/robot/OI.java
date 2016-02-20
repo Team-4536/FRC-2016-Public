@@ -28,6 +28,8 @@ public class OI {
 	public static Button turnTest;
 	public static Button deployScissors;
 	
+	public static Button driveTo;
+	
 	/**
 	 * @author Liam
 	 * This instantiates Button handling.
@@ -43,6 +45,8 @@ public class OI {
 		tangleTest = new JoystickButton(mainStick, 11);
 		deployScissors = new JoystickButton(tertiaryStick, 1);
 		
+		driveTo = new JoystickButton(secondaryStick, 9);
+		
 		/*-------------------Actions------------------------*/
 
 		intake.whenPressed(new IntakeBallAccelLimited());
@@ -52,6 +56,8 @@ public class OI {
 		
 		turnTest.whenPressed(new TurnTo( 90, 30));
 		deployScissors.whenPressed(new StartScissorRelay());
+		
+		driveTo.whenPressed(new DriveToDistance());
 		
 		/*------------------Canceling actions--------------*/
 		
