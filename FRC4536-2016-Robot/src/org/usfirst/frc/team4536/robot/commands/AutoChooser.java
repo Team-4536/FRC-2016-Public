@@ -7,6 +7,8 @@ import org.usfirst.frc.team4536.robot.commands.*;
 import org.usfirst.frc.team4536.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc.team4536.robot.commands.*;
 
 /**
  *@author Liam
@@ -27,14 +29,15 @@ public class AutoChooser extends CommandBase {
     	
     	/*-----AutoChooser Options----*/
     	
-    	autoChooser.addDefault(" DoNothing", 0);
-    	autoChooser.addObject(" Reach Outer Works",  1);
-    	autoChooser.addObject(" PickUpBoulder", 2);
-    	autoChooser.addObject(" CrossLowBar", 3);
-    	autoChooser.addObject(" CrossRoughTerrain", 4);
-    	autoChooser.addObject(" CrossRockWall", 5);
-    	autoChooser.addObject(" CrossMoat", 6);
-    	autoChooser.addObject(" CrossRamparts", 7);
+    	autoChooser.addDefault(" Release Intake", 0);
+    	autoChooser.addObject(" DoNothing", 1);
+    	autoChooser.addObject(" Reach Outer Works",  2);
+    	autoChooser.addObject(" PickUpBoulder", 3);
+    	autoChooser.addObject(" CrossLowBar", 4);
+    	autoChooser.addObject(" CrossRoughTerrain", 5);
+    	autoChooser.addObject(" CrossRockWall", 6);
+    	autoChooser.addObject(" CrossMoat", 7);
+    	autoChooser.addObject(" CrossRamparts", 8);
     	SmartDashboard.putData(" Auto Chooser", autoChooser);
     }
     
@@ -44,56 +47,54 @@ public class AutoChooser extends CommandBase {
     	
     		case 0:
     			
-    			driveTrain.addOffset(0.0);
-    			new DoNothing().start();
+    			new ReleaseIntake().start();
     		break;
     			
     		case 1:
     			
-    			driveTrain.addOffset(0.0);
-    			new ReachOuterWorks().start();
+    			new DoNothing().start();
     		break;
     		
     		case 2:
     			
-    			driveTrain.addOffset(0.0);
-    			new PickUpBoulder().start();
+    			new ReachOuterWorks().start();
     			
     		break;
     	
     		case 3:
     			
-    			driveTrain.addOffset(0.0);
-    			new CrossDefense(0, true);
+    			new PickUpBoulder().start();
     		break;
     		
     		case 4:
     			
-    			driveTrain.addOffset(0.0);
-    			new CrossDefense(1, true);
+    			new CrossDefense(0, true);
     		break;
     		
     		case 5:
     			
-    			driveTrain.addOffset(0.0);
-    			new CrossDefense(2, true);
+    			new CrossDefense(1, true);
     		break;
     		
     		case 6:
     			
-    			driveTrain.addOffset(0.0);
-    			new CrossDefense(3, true);
+    			new CrossDefense(2, true);
     		break;
 
     		case 7:
     			
-    			driveTrain.addOffset(0.0);
+    			new CrossDefense(3, true);
+    		break;
+    			
+    		case 8:
+    			
     			new CrossDefense(4, true);
+    			
+    		break;
     		
     		default: 
     			
-    			driveTrain.addOffset(0.0);
-    			new DoNothing().start();
+    			new ReleaseIntake().start();
     			driveTrain.arcadeDrive(0.0, 0.0);
     		break;
     	}

@@ -94,6 +94,8 @@ public class Constants {
 	public static final double HOLD_SPEED = 0.00; // Throttle value; not moving
 	public static final double INTAKE_STICTION = 0.06; //Full battery
 	public static final double INTAKE_SPEED_CURVE = 1; // Unitless exponent
+	public static final double INTAKE_RELEASE_TIMEOUT = 0.5; // in seconds
+	public static final double INTAKE_RELEASE_SPEED = 0.5; // in throttle
 	
 	/*---------------------------------------Scisor Lift--------------------------------*/
 	
