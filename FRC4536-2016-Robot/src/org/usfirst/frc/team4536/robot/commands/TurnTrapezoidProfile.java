@@ -7,22 +7,25 @@ import edu.wpi.first.wpilibj.Timer;
 
 /**
  * @author Liam
+ * Only works with values between [-180, 180]
  */
 public class TurnTrapezoidProfile extends CommandBase {
 	
 	Timer timer;
 	TurningTrapezoidProfile turnProfile;
-	private double startingAngle;
 	private double proportionalityConstant = 0.0; //TODO assign after testing profile
+	private double angleDiff;
 
 	/**
 	 * @author Liam
-	 * @param angle The desired angle the robot should travel to. May be negative or positive to indicate direction.
+	 * @param angle The desired angle the robot should travel to. May be negative or positive to indicate direction on the range [-180, 180].
 	 * @param maxAngularSpeed The maximum possible angular speed the robot could be traveling at. Always positive.
 	 * @param maxAngularAcceleration The maximum possible angular acceleration the speed can change by. Always positive.
 	 */
     public TurnTrapezoidProfile(double angle, double angularSpeed, double angularAcceleration) {
-        
+    	
+    	proportionalityConstant = Constants.TURNING_TRAPEOID_GYRO_PROPORTIONALITY;
+    	//this.angleDiff = Utilities.angleDifference(driveTrain.getNavXYaw(), angle);
     	requires(driveTrain);
     	timer = new Timer();
     	turnProfile = new TurningTrapezoidProfile(angle, angularSpeed, angularAcceleration);
@@ -62,16 +65,21 @@ public class TurnTrapezoidProfile extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
+    	driveTrain.resetNavX();
+    	
     	timer.reset();
     	timer.start();
-    	startingAngle = driveTrain.getNavXYaw();
     	//setTimeout(turnProfile.timeNeeded() + Constants.TRAPEZOID_PROFILE_TIMEOUT_OFFSET);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	driveTrain.arcadeDrive(0.0, turnProfile.throttle(timer.get()));
+    	double diff = -Utilities.angleDifference(driveTrain.getNavXYaw(), turnProfile.idealDistance(timer.get()));
+    	
+    	double throttle = turnProfile.throttle(timer.get()) - proportionalityConstant * diff; 
+    	
+    	driveTrain.arcadeDrive(0.0, throttle);
     }
 
     // Make this return true when this Command no longer needs to run execute()
