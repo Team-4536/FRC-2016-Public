@@ -32,7 +32,6 @@ public class Constants {
 	//about the max the robot will reasonably allow is -0.1 (damped oscillation at end)
 	
 	//Turning Trapezoid
-	//TODO assign values after testing
 	public static final double TURNING_TRAPEOID_GYRO_PROPORTIONALITY = 0.03; // Throttle per degree
 	public static final double TURNING_TRAPEZOID_TIMEOUT_OFFSET = 2.0; // in seconds, added to the base timeout time which is the time needed
 	public static final double TURNING_TRAPEZOID_ANGLE_THRESHOLD = 1; // in degrees
@@ -95,6 +94,10 @@ public class Constants {
 	public static final double HOLD_SPEED = 0.00; // In throttle
 	public static final double INTAKE_STICTION = 0.06; //Full battery
 	public static final double INTAKE_SPEED_CURVE = 1; // Unitless exponent
+	
+	/*---------------------------------------Scisor Lift--------------------------------*/
+	
+	public static final double SCISSOR_SAFE_FULL_SPEED_TIME = 0.1; // In seconds, the time it takes to achieve full speed
 	
 	/*----------------------------------Auto Intake Constants----------------------------*/
 	
