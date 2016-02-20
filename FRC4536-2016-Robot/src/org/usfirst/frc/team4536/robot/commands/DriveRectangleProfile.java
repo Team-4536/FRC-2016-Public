@@ -32,7 +32,7 @@ public class DriveRectangleProfile extends CommandBase {
     protected void initialize() {
     	timer.reset();
     	timer.start();
-    	driveTrain.resetRightEncoder();
+    	driveTrain.resetEncoders();
     }
     
     protected void execute() {
@@ -40,19 +40,19 @@ public class DriveRectangleProfile extends CommandBase {
     	time = timer.get();
     	
     	driveTrain.arcadeDrive(rectangle.throttle(time)
-    			+ 0.75*(rectangle.idealDistance(time) - driveTrain.getRightEncoder()/12),
+    			+ 0.75*(rectangle.idealDistance(time) - driveTrain.getEncoder()/12),
     			(maxVelocity/24.6)*Utilities.angleDifference(driveTrain.getNavXYaw() , 0));
     	//Ask Caleb or Mairead on the implementation of feedforward+feedback
     	
-    	System.out.println(driveTrain.getRightEncoder()/12);
+    	System.out.println(driveTrain.getEncoder()/12);
     	//Since getDistance is in feet, you have to divide by 12 to inches
     	
     }
     
     protected boolean isFinished() {
-    	if(Math.abs(driveTrain.getRightEncoder() - desiredDistance) < 0.04
+    	if(Math.abs(driveTrain.getEncoder() - desiredDistance) < 0.04
     			//in feet, true if the robot is within half of an inch away from the desired distance
-    		&& Math.abs(driveTrain.getRightRate()) < 0.5)
+    		&& Math.abs(driveTrain.getRate()) < 0.5)
     			//in inches, true in the robot is moving at a steep of less than half an inch
     	{
     		return true;
