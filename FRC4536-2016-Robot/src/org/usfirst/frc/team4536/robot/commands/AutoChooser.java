@@ -62,13 +62,9 @@ public class AutoChooser extends CommandBase {
     		break;
     		
     		case 4:
-    			
-<<<<<<< HEAD
-    			new CrossRoughTerrain(true).start();
-=======
-    			new CrossDefense(1, forward);
-    			
->>>>>>> refs/remotes/origin/Enumeration
+
+    		new CrossDefense(1, forward);
+
     		break;
     		
     		case 5:
