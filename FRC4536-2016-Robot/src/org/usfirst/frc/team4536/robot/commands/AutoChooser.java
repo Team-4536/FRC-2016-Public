@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.commands.*;
+import org.usfirst.frc.team4536.robot.subsystems.DriveTrain;
+
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -43,46 +45,54 @@ public class AutoChooser extends CommandBase {
     	
     		case 0:
     			
-    			
+    			driveTrain.addOffset(0.0);
     			new DoNothing().start();
     		break;
     			
     		case 1:
     			
+    			driveTrain.addOffset(0.0);
     			new ReachOuterWorks().start();
     		break;
     		
     		case 2:
     			
+    			driveTrain.addOffset(0.0);
     			new PickUpBoulder().start();
     		break;
     	
     		case 3:
     			
+    			driveTrain.addOffset(0.0);
     			new CrossLowBar(true).start();
     		break;
     		
     		case 4:
     			
+    			driveTrain.addOffset(0.0);
     			new CrossRoughTerrain(true).start();
     		break;
     		
     		case 5:
     			
+    			driveTrain.addOffset(0.0);
     			new CrossRockWall(true).start();
     		break;
     		
     		case 6:
     			
+    			driveTrain.addOffset(0.0);
     			new CrossMoat(true).start();
     		break;
 
     		case 7:
     			
+    			driveTrain.addOffset(0.0);
     			new CrossRamparts(true).start();
     		
     		default: 
     			
+    			driveTrain.addOffset(0.0);
     			driveTrain.arcadeDrive(0.0, 0.0);
     		break;
     	}
