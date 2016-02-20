@@ -96,6 +96,10 @@ public class Constants {
 	public static final double INTAKE_STICTION = 0.06; //Full battery
 	public static final double INTAKE_SPEED_CURVE = 1; // Unitless exponent
 	
+	/*---------------------------------------Scisor Lift--------------------------------*/
+	
+	public static final double SCISSOR_SAFE_FULL_SPEED_TIME = 0.1; // In seconds, the time it takes to achieve full speed
+	
 	/*----------------------------------Auto Intake Constants----------------------------*/
 	
 	public static final int AUTO_INTAKE_TIMEOUT = 5;
