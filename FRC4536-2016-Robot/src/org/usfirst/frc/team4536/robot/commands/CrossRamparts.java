@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class CrossRamparts extends CommandGroup {
     
 	public  CrossRamparts(boolean foward) {
+		
+			addSequential(new ReleaseIntake());
 	    	
 			DriveTrapezoidProfile crossRamparts;
 			
