@@ -5,12 +5,16 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 
 public class CrossRockWall extends CommandGroup {
-    
-public  CrossRockWall(boolean foward) {
+	
+	/**
+ 	* @author Audrey
+ 	* @param forward boolean if true, it goes forward if false, it goes backward
+ 	*/   
+	public  CrossRockWall(boolean forward) {
     	
 		DriveTrapezoidProfile crossRockWall;
 		
-    	if (foward){
+    	if (forward){
         	crossRockWall = new DriveTrapezoidProfile(Constants.CROSS_ROCKWALL_DISTANCE, Constants.CROSS_ROCKWALL_VELOCITY, Constants.CROSS_ROCKWALL_ACCEL_LIMIT);
         	double maxTime = crossRockWall.getNeededTime() + Constants.CROSS_ROCKWALL_EXTRA_TIME;
     		addSequential(crossRockWall, maxTime);
