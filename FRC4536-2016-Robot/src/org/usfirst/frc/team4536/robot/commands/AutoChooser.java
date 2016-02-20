@@ -57,31 +57,31 @@ public class AutoChooser extends CommandBase {
     	
     		case 3:
     			
-    			new CrossDefense(0, forward);
+    			new CrossDefense(0, true).start();
     			
     		break;
     		
     		case 4:
 
-    		new CrossDefense(1, forward);
+    			new CrossDefense(1, true).start();
 
     		break;
     		
     		case 5:
     			
-    			new CrossDefense(2, forward);
+    			new CrossDefense(2, true).start();
     			
     		break;
     		
     		case 6:
     			
-    			new CrossDefense(3, forward);
+    			new CrossDefense(3, true).start();
     			
     		break;
 
     		case 7:
     			
-    			new CrossRamparts(true).start();
+    			new CrossDefense(4, true).start();
     		
     		default: 
     			
