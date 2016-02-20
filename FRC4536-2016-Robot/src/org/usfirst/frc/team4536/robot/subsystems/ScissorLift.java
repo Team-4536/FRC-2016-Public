@@ -75,6 +75,15 @@ public class ScissorLift extends Subsystem {
 	}
 	
 	/**
+	 * @author Liam
+	 */
+	public void resetValues() {
+		
+		oldThrottle = 0.0;
+		currentThrottle = 0.0;
+	}
+	
+	/**
 	 * @author Noah
 	 * @param throttle Speed to set the motor ro
 	 * Drives the motor safely
