@@ -30,6 +30,7 @@ public class Robot extends IterativeRobot {
     Command intakeAccelLimited;
     Command flipRelay;
     Command safeDriveScissorLift;
+    Command superSafeDriveScissorLift;
     Command startIntakeRelay;
 
     /**
@@ -45,6 +46,7 @@ public class Robot extends IterativeRobot {
         driveAccelLimited = new DriveAccelLimited();
         flipRelay = new FlipScissorRelay();
         safeDriveScissorLift = new SafeDriveScissorLift();
+        superSafeDriveScissorLift = new SuperSafeDriveScissorLift();
         
         OI.buttonHandling();
         startIntakeRelay = new StartIntakeRelay();
@@ -126,9 +128,9 @@ public class Robot extends IterativeRobot {
         	intakeAccelLimited.start();
         }
         
-        if (safeDriveScissorLift != null) {
+        if (superSafeDriveScissorLift != null) {
         	
-        	safeDriveScissorLift.start();
+        	superSafeDriveScissorLift.start();
         }
         
         Utilities.startTimer();
