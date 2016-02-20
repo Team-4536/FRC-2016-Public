@@ -38,9 +38,13 @@ public class ScissorLift extends Subsystem {
 	 * Positive values make it go down.
 	 */
 	private void driveLift(double throttle) {
-		
-		scissorLift.set(-throttle);
-		oldThrottle = throttle;
+		//The full match time (150 seconds) - the time we have available to scale
+		//this keeps us from violating the rules about extensions
+		if(Utilities.getTime()>150-Constants.SCALE_TIME_LIMIT) {
+			oldThrottle = throttle;
+		} else {
+			System.out.println("Hey! The match is still going! No climbing yet!");
+		}
     }
 	
 	public void safeDrive(double throttle) {
