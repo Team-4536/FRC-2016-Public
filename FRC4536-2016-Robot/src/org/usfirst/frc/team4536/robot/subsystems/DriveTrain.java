@@ -135,7 +135,7 @@ public class DriveTrain extends Subsystem {
     
     /**
      * @author Audrey
-     * @return left encoder distance in inches
+     * @return right encoder rate in inches per second
      */
     public double getRate() {
     	
