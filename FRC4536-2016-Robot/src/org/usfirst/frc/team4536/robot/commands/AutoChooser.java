@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class AutoChooser extends CommandBase {
 	
 	SendableChooser autoChooser;
-	SendableChooser forwardChooser;
 	
 	boolean forward = true;
 
@@ -23,7 +22,7 @@ public class AutoChooser extends CommandBase {
     	/*-----Constructors-----*/
     	
     	autoChooser = new SendableChooser();
-    	forwardChooser = new SendableChooser();
+    
     	
     	/*-----AutoChooser Options----*/
     	
@@ -36,21 +35,11 @@ public class AutoChooser extends CommandBase {
     	autoChooser.addObject("CrossMoat", 6);
     	SmartDashboard.putData("Auto Chooser", autoChooser);
     	
-    	/*-----ForwardChooser Options----*/
-    	forwardChooser.addDefault("Forward", 0);
-    	forwardChooser.addObject("Backwards", 1);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	if ((int) forwardChooser.getSelected().hashCode() == 0) {
-    		
-    		forward = true;
-    			
-    	}else{
-    		
-    		forward = false;
-    	}
+    	
     	switch ((int) autoChooser.getSelected().hashCode()) {
     	
     		case 0:
