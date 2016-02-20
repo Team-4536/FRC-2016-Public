@@ -61,28 +61,28 @@ public class DriveTrapezoidProfile extends CommandBase {
     protected void initialize() {
     	timer.reset();
     	timer.start();
-    	driveTrain.resetRightEncoder();
+    	driveTrain.resetEncoders();
     	startingAngle = driveTrain.getNavXYaw();
     	setTimeout(trapezoid.getTimeNeeded() + Constants.TRAPEZOID_PROFILE_TIMEOUT_OFFSET);
     }
     
     protected void execute() {
     	
-    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * (trapezoid.idealDistance(timer.get())*12 - driveTrain.getRightEncoder())),
+    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * (trapezoid.idealDistance(timer.get())*12 - driveTrain.getEncoder())),
     							(proportionalityConstant * Utilities.angleDifference(startingAngle,driveTrain.getNavXYaw())));
     	//Ask Caleb or Mairead on the implementation of feedforward+feedback
     	
-    	System.out.println(driveTrain.getRightEncoder()/12);
+    	System.out.println(driveTrain.getEncoder()/12);
     	//Since getDistance is in feet, you have to divide by 12 to inches
     	
     }
     
     protected boolean isFinished() {
     	
-    	if ((driveTrain.getRightEncoder() >= (trapezoid.getDistance()*12 - Constants.TRAPEZOID_DISTANCE_THRESHOLD) &&
-    			driveTrain.getRightEncoder() <= (trapezoid.getDistance()*12 + Constants.TRAPEZOID_DISTANCE_THRESHOLD)) &&
-        	(driveTrain.getRightRate() >= -Constants.TRAPEZOID_SPEED_THRESHOLD
-    			&& driveTrain.getRightRate() <= Constants.TRAPEZOID_SPEED_THRESHOLD) &&
+    	if ((driveTrain.getEncoder() >= (trapezoid.getDistance()*12 - Constants.TRAPEZOID_DISTANCE_THRESHOLD) &&
+    			driveTrain.getEncoder() <= (trapezoid.getDistance()*12 + Constants.TRAPEZOID_DISTANCE_THRESHOLD)) &&
+        	(driveTrain.getRate() >= -Constants.TRAPEZOID_SPEED_THRESHOLD
+    			&& driveTrain.getRate() <= Constants.TRAPEZOID_SPEED_THRESHOLD) &&
     		(driveTrain.getNavXYaw() >= -Constants.TRAPEZOID_ANGLE_THRESHOLD
     				&& driveTrain.getNavXYaw() <= Constants.TRAPEZOID_ANGLE_THRESHOLD) && 
     		(driveTrain.getYawRate() >= -Constants.TRAPEZOID_ANGULAR_SPEED_THRESHOLD
