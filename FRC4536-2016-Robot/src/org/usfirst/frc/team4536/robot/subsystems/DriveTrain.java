@@ -124,6 +124,23 @@ public class DriveTrain extends Subsystem {
     	arcadeDrive(forwardThrottle, turnThrottle);
     }
     
+    /**
+     * @author Audrey
+     * @return right encoder distance in inches
+     */
+    public double getEncoder() {
+    	
+    	return getRightEncoder();
+    }
+    
+    /**
+     * @author Audrey
+     * @return left encoder distance in inches
+     */
+    public double getRate() {
+    	
+    	return getRightRate();
+    }
     
     /**
      * @author Audrey
@@ -159,6 +176,17 @@ public class DriveTrain extends Subsystem {
 	public double getLeftRate() {
 		
 		return leftEncoder.getRate()/Constants.DRIVE_ENCODER_PROPORTIONALITY_CONSTANT;
+	}
+	
+	/**
+	 * @author Audrey
+	 * Resets left and right encoders
+	 */
+	public void resetEncoders(){
+		
+		resetLeftEncoder();
+		resetRightEncoder();
+		
 	}
 	
 	/**
