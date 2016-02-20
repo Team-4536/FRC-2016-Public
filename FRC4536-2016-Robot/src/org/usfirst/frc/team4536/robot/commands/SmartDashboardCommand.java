@@ -46,7 +46,8 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putNumber("Turn Rate in Degrees per Second: ", driveTrain.getYawRate());
 		//SmartDashboard.putNumber("range", maxUltra.getRange());
 		SmartDashboard.putNumber("Offset: ", driveTrain.getOffset());
-		
+		SmartDashboard.putNumber("Ball Distance: ", intake.getdistance());
+
 		/*-----Display NavX Values-----*/
 		
 		SmartDashboard.putNumber("Yaw: ", driveTrain.getNavXYaw());
