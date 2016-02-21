@@ -23,6 +23,7 @@ public class OI {
 	public static Button intake; 
 	public static Button eject;
 	public static Button hold;
+	public static Button plop;
 	public static Button autoIntake;
 	public static Button turnTest;
 	public static Button deployScissors;
@@ -36,7 +37,8 @@ public class OI {
 		intake = new JoystickButton(secondaryStick, 5);
 		eject = new JoystickButton(secondaryStick, 6);
 		hold = new JoystickButton(secondaryStick, 7);
-		autoIntake = new JoystickButton(secondaryStick, 8);
+		autoIntake = new JoystickButton(secondaryStick, 4);
+		plop = new JoystickButton(secondaryStick, 12);
 		
 		turnTest = new JoystickButton(mainStick, 12);
 		deployScissors = new JoystickButton(tertiaryStick, 1);
