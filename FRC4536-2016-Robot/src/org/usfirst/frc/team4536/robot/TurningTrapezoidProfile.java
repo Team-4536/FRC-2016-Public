@@ -58,7 +58,7 @@ public class TurningTrapezoidProfile extends Profile{
 		 */
 		public double throttle(double time) {
 
-			return Utilities.adjustForStiction(idealVelocity(time), Constants.ZENITH_TURN_STICTION, Constants.ZENITH_DRIVE_TRAIN_MAX_ANGULAR_VELOCITY);
+			return Utilities.adjustForStiction(idealVelocity(time), Constants.TURN_STICTION, Constants.DRIVE_TRAIN_MAX_ANGULAR_VELOCITY);
 		}
 		
 		/**
