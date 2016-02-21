@@ -22,7 +22,7 @@ public class Constants {
 	
 	//Trapezoid
 	
-	public static final double TRAPEZOID_FORWARD_PROPORTIONALITY = 0.05; // units of throttle per inch
+	public static final double TRAPEZOID_FORWARD_PROPORTIONALITY = 0.07; // units of throttle per inch
 	public static final double TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY = -0.03; // Units of throttle per degree
 	public static final double TRAPEZOID_PROFILE_TIMEOUT_OFFSET = 2.0; // In seconds. Increases the timeout which is timeNeeded by this offset.
 	public static final double TRAPEZOID_DISTANCE_THRESHOLD = 1.0; // In inches
@@ -32,7 +32,7 @@ public class Constants {
 	//about the max the robot will reasonably allow is -0.1 (damped oscillation at end)
 	
 	//Turning Trapezoid
-	public static final double TURNING_TRAPEOID_GYRO_PROPORTIONALITY = 0.03; // Throttle per degree
+	public static final double TURNING_TRAPEOID_GYRO_PROPORTIONALITY = 0.05; // Throttle per degree
 	public static final double TURNING_TRAPEZOID_TIMEOUT_OFFSET = 2.0; // in seconds, added to the base timeout time which is the time needed
 	public static final double TURNING_TRAPEZOID_ANGLE_THRESHOLD = 1; // in degrees
 	public static final double TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD = 1; // in degrees per second
