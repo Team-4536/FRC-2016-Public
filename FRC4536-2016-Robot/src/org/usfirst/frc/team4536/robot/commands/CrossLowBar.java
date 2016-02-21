@@ -25,4 +25,13 @@ public class CrossLowBar extends CommandGroup {
     		addSequential(crossLowBar, maxTime);
     	}
     }
+    
+    /**
+     * @author Liam
+     * Does the true case (forward)
+     */
+    public CrossLowBar() {
+    	
+    	this(true);
+    }
 }
