@@ -39,6 +39,7 @@ public class AutoChooser extends CommandBase {
     	autoChooser.addObject(" CrossMoat", 7);
     	autoChooser.addObject(" CrossRamparts", 8);
     	autoChooser.addObject(" Spy Box Low Goal Auto: ", 9);
+    	autoChooser.addObject(" LowBarLowGoal", 10);
     	SmartDashboard.putData(" Auto Chooser", autoChooser);
     }
     
@@ -96,6 +97,11 @@ public class AutoChooser extends CommandBase {
     		case 9:
     			
     			new SpyBoxLowGoal().start();
+    		break;
+    		
+    		case 10:
+    			
+    			new LowBarLowGoal().start();
     		break;
     		
     		default: 
