@@ -15,6 +15,16 @@ public class TurnTrapezoidProfile extends CommandBase {
 	TurningTrapezoidProfile turnProfile;
 	private double proportionalityConstant;
 	private double angleDiff;
+	
+	/**
+	 * @author Liam
+	 * @param angle the angle desired to be traveled to
+	 * Sets the max angular speed and acceleration to the defaults defined in Constants
+	 */
+	public TurnTrapezoidProfile(double angle) {
+		
+		this(angle, Constants.TURNING_TRAPEZOID_DEFAULT_ANGULAR_SPEED, Constants.TURNING_TRAPEZOID_DEFAULT_ANGULAR_ACCELERATION);
+	}
 
 	/**
 	 * @author Liam

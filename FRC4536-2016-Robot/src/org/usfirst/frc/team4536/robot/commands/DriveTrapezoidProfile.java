@@ -17,6 +17,16 @@ public class DriveTrapezoidProfile extends CommandBase {
 	
 	/**
 	 * @author Liam
+	 * @param the distance desired to be travelled
+	 * Sets the Max Speed and Acceleration to the defaults defined in constants
+	 */
+	public DriveTrapezoidProfile(double distance) {
+		
+		this(distance, Constants.TRAPEZOID_DEFAULT_SPEED, Constants.TRAPEZOID_DEFAULT_ACCELERATION);
+	}
+	
+	/**
+	 * @author Liam
 	 * @param distance The desired distance the robot should travel. May be negative or positive to indicate direction.
 	 * @param maxSpeed The maximum possible speed the robot could be traveling at. Always positive.
 	 * @param maxAcceleration The maximum possible acceleration the speed can change by. Always positive.
