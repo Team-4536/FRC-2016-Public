@@ -98,7 +98,7 @@ public class Constants {
 	public static final double HOLD_SPEED = 0.00; // Throttle value; not moving
 	public static final double INTAKE_STICTION = 0.06; //Full battery
 	public static final double INTAKE_SPEED_CURVE = 1; // Unitless exponent
-	public static final double INTAKE_RELEASE_TIMEOUT = 0.5; // in seconds
+	public static final double INTAKE_RELEASE_TIMEOUT = 0.25; // in seconds
 	public static final double INTAKE_RELEASE_SPEED = 0.5; // in throttle
 	
 	/*---------------------------------------Scisor Lift--------------------------------*/
@@ -113,6 +113,14 @@ public class Constants {
 	public static final double AUTO_INTAKE_CLOSE_DIST = .25;
 	public static final double AUTO_INTAKE_FAST_SPEED = .75;
 	public static final double AUTO_INTAKE_SLOW_SPEED = .35;
+	
+	/*----------------------------------Plop Boulder Constants----------------------------*/
+	
+	public static final double PLOP_BOULDER_TIMEOUT = 2.0;
+	public static final double PLOP_BOULDER_FAR_DIST = 0.75;
+	public static final double PLOP_BOULDER_CLOSE_DIST = 0.25;
+	public static final double PLOP_BOULDER_FAST_SPEED = 0.75;
+	public static final double PLOP_BOULDER_SLOW_SPEED = 0.35;
 	
 	/*-----------------------------------Sensor Constants-------------------------------*/
 	
