@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class CrossDefense extends CommandGroup {
     
-    public  CrossDefense(int defense, boolean forward) {
+    public  CrossDefense(Utilities.Defense defense, boolean forward) {
     	
-    	Utilities.Defense defenseEnum = Utilities.Defense.values()[defense];
+    	//Utilities.Defense defenseEnum = Utilities.Defense.values()[defense];
     	
-    	switch(defenseEnum){
+    	switch(defense){
       
     	case LOW_BAR:
     	  

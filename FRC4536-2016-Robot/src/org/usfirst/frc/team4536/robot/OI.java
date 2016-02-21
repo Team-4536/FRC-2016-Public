@@ -50,7 +50,7 @@ public class OI {
 		hold.whenPressed(new HoldBoulderAccelLimited());
 		autoIntake.whenPressed(new AutoIntake());
 		
-		turnTest.whenPressed(new TurnTo( 90, 30));
+		turnTest.whenPressed(new TeleopTurn( 90));
 		deployScissors.whenPressed(new StartScissorRelay());
 		
 		/*------------------Canceling actions--------------*/

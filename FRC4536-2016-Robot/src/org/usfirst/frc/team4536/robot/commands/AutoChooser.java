@@ -3,6 +3,7 @@ package org.usfirst.frc.team4536.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team4536.robot.Constants;
+import org.usfirst.frc.team4536.robot.Utilities;
 import org.usfirst.frc.team4536.robot.commands.*;
 import org.usfirst.frc.team4536.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -70,27 +71,27 @@ public class AutoChooser extends CommandBase {
     		
     		case 4:
     			
-    			new CrossDefense(0, true);
+    			new CrossDefense(Utilities.Defense.LOW_BAR, true);
     		break;
     		
     		case 5:
     			
-    			new CrossDefense(1, true);
+    			new CrossDefense(Utilities.Defense.MOAT, true);
     		break;
     		
     		case 6:
     			
-    			new CrossDefense(2, true);
+    			new CrossDefense(Utilities.Defense.ROCK_WALL, true);
     		break;
 
     		case 7:
     			
-    			new CrossDefense(3, true);
+    			new CrossDefense(Utilities.Defense.ROUGH_TERRAIN, true);
     		break;
     			
     		case 8:
     			
-    			new CrossDefense(4, true);
+    			new CrossDefense(Utilities.Defense.RAMPARTS, true);
     			
     		break;
     		
