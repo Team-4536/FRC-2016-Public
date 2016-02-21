@@ -26,6 +26,8 @@ public class CrossRamparts extends CommandGroup {
 	    		addSequential(crossRamparts, maxTime);
 	    	}
 	}
+	
+	
 	public CrossRamparts() {
 		this(true);
 	}

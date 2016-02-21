@@ -25,5 +25,14 @@ public class CrossRockWall extends CommandGroup {
         	double maxTime = crossRockWall.getNeededTime() + Constants.CROSS_ROCKWALL_EXTRA_TIME;
     		addSequential(crossRockWall, maxTime);
     	}
-}
+	}
+	
+    /**
+     * @author Liam
+     * Does the true case (forward)
+     */
+	public CrossRockWall() {
+		
+		this(true);
+	}
 }

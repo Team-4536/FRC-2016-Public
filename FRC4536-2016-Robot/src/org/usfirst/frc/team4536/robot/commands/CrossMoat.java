@@ -26,4 +26,13 @@ public class CrossMoat extends CommandGroup {
     	}
     	
     }
+    
+    /**
+     * @author Liam
+     * Does the true case (forward)
+     */
+    public CrossMoat() {
+    	
+    	this(true);
+    }
 }
