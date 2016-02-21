@@ -31,6 +31,6 @@ public class DriveToDistance extends CommandGroup {
     	
     	desiredDistance = Constants.variable1;
     	
-    	addSequential(new DriveTrapezoidProfile(desiredDistance, Constants.variable2, Constants.variable2));
+    	addSequential(new DriveTrapezoidProfile(3, 3, 3));
     }
 }
