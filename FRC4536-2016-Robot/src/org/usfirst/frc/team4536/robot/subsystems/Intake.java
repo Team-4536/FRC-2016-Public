@@ -106,9 +106,10 @@ public class Intake extends Subsystem {
 	/**
 	 * @author Noah
 	 * @return IR distance in inches
+	 * Acceptable ranges are 2 inches to 10 inches
 	 */
 	public double getdistance() {
-		irDist = 21 - (10 * (irSensor.getVoltage()));
+		irDist = 12.4 + (-3.2 * irSensor.getVoltage());
 		return irDist;
 	}
 	
