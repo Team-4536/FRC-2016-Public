@@ -51,14 +51,12 @@ public class OI {
 		autoIntake.whenPressed(new AutoIntake());
 		
 		turnTest.whenPressed(new TeleopTurn( 90));
-		deployScissors.whenPressed(new StartScissorRelay());
 		
 		/*------------------Canceling actions--------------*/
 		
 		intake.whenReleased(new DriveIntakeAccelLimited());
 		eject.whenReleased(new DriveIntakeAccelLimited());
 		hold.whenReleased(new DriveIntakeAccelLimited());
-		deployScissors.whenReleased(new StopScissorRelay());
 		autoIntake.whenReleased(new DriveIntakeAccelLimited());
 	}
 }
