@@ -49,7 +49,6 @@ public class Robot extends IterativeRobot {
         superSafeDriveScissorLift = new SuperSafeDriveScissorLift();
         
         OI.buttonHandling();
-        startIntakeRelay = new StartIntakeRelay();
         
         
         Constants.displaySmartDashboard();
