@@ -76,7 +76,7 @@ public class AutoChooser extends CommandBase {
     		
     		case 5:
     			
-    			new CrossDefense(Utilities.Defense.MOAT, true);
+    			new CrossDefense(Utilities.Defense.ROUGH_TERRAIN, true);
     		break;
     		
     		case 6:
@@ -86,7 +86,7 @@ public class AutoChooser extends CommandBase {
 
     		case 7:
     			
-    			new CrossDefense(Utilities.Defense.ROUGH_TERRAIN, true);
+    			new CrossDefense(Utilities.Defense.MOAT, true);
     		break;
     			
     		case 8:
