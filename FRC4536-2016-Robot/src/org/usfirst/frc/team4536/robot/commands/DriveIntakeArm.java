@@ -23,7 +23,7 @@ public class DriveIntakeArm extends CommandBase {
     	intakeY = Utilities.limit(intakeY);
     	intakeY = Utilities.speedCurve(intakeY, Constants.INTAKE_SPEED_CURVE);
     	
-    	intake.setThrottle(intakeY);
+    	intake.setThrottleAccelLimited(intakeY);
     }
     
     protected boolean isFinished() {
