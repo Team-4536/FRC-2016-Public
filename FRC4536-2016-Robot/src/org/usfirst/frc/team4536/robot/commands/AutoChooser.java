@@ -13,11 +13,15 @@ import org.usfirst.frc.team4536.robot.commands.*;
 
 /**
  *@author Liam
- *This chooses the autonomous mode which will be executed for the duration of the match.
+ *auto chooser chooses the autonomous mode which will be executed for the duration of the match.
+ *orientation chooses whether the robot goes over the defense forwards or backwards.
  */
 public class AutoChooser extends CommandBase {
 	
 	SendableChooser autoChooser;
+	SendableChooser orientationChooser; //Picks whether the robot is going forward or backward over a defense
+	
+	private boolean orientation = true; // true is forward, false is backward
 	
 	boolean forward = true;
 
@@ -26,6 +30,7 @@ public class AutoChooser extends CommandBase {
     	/*-----Constructors-----*/
     	
     	autoChooser = new SendableChooser();
+    	orientationChooser = new SendableChooser();
     
     	
     	/*-----AutoChooser Options----*/
@@ -42,9 +47,30 @@ public class AutoChooser extends CommandBase {
     	autoChooser.addObject(" Spy Box Low Goal Auto: ", 9);
     	autoChooser.addObject(" LowBarLowGoal", 10);
     	SmartDashboard.putData(" Auto Chooser", autoChooser);
+    	
+    	orientationChooser.addDefault(" Forwards", 0);
+    	orientationChooser.addObject(" Backwards", 1);
     }
     
     protected void initialize() {
+    	
+    	switch ((int) orientationChooser.getSelected().hashCode()) {
+    	
+	    	case 0:
+	    		
+	    		orientation = true;
+	    	break;
+	    	
+	    	case 1:
+	    		
+	    		orientation = false;
+	    	break;
+	    	
+	    	default:
+	    		
+	    		orientation = true;
+	    	break;
+    	}
     	
     	switch ((int) autoChooser.getSelected().hashCode()) {
     	
@@ -60,7 +86,7 @@ public class AutoChooser extends CommandBase {
     		
     		case 2:
     			
-    			new ReachOuterWorks().start();
+    			new ReachOuterWorks(orientation).start();
     			
     		break;
     	
@@ -71,27 +97,27 @@ public class AutoChooser extends CommandBase {
     		
     		case 4:
     			
-    			new CrossDefense(Utilities.Defense.LOW_BAR, true);
+    			new CrossDefense(Utilities.Defense.LOW_BAR, orientation);
     		break;
     		
     		case 5:
     			
-    			new CrossDefense(Utilities.Defense.ROUGH_TERRAIN, true);
+    			new CrossDefense(Utilities.Defense.ROUGH_TERRAIN, orientation);
     		break;
     		
     		case 6:
     			
-    			new CrossDefense(Utilities.Defense.ROCK_WALL, true);
+    			new CrossDefense(Utilities.Defense.ROCK_WALL, orientation);
     		break;
 
     		case 7:
     			
-    			new CrossDefense(Utilities.Defense.MOAT, true);
+    			new CrossDefense(Utilities.Defense.MOAT, orientation);
     		break;
     			
     		case 8:
     			
-    			new CrossDefense(Utilities.Defense.RAMPARTS, true);
+    			new CrossDefense(Utilities.Defense.RAMPARTS, orientation);
     			
     		break;
     		
