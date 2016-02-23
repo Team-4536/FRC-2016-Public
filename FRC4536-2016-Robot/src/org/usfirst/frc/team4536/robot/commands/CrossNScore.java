@@ -16,6 +16,9 @@ public class CrossNScore extends CommandGroup {
     	
     	orientation = false;
     	
+    	//TODO Remove Debug printout
+    	System.out.println("Cross and Score Entered.");
+    	
 		switch (defense) {
 		
 			case 5:
@@ -44,7 +47,8 @@ public class CrossNScore extends CommandGroup {
 				addSequential(new ReleaseIntake());
 			break;
 		}
-		
+		//TODO Remove Debug printout
+		System.out.println("Post Defense Crossing Reached");
 		addSequential(new DefenseAlignmentPosition(pos));
     }
 }
