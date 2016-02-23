@@ -20,6 +20,7 @@ public class AutoChooser extends CommandBase {
 	
 	SendableChooser autoChooser;
 	SendableChooser orientationChooser; //Picks whether the robot is going forward or backward over a defense
+	SendableChooser defensePositionChooser; // Picks which defense position the defense you are crossing is
 	
 	private boolean orientation = true; // true is forward, false is backward
 	
@@ -31,6 +32,7 @@ public class AutoChooser extends CommandBase {
     	
     	autoChooser = new SendableChooser();
     	orientationChooser = new SendableChooser();
+    	defensePositionChooser = new SendableChooser();
     
     	
     	/*-----AutoChooser Options----*/
@@ -50,94 +52,110 @@ public class AutoChooser extends CommandBase {
     	
     	orientationChooser.addDefault(" Forwards", 0);
     	orientationChooser.addObject(" Backwards", 1);
+    	SmartDashboard.putData(" Orientation Chooser", orientationChooser);
+    	
+    	defensePositionChooser.addDefault(" None", 0);
+    	defensePositionChooser.addObject(" Any Other Auto", 1);
+    	defensePositionChooser.addObject(" Position 2", 2);
+    	defensePositionChooser.addObject(" Position 3", 3);
+    	defensePositionChooser.addObject(" Position 4", 4);
+    	defensePositionChooser.addObject(" Position 5", 5);
+    	SmartDashboard.putData(" Defense Position Chooser", defensePositionChooser);
     }
     
     protected void initialize() {
     	
-    	switch ((int) orientationChooser.getSelected().hashCode()) {
+    	if ((int) defensePositionChooser.getSelected().hashCode() == 1 ||
+    			(int) defensePositionChooser.getSelected().hashCode() == 0) {
     	
-	    	case 0:
-	    		
-	    		orientation = true;
-	    	break;
+	    	switch ((int) orientationChooser.getSelected().hashCode()) {
 	    	
-	    	case 1:
-	    		
-	    		orientation = false;
-	    	break;
-	    	
-	    	default:
-	    		
-	    		orientation = true;
-	    	break;
+		    	case 0:
+		    		
+		    		orientation = true;
+		    	break;
+		    	
+		    	case 1:
+		    		
+		    		orientation = false;
+		    	break;
+		    	
+		    	default:
+		    		
+		    		orientation = true;
+		    	break;
+	    	}	
+	
+			switch ((int) autoChooser.getSelected().hashCode()) {
+			
+				case 0:
+					
+					new ReleaseIntake().start();
+				break;
+					
+				case 1:
+					
+					new DoNothing().start();
+				break;
+				
+				case 2:
+					
+					new ReachOuterWorks(orientation).start();
+					
+				break;
+			
+				case 3:
+					
+					new PickUpBoulder().start();
+				break;
+				
+				case 4:
+					
+					new CrossDefense(Utilities.Defense.LOW_BAR, orientation);
+				break;
+				
+				case 5:
+					
+					new CrossDefense(Utilities.Defense.ROUGH_TERRAIN, orientation);
+				break;
+				
+				case 6:
+					
+					new CrossDefense(Utilities.Defense.ROCK_WALL, orientation);
+				break;
+		
+				case 7:
+					
+					new CrossDefense(Utilities.Defense.MOAT, orientation);
+				break;
+					
+				case 8:
+					
+					new CrossDefense(Utilities.Defense.RAMPARTS, orientation);
+					
+				break;
+				
+				case 9:
+					
+					new SpyBoxLowGoal().start();
+				break;
+				
+				case 10:
+					
+					new LowBarLowGoal().start();
+				break;
+				
+				default: 
+					
+					new ReleaseIntake().start();
+					driveTrain.arcadeDrive(0.0, 0.0);
+				break;
+			}
+	    }
+    	else {
+    		
+    		new CrossNScore((int) autoChooser.getSelected().hashCode(), (int) defensePositionChooser.getSelected().hashCode());
     	}
-    	
-    	switch ((int) autoChooser.getSelected().hashCode()) {
-    	
-    		case 0:
-    			
-    			new ReleaseIntake().start();
-    		break;
-    			
-    		case 1:
-    			
-    			new DoNothing().start();
-    		break;
-    		
-    		case 2:
-    			
-    			new ReachOuterWorks(orientation).start();
-    			
-    		break;
-    	
-    		case 3:
-    			
-    			new PickUpBoulder().start();
-    		break;
-    		
-    		case 4:
-    			
-    			new CrossDefense(Utilities.Defense.LOW_BAR, orientation);
-    		break;
-    		
-    		case 5:
-    			
-    			new CrossDefense(Utilities.Defense.ROUGH_TERRAIN, orientation);
-    		break;
-    		
-    		case 6:
-    			
-    			new CrossDefense(Utilities.Defense.ROCK_WALL, orientation);
-    		break;
-
-    		case 7:
-    			
-    			new CrossDefense(Utilities.Defense.MOAT, orientation);
-    		break;
-    			
-    		case 8:
-    			
-    			new CrossDefense(Utilities.Defense.RAMPARTS, orientation);
-    			
-    		break;
-    		
-    		case 9:
-    			
-    			new SpyBoxLowGoal().start();
-    		break;
-    		
-    		case 10:
-    			
-    			new LowBarLowGoal().start();
-    		break;
-    		
-    		default: 
-    			
-    			new ReleaseIntake().start();
-    			driveTrain.arcadeDrive(0.0, 0.0);
-    		break;
-    	}
-    	
     }
     
     protected void execute() {
