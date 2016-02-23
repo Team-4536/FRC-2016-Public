@@ -2,13 +2,12 @@
 package org.usfirst.frc.team4536.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+
 import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.commands.*;
-import org.usfirst.frc.team4536.robot.commands.DriveIntakeArm;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,6 +30,7 @@ public class Robot extends IterativeRobot {
     Command flipRelay;
     Command safeDriveScissorLift;
     Command startIntakeRelay;
+    Command updateDriveTrain;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -46,6 +46,7 @@ public class Robot extends IterativeRobot {
         driveAccelLimited = new DriveAccelLimited();
         flipRelay = new FlipScissorRelay();
         safeDriveScissorLift = new SafeDriveScissorLift();
+        updateDriveTrain = new UpdateDriveTrain();
         
         OI.buttonHandling();
         startIntakeRelay = new StartIntakeRelay();
@@ -89,9 +90,11 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
+    	
         Scheduler.getInstance().run();
         Utilities.updateCycleTime();
         Constants.updateVariables();
+        
     }
 
     public void teleopInit() {
@@ -129,7 +132,6 @@ public class Robot extends IterativeRobot {
         }
         
         Utilities.startTimer();
-        
         
     }
 

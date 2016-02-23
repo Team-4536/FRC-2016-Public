@@ -57,7 +57,7 @@ public class OI {
 		turnTest.whenPressed(new TurnTo( 90, 30));
 		deployScissors.whenPressed(new StartScissorRelay());
 		
-		driveTo.whenPressed(new DriveToDistance());
+		driveTo.whenPressed(new RefinedDriveTo());
 		
 		/*------------------Canceling actions--------------*/
 		
