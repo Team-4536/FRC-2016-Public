@@ -24,10 +24,10 @@ public class Constants {
 	
 	public static final double TRAPEZOID_FORWARD_PROPORTIONALITY = 0.07; // units of throttle per inch
 	public static final double TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY = -0.03; // Units of throttle per degree
-	public static final double TRAPEZOID_PROFILE_TIMEOUT_OFFSET = 1.5; // In seconds. Increases the timeout which is timeNeeded by this offset.
-	public static final double TRAPEZOID_DISTANCE_THRESHOLD = 1.0; // In inches
+	public static final double TRAPEZOID_PROFILE_TIMEOUT_OFFSET = 1.0; // In seconds. Increases the timeout which is timeNeeded by this offset.
+	public static final double TRAPEZOID_DISTANCE_THRESHOLD = 2.0; // In inches
 	public static final double TRAPEZOID_SPEED_THRESHOLD = 1.0; // In inches per second
-	public static final double TRAPEZOID_ANGLE_THRESHOLD = 1.0; // In degrees
+	public static final double TRAPEZOID_ANGLE_THRESHOLD = 2.0; // In degrees
 	public static final double TRAPEZOID_ANGULAR_SPEED_THRESHOLD = 1.0; // In degrees per second
 	public static final double TRAPEZOID_DEFAULT_SPEED = 10; // feet per second
 	public static final double TRAPEZOID_DEFAULT_ACCELERATION = 4; // feet per second squared
@@ -35,9 +35,9 @@ public class Constants {
 	
 	//Turning Trapezoid
 	public static final double TURNING_TRAPEOID_GYRO_PROPORTIONALITY = 0.04; // Throttle per degree
-	public static final double TURNING_TRAPEZOID_TIMEOUT_OFFSET = 1.5; // in seconds, added to the base timeout time which is the time needed
-	public static final double TURNING_TRAPEZOID_ANGLE_THRESHOLD = 1; // in degrees
-	public static final double TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD = 1; // in degrees per second
+	public static final double TURNING_TRAPEZOID_TIMEOUT_OFFSET = 1.0; // in seconds, added to the base timeout time which is the time needed
+	public static final double TURNING_TRAPEZOID_ANGLE_THRESHOLD = 2.0; // in degrees
+	public static final double TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD = 1.0; // in degrees per second
 	public static final double TURNING_TRAPEZOID_DEFAULT_ANGULAR_SPEED = 200; // in degrees per second
 	public static final double TURNING_TRAPEZOID_DEFAULT_ANGULAR_ACCELERATION = 90; // in degrees per second squared
 	
