@@ -32,8 +32,8 @@ public class DriveTrain extends Subsystem {
 	double leftDist; //This is in inches
 	double prevNavXYaw;
 	
-	double b1, b2, b3, b4, b5; //These are for the previous values of the back ultrasonic
-	double f1, f2, f3, f4, f5; //These are for the previous values of the front ultrasonic
+	double b1, b2, b3, b4, b5, b6, b7, b8; //These are for the previous values of the back ultrasonic
+	double f1, f2, f3, f4, f5, f6, f7, f8; //These are for the previous values of the front ultrasonic
 	
 	/**
 	 * @author Noah
@@ -263,7 +263,7 @@ public class DriveTrain extends Subsystem {
 	 * @return The distance in front of the robot in feet
 	 */
 	public double getFrontDist() {
-		correctedFrontDist = (f1 + f2 + f3 + f4 + f5) / 5;
+		correctedFrontDist = (f1 + f2 + f3 + f4 + f5 + f6 + f7 + f8) / 8;
 		return correctedFrontDist;
 	}
 	
@@ -281,7 +281,7 @@ public class DriveTrain extends Subsystem {
 	 * @return The distance behind the robot in feet
 	 */
 	public double getBackDist() {
-		correctedBackDist = (b1 + b2 + b3 + b4 + b5) / 5;
+		correctedBackDist = (b1 + b2 + b3 + b4 + b5 + b6 + b7 + b8) / 8;
 		return correctedBackDist;
 	}
 	
@@ -308,12 +308,18 @@ public class DriveTrain extends Subsystem {
 	 * Updates the objects on the drive train
 	 */
 	public void update() {
+		f8 = f7;
+		f7 = f6;
+		f6 = f5;
 		f5 = f4;
 		f4 = f3;
 		f3 = f2;
 		f2 = f1;
 		f1 = updateFrontDist();
 		
+		b8 = b7;
+		b7 = b6;
+		b6 = b5;
 		b5 = b4;
 		b4 = b3;
 		b3 = b2;

@@ -46,6 +46,7 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putNumber("Intake IR Value", intake.getdistance());
 		
 		SmartDashboard.putNumber("get back dist", GetBackDistance.dist);
+		SmartDashboard.putNumber("Back ultra basic value", driveTrain.updateBackDist());
 		
 		/*-----Display NavX Values-----*/
 		

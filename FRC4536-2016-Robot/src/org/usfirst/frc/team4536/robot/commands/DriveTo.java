@@ -1,7 +1,8 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 /**
- *
+ * @author Noah
+ * Only works within 4 to 5 inches
  */
 public class DriveTo extends CommandBase {
 	

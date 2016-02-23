@@ -92,7 +92,7 @@ public class Constants {
 	
 	/*-----------------------------------Sensor Constants-------------------------------*/
 	
-	public static final double MAX_ULTRA_CONVERSION = 92.0;
+	public static final double MAX_ULTRA_CONVERSION = 95.238;
 	
 	/*-----Access Values-----*/
 	/*@author Liam
