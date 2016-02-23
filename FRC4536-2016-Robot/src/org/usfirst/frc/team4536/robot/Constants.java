@@ -82,10 +82,10 @@ public class Constants {
 	public static final double CROSS_ROUGHTERRAIN_DISTANCE = 13; //Feet
 	public static final double CROSS_ROUGHTERRAIN_VELOCITY = 3.0; //Feet per second
 	public static final double CROSS_ROUGHTERRAIN_ACCEL_LIMIT = 3.0; // Feet per second squared
-	
+
 	public static final double CROSS_RAMPARTS_DISTANCE = 15.0; //Feet
-	public static final double CROSS_RAMPARTS_VELOCITY = 5.0; //Feet per second
-	public static final double CROSS_RAMPARTS_ACCEL_LIMIT = 3.0; // Feet per second squared
+	public static final double CROSS_RAMPARTS_VELOCITY = 7.0; //Feet per second
+	public static final double CROSS_RAMPARTS_ACCEL_LIMIT = 5.0; // Feet per second squared
 	public static final double CROSS_RAMPARTS_GYRO_PROPORTIONALITY = -0.05;
 	
 	public static final double CROSS_MOAT_DISTANCE = 16.0; //Feet
