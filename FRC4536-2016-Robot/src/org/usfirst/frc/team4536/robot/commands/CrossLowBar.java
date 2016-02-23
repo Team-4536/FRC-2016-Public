@@ -11,7 +11,7 @@ public class CrossLowBar extends CommandGroup {
 	 */
     public  CrossLowBar(boolean forward) {
     	
-    	addSequential(new ReleaseIntake());
+    	addParallel(new ReleaseIntake());
     	
 		DriveTrapezoidProfile crossLowBar;
 		
