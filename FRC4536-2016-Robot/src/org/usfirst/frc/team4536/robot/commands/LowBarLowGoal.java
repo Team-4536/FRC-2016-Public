@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4536.robot.commands;
 
+import org.usfirst.frc.team4536.robot.Constants;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -12,9 +14,9 @@ public class LowBarLowGoal extends CommandGroup {
     	
     	addSequential(new CrossLowBar());
     	addSequential(new TurnTrapezoidProfile(10));
-    	addSequential(new DriveTrapezoidProfile(7));
-    	addSequential(new TurnTrapezoidProfile(50));
-    	addSequential(new DriveTrapezoidProfile(5));
+    	addSequential(new DriveTrapezoidProfile(Constants.variable1)); // 7
+    	addSequential(new TurnTrapezoidProfile(Constants.variable3)); // 50
+    	addSequential(new DriveTrapezoidProfile(Constants.variable2)); // 5
     	addSequential(new EjectBoulderAccelLimited());
     }
 }
