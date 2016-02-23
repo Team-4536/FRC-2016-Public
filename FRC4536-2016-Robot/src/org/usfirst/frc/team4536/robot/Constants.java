@@ -92,6 +92,28 @@ public class Constants {
 	public static final double CROSS_MOAT_VELOCITY = 8.0; //Feet per second
 	public static final double CROSS_MOAT_ACCEL_LIMIT = 6.0; // Feet per second squared
 	
+	/*---------------------------------------Defense Alignment Positions----------------*/
+	
+	//Defense 2
+	public static final double DEFENSE_ALIGNMENT2_ANGLE = 10.0;
+	public static final double DEFENSE_ALIGNMENT2_DISTANCE = -4.0;
+	public static final boolean DEFENSE_ALIGNMENT2_TURN = false;
+	
+	//Defense 3
+	public static final double DEFENSE_ALIGNMENT3_ANGLE = -30.0;
+	public static final double DEFENSE_ALIGNMENT3_DISTANCE = -6.0;
+	public static final boolean DEFENSE_ALIGNMENT3_TURN = false;
+	
+	//Defense 4
+	public static final double DEFENSE_ALIGNMENT4_ANGLE = 55.0;
+	public static final double DEFENSE_ALIGNMENT4_DISTANCE = -7.5;
+	public static final boolean DEFENSE_ALIGNMENT4_TURN = true;
+	
+	//Defense 5
+	public static final double DEFENSE_ALIGNMENT5_ANGLE = 10.0;
+	public static final double DEFENSE_ALIGNMENT5_DISTANCE = -5.0;
+	public static final boolean DEFENSE_ALIGNMENT5_TURN = true;
+	
 	/*---------------------------------------Intake-------------------------------------*/
 	
 	public static final double INTAKE_SPEED = 1.0; // Throttle value; full speed in
