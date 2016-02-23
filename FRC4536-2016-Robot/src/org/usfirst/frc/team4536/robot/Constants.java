@@ -60,6 +60,7 @@ public class Constants {
 	
 	public static final double REACH_DEFENSE_TIME_OUT = 0.9; // In seconds
 	public static final double PICK_UP_BALL_TIME_OUT = 0.1; // In seconds
+	
 	public static final double CROSS_LOWBAR_EXTRA_TIME = 1.0; //In seconds
 	public static final double CROSS_ROCKWALL_EXTRA_TIME = 2.0; //In seconds
 	public static final double CROSS_MOAT_EXTRA_TIME = 4.0;
@@ -71,8 +72,8 @@ public class Constants {
 	public static final double REACH_DEFENSE_ACCELERATION = 2.0; // Feet per second squared
 	
 	public static final double CROSS_LOWBAR_DISTANCE = 13.0; //Feet
-	public static final double CROSS_LOWBAR_VELOCITY = 3.0; //Feet per second
-	public static final double CROSS_LOWBAR_ACCEL_LIMIT = 3.0; // Feet per second squared
+	public static final double CROSS_LOWBAR_VELOCITY = 5.0; //Feet per second
+	public static final double CROSS_LOWBAR_ACCEL_LIMIT = 4.0; // Feet per second squared
 	
 	public static final double CROSS_ROCKWALL_DISTANCE = 12.0; //Feet
 	public static final double CROSS_ROCKWALL_VELOCITY = 5.0; //Feet per second
