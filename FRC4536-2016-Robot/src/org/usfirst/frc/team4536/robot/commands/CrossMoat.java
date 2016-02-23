@@ -24,6 +24,16 @@ public class CrossMoat extends CommandGroup {
         	double maxTime = crossMoat.getNeededTime() + Constants.CROSS_MOAT_EXTRA_TIME;
     		addSequential(crossMoat, maxTime);
     	}
+		
+		if (forward){
+        	crossMoat = new DriveTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3, -0.04);
+        	double maxTime = crossMoat.getNeededTime() + Constants.CROSS_MOAT_EXTRA_TIME;
+    		addSequential(crossMoat, maxTime);
+    	}else{
+        	crossMoat = new DriveTrapezoidProfile(-Constants.CROSS_MOAT_DISTANCE, Constants.CROSS_MOAT_VELOCITY, Constants.CROSS_MOAT_ACCEL_LIMIT, -0.04);
+        	double maxTime = crossMoat.getNeededTime() + Constants.CROSS_MOAT_EXTRA_TIME;
+    		addSequential(crossMoat, maxTime);
+    	}
     	
     }
     
