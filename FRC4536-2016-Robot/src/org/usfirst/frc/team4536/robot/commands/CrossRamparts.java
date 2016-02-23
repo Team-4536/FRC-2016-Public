@@ -10,13 +10,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class CrossRamparts extends CommandGroup {
     
-	public  CrossRamparts(boolean foward) {
+	public  CrossRamparts(boolean forward) {
 		
 			addSequential(new ReleaseIntake());
 	    	
 			DriveTrapezoidProfile crossRamparts;
 			
-	    	if (foward){
+	    	if (forward){
 	        	crossRamparts = new DriveTrapezoidProfile(Constants.CROSS_RAMPARTS_DISTANCE, Constants.CROSS_RAMPARTS_VELOCITY, Constants.CROSS_RAMPARTS_ACCEL_LIMIT, Constants.CROSS_RAMPARTS_GYRO_PROPORTIONALITY);
 	        	double maxTime = crossRamparts.getNeededTime() + 1;
 	    		addSequential(crossRamparts, maxTime);
