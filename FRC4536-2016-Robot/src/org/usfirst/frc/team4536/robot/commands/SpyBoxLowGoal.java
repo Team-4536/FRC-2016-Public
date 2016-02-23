@@ -10,7 +10,7 @@ public class SpyBoxLowGoal extends CommandGroup {
     public  SpyBoxLowGoal() {
     	
     	addParallel(new ReleaseIntake());
-    	addSequential(new DriveTrapezoidProfile(6.5, 10, 4));
+    	addSequential(new DriveTrapezoidProfile(4.5, 10, 4));
     	addSequential(new TurnTrapezoidProfile(-75, 150, 90));
     	addSequential(new DriveTrapezoidProfile(5.3, 10, 4));
     	addSequential(new EjectBoulderAccelLimited());
