@@ -137,7 +137,7 @@ public class AutoChooser extends CommandBase {
 				
 				case 9:
 					
-					new SpyBoxLowGoal().start();
+					new SpyBotLowGoal().start();
 				break;
 				
 				case 10:
