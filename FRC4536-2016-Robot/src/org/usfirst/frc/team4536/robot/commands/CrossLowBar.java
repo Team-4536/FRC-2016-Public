@@ -15,7 +15,7 @@ public class CrossLowBar extends CommandGroup {
     	
 		DriveTrapezoidProfile crossLowBar;
 		
-    	if (forward){
+		if (forward){
         	crossLowBar = new DriveTrapezoidProfile(Constants.CROSS_LOWBAR_DISTANCE, Constants.CROSS_LOWBAR_VELOCITY, Constants.CROSS_LOWBAR_ACCEL_LIMIT);
         	double maxTime = crossLowBar.getNeededTime() + Constants.CROSS_LOWBAR_EXTRA_TIME;
     		addSequential(crossLowBar, maxTime);
