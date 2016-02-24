@@ -163,6 +163,7 @@ public class Constants {
 	public static double variable4 = 0.0;
 	public static double variable5 = 0.0;
 	public static boolean variable6 = true;
+	public static int variable7 = 0;
 	
 	public static void displaySmartDashboard() {
 		
@@ -172,6 +173,7 @@ public class Constants {
 		SmartDashboard.putNumber("Variable 4: ", 0.0);
 		SmartDashboard.putNumber("Variable 5: ", 0.0);
 		SmartDashboard.putBoolean("Variable 6: ", true);
+		SmartDashboard.putNumber("Variable 7: ", 0);
 	}
 	
 	public static void updateVariables() {
@@ -182,5 +184,6 @@ public class Constants {
 		variable4 = SmartDashboard.getNumber("Variable 4: ");
 		variable5 = SmartDashboard.getNumber("Variable 5: ");
 		variable6 = SmartDashboard.getBoolean("Variable 6: ");
+		variable7 = SmartDashboard.getInt("Variable 7: ");
 	}
 }
