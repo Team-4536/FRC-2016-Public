@@ -12,11 +12,15 @@ public class FinishScoringRoutine extends CommandGroup {
       
     	if (right) {
     		
+    		//TODO remove debug printout
+        	System.out.println("Finish Scoring Routine Reached");
 	    	addSequential(new TurnTrapezoidProfile(120, 240, 180));
 	    	addSequential(new EjectBoulderAccelLimited());
     	}
     	else {
     		
+    		//TODO remove debug printout
+        	System.out.println("Finish Scoring Routine Reached");
     		addSequential(new TurnTrapezoidProfile(-120, 240, 180));
 	    	addSequential(new EjectBoulderAccelLimited());
     	}
