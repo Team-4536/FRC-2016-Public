@@ -5,5 +5,6 @@
 	<classpathentry kind="var" path="wpilib" sourcepath="wpilib.sources"/>
 	<classpathentry excluding="FRC4536-2016-Robot/src/|FRC4536-2016-Robot/src/" kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="FRC4536-2016-Robot/build/jars/navx_frc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
