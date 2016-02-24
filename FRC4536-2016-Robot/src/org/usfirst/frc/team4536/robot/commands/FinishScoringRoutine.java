@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4536.robot.commands;
 
+import org.usfirst.frc.team4536.robot.Constants;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -10,14 +12,14 @@ public class FinishScoringRoutine extends CommandGroup {
     
     public  FinishScoringRoutine(boolean right) {
       
-    	this(right, 120);
+    	this(right, Constants.DEFAULT_FINISHING_ANGLE);
     }
     
     public FinishScoringRoutine(boolean right, double angle) {
     	
     	if (right) {
-    		
-	    	addSequential(new TurnTrapezoidProfile(angle, 240, 180));
+    			
+			addSequential(new TurnTrapezoidProfile(angle, 240, 180));
 	    	addSequential(new EjectBoulderAccelLimited());
     	}
     	else {
