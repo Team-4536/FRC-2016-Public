@@ -12,7 +12,7 @@ public class CrossRamparts extends CommandGroup {
     
 	public  CrossRamparts(boolean forward) {
 		
-			addSequential(new ReleaseIntake());
+			addParallel(new ReleaseIntake());
 	    	
 			DriveTrapezoidProfile crossRamparts;
 			

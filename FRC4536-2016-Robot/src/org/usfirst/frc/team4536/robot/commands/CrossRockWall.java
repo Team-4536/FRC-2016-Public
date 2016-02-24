@@ -12,7 +12,7 @@ public class CrossRockWall extends CommandGroup {
  	*/   
 	public  CrossRockWall(boolean forward) {
 		
-		addSequential(new ReleaseIntake());
+		addParallel(new ReleaseIntake());
     	
 		DriveTrapezoidProfile crossRockWall;
 		

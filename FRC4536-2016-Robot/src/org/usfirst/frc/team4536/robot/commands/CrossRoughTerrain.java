@@ -13,7 +13,7 @@ public class CrossRoughTerrain extends CommandGroup {
     
     public  CrossRoughTerrain(boolean forward) {
     	
-    	addSequential(new ReleaseIntake());
+    	addParallel(new ReleaseIntake());
     	
     	DriveTrapezoidProfile crossRoughTerrain;
     	
