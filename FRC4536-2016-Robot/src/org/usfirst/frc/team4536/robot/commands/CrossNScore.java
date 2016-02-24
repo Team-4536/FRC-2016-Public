@@ -15,40 +15,38 @@ public class CrossNScore extends CommandGroup {
     public  CrossNScore(int defense, int pos) {
     	
     	orientation = false;
+    	switch (defense) {
     	
-    	//TODO Remove Debug printout
-    	System.out.println("Cross and Score Entered.");
+    	case 5:
+    		
+	    	addSequential(new CrossRoughTerrain(orientation));
+	    	addSequential(new DefenseAlignmentPosition(pos));
     	
-		switch (defense) {
-		
-			case 5:
-				
-				addSequential(new CrossDefense(Utilities.Defense.ROUGH_TERRAIN, orientation));
-			break;
-			
-			case 6:
-				
-				addSequential(new CrossDefense(Utilities.Defense.ROCK_WALL, orientation));
-			break;
-	
-			case 7:
-				
-				addSequential(new CrossDefense(Utilities.Defense.MOAT, orientation));
-			break;
-				
-			case 8:
-				
-				addSequential(new CrossDefense(Utilities.Defense.RAMPARTS, orientation));
-				
-			break;
-			
-			default: 
-				
-				addSequential(new ReleaseIntake());
-			break;
-		}
-		//TODO Remove Debug printout
-		System.out.println("Post Defense Crossing Reached");
-		addSequential(new DefenseAlignmentPosition(pos));
+    	break;
+    	
+    	case 6:
+    		
+    		addSequential(new CrossRockWall(orientation));
+    		addSequential(new DefenseAlignmentPosition(pos));
+    	break;
+    	
+    	case 7:
+    		
+    		addSequential(new CrossMoat(orientation));
+	    	addSequential(new DefenseAlignmentPosition(pos));
+	    break;
+	    
+    	case 8:
+    		
+    		addSequential(new CrossRamparts(orientation));
+	    	addSequential(new DefenseAlignmentPosition(pos));
+	    break;
+    	
+    	default:
+    		
+    		addSequential(new DoNothing());
+    		
+    	break;
+    	}
     }
 }
