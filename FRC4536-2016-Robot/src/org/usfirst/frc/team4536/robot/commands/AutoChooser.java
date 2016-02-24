@@ -69,11 +69,7 @@ public class AutoChooser extends CommandBase {
     	
     	int pos = (int) defensePositionChooser.getSelected().hashCode();
     	
-    	if (pos == 1 ||
-    			pos == 0) {
-    		
-    		//TODO Remove Debug printout
-    		System.out.println("If entered, CrossNScore not reached.");
+    	if (pos == 1 || pos == 0) {
     	
 	    	switch ((int) orientationChooser.getSelected().hashCode()) {
 	    	
