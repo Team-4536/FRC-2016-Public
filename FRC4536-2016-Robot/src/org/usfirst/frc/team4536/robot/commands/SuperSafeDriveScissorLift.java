@@ -31,7 +31,7 @@ public class SuperSafeDriveScissorLift extends CommandBase {
 
   //The teleop time (120 seconds) minus the time we have available to scale
   //this keeps us from violating the rules about extending before the end
-  if((Utilities.getTime()>120-Constants.SCALE_TIME_LIMIT) || manualOverride) {
+  if((Utilities.getTime()>135-Constants.SCALE_TIME_LIMIT) || manualOverride) {
    scissorLift.safeDrive(Utilities.deadZone(OI.tertiaryStick.getY(), Constants.SCISSOR_DEAD_ZONE));
   } else {
    System.out.println("Hey! The match is still going! No climbing yet!");
