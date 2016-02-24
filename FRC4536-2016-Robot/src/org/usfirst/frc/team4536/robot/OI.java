@@ -50,8 +50,6 @@ public class OI {
 		hold.whenPressed(new HoldBoulderAccelLimited());
 		autoIntake.whenPressed(new AutoIntake());
 		
-		turnTest.whenPressed(new TeleopTurn( 90));
-		
 		/*------------------Canceling actions--------------*/
 		
 		intake.whenReleased(new DriveIntakeAccelLimited());
