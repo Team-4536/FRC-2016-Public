@@ -4,7 +4,7 @@ import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.RobotMap;
 import org.usfirst.frc.team4536.robot.Utilities;
 import edu.wpi.first.wpilibj.Relay;
-import org.usfirst.frc.team4536.robot.commands.SafeDriveScissorLift;
+import org.usfirst.frc.team4536.robot.commands.SuperSafeDriveScissorLift;
 
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -20,7 +20,7 @@ public class ScissorLift extends Subsystem {
 	private double oldThrottle;
 	
 	public void initDefaultCommand() {
-    	setDefaultCommand(new SafeDriveScissorLift());
+    	setDefaultCommand(new SuperSafeDriveScissorLift());
     }
 	
 	public ScissorLift(int motorChannel){

@@ -29,7 +29,6 @@ public class Robot extends IterativeRobot {
     Command driveAccelLimited;
     Command intakeAccelLimited;
     Command flipRelay;
-    Command safeDriveScissorLift;
     Command superSafeDriveScissorLift;
     Command startIntakeRelay;
 
@@ -45,7 +44,6 @@ public class Robot extends IterativeRobot {
         smartDashboardCommand = new SmartDashboardCommand();
         driveAccelLimited = new DriveAccelLimited();
         flipRelay = new FlipScissorRelay();
-        safeDriveScissorLift = new SafeDriveScissorLift();
         superSafeDriveScissorLift = new SuperSafeDriveScissorLift();
         
         OI.buttonHandling();

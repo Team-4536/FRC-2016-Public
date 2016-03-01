@@ -20,6 +20,7 @@ public class SuperSafeDriveScissorLift extends CommandBase {
     protected void initialize() {
      
      scissorLift.resetValues();
+     manualOverride = false;
     }
     
     protected void execute() {
