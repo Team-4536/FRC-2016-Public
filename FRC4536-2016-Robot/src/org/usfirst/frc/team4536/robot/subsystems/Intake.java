@@ -66,42 +66,6 @@ public class Intake extends Subsystem {
     	setThrottle(throttle);
     }
 
-	/**
-	 * @author Sheila
-	 * 
-	 * sets the relay to the 'on' position (releases the intake)
-	 */
-	public void relayOn() {
-		
-		relay.set(Relay.Value.kOn);
-	}
-	
-	/**
-	 * @author Sheila
-	 * 
-	 * sets the relay to the 'off' position (holds the intake up... or down?)
-	 */
-	public void relayOff() {
-		
-		relay.set(Relay.Value.kOff);
-	}
-	
-	/**
-	 * @author Sheila
-	 * 
-	 * checks whether the relay is off or on, and switches it
-	 */
-	public void relayFlip() {
-		
-		if (relay.get() == Relay.Value.kOff){
-			
-			relayOn();
-		} 
-		else {
-			
-			relayOff();
-		}
-	}
 	
 	/**
 	 * @author Liam
