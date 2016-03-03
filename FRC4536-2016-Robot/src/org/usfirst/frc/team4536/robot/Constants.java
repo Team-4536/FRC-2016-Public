@@ -72,6 +72,12 @@ public class Constants {
 	public static final double LOW_BAR_LOW_GOAL_FIRST_LEG_ANGLE = 10.0; // in degrees
 	public static final double LOW_BAR_LOW_GOAL_SECOND_LEG_ANGLE = 50.0; // in degrees
 	
+	public static final double SPY_BOT_LOW_GOAL_FIRST_LEG_DISTANCE = 4.5; // in feet 
+	public static final double SPY_BOT_LOW_GOAL_SECOND_LEG_DISTANCE = 5.3; // in feet
+	public static final double SPY_BOT_LOW_GOAL_TURN_ANGLE = -75; // in degrees
+	public static final double SPY_BOT_LOW_GOAL_MAX_ANGULAR_SPEED = 150; // in degrees per second
+	public static final double SPY_BOT_LOW_GOAL_MAX_ANGULAR_ACCELERATION = 90; // in degrees per second squared
+	
 	public static final double REACH_DEFENSE_DISTANCE = 3.0; //Feet
 	public static final double REACH_DEFENSE_VELOCITY = 1.0; //Feet per second
 	public static final double REACH_DEFENSE_ACCELERATION = 2.0; // Feet per second squared
