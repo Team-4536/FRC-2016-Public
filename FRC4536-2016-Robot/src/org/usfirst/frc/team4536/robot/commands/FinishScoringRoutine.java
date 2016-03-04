@@ -19,12 +19,13 @@ public class FinishScoringRoutine extends CommandGroup {
     	
     	if (right) {
     			
-			addSequential(new TurnTrapezoidProfile(angle, 240, 180));
+			addSequential(new TurnTrapezoidProfile(angle, Constants.TURNING_TRAPEZOID_DEFAULT_ANGULAR_SPEED, Constants.TURNING_TRAPEZOID_DEFAULT_ANGULAR_ACCELERATION));
+			addSequential(new DriveTrapezoidProfile(Constants.RIGHT_SIDE_FINISHING_SCORING_DISTANCE));
 	    	addSequential(new EjectBoulderAccelLimited());
     	}
     	else {
     		
-    		addSequential(new TurnTrapezoidProfile(-angle, 240, 180));
+    		addSequential(new TurnTrapezoidProfile(-angle, Constants.TURNING_TRAPEZOID_DEFAULT_ANGULAR_SPEED, Constants.TURNING_TRAPEZOID_DEFAULT_ANGULAR_ACCELERATION));
 	    	addSequential(new EjectBoulderAccelLimited());
     	}
     }
