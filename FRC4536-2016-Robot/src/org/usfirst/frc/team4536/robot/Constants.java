@@ -129,6 +129,9 @@ public class Constants {
 	public static final boolean DEFENSE_ALIGNMENT5_TURN = true;
 	public static final boolean DEFENSE_ALIGNMENT5_ULTRA = false;
 	
+	//Right Side Finishing
+	public static final double RIGHT_SIDE_FINISHING_SCORING_DISTANCE = 1.0; // in feet
+	
 	//Finishing Routine
 	public static final double DEFAULT_FINISHING_ANGLE = 120;
 	
