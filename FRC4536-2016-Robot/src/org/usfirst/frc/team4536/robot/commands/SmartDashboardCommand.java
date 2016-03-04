@@ -51,8 +51,8 @@ public class SmartDashboardCommand extends CommandBase {
 		/*-----Display NavX Values-----*/
 		
 		SmartDashboard.putNumber("Yaw: ", driveTrain.getNavXYaw());
-    	SmartDashboard.putNumber("Pitch: ", driveTrain.getNavXPitch());
-    	SmartDashboard.putNumber("Roll: ", driveTrain.getNavXRoll());
+    	SmartDashboard.putNumber("Pitch: ", driveTrain.getNavXRoll()); // This depends on the orientation of the RoboRIO
+    	SmartDashboard.putNumber("Roll: ", driveTrain.getNavXPitch()); // This depends on the orientation of the RoboRIO
     	SmartDashboard.putNumber("getAngle(): ", driveTrain.getAngle());
 		
 		/*-----Running Commands on Subsystems-----*/
