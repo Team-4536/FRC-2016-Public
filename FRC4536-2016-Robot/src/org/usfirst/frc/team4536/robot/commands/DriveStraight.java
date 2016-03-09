@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveStraight extends CommandBase {
 	
 	private double startingAngle;
-	private double offset;
 
     public DriveStraight() {
         
@@ -21,7 +20,7 @@ public class DriveStraight extends CommandBase {
     
     public DriveStraight(double offset) {
     	
-    	this.offset = offset;
+    	startingAngle = offset;
     }
 
     // Called just before this Command runs the first time
