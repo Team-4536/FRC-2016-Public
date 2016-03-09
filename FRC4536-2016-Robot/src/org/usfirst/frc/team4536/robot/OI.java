@@ -27,6 +27,7 @@ public class OI {
 	public static Button autoIntake;
 	public static Button turnTest;
 	public static Button deployScissors;
+	public static Button driveStraight;
 	
 	/**
 	 * @author Liam
@@ -42,6 +43,7 @@ public class OI {
 		
 		turnTest = new JoystickButton(mainStick, 12);
 		deployScissors = new JoystickButton(tertiaryStick, 1);
+		driveStraight = new JoystickButton(mainStick, 1);
 		
 		/*-------------------Actions------------------------*/
 
@@ -49,6 +51,7 @@ public class OI {
 		eject.whenPressed(new EjectBoulderAccelLimited());
 		hold.whenPressed(new HoldBoulderAccelLimited());
 		autoIntake.whenPressed(new AutoIntake());
+		driveStraight.whenPressed(new DriveStraight());
 		
 		/*------------------Canceling actions--------------*/
 		
@@ -56,5 +59,6 @@ public class OI {
 		eject.whenReleased(new DriveIntakeAccelLimited());
 		hold.whenReleased(new DriveIntakeAccelLimited());
 		autoIntake.whenReleased(new DriveIntakeAccelLimited());
+		driveStraight.whenReleased(new DriveAccelLimited());
 	}
 }
