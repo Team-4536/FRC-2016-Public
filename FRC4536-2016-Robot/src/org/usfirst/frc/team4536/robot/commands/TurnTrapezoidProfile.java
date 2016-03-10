@@ -74,7 +74,7 @@ public class TurnTrapezoidProfile extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	driveTrain.resetNavX(0.0);
+    	driveTrain.resetNavX(driveTrain.getAngle());
     	
     	timer.reset();
     	timer.start();
