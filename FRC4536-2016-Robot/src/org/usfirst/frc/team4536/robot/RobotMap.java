@@ -24,7 +24,20 @@ public class RobotMap {
     public static final int MAIN_STICK = 0; // (Also the left stick for tank drive)
     public static final int SECONDARY_STICK = 1; // (Also the right stick for tank drive)
     public static final int TERTIARY_STICK = 2; //Scissor Lift
-
+    
+    /*-------------------------------------Joystick Buttons---------------------------------*/
+    public static final int INTAKE_BUTTON_NUMBER = 5;
+    public static final int EJECT_BUTTON_NUMBER = 6;
+    public static final int HOLD_BUTTON_NUMBER = 7;
+    public static final int AUTO_INTAKE_BUTTON_NUMBER = 4;
+    public static final int PLOP_BUTTON_NUMBER = 12;
+    public static final int DEPLOY_SCISSORS_BUTTON_NUMBER = 1;
+    public static final int HOLD_AT_0_DEGREES = 1;
+    public static final int HOLD_AT_180_DEGREES = 2;    
+    public static final int HOLD_AT_ANGLE_FOR_LEFT_GOAL = 5;
+    public static final int HOLD_AT_ANGLE_FOR_RIGHT_GOAL = 6;
+    
+    
 	/*-------------------------------------Relay Solenoid-----------------*/
 	
 	public static final int SCISSOR_RELAY = 0; //these go in the relay port, 
