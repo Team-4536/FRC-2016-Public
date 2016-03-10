@@ -12,27 +12,33 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveStraight extends CommandBase {
 	
 	private double startingAngle;
+	private boolean original = true;
 
     public DriveStraight() {
         
     	requires(driveTrain);
     }
     
-    public DriveStraight(double offset) {
+    public DriveStraight(double angle) {
     	
-    	startingAngle = offset;
+    	requires(driveTrain);
+    	original = false;
+    	startingAngle = angle;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	startingAngle = driveTrain.getNavXYaw();
+    	if (original) {
+    		
+    		startingAngle = driveTrain.getAngle();
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	driveTrain.arcadeDriveAccelLimit(Utilities.deadZone(OI.mainStick.getY(), Constants.DEAD_ZONE), Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY*(driveTrain.getNavXYaw()-startingAngle));
+    	driveTrain.arcadeDriveAccelLimit(Utilities.deadZone(OI.mainStick.getY(), Constants.DEAD_ZONE), Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY*-(Utilities.angleDifference(driveTrain.getAngle(), startingAngle)));
     }
 
     // Make this return true when this Command no longer needs to run execute()

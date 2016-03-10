@@ -11,7 +11,6 @@ import org.usfirst.frc.team4536.robot.commands.*;
  */
 public class OI {
 	
-	
 	/*----------------Initializations------------------*/
 	
 	//Joysticks
@@ -51,7 +50,7 @@ public class OI {
 		eject.whenPressed(new EjectBoulderAccelLimited());
 		hold.whenPressed(new HoldBoulderAccelLimited());
 		autoIntake.whenPressed(new AutoIntake());
-		driveStraight.whenPressed(new DriveStraight());
+		driveStraight.whenPressed(new DriveStraight(Constants.variable1));
 		
 		/*------------------Canceling actions--------------*/
 		
