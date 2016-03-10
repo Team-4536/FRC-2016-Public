@@ -16,7 +16,7 @@ import org.usfirst.frc.team4536.robot.commands.*;
  *auto chooser chooses the autonomous mode which will be executed for the duration of the match.
  *orientation chooses whether the robot goes over the defense forwards or backwards.
  */
-public class AutoChooser extends CommandBase {
+public class AutoChooser extends CommandGroup {
 	
 	SendableChooser autoChooser;
 	SendableChooser orientationChooser; //Picks whether the robot is going forward or backward over a defense
@@ -93,71 +93,80 @@ public class AutoChooser extends CommandBase {
 			
 				case 0:
 					
-					new ReleaseIntake().start();
+					addSequential(new ReleaseIntake());
+					
 				break;
 					
 				case 1:
 					
-					new DoNothing().start();
+					addSequential(new DoNothing());
+					
 				break;
 				
 				case 2:
 					
-					new ReachOuterWorks(orientation).start();
+					addSequential(new ReachOuterWorks(orientation));
 					
 				break;
 			
 				case 3:
 					
-					new PickUpBoulder().start();
+					addSequential(new PickUpBoulder());
+					
 				break;
 				
 				case 4:
 					
-					new CrossDefense(Utilities.Defense.LOW_BAR, orientation);
+					addSequential(new CrossDefense(Utilities.Defense.LOW_BAR, orientation));
+					
 				break;
 				
 				case 5:
 					
-					new CrossDefense(Utilities.Defense.ROUGH_TERRAIN, orientation);
+					addSequential(new CrossDefense(Utilities.Defense.ROUGH_TERRAIN, orientation));
+					
 				break;
 				
 				case 6:
 					
-					new CrossDefense(Utilities.Defense.ROCK_WALL, orientation);
+					addSequential(new CrossDefense(Utilities.Defense.ROCK_WALL, orientation));
+					
 				break;
 		
 				case 7:
 					
-					new CrossDefense(Utilities.Defense.MOAT, orientation);
+					addSequential(new CrossDefense(Utilities.Defense.MOAT, orientation));
+					
 				break;
 					
 				case 8:
 					
-					new CrossDefense(Utilities.Defense.RAMPARTS, orientation);
+					addSequential(new CrossDefense(Utilities.Defense.RAMPARTS, orientation));
 					
 				break;
 				
 				case 9:
 					
-					new SpyBotLowGoal().start();
+					addSequential(new SpyBotLowGoal());
+					
 				break;
 				
 				case 10:
 					
-					new LowBarLowGoal().start();
+					addSequential(new LowBarLowGoal());
+					
 				break;
 				
 				default: 
 					
-					new ReleaseIntake().start();
-					driveTrain.arcadeDrive(0.0, 0.0);
+					addSequential(new ReleaseIntake());
+				
 				break;
 			}
 	    }
     	else {
     		
-    		new CrossNScore(defense, pos).start();
+    		addSequential(new CrossNScore(defense, pos));
     	}
     }
     
