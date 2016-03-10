@@ -17,22 +17,19 @@ public class DriveStraight extends CommandBase {
     public DriveStraight() {
         
     	requires(driveTrain);
+    	startingAngle = driveTrain.getAngle();
     }
     
     public DriveStraight(double angle) {
     	
     	requires(driveTrain);
-    	original = false;
     	startingAngle = angle;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	if (original) {
-    		
-    		startingAngle = driveTrain.getAngle();
-    	}
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run

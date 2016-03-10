@@ -50,7 +50,7 @@ public class OI {
 		eject.whenPressed(new EjectBoulderAccelLimited());
 		hold.whenPressed(new HoldBoulderAccelLimited());
 		autoIntake.whenPressed(new AutoIntake());
-		driveStraight.whenPressed(new DriveStraight(Constants.variable1));
+		driveStraight.whenPressed(new DriveStraight());
 		
 		/*------------------Canceling actions--------------*/
 		
