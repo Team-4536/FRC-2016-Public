@@ -34,6 +34,7 @@ public class SuperSafeDriveScissorLift extends CommandBase {
   if((Utilities.getTime()>135-Constants.SCALE_TIME_LIMIT) || manualOverride) {
    scissorLift.safeDrive(Utilities.deadZone(OI.tertiaryStick.getY(), Constants.SCISSOR_DEAD_ZONE));
   } else {
+	  scissorLift.safeDrive(0.1);
    System.out.println("Hey! The match is still going! No climbing yet!");
   }
  }
