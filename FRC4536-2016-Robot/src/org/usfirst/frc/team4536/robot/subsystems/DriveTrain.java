@@ -115,10 +115,10 @@ public class DriveTrain extends Subsystem {
      * @param turnThrottle - see arcadeDrive
      */
     public void arcadeDriveAccelLimit(double forwardThrottle, double turnThrottle) {
-    	System.out.println("Forward Throttle: "+ forwardThrottle);
+    	/*System.out.println("Forward Throttle: "+ forwardThrottle);
     	System.out.println("Old Forward Throttle: "+ oldForwardThrottle);
     	System.out.println("Turn Throttle: "+ turnThrottle);
-    	System.out.println("Old Turn Throttle: "+ oldTurnThrottle);
+    	System.out.println("Old Turn Throttle: "+ oldTurnThrottle);*/
     	forwardThrottle = Utilities.accelLimit(forwardThrottle, oldForwardThrottle, Constants.ACCEL_LIMIT_DRIVE);
     	turnThrottle = Utilities.accelLimit(turnThrottle, oldTurnThrottle, Constants.ACCEL_LIMIT_DRIVE);
 
@@ -264,7 +264,7 @@ public class DriveTrain extends Subsystem {
 	public void resetNavX(double yawOffset) {
 		
 		navX.reset();
-		addOffset(yawOffset);
+		setOffset(yawOffset);
 	}
 	
 	/**
@@ -283,8 +283,8 @@ public class DriveTrain extends Subsystem {
 	 * for setting the starting angle. It will add this number to the 
 	 * angle when you use getAngle().
 	 */
-	public void addOffset(double offset) {
-		this.offset += offset;
+	public void setOffset(double offset) {
+		this.offset = offset;
 	}
 	
 	/**
