@@ -29,9 +29,12 @@ public class DriveTrain extends Subsystem {
 	
 	/*---------Sensor Values---------*/
 	
-	double backDist, frontDist; //These are in feet
+	public double backDist, frontDist, correctedBackDist, correctedFrontDist; //These are in feet
 	double leftDist; //This is in inches
 	double prevNavXYaw;
+	
+	double b1, b2, b3, b4, b5, b6, b7, b8; //These are for the previous values of the back ultrasonic
+	double f1, f2, f3, f4, f5, f6, f7, f8; //These are for the previous values of the front ultrasonic
 	
 	/**
 	 * @author Noah
@@ -317,6 +320,15 @@ public class DriveTrain extends Subsystem {
 	 * @return The distance in front of the robot in feet
 	 */
 	public double getFrontDist() {
+		correctedFrontDist = (f1 + f2 + f3 + f4 + f5 + f6 + f7 + f8) / 8;
+		return correctedFrontDist;
+	}
+	
+	/**
+	 * @author Noah
+	 * @return Returns uncorrected back ultra distance
+	 */
+	public double updateFrontDist() {
 		frontDist = frontUltra.getValue() / Constants.MAX_ULTRA_CONVERSION;
 		return frontDist;
 	}
@@ -326,6 +338,15 @@ public class DriveTrain extends Subsystem {
 	 * @return The distance behind the robot in feet
 	 */
 	public double getBackDist() {
+		correctedBackDist = (b1 + b2 + b3 + b4 + b5 + b6 + b7 + b8) / 8;
+		return correctedBackDist;
+	}
+	
+	/**
+	 * @author Noah
+	 * @return Returns uncorrected back ultra distance
+	 */
+	public double updateBackDist() {
 		backDist = backUltra.getValue() / Constants.MAX_ULTRA_CONVERSION;
 		return backDist;
 	}
@@ -338,7 +359,31 @@ public class DriveTrain extends Subsystem {
 		leftDist = 21 - (10 * (leftIR.getVoltage()));
 		return leftDist;
 	}
-
+	
+	/**
+	 * @author Noah
+	 * Updates the objects on the drive train
+	 */
+	public void update() {
+		f8 = f7;
+		f7 = f6;
+		f6 = f5;
+		f5 = f4;
+		f4 = f3;
+		f3 = f2;
+		f2 = f1;
+		f1 = updateFrontDist();
+		
+		b8 = b7;
+		b7 = b6;
+		b6 = b5;
+		b5 = b4;
+		b4 = b3;
+		b3 = b2;
+		b2 = b1;
+		b1 = updateBackDist();
+	}
+	
 }
 
 
