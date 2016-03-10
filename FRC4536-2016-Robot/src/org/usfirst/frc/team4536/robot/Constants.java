@@ -87,8 +87,8 @@ public class Constants {
 	/*----------------------------------Auto Intake Constants----------------------------*/
 	
 	public static final int AUTO_INTAKE_TIMEOUT = 5;
-	public static final double INTAKE_DESIRED_DISTANCE = 2.5;
-	public static final double P_CONSTANT = 0.08;
+	public static final double INTAKE_DESIRED_DISTANCE = 3;
+	public static final double P_CONSTANT = 0.16;
 	
 	/*-----------------------------------Sensor Constants-------------------------------*/
 	
