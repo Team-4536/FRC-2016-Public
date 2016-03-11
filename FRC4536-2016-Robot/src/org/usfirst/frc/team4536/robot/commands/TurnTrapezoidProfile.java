@@ -15,6 +15,7 @@ public class TurnTrapezoidProfile extends CommandBase {
 	TurningTrapezoidProfile turnProfile;
 	private double proportionalityConstant;
 	private double angleDiff;
+	private double accumulatedError = 0.0; // The accumulated error over time
 	
 	/**
 	 * @author Liam
@@ -70,6 +71,19 @@ public class TurnTrapezoidProfile extends CommandBase {
     	
     	return turnProfile.timeNeeded();
     }
+    
+	/**
+	 * @author Liam
+	 * @return the accumulatedError
+	 */
+	public double getAccumulatedError() {
+		
+		double diff = -Utilities.angleDifference(driveTrain.getNavXYaw(), turnProfile.idealDistance(timer.get()));
+		
+		accumulatedError += diff * Utilities.getCycleTime();
+		
+		return accumulatedError;
+	}
 
     // Called just before this Command runs the first time
     protected void initialize() {
