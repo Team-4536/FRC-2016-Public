@@ -76,11 +76,13 @@ public class AutoChooser extends CommandBase {
 		    	case 0:
 		    		
 		    		orientation = true;
+		    		driveTrain.resetNavX(0.0);
 		    	break;
 		    	
 		    	case 1:
 		    		
 		    		orientation = false;
+		    		driveTrain.resetNavX(180.0);
 		    	break;
 		    	
 		    	default:
@@ -141,6 +143,7 @@ public class AutoChooser extends CommandBase {
 				case 9:
 					
 					new SpyBotLowGoal().start();
+					driveTrain.resetNavX(135.0);
 				break;
 				
 				case 10:
