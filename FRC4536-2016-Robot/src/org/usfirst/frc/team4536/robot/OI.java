@@ -26,7 +26,11 @@ public class OI {
 	public static Button autoIntake;
 	public static Button turnTest;
 	public static Button deployScissors;
-	public static Button driveStraight;
+	public static Button TurnNDriveCurrentAngle;
+	public static Button TurnNDrive0;
+	public static Button TurnNDrive180;
+	public static Button TurnNDriveRightGoal;
+	public static Button TurnNDriveLeftGoal;
 	
 	/**
 	 * @author Liam
@@ -40,9 +44,13 @@ public class OI {
 		autoIntake = new JoystickButton(secondaryStick, 4);
 		plop = new JoystickButton(secondaryStick, 12);
 		
-		turnTest = new JoystickButton(mainStick, 12);
 		deployScissors = new JoystickButton(tertiaryStick, 1);
-		driveStraight = new JoystickButton(mainStick, 1);
+		
+		TurnNDriveCurrentAngle = new JoystickButton(mainStick, RobotMap.HOLD_AT_CURRENT_ANGLE);
+		TurnNDrive0 = new JoystickButton(mainStick, RobotMap.HOLD_AT_0_DEGREES);
+		TurnNDrive180 = new JoystickButton(mainStick, RobotMap.HOLD_AT_180_DEGREES);
+		TurnNDriveRightGoal = new JoystickButton(mainStick, RobotMap.HOLD_AT_ANGLE_FOR_RIGHT_GOAL);
+		TurnNDriveLeftGoal = new JoystickButton(mainStick, RobotMap.HOLD_AT_ANGLE_FOR_LEFT_GOAL);
 		
 		/*-------------------Actions------------------------*/
 
@@ -50,7 +58,11 @@ public class OI {
 		eject.whenPressed(new EjectBoulderAccelLimited());
 		hold.whenPressed(new HoldBoulderAccelLimited());
 		autoIntake.whenPressed(new AutoIntake());
-		driveStraight.whenPressed(new DriveStraight());
+		TurnNDriveCurrentAngle.whenPressed(new TurnNDrive());
+		TurnNDrive0.whenPressed(new TurnNDrive(0));
+		TurnNDrive180.whenPressed(new TurnNDrive(180));
+		TurnNDriveRightGoal.whenPressed(new TurnNDrive(-60));
+		TurnNDriveLeftGoal.whenPressed(new TurnNDrive(60));
 		
 		/*------------------Canceling actions--------------*/
 		
@@ -58,6 +70,11 @@ public class OI {
 		eject.whenReleased(new DriveIntakeAccelLimited());
 		hold.whenReleased(new DriveIntakeAccelLimited());
 		autoIntake.whenReleased(new DriveIntakeAccelLimited());
-		driveStraight.whenReleased(new DriveAccelLimited());
+		
+		TurnNDriveCurrentAngle.whenReleased(new DriveAccelLimited());
+		TurnNDrive0.whenReleased(new DriveAccelLimited());
+		TurnNDrive180.whenReleased(new DriveAccelLimited());
+		TurnNDriveRightGoal.whenReleased(new DriveAccelLimited());
+		TurnNDriveLeftGoal.whenReleased(new DriveAccelLimited());
 	}
 }
