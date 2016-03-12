@@ -40,7 +40,7 @@ public class Constants {
 	public static final double TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD = 1.0; // in degrees per second
 	public static final double TURNING_TRAPEZOID_DEFAULT_ANGULAR_SPEED = 200; // in degrees per second
 	public static final double TURNING_TRAPEZOID_DEFAULT_ANGULAR_ACCELERATION = 90; // in degrees per second squared
-	
+	public static final double TURNING_TRAPEZOID_INTEGRAL = 0.001; // in units of throttle per degrees seconds
 	//Zenith
 	public static final double ZENITH_DRIVE_TRAIN_MAX_ANGULAR_VELOCITY = 400; // In degrees per second
 	public static final double ZENITH_FORWARD_STICTION = 0.00; // 0.04
