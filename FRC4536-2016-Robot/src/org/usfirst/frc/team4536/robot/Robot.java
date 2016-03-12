@@ -97,8 +97,6 @@ public class Robot extends IterativeRobot {
 
     public void teleopInit() {
     	
-    	CommandBase.driveTrain.resetNavX(0.0);
-    	
     	CommandBase.driveTrain.resetEncoders();
     	
     	CommandBase.driveTrain.resetAccelValues();
