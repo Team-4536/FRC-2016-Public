@@ -264,7 +264,7 @@ public class DriveTrain extends Subsystem {
 	public void resetNavX(double yawOffset) {
 		
 		navX.reset();
-		addOffset(yawOffset);
+		setOffset(yawOffset);
 	}
 	
 	/**
@@ -283,8 +283,8 @@ public class DriveTrain extends Subsystem {
 	 * for setting the starting angle. It will add this number to the 
 	 * angle when you use getAngle().
 	 */
-	public void addOffset(double offset) {
-		this.offset += offset;
+	public void setOffset(double offset) {
+		this.offset = offset;
 	}
 	
 	/**
