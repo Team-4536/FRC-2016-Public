@@ -15,8 +15,6 @@ public class TurnTrapezoidProfile extends CommandBase {
 	TurningTrapezoidProfile turnProfile;
 	private double proportionalityConstant;
 	private double angleDiff;
-	private double accumulatedError = 0.0; // The accumulated error over time
-	
 	/**
 	 * @author Liam
 	 * @param angle the angle desired to be traveled to
@@ -26,6 +24,8 @@ public class TurnTrapezoidProfile extends CommandBase {
 		
 		this(angle, Constants.TURNING_TRAPEZOID_DEFAULT_ANGULAR_SPEED, Constants.TURNING_TRAPEZOID_DEFAULT_ANGULAR_ACCELERATION);
 	}
+
+	private double accumulatedError = 0.0; // The accumulated error over time
 
 	/**
 	 * @author Liam
@@ -74,22 +74,31 @@ public class TurnTrapezoidProfile extends CommandBase {
     
 	/**
 	 * @author Liam
-	 * @return the accumulatedError
+	 * @return the accumulatedError in degree seconds
 	 */
 	public double getAccumulatedError() {
 		
-		double diff = -Utilities.angleDifference(driveTrain.getNavXYaw(), turnProfile.idealDistance(timer.get()));
-		
-		accumulatedError += diff * Utilities.getCycleTime();
+		accumulatedError += getError() * Utilities.getCycleTime();
 		
 		return accumulatedError;
+	}
+	
+	/**
+	 * @author Liam
+	 * @return the error from the most recent cycle of code in degree seconds
+	 */
+	public double getError() {
+		
+		double diff = -Utilities.angleDifference(driveTrain.getNavXYaw(), turnProfile.idealDistance(timer.get()));
+		
+		return diff;
 	}
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	
     	driveTrain.resetNavX(driveTrain.getAngle());
-    	
+    	accumulatedError = 0.0;
     	timer.reset();
     	timer.start();
     	setTimeout(turnProfile.timeNeeded() + Constants.TURNING_TRAPEZOID_TIMEOUT_OFFSET);
@@ -100,7 +109,8 @@ public class TurnTrapezoidProfile extends CommandBase {
     	
     	double diff = -Utilities.angleDifference(driveTrain.getNavXYaw(), turnProfile.idealDistance(timer.get()));
     	
-    	double throttle = turnProfile.throttle(timer.get()) - proportionalityConstant * diff; 
+    	double throttle = turnProfile.throttle(timer.get()) - proportionalityConstant * diff - Constants.variable4 * getAccumulatedError(); 
+    	//double throttle = turnProfile.throttle(timer.get()) - Constants.variable4 * getAccumulatedError(); 
     	
     	driveTrain.arcadeDrive(0.0, throttle);
     }
