@@ -15,6 +15,8 @@ public class TurnTrapezoidProfile extends CommandBase {
 	TurningTrapezoidProfile turnProfile;
 	private double proportionalityConstant;
 	private double angleDiff;
+	private double accumulatedError = 0.0; // The accumulated error over time
+	
 	/**
 	 * @author Liam
 	 * @param angle the angle desired to be traveled to
@@ -24,8 +26,6 @@ public class TurnTrapezoidProfile extends CommandBase {
 		
 		this(angle, Constants.TURNING_TRAPEZOID_DEFAULT_ANGULAR_SPEED, Constants.TURNING_TRAPEZOID_DEFAULT_ANGULAR_ACCELERATION);
 	}
-
-	private double accumulatedError = 0.0; // The accumulated error over time
 
 	/**
 	 * @author Liam
