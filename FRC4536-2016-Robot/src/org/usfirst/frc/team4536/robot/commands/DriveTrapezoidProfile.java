@@ -12,8 +12,10 @@ public class DriveTrapezoidProfile extends CommandBase {
 	
 	Timer timer = new Timer();
 	TrapezoidProfile trapezoid;
-	double startingAngle;
-	double proportionalityConstant = Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY;
+	private double startingAngle;
+	private double proportionalityConstant = Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY;
+	private double accumulatedDistanceError = 0.0;
+	private double accumulatedAngleError = 0.0;
 	
 	/**
 	 * @author Liam
@@ -72,20 +74,64 @@ public class DriveTrapezoidProfile extends CommandBase {
     	timer.reset();
     	timer.start();
     	
+    	accumulatedDistanceError = 0.0;
+    	accumulatedAngleError = 0.0;
+    	
     	driveTrain.resetEncoders();
     	startingAngle = driveTrain.getAngle();
     	setTimeout(trapezoid.getTimeNeeded() + Constants.TRAPEZOID_PROFILE_TIMEOUT_OFFSET);
     }
     
+    /**
+     * @author Liam
+     * @return the error in the distance between where the robot is and where it should be in inches.
+     */
+    public double getDistanceError() {
+    	
+    	double error = trapezoid.idealDistance(timer.get())*12 - driveTrain.getRightEncoder();
+    	
+    	return error;
+    }
+    
+    /**
+     * @author Liam
+     * @return the accumulated error over time in the distance between where the robot is and where it should be in inches.
+     */
+    public double getAccumulatedDistanceError() {
+    	
+    	accumulatedDistanceError += getDistanceError() * Utilities.getCycleTime();
+    	
+    	return accumulatedDistanceError;
+    }
+    
+    /**
+     * @author Liam
+     * @return the error in the angle between what angle the robot is at and the angle it should be at in degrees.
+     */
+    public double getAngleError() {
+    	
+    	double error = Utilities.angleDifference(startingAngle,driveTrain.getAngle());
+    	
+    	return error;
+    }
+    
+    /**
+     * @author Liam
+     * @return the accumulated error over time in the angle between what angle the robot is at and the angle it should be at in degrees.
+     */
+    public double getAccumulatedAngleError() {
+    	
+    	accumulatedAngleError += getAngleError() * Utilities.getCycleTime();
+    	
+    	return accumulatedAngleError;
+    }
+    
     protected void execute() {
     	
-    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * (trapezoid.idealDistance(timer.get())*12 - driveTrain.getRightEncoder())),
-    							(proportionalityConstant * Utilities.angleDifference(startingAngle,driveTrain.getAngle())));
-    	//Ask Caleb or Mairead on the implementation of feedforward+feedback
+    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * getDistanceError()) + Constants.variable1 * getAccumulatedDistanceError(),
+    							(proportionalityConstant * getAngleError() + Constants.TURNING_TRAPEZOID_INTEGRAL * getAccumulatedAngleError()));
     	
     	System.out.println(driveTrain.getEncoder()/12);
-    	//Since getDistance is in feet, you have to divide by 12 to inches
-    	
     }
     
     protected boolean isFinished() {
@@ -99,9 +145,13 @@ public class DriveTrapezoidProfile extends CommandBase {
     		(driveTrain.getYawRate() >= -Constants.TRAPEZOID_ANGULAR_SPEED_THRESHOLD
     				&& driveTrain.getYawRate() <= Constants.TRAPEZOID_ANGULAR_SPEED_THRESHOLD)){ //conditions may cancel
     		
+    		System.out.println("Drive Trapezoid Profile finished from ending criteria.");
+    		
     		return true;
     	}
     	else { //Timeout may cancel
+    		
+    		System.out.println("Drive Trapezoid profile finished from timeout.");
     		
     		return isTimedOut();
     	}
