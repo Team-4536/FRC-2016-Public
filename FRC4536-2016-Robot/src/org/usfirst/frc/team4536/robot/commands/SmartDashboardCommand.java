@@ -9,8 +9,8 @@ import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 
 public class SmartDashboardCommand extends CommandBase {
 	
-	TurningTrapezoidProfile turnProfile;
-	TurnTrapezoidProfile turnTrapezoid;
+	//TurningTrapezoidProfile turnProfile;
+	//TurnTrapezoidProfile turnTrapezoid;
 	DriveTrapezoidProfile trapezoid;
 	
 	public SmartDashboardCommand() {
@@ -72,22 +72,22 @@ public class SmartDashboardCommand extends CommandBase {
 		
 		SmartDashboard.putNumber("Test Output 1: ", 0);
 		SmartDashboard.putNumber("Test Output 2: ", 0);
-		SmartDashboard.putNumber("Test Output 3: ", turnProfile.timeNeeded());
+		//SmartDashboard.putNumber("Test Output 3: ", turnProfile.timeNeeded());
 		SmartDashboard.putNumber("Test Output 4: ", 0.0);
 		SmartDashboard.putNumber("Test Output 5: ", 0.0);
-		SmartDashboard.putNumber("Test Output 6: ", turnProfile.idealVelocity(Utilities.getTime()-5));
-		SmartDashboard.putNumber("Test Output 7: ", turnProfile.idealDistance(Utilities.getTime()-5));
-		SmartDashboard.putNumber("Test Output 8: ", turnProfile.timeNeeded());
-		SmartDashboard.putNumber("Test Output 9: ", turnProfile.throttle(Utilities.getTime() - 5));
+		//SmartDashboard.putNumber("Test Output 6: ", turnProfile.idealVelocity(Utilities.getTime()-5));
+		//SmartDashboard.putNumber("Test Output 7: ", turnProfile.idealDistance(Utilities.getTime()-5));
+		//SmartDashboard.putNumber("Test Output 8: ", turnProfile.timeNeeded());
+		//SmartDashboard.putNumber("Test Output 9: ", turnProfile.throttle(Utilities.getTime() - 5));
 		
-		if (turnProfile.isTriangle()) {
+		/*if (turnProfile.isTriangle()) {
 			
 			SmartDashboard.putString("Triangle or Trapezoid: ", "Triangle");
 		}
 		else {
 			
 			SmartDashboard.putString("Triangle or Trapezoid: ", "Trapezoid");
-		}
+		}*/
     }
     
     protected boolean isFinished() {
