@@ -5,11 +5,13 @@ import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Utilities;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4536.robot.TurningTrapezoidProfile;
+import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 
 public class SmartDashboardCommand extends CommandBase {
 	
 	TurningTrapezoidProfile turnProfile;
 	TurnTrapezoidProfile turnTrapezoid;
+	DriveTrapezoidProfile trapezoid;
 	
 	public SmartDashboardCommand() {
 		
@@ -18,11 +20,12 @@ public class SmartDashboardCommand extends CommandBase {
 	
 	protected void initialize() {
 		
-		turnTrapezoid = new TurnTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
-	
+		//turnTrapezoid = new TurnTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
+		trapezoid = new DriveTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
 		/*-----Commands to Run-----*/
-		SmartDashboard.putData(new TurnTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3));
-		turnProfile = new TurningTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
+		SmartDashboard.putData(trapezoid);
+		//SmartDashboard.putData(new TurnTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3));
+		//turnProfile = new TurningTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
     }
 	
     protected void execute() {
@@ -47,6 +50,10 @@ public class SmartDashboardCommand extends CommandBase {
 		//SmartDashboard.putNumber("range", maxUltra.getRange());
 		SmartDashboard.putNumber("Offset: ", driveTrain.getOffset());
 		SmartDashboard.putNumber("Ball Distance: ", intake.getdistance());
+		SmartDashboard.putNumber("Accumulated Angle Error", trapezoid.getAccumulatedAngleError());
+		SmartDashboard.putNumber("Angle Error: ", trapezoid.getAngleError());
+		SmartDashboard.putNumber("Accumulated Distance Error: ", trapezoid.getAccumulatedDistanceError());
+		SmartDashboard.putNumber("Distance Error: ", trapezoid.getDistanceError());
 
 		/*-----Display NavX Values-----*/
 		
