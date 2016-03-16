@@ -3,12 +3,15 @@ package org.usfirst.frc.team4536.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team4536.robot.Constants;
+import org.usfirst.frc.team4536.robot.CrossDefense;
 import org.usfirst.frc.team4536.robot.Utilities;
 import org.usfirst.frc.team4536.robot.commands.*;
 import org.usfirst.frc.team4536.robot.subsystems.DriveTrain;
+
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+
 import org.usfirst.frc.team4536.robot.commands.*;
 
 /**
@@ -71,6 +74,7 @@ public class AutoChooser extends CommandGroup {
     	
     	if (pos == 1 || pos == 0) {
     	
+    		//TO DO Add orientation to new autoChooser
 	    	switch ((int) orientationChooser.getSelected().hashCode()) {
 	    	
 		    	case 0:
@@ -117,31 +121,31 @@ public class AutoChooser extends CommandGroup {
 				
 				case 4:
 					
-					addSequential(new CrossDefense(Utilities.Defense.LOW_BAR, orientation));
+					addSequential(CrossDefense.chooseDefense(Utilities.Defense.LOW_BAR, orientation));
 					
 				break;
 				
 				case 5:
 					
-					addSequential(new CrossDefense(Utilities.Defense.ROUGH_TERRAIN, orientation));
+					addSequential(CrossDefense.chooseDefense(Utilities.Defense.ROUGH_TERRAIN, orientation));
 					
 				break;
 				
 				case 6:
 					
-					addSequential(new CrossDefense(Utilities.Defense.ROCK_WALL, orientation));
+					addSequential(CrossDefense.chooseDefense(Utilities.Defense.ROCK_WALL, orientation));
 					
 				break;
 		
 				case 7:
 					
-					addSequential(new CrossDefense(Utilities.Defense.MOAT, orientation));
+					addSequential(CrossDefense.chooseDefense(Utilities.Defense.MOAT, orientation));
 					
 				break;
 					
 				case 8:
 					
-					addSequential(new CrossDefense(Utilities.Defense.RAMPARTS, orientation));
+					addSequential(CrossDefense.chooseDefense(Utilities.Defense.RAMPARTS, orientation));
 					
 				break;
 				
