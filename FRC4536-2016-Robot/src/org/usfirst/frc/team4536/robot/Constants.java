@@ -9,7 +9,7 @@ public class Constants {
 	public static final double SPEED_CURVE_STRAIGHT = 2.4; // Unitless exponent
 	public static final double SPEED_CURVE_TURN = 1.5; // Unitless exponent
 	public static final double SPEED_CURVE = 2.4; // Unitless exponent
-	public static final double SPEED_LIMIT = 1; // In throttle
+	public static final double SPEED_LIMIT = 0.5; // In throttle
 	public static final double ACCEL_LIMIT_DRIVE = 0.1; // The time it takes to reach full speed in seconds
 	public static final double ACCEL_LIMIT_INTAKE = 0.1; // The time it takes to reach full speed in seconds
 	public static final double FORWARD_STICTION = 0.07; //No climber with fully charged battery
@@ -128,13 +128,14 @@ public class Constants {
 	
 	/*---------------------------------------Intake-------------------------------------*/
 	
-	public static final double INTAKE_SPEED = 1.0; // Throttle value; full speed in
-	public static final double EJECT_SPEED = -1.0; // Throttle value; full speed out
+	public static final double INTAKE_SPEED = 0.5; // Throttle value; full speed in
+	public static final double EJECT_SPEED = -0.5; // Throttle value; full speed out
 	public static final double HOLD_SPEED = 0.00; // Throttle value; not moving
 	public static final double INTAKE_STICTION = 0.06; //Full battery
 	public static final double INTAKE_SPEED_CURVE = 1; // Unitless exponent
 	public static final double INTAKE_RELEASE_TIMEOUT = 0.25; // in seconds
 	public static final double INTAKE_RELEASE_SPEED = 0.5; // in throttle
+	public static final double INTAKE_SPEED_LIMIT = 0.5; // in throttle
 	
 	/*---------------------------------------Scisor Lift--------------------------------*/
 	

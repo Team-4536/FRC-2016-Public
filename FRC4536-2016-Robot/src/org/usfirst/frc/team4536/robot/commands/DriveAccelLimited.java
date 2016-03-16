@@ -18,10 +18,10 @@ public class DriveAccelLimited extends CommandBase {
     }
     
     protected void execute() {
-    	driveTrain.arcadeDriveAccelLimit(Utilities.speedCurve(
-    			Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE), Constants.SPEED_CURVE_STRAIGHT), 
-    			Utilities.speedCurve(
-    			Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE),Constants.SPEED_CURVE_TURN));
+    	driveTrain.arcadeDriveAccelLimit(Utilities.limit(Utilities.speedCurve(
+    			Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE), Constants.SPEED_CURVE_STRAIGHT), Constants.SPEED_LIMIT), 
+    			Utilities.limit(Utilities.speedCurve(
+    			Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE),Constants.SPEED_CURVE_TURN), Constants.SPEED_LIMIT));
     }
     
     protected boolean isFinished() {
