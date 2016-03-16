@@ -17,7 +17,7 @@ public class DriveTrapezoidProfile extends CommandBase {
 	
 	/**
 	 * @author Liam
-	 * @param the distance desired to be travelled
+	 * @param the distance desired to be travelled in feet
 	 * Sets the Max Speed and Acceleration to the defaults defined in constants
 	 */
 	public DriveTrapezoidProfile(double distance) {
@@ -27,9 +27,9 @@ public class DriveTrapezoidProfile extends CommandBase {
 	
 	/**
 	 * @author Liam
-	 * @param distance The desired distance the robot should travel. May be negative or positive to indicate direction.
-	 * @param maxSpeed The maximum possible speed the robot could be traveling at. Always positive.
-	 * @param maxAcceleration The maximum possible acceleration the speed can change by. Always positive.
+	 * @param distance The desired distance the robot should travel in feet. May be negative or positive to indicate direction.
+	 * @param maxSpeed The maximum possible speed the robot could be traveling at in feet per second. Always positive.
+	 * @param maxAcceleration The maximum possible acceleration in feet per second squared the speed can change by. Always positive.
 	 */
     public DriveTrapezoidProfile(double distance, double maxSpeed, double maxAcceleration) {
 
@@ -39,9 +39,9 @@ public class DriveTrapezoidProfile extends CommandBase {
     
 	/**
 	 * @author Liam
-	 * @param distance The desired distance the robot should travel. May be negative or positive to indicate direction.
-	 * @param maxSpeed The maximum possible speed the robot could be traveling at. Always positive.
-	 * @param maxAcceleration The maximum possible acceleration the speed can change by. Always positive.
+	 * @param distance The desired distance the robot should travel in feet. May be negative or positive to indicate direction.
+	 * @param maxSpeed The maximum possible speed the robot could be traveling at in feet per second. Scalar so Always positive.
+	 * @param maxAcceleration The maximum possible acceleration in feet per second squared the speed can change by. Always positive.
 	 * @param custom gyro proportionality constant to override the default. Useful for command groups that may require more correction due to terrain.
 	 */
     public DriveTrapezoidProfile(double distance, double maxSpeed, double maxAcceleration, double gyroProportionality) {
@@ -61,7 +61,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     
     /**
      * @author Audrey
-     * @return time needed from the trapezoid profile method
+     * @return time needed from the trapezoid profile method in seconds
      */
     public double getNeededTime(){
     	
