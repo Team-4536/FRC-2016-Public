@@ -161,6 +161,7 @@ public class AutoChooser extends CommandBase {
     	else {
     		
     		new CrossNScore(defense, pos).start();
+    		driveTrain.resetNavX(180.0);
     	}
     }
     
