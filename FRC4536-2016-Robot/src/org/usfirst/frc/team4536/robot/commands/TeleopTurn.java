@@ -99,7 +99,7 @@ public class TeleopTurn extends CommandBase {
     	
     	time = timer.get();
     	
-    	navXCorrection = Utilities.angleDifference(driveTrain.getNavXYaw(), (startingAngle + turnProfile.idealDistance(time)));
+    	navXCorrection = Utilities.angleDifference(driveTrain.getAngle(), (startingAngle + turnProfile.idealDistance(time)));
     	
     	driveTrain.arcadeDriveAccelLimit(0, turnProfile.throttle(this.getTime())
     			+ proportionalityConstant*navXCorrection);
@@ -112,16 +112,16 @@ public class TeleopTurn extends CommandBase {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
-    	if ((Math.abs(driveTrain.getAngle() - desiredAngle) <= Constants.TURNING_TRAPEZOID_ANGLE_THRESHOLD  &&
+    	/*if ((Math.abs(driveTrain.getAngle() - desiredAngle) <= Constants.TURNING_TRAPEZOID_ANGLE_THRESHOLD  &&
     		(driveTrain.getYawRate()) <= Constants.TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD)){ // Conditions may end
     		
     		return true;
     	}
     	else { // time out may end
     		
-    		return isTimedOut();	
-    	}
+    		return isTimedOut();	}*/
     	
+    	return false;
     }
 
     // Called once after isFinished returns true
