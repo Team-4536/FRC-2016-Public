@@ -17,7 +17,7 @@ public class DriveIntakeAccelLimited extends CommandBase {
     }
     
     protected void execute() {
-    	double intakeY = -Utilities.limit(OI.secondaryStick.getY(), Constants.INTAKE_SPEED_LIMIT);
+    	double intakeY = OI.secondaryStick.getY();
     	
     	intakeY = Utilities.deadZone(intakeY, Constants.DEAD_ZONE);
     	intakeY = Utilities.speedCurve(intakeY, Constants.INTAKE_SPEED_CURVE);
