@@ -99,7 +99,7 @@ public class TeleopTurn extends CommandBase {
     	
     	time = timer.get();
     	
-    	navXCorrection = Utilities.angleDifference(driveTrain.getNavXYaw(), (startingAngle + turnProfile.idealDistance(time)));
+    	navXCorrection = Utilities.angleDifference(driveTrain.getAngle(), (startingAngle + turnProfile.idealDistance(time)));
     	
     	driveTrain.arcadeDriveAccelLimit(0, turnProfile.throttle(this.getTime())
     			+ proportionalityConstant*navXCorrection);
