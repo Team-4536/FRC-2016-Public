@@ -47,6 +47,8 @@ public class Robot extends IterativeRobot {
         safeDriveScissorLift = new SafeDriveScissorLift();
         superSafeDriveScissorLift = new SuperSafeDriveScissorLift();
         
+        CommandBase.driveTrain.resetNavX(0.0);
+        
         OI.buttonHandling();
         
         

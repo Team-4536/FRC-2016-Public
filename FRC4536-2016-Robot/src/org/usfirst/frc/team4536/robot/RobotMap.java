@@ -33,12 +33,6 @@ public class RobotMap {
     public static final int PLOP_BUTTON_NUMBER = 12;
     public static final int DEPLOY_SCISSORS_BUTTON_NUMBER = 1;
     
-    public static final int HOLD_AT_CURRENT_ANGLE = 1;
-    public static final int HOLD_AT_0_DEGREES = 3;
-    public static final int HOLD_AT_180_DEGREES = 2;    
-    public static final int HOLD_AT_ANGLE_FOR_LEFT_GOAL = 4;
-    public static final int HOLD_AT_ANGLE_FOR_RIGHT_GOAL = 5;
-    
     
 	/*-------------------------------------Relay Solenoid-----------------*/
 	
