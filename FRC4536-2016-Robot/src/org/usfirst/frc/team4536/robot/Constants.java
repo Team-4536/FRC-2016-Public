@@ -106,32 +106,32 @@ public class Constants {
 	/*---------------------------------------Defense Alignment Positions----------------*/
 	
 	//Defense 2
-	public static final double DEFENSE_ALIGNMENT2_ANGLE = 170.0;
+	public static final double DEFENSE_ALIGNMENT2_ANGLE = 190.0;
 	public static final double DEFENSE_ALIGNMENT2_DISTANCE = -4.0;
 	public static final boolean DEFENSE_ALIGNMENT2_TURN = false;
 	public static final boolean DEFENSE_ALIGNMENT2_ULTRA = false;
 	
 	//Defense 3
-	public static final double DEFENSE_ALIGNMENT3_ANGLE = 210.0;
+	public static final double DEFENSE_ALIGNMENT3_ANGLE = 150.0;
 	public static final double DEFENSE_ALIGNMENT3_DISTANCE = -6.0;
 	public static final boolean DEFENSE_ALIGNMENT3_TURN = false;
 	public static final boolean DEFENSE_ALIGNMENT3_ULTRA = false;
 	
 	//Defense 4
-	public static final double DEFENSE_ALIGNMENT4_ANGLE = 125.0;
+	public static final double DEFENSE_ALIGNMENT4_ANGLE = 235.0;
 	public static final double DEFENSE_ALIGNMENT4_DISTANCE = -7.5;
 	public static final boolean DEFENSE_ALIGNMENT4_TURN = true;
 	public static final boolean DEFENSE_ALIGNMENT4_ULTRA = false;
 	
 	//Defense 5
-	public static final double DEFENSE_ALIGNMENT5_ANGLE = 170.0;
+	public static final double DEFENSE_ALIGNMENT5_ANGLE = 190.0;
 	public static final double DEFENSE_ALIGNMENT5_DISTANCE = -5.0;
 	public static final boolean DEFENSE_ALIGNMENT5_TURN = true;
 	public static final boolean DEFENSE_ALIGNMENT5_ULTRA = false;
 	
 	//Finishing Routine
-	public static final double RIGHT_LOW_GOAL_ANGLE = -30;
-	public static final double LEFT_LOW_GOAL_ANGLE = 30;
+	public static final double RIGHT_LOW_GOAL_ANGLE = -60;
+	public static final double LEFT_LOW_GOAL_ANGLE = 60;
 	
 	/*---------------------------------------Intake-------------------------------------*/
 	
