@@ -28,6 +28,8 @@ public class OI {
 	public static Button turnTest;
 	public static Button deployScissors;
 	
+	public static Button driveTo;
+	
 	/**
 	 * @author Liam
 	 * This instantiates Button handling.
@@ -43,12 +45,16 @@ public class OI {
 		turnTest = new JoystickButton(mainStick, 12);
 		deployScissors = new JoystickButton(tertiaryStick, 1);
 		
+		driveTo = new JoystickButton(secondaryStick, 9);
+		
 		/*-------------------Actions------------------------*/
 
 		intake.whenPressed(new IntakeBoulderAccelLimited());
 		eject.whenPressed(new EjectBoulderAccelLimited());
 		hold.whenPressed(new HoldBoulderAccelLimited());
 		autoIntake.whenPressed(new AutoIntake());
+		
+		driveTo.whenPressed(new RefinedDriveTo());
 		
 		/*------------------Canceling actions--------------*/
 		

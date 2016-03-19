@@ -153,10 +153,8 @@ public class Constants {
 	/*----------------------------------Auto Intake Constants----------------------------*/
 	
 	public static final int AUTO_INTAKE_TIMEOUT = 5;
-	public static final double AUTO_INTAKE_FAR_DIST = .75;
-	public static final double AUTO_INTAKE_CLOSE_DIST = .35;
-	public static final double AUTO_INTAKE_FAST_SPEED = .75;
-	public static final double AUTO_INTAKE_SLOW_SPEED = .35;
+	public static final double INTAKE_DESIRED_DISTANCE = 3;
+	public static final double P_CONSTANT = .16;
 	
 	/*----------------------------------Plop Boulder Constants----------------------------*/
 	
