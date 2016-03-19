@@ -21,7 +21,7 @@ public class DefenseAlignmentPosition extends CommandGroup {
 	        	if (Constants.DEFENSE_ALIGNMENT2_ULTRA) {
 	        		
 	        		addSequential(new TurnTrapezoidProfile(-Constants.DEFENSE_ALIGNMENT2_ANGLE));
-	        		//TODO add ultra code here
+	        		addSequential(new DriveTo());
 		        	addSequential(new FinishScoringRoutine(Constants.DEFENSE_ALIGNMENT2_TURN, Constants.DEFAULT_FINISHING_ANGLE));
 	        	}
 	        	else {
@@ -38,7 +38,7 @@ public class DefenseAlignmentPosition extends CommandGroup {
 	        	if (Constants.DEFENSE_ALIGNMENT3_ULTRA) {
 	        		
 	        		addSequential(new TurnTrapezoidProfile(-Constants.DEFENSE_ALIGNMENT3_ANGLE));
-	        		//TODO add ultra code here
+	        		addSequential(new DriveTo());
 		        	addSequential(new FinishScoringRoutine(Constants.DEFENSE_ALIGNMENT3_TURN, Constants.DEFAULT_FINISHING_ANGLE));
 	        	}
 	        	else {
@@ -55,7 +55,7 @@ public class DefenseAlignmentPosition extends CommandGroup {
 	        	if (Constants.DEFENSE_ALIGNMENT4_ULTRA) {
 	        		
 	        		addSequential(new TurnTrapezoidProfile(-Constants.DEFENSE_ALIGNMENT4_ANGLE));
-	        		//TODO add ultra code here
+	        		addSequential(new DriveTo());
 		        	addSequential(new FinishScoringRoutine(Constants.DEFENSE_ALIGNMENT4_TURN, Constants.DEFAULT_FINISHING_ANGLE));
 	        	}
 	        	else {
@@ -72,7 +72,7 @@ public class DefenseAlignmentPosition extends CommandGroup {
 	        	if (Constants.DEFENSE_ALIGNMENT2_ULTRA) {
 	        		
 	        		addSequential(new TurnTrapezoidProfile(-Constants.DEFENSE_ALIGNMENT5_ANGLE));
-	        		//TODO add ultra code here
+	        		addSequential(new DriveTo());
 		        	addSequential(new FinishScoringRoutine(Constants.DEFENSE_ALIGNMENT5_TURN, Constants.DEFAULT_FINISHING_ANGLE));
 	        	}
 	        	else {
