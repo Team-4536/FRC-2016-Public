@@ -1,49 +1,41 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import org.usfirst.frc.team4536.robot.Utilities;
-import org.usfirst.frc.team4536.robot.Utilities.Defense;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class CrossDefense(){
+public class CrossDefense {
     
-   public static Command chooseDefense(Utilities.Defense d){
+   public static Command chooseDefense(Utilities.Defense d, boolean orientation){
 	   
-	   switch(defenseEnum){
+	   switch(d){
 	   
-	   case 0:
+	   case LOW_BAR:
 		   
-		   return new CrossLowBar();
+		   return new CrossLowBar(orientation);
 	   
-		   break;
-	   
-	   case 1:
+	   case MOAT:
 		   
-		   return new CrossMoat();
+		   return new CrossMoat(orientation);
 		   
-		   break;
+	   case ROCK_WALL:
 		   
-	   case 2:
+		   return new CrossRockWall(orientation);
+
+	   case ROUGH_TERRAIN:
 		   
-		   return new CrossRockWall();
-		   
-		   break;
-		   
-	   case 3:
-		   
-		   return new CrossRoughTerrain();
+		   return new CrossRoughTerrain(orientation);
 	
-		   break;
+	   case RAMPARTS:
 		   
-	   case 4:
+		   return new CrossRamparts(orientation);
 		   
-		   return new CrossRamparts();
+	   default:
 		   
-		   break;
+		   return new ReleaseIntake();
 	   }
 	   
    }
