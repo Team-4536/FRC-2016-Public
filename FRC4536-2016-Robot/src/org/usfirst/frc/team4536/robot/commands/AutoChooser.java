@@ -28,6 +28,7 @@ public class AutoChooser extends CommandGroup {
 	private boolean orientation = true; // true is forward, false is backward
 	
 	boolean forward = true;
+	Command defense = new ReleaseIntake();
 
     public AutoChooser() {
     	
@@ -64,10 +65,8 @@ public class AutoChooser extends CommandGroup {
     	defensePositionChooser.addObject(" Position 4", 4);
     	defensePositionChooser.addObject(" Position 5", 5);
     	SmartDashboard.putData(" Defense Position Chooser", defensePositionChooser);
-    }
+ 
     
-    protected void initialize() {
-    	
     	int defense = (int) autoChooser.getSelected().hashCode();
     	
     	int pos = (int) defensePositionChooser.getSelected().hashCode();
@@ -122,7 +121,7 @@ public class AutoChooser extends CommandGroup {
 				case 4:
 					
 					addSequential(CrossDefense.chooseDefense(Utilities.Defense.LOW_BAR, orientation));
-					
+				
 				break;
 				
 				case 5:
@@ -172,18 +171,6 @@ public class AutoChooser extends CommandGroup {
     		
     		addSequential(new CrossNScore(defense, pos));
     	}
-    }
-    
-    protected void execute() {
-    }
-    
-    protected boolean isFinished() {
-        return false;
-    }
-    
-    protected void end() {
-    }
-    
-    protected void interrupted() {
+   
     }
 }
