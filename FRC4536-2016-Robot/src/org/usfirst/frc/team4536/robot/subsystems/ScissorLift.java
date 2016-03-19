@@ -18,6 +18,7 @@ public class ScissorLift extends Subsystem {
 	VictorSP scissorLift;
 	Relay relay;
 	private double oldThrottle;
+	private boolean manualOverride;
 	
 	public void initDefaultCommand() {
     	setDefaultCommand(new SafeDriveScissorLift());
@@ -28,6 +29,7 @@ public class ScissorLift extends Subsystem {
 		scissorLift = new VictorSP(motorChannel);
 		oldThrottle = 0.0;
 		relay = new Relay(RobotMap.SCISSOR_RELAY, Relay.Direction.kForward);
+		manualOverride = false;
 		
 		oldThrottle = 0.0;
 	}
@@ -61,16 +63,33 @@ public class ScissorLift extends Subsystem {
 	
 	/**
 	 * @author Sheila
-	 * 
 	 * sets the relay to the 'off' position (holds the scissor lift folded)
 	 */
 	public void relayOff() {
+		
 		relay.set(Relay.Value.kOff);
+	}
+	
+	/**
+	 * @author Liam
+	 * @return whether the scissor lift is manually overridden
+	 */
+	public boolean manualOverride() {
+		
+		return manualOverride;
+	}
+	
+	/**
+	 * @author Liam
+	 * @param overridden whether the scissor lift is manually overridden
+	 */
+	public void changeOverride(boolean overridden) {
+		
+		manualOverride = overridden;
 	}
 
 	/**
 	 * @author Sheila
-	 * 
 	 * checks whether the relay is off, and sets it to whatever it's not
 	 */
 	public void relayFlip() {
