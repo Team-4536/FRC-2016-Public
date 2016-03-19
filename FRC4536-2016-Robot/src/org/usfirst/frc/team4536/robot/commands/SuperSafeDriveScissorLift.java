@@ -8,13 +8,11 @@ import org.usfirst.frc.team4536.robot.Utilities;
  *@author Sheila
  */
 public class SuperSafeDriveScissorLift extends CommandBase {
-
- private boolean manualOverride;
  
     public SuperSafeDriveScissorLift(){
      
+    	scissorLift.changeOverride(false);
         requires(scissorLift);
-        manualOverride = false;
     }
     
     protected void initialize() {
@@ -24,19 +22,22 @@ public class SuperSafeDriveScissorLift extends CommandBase {
     
     protected void execute() {
      
-  //overrides the timer limit ^
-  if (OI.tertiaryStick.getRawButton(2) && OI.tertiaryStick.getRawButton(3)) {
-   manualOverride = true;
-  }
-
-  //The teleop time (120 seconds) minus the time we have available to scale
-  //this keeps us from violating the rules about extending before the end
-  if((Utilities.getTime()>135-Constants.SCALE_TIME_LIMIT) || manualOverride) {
-   scissorLift.safeDrive(Utilities.deadZone(OI.tertiaryStick.getY(), Constants.SCISSOR_DEAD_ZONE));
-  } else {
-   System.out.println("Hey! The match is still going! No climbing yet!");
-  }
- }
+	  //overrides the timer limit ^
+    	if (OI.tertiaryStick.getRawButton(2) && OI.tertiaryStick.getRawButton(3)) {
+			
+    		scissorLift.changeOverride(true);
+		}
+	
+		//The teleop time (135 seconds) minus the time we have available to scale
+		//this keeps us from violating the rules about extending before the end
+		if((Utilities.getTime()>135-Constants.SCALE_TIME_LIMIT) || scissorLift.manualOverride()) {
+			
+			scissorLift.safeDrive(Utilities.deadZone(OI.tertiaryStick.getY(), Constants.SCISSOR_DEAD_ZONE));
+		} else {
+			
+			System.out.println("Hey! The match is still going! No climbing yet!");
+		}
+    }
     
     protected boolean isFinished() {
      

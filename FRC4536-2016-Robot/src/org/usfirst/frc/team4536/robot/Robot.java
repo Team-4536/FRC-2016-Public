@@ -131,9 +131,9 @@ public class Robot extends IterativeRobot {
         	superSafeDriveScissorLift.start();
         }
         
-        Utilities.startTimer();
+        CommandBase.scissorLift.changeOverride(false);
         
-        
+        Utilities.resetTimer();
     }
 
     /**
