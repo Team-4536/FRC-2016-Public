@@ -43,11 +43,11 @@ public class ScissorLift extends Subsystem {
     }
 	
 	public void safeDrive(double throttle) {
-		double tempVar = throttle;
 		throttle = Utilities.limit(throttle, -1.0, Constants.HOLD_SCISSOR_SPEED);
+		double tempVar = throttle; //setting the old throttle for the next loop through
 		throttle = Utilities.accelLimit(throttle, oldThrottle, Constants.ACCEL_LIMIT_DRIVE);
 		driveLift(throttle);
-		oldThrottle = tempVar;
+		oldThrottle = tempVar; //setting the old throttle for the next loop through
 	}
 	
 	/**
