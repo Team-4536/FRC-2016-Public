@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4536.robot.commands;
 
+import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.commands.CommandBase;
 
 /**
@@ -21,7 +22,7 @@ public class HoldScissorLift extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	scissorLift.safeDrive(0.1);
+    	scissorLift.safeDrive(Constants.HOLD_SCISSOR_SPEED);
     }
 
     // Make this return true when this Command no longer needs to run execute()

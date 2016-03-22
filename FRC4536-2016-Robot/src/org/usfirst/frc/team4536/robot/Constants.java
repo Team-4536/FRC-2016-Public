@@ -146,6 +146,7 @@ public class Constants {
 	
 	public static final double SCISSOR_SAFE_FULL_SPEED_TIME = 0.1; // In seconds, the time it takes to achieve full speed
 	public static final int SCALE_TIME_LIMIT = 20; //in seconds, how long we have to use the scissor lift each match end
+	public static final double HOLD_SCISSOR_SPEED = 0.1; //how much throttle to use for holding the scissor lift down
 	
 	/*----------------------------------Auto Intake Constants----------------------------*/
 	
