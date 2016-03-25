@@ -79,7 +79,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     
     protected void execute() {
     	
-    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * (trapezoid.idealDistance(timer.get())*12 - driveTrain.getRightEncoder())),
+    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * (trapezoid.idealDistance(timer.get())*12 - driveTrain.getLeftEncoder())),
     							(proportionalityConstant * Utilities.angleDifference(startingAngle,driveTrain.getAngle())));
     	//Ask Caleb or Mairead on the implementation of feedforward+feedback
     	
