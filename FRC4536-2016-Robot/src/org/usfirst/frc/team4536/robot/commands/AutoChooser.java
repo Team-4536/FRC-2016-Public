@@ -74,15 +74,15 @@ public class AutoChooser extends CommandBase {
 	    	switch ((int) orientationChooser.getSelected().hashCode()) {
 	    	
 		    	case 0:
-		    		
-		    		orientation = true;
+
 		    		driveTrain.resetNavX(0.0);
+		    		orientation = true;
 		    	break;
 		    	
 		    	case 1:
-		    		
-		    		orientation = false;
+
 		    		driveTrain.resetNavX(180.0);
+		    		orientation = false;
 		    	break;
 		    	
 		    	default:
@@ -141,9 +141,9 @@ public class AutoChooser extends CommandBase {
 				break;
 				
 				case 9:
-					
-					new SpyBotLowGoal().start();
+
 					driveTrain.resetNavX(135.0);
+					new SpyBotLowGoal().start();
 				break;
 				
 				case 10:
@@ -160,6 +160,7 @@ public class AutoChooser extends CommandBase {
 	    }
     	else {
     		
+    		driveTrain.resetNavX(180.0);
     		new CrossNScore(defense, pos).start();
     	}
     }

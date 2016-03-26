@@ -119,8 +119,7 @@ public class TeleopTurn extends CommandBase {
     	}
     	else { // time out may end
     		
-    		return isTimedOut();	
-    	}
+    		return isTimedOut();	}
     	
     }
 
