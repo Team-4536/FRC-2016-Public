@@ -20,8 +20,8 @@ public class FinishScoringRoutine extends CommandGroup {
     	if (right) {
     			
 			addSequential(new TurnTrapezoidProfile(angle, 240, 180));
-	    	addSequential(new EjectBoulderAccelLimited());
-    	}
+	    	addSequential( new DriveTrapezoidProfile(1.0));
+	    	addSequential(new EjectBoulderAccelLimited());    	}
     	else {
     		
     		addSequential(new TurnTrapezoidProfile(-angle, 240, 180));
