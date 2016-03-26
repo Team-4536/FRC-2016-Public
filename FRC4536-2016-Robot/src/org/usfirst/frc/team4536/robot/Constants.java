@@ -58,12 +58,12 @@ public class Constants {
 	
 	/*-------------------------------------AutoMode Time Outs---------------------------*/
 	
-	public static final double REACH_DEFENSE_TIME_OUT = 0.0; // 0.9 In seconds
+	public static final double REACH_DEFENSE_TIME_OUT = 0.9; // 0.9 In seconds
 	public static final double PICK_UP_BALL_TIME_OUT = 0.1; // In seconds
 	
-	public static final double CROSS_LOWBAR_EXTRA_TIME = 0.0; //1.0 In seconds
-	public static final double CROSS_ROCKWALL_EXTRA_TIME = 0.0; //2.0 In seconds
-	public static final double CROSS_MOAT_EXTRA_TIME = 0.0; //4.0
+	public static final double CROSS_LOWBAR_EXTRA_TIME = 1.0; // In seconds
+	public static final double CROSS_ROCKWALL_EXTRA_TIME = 2.0; // In seconds
+	public static final double CROSS_MOAT_EXTRA_TIME = 4.0; //
 	
 	/*-------------------------------------Auto Mode Distances--------------------------*/
 	
@@ -86,7 +86,7 @@ public class Constants {
 	public static final double CROSS_LOWBAR_VELOCITY = 5.0; //Feet per second
 	public static final double CROSS_LOWBAR_ACCEL_LIMIT = 4.0; // Feet per second squared
 	
-	public static final double CROSS_ROCKWALL_DISTANCE = 12.0; //Feet
+	public static final double CROSS_ROCKWALL_DISTANCE = 13.5; //Feet
 	public static final double CROSS_ROCKWALL_VELOCITY = 5.0; //Feet per second
 	public static final double CROSS_ROCKWALL_ACCEL_LIMIT = 3.0; // Feet per second squared
 
@@ -94,12 +94,12 @@ public class Constants {
 	public static final double CROSS_ROUGHTERRAIN_VELOCITY = 3.0; //Feet per second
 	public static final double CROSS_ROUGHTERRAIN_ACCEL_LIMIT = 3.0; // Feet per second squared
 
-	public static final double CROSS_RAMPARTS_DISTANCE = 15.0; //Feet
+	public static final double CROSS_RAMPARTS_DISTANCE = 16.0; //Feet
 	public static final double CROSS_RAMPARTS_VELOCITY = 7.0; //Feet per second
 	public static final double CROSS_RAMPARTS_ACCEL_LIMIT = 5.0; // Feet per second squared
 	public static final double CROSS_RAMPARTS_GYRO_PROPORTIONALITY = -0.05;
 	
-	public static final double CROSS_MOAT_DISTANCE = 16.0; //Feet
+	public static final double CROSS_MOAT_DISTANCE = 16.0; // Feet
 	public static final double CROSS_MOAT_VELOCITY = 8.0; //Feet per second
 	public static final double CROSS_MOAT_ACCEL_LIMIT = 6.0; // Feet per second squared
 	

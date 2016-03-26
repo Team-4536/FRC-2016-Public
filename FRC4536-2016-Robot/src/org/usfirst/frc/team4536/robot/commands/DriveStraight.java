@@ -40,7 +40,7 @@ public class DriveStraight extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	driveTrain.arcadeDriveAccelLimit(Utilities.deadZone(OI.mainStick.getY(), Constants.DEAD_ZONE), Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY*(Utilities.angleDifference(startingAngle, driveTrain.getAngle())));
+    	driveTrain.arcadeDriveAccelLimit(Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE), Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY*(Utilities.angleDifference(startingAngle, driveTrain.getAngle())));
     }
 
     // Make this return true when this Command no longer needs to run execute()
