@@ -10,22 +10,21 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class FinishScoringRoutine extends CommandGroup {
     
-    public  FinishScoringRoutine(boolean right) {
-      
-    	this(right, Constants.DEFAULT_FINISHING_ANGLE);
-    }
-    
-    public FinishScoringRoutine(boolean right, double angle) {
+
+    public FinishScoringRoutine(boolean right) {
     	
     	if (right) {
     			
-			addSequential(new TurnTrapezoidProfile(angle, 240, 180));
+			addSequential(new TeleopTurn(Constants.RIGHT_LOW_GOAL_ANGLE, 240, 180));
+	    	addSequential(new DriveTrapezoidProfile(1.0));
 	    	addSequential(new EjectBoulderAccelLimited());
     	}
     	else {
     		
-    		addSequential(new TurnTrapezoidProfile(-angle, 240, 180));
-	    	addSequential(new EjectBoulderAccelLimited());
+    		addSequential(new TeleopTurn(Constants.LEFT_LOW_GOAL_ANGLE, 240, 180));
+    		addSequential(new DriveTrapezoidProfile(1.0));
+    		addSequential(new EjectBoulderAccelLimited());
+	    	
     	}
     }
 }
