@@ -18,6 +18,7 @@ public class CommandBase extends Command {
 															RobotMap.LEFT_IR_CHANNEL);
 	public static Intake intake = new Intake(RobotMap.INTAKE_MOTOR_CHANNEL, RobotMap.INTAKE_RELAY, RobotMap.INTAKE_IR_CHANNEL);
 	public static ScissorLift scissorLift = new ScissorLift(RobotMap.SCISSOR_MOTOR);
+	public static Camera camera = new Camera();
 	
     public CommandBase() {
         // Use requires() here to declare subsystem dependencies

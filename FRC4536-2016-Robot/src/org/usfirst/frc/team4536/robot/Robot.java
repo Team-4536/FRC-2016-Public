@@ -32,6 +32,7 @@ public class Robot extends IterativeRobot {
     Command safeDriveScissorLift;
     Command superSafeDriveScissorLift;
     Command startIntakeRelay;
+    Command startCamera;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -46,6 +47,7 @@ public class Robot extends IterativeRobot {
         driveAccelLimited = new DriveAccelLimited();
         safeDriveScissorLift = new SafeDriveScissorLift();
         superSafeDriveScissorLift = new SuperSafeDriveScissorLift();
+        startCamera = new StartCamera();
         
         OI.buttonHandling();
         
@@ -106,7 +108,6 @@ public class Robot extends IterativeRobot {
         	flipRelay.start();
         }
     	
-    	
         if (driveAccelLimited != null) {
         	
         	driveAccelLimited.start();
@@ -129,6 +130,7 @@ public class Robot extends IterativeRobot {
         
         Utilities.startTimer();
         
+        startCamera.start();
         
     }
 
@@ -145,8 +147,10 @@ public class Robot extends IterativeRobot {
         	smartDashboardCommand.start();
         }
         
+        startCamera.cancel();
+        
     }
-
+    
     /**
      * This function is called periodically during operator control
      */
