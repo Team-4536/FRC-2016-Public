@@ -22,8 +22,17 @@ public class RectangleProfile extends Profile {
 		if(distance < 0){
 			throttle = -desiredMaxVelocity / Constants.DRIVE_TRAIN_MAX_VELOCITY;
 		}
-		timeNeeded = Math.abs(distance / desiredMaxVelocity); // Uses physics to calculate the time needed
+		timeNeeded = Math.abs(distance / desiredMaxVelocity) + Constants.RECTANGLE_PROFILE_TIMEOUT_OFFSET; // Uses physics to calculate the time needed
 
+	}
+	
+	/**
+	 * @author Liam
+	 * @return the time needed for the profile to complete its motion
+	 */
+	public double getTimeNeeded() {
+		
+		return timeNeeded;
 	}
 
 	/**
