@@ -20,6 +20,9 @@ public class Constants {
 	
 	/*--------------------------------------Profiles----------------------------------*/
 	
+	//Rectangle
+	public static final double RECTANGLE_PROFILE_TIMEOUT_OFFSET = 0.0;
+	
 	//Trapezoid
 	
 	public static final double TRAPEZOID_FORWARD_PROPORTIONALITY = 0.07; // units of throttle per inch
