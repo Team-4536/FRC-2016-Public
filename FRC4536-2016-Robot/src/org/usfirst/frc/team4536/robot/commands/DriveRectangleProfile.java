@@ -45,13 +45,10 @@ public class DriveRectangleProfile extends CommandBase {
     			+ 0.75*(rectangle.idealDistance(time) - driveTrain.getEncoder()/12),
     			(maxVelocity/24.6)*Utilities.angleDifference(driveTrain.getNavXYaw() , 0));
     	//Ask Caleb or Mairead on the implementation of feedforward+feedback
-    	
-    	System.out.println(driveTrain.getEncoder()/12);
-    	//Since getDistance is in feet, you have to divide by 12 to inches
-    	
     }
     
     protected boolean isFinished() {
+    	
     	if(Math.abs(driveTrain.getEncoder() - desiredDistance) < 0.04
     			//in feet, true if the robot is within half of an inch away from the desired distance
     		&& Math.abs(driveTrain.getRate()) < 0.5)
@@ -59,14 +56,19 @@ public class DriveRectangleProfile extends CommandBase {
     	{
     		return true;
     	}
-    	else
-    		return false;
+    	else {
+    		
+    		return isTimedOut();
+    	}
     }
     
     protected void end() {
+    	
     	driveTrain.arcadeDrive(0, 0);
     }
     
     protected void interrupted() {
+    	
+    	end();
     }
 }
