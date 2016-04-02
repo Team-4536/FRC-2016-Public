@@ -63,7 +63,9 @@ public class Constants {
 	
 	public static final double CROSS_LOWBAR_EXTRA_TIME = 1.0; // In seconds
 	public static final double CROSS_ROCKWALL_EXTRA_TIME = 2.0; // In seconds
-	public static final double CROSS_MOAT_EXTRA_TIME = 4.0; //
+	public static final double CROSS_MOAT_EXTRA_TIME = 4.0; // In seconds
+	public static final double CROSS_RAMPARTS_EXTRA_TIME = 3.0; // In seconds, needs to be tweaked
+	public static final double CROSS_ROUGHTERRAIN_EXTRA_TIME = 3.0; // In seconds, needs to be tweaked
 	
 	/*-------------------------------------Auto Mode Distances--------------------------*/
 	
@@ -102,6 +104,9 @@ public class Constants {
 	public static final double CROSS_MOAT_DISTANCE = 16.0; // Feet
 	public static final double CROSS_MOAT_VELOCITY = 8.0; //Feet per second
 	public static final double CROSS_MOAT_ACCEL_LIMIT = 6.0; // Feet per second squared
+	public static final double CROSS_MOAT_GYRO_PROPORTIONALITY = -0.04; //Feet per seconds squared
+	
+	public static final double DISTANCE_BETWEEN_DEFENSES = 50/12; // Feet between the center of two defenses
 	
 	/*---------------------------------------Defense Alignment Positions----------------*/
 	
