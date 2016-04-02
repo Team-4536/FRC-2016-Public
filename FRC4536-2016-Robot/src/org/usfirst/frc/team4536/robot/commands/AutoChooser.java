@@ -73,7 +73,7 @@ public class AutoChooser extends CommandGroup {
     	
     	if (pos == 1 || pos == 0) {
     	
-    		//TO DO Add orientation to new autoChooser
+    		//TODO Add orientation to new autoChooser
 	    	switch ((int) orientationChooser.getSelected().hashCode()) {
 	    	
 		    	case 0:
@@ -96,79 +96,92 @@ public class AutoChooser extends CommandGroup {
 			
 				case 0:
 					
+					//System.out.println("Auto: Release Intake");
 					addSequential(new ReleaseIntake());
 					
 				break;
 					
 				case 1:
-					
+
+					//System.out.println("Auto: Do Nothing");
 					addSequential(new DoNothing());
 					
 				break;
 				
 				case 2:
-					
+
+					//System.out.println("Auto: Reach Outer Works");
 					addSequential(new ReachOuterWorks(orientation));
 					
 				break;
 			
 				case 3:
-					
+
+					//System.out.println("Auto: Pick Up Boulder");
 					addSequential(new PickUpBoulder());
 					
 				break;
 				
 				case 4:
-					
+
+					//System.out.println("Auto: Defense_LowBar");
 					addSequential(CrossDefense.chooseDefense(Utilities.Defense.LOW_BAR, orientation));
 				
 				break;
 				
 				case 5:
-					
+
+					//System.out.println("Auto: Defense_RoughTerrain");
 					addSequential(CrossDefense.chooseDefense(Utilities.Defense.ROUGH_TERRAIN, orientation));
 					
 				break;
 				
 				case 6:
-					
+
+					//System.out.println("Auto: Defense_RockWall");
 					addSequential(CrossDefense.chooseDefense(Utilities.Defense.ROCK_WALL, orientation));
 					
 				break;
 		
 				case 7:
-					
+
+					//System.out.println("Auto: Defense_Moat");
 					addSequential(CrossDefense.chooseDefense(Utilities.Defense.MOAT, orientation));
 					
 				break;
 					
 				case 8:
-					
+
+					//System.out.println("Auto: Defense_Ramparts");
 					addSequential(CrossDefense.chooseDefense(Utilities.Defense.RAMPARTS, orientation));
 					
 				break;
 				
 				case 9:
-					
+
+					//System.out.println("Auto: Defense_Goal_SpyBot");
 					addSequential(new SpyBotLowGoal());
 					
 				break;
 				
 				case 10:
-					
+
+					//System.out.println("Auto: Defense_Goal_LowBar");
 					addSequential(new LowBarLowGoal());
 					
 				break;
 				
 				default: 
-					
+
+					//System.out.println("Auto: ReleaseIntake");
 					addSequential(new ReleaseIntake());
 				
 				break;
 			}
 	    }
     	else {
-    		
+
+			//System.out.println("Auto Cross And Score");
     		addSequential(new CrossNScore(defense, pos));
     	}
    
