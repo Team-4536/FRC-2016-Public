@@ -127,12 +127,33 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
-     * @author Audrey
-     * @return right encoder distance in inches
+     * @author Sheila
+     * @return larger encoder distance (left or right) in inches
      */
     public double getEncoder() {
+    	boolean getLeft = true;
+    	boolean getRight = true;
     	
-    	return getRightEncoder();
+    	//checks the left encoder for obvious errors
+    	if (getLeftEncoder() > 1000000) {
+    		System.out.println("error: Left encoder way too high!");
+    		getLeft = false;
+    	}
+    	//checks the right encoder for obvious errors
+    	if (getRightEncoder() > 1000000) {
+    		System.out.println("error: Right encoder way too high!");
+    		getRight = false;
+    	}
+    	
+    	//uses the highest-number apparently working encoder
+    	if (getLeftEncoder() > getRightEncoder() && getLeft) {
+    		return getLeftEncoder();
+    	} else if (getRightEncoder() >= getLeftEncoder() && getRight) {
+    		return getRightEncoder();
+    	} else {
+    		System.out.println("Both encoders seem to be broken! Warning: Returning right.");
+    		return getRightEncoder();
+    	}
     }
     
     /**
