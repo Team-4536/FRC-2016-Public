@@ -40,8 +40,9 @@ public class SmartDashboardCommand extends CommandBase {
 		//SmartDashboard.putNumber("Total Current: ", Utilities.getTotalCurrent());
 		SmartDashboard.putNumber("Drive Train Left Encoder: ", driveTrain.getLeftEncoder());
 		SmartDashboard.putNumber("Drive Train Right Encoder: ", driveTrain.getRightEncoder());
-		SmartDashboard.putNumber("Drive Train Right Rate: ", driveTrain.getRightRate());
+		SmartDashboard.putNumber("Drive Train Used Encoder: ", driveTrain.getEncoder());
 		SmartDashboard.putNumber("Drive Train Left Rate: ", driveTrain.getLeftRate());
+		SmartDashboard.putNumber("Drive Train Right Rate: ", driveTrain.getRightRate());
 		SmartDashboard.putNumber("Previous Forward Throttle", driveTrain.oldForwardThrottle);
 		SmartDashboard.putNumber("Turn Rate in Degrees per Second: ", driveTrain.getYawRate());
 		//SmartDashboard.putNumber("range", maxUltra.getRange());

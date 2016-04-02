@@ -131,6 +131,7 @@ public class DriveTrain extends Subsystem {
      * @return larger encoder distance (left or right) in inches
      */
     public double getEncoder() {
+    	//the encoders are assumed to work unless an error is found
     	boolean getLeft = true;
     	boolean getRight = true;
     	
@@ -146,10 +147,12 @@ public class DriveTrain extends Subsystem {
     	}
     	
     	//uses the highest-number apparently working encoder
-    	if (getLeftEncoder() > getRightEncoder() && getLeft) {
-    		return getLeftEncoder();
-    	} else if (getRightEncoder() >= getLeftEncoder() && getRight) {
+    	//TODO test if my changing the order lets it catch the broken left encoder
+    	//the left encoder on Zenith is actually broken only returns 0
+    	if (getRightEncoder() > getLeftEncoder() && getRight) {
     		return getRightEncoder();
+    	} else if (getLeftEncoder() >= getRightEncoder() && getLeft) {
+    		return getLeftEncoder();
     	} else {
     		System.out.println("WARNING!!! Using broken right encoder!!!");
     		return getRightEncoder();
