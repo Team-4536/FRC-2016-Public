@@ -186,44 +186,44 @@ public class AutoChooser extends CommandGroup {
         		
         		case 4:
         			
-    				new OpenClassC(Constants.CROSS_LOWBAR_DISTANCE,Constants.CROSS_LOWBAR_VELOCITY, 
+    				addSequential(new OpenClassC(Constants.CROSS_LOWBAR_DISTANCE, Constants.CROSS_LOWBAR_VELOCITY, 
     						Constants.CROSS_LOWBAR_ACCEL_LIMIT, Constants.CROSS_LOWBAR_EXTRA_TIME, 
-    						Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY, orientation, classC);
+    						Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY, orientation, classC));
         		break;
         		
     			case 5:
     				
-    				new OpenClassC(Constants.CROSS_MOAT_DISTANCE, Constants.CROSS_MOAT_VELOCITY,
+    				addSequential(new OpenClassC(Constants.CROSS_MOAT_DISTANCE, Constants.CROSS_MOAT_VELOCITY,
     						Constants.CROSS_MOAT_ACCEL_LIMIT, Constants.CROSS_MOAT_EXTRA_TIME,
-    						Constants.CROSS_MOAT_GYRO_PROPORTIONALITY, orientation, classC);
+    						Constants.CROSS_MOAT_GYRO_PROPORTIONALITY, orientation, classC));
     			break;
     			
     			case 6:
     			
-    				new OpenClassC(Constants.CROSS_ROCKWALL_DISTANCE, Constants.CROSS_RAMPARTS_VELOCITY,
+    				addSequential(new OpenClassC(Constants.CROSS_ROCKWALL_DISTANCE, Constants.CROSS_RAMPARTS_VELOCITY,
     						Constants.CROSS_ROCKWALL_ACCEL_LIMIT, Constants.CROSS_ROCKWALL_EXTRA_TIME,
-    						Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY, orientation, classC);
+    						Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY, orientation, classC));
     			break;
     			
     			case 7:
     				
-    				new OpenClassC(Constants.CROSS_ROUGHTERRAIN_DISTANCE, Constants.CROSS_ROUGHTERRAIN_VELOCITY,
+    				addSequential(new OpenClassC(Constants.CROSS_ROUGHTERRAIN_DISTANCE, Constants.CROSS_ROUGHTERRAIN_VELOCITY,
     						Constants.CROSS_ROCKWALL_ACCEL_LIMIT, Constants.CROSS_ROUGHTERRAIN_EXTRA_TIME,
-    						Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY, orientation, classC);
+    						Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY, orientation, classC));
     			break;
     			
     			case 8:
     				
-    				new OpenClassC(Constants.CROSS_RAMPARTS_DISTANCE, Constants.CROSS_RAMPARTS_VELOCITY,
+    				addSequential(new OpenClassC(Constants.CROSS_RAMPARTS_DISTANCE, Constants.CROSS_RAMPARTS_VELOCITY,
     						Constants.CROSS_RAMPARTS_ACCEL_LIMIT, Constants.CROSS_RAMPARTS_EXTRA_TIME,
-    						Constants.CROSS_RAMPARTS_GYRO_PROPORTIONALITY, orientation, classC);
+    						Constants.CROSS_RAMPARTS_GYRO_PROPORTIONALITY, orientation, classC));
     			break;
     			
     			default:
     				
-    				new OpenClassC(Constants.CROSS_LOWBAR_DISTANCE,Constants.CROSS_LOWBAR_VELOCITY, 
+    				addSequential(new OpenClassC(Constants.CROSS_LOWBAR_DISTANCE,Constants.CROSS_LOWBAR_VELOCITY, 
     						Constants.CROSS_LOWBAR_ACCEL_LIMIT, Constants.CROSS_LOWBAR_EXTRA_TIME, 
-    						Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY, orientation, classC);
+    						Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY, orientation, classC));
         		break;
         		}	
 			}
