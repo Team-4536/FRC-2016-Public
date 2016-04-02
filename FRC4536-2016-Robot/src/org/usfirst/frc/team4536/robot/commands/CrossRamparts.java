@@ -18,11 +18,11 @@ public class CrossRamparts extends CommandGroup {
 			
 	    	if (forward){
 	        	crossRamparts = new DriveTrapezoidProfile(Constants.CROSS_RAMPARTS_DISTANCE, Constants.CROSS_RAMPARTS_VELOCITY, Constants.CROSS_RAMPARTS_ACCEL_LIMIT, Constants.CROSS_RAMPARTS_GYRO_PROPORTIONALITY);
-	        	double maxTime = crossRamparts.getNeededTime() + 1;
+	        	double maxTime = crossRamparts.getNeededTime() + Constants.CROSS_RAMPARTS_EXTRA_TIME;
 	    		addSequential(crossRamparts, maxTime);
 	    	}else{
 	        	crossRamparts = new DriveTrapezoidProfile(-Constants.CROSS_RAMPARTS_DISTANCE, Constants.CROSS_RAMPARTS_VELOCITY, Constants.CROSS_RAMPARTS_ACCEL_LIMIT, Constants.CROSS_RAMPARTS_GYRO_PROPORTIONALITY);
-	        	double maxTime = crossRamparts.getNeededTime() + 1;
+	        	double maxTime = crossRamparts.getNeededTime() + Constants.CROSS_RAMPARTS_EXTRA_TIME;
 	    		addSequential(crossRamparts, maxTime);
 	    	}
 	}
