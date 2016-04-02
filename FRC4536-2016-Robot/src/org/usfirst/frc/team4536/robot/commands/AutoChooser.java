@@ -21,6 +21,7 @@ public class AutoChooser extends CommandBase {
 	SendableChooser autoChooser;
 	SendableChooser orientationChooser; //Picks whether the robot is going forward or backward over a defense
 	SendableChooser defensePositionChooser; // Picks which defense position the defense you are crossing is
+	SendableChooser classCChooser; //Picks how many defenses the robot is going to move over after it crosses
 	
 	private boolean orientation = true; // true is forward, false is backward
 	
@@ -33,7 +34,7 @@ public class AutoChooser extends CommandBase {
     	autoChooser = new SendableChooser();
     	orientationChooser = new SendableChooser();
     	defensePositionChooser = new SendableChooser();
-    
+    	classCChooser = new SendableChooser();
     	
     	/*-----AutoChooser Options----*/
     	
@@ -61,13 +62,22 @@ public class AutoChooser extends CommandBase {
     	defensePositionChooser.addObject(" Position 4", 4);
     	defensePositionChooser.addObject(" Position 5", 5);
     	SmartDashboard.putData(" Defense Position Chooser", defensePositionChooser);
-    }
+    	
+    	classCChooser.addObject(" Move over -2", -2);
+    	classCChooser.addObject(" Move over -1", -1);
+    	classCChooser.addObject(" None", 0);
+    	classCChooser.addObject(" Move over 1", 1);
+    	classCChooser.addObject(" Move over 2", 2);
+    	SmartDashboard.putData(" Class C Chooser", classCChooser);
+    	}
     
     protected void initialize() {
     	
     	int defense = (int) autoChooser.getSelected().hashCode();
     	
     	int pos = (int) defensePositionChooser.getSelected().hashCode();
+    	
+    	int classC = (int) classCChooser.getSelected().hashCode();
     	
     	if (pos == 1 || pos == 0) {
     	
@@ -90,79 +100,120 @@ public class AutoChooser extends CommandBase {
 		    		orientation = true;
 		    	break;
 	    	}	
-	
-			switch (defense) {
+	    	if (classC == 0){
+	    		
+	    		switch (defense) {
 			
-				case 0:
+					case 0:
 					
-					new ReleaseIntake().start();
-				break;
+						new ReleaseIntake().start();
+					break;
 					
-				case 1:
+					case 1:
 					
-					new DoNothing().start();
-				break;
+						new DoNothing().start();
+					break;
 				
-				case 2:
+					case 2:
 					
-					new ReachOuterWorks(orientation).start();
+						new ReachOuterWorks(orientation).start();
 					
-				break;
+					break;
 			
-				case 3:
+					case 3:
 					
-					new PickUpBoulder().start();
-				break;
+						new PickUpBoulder().start();
+					break;
 				
-				case 4:
+					case 4:
 					
-					new CrossDefense(Utilities.Defense.LOW_BAR, orientation);
-				break;
+						new CrossDefense(Utilities.Defense.LOW_BAR, orientation);
+					break;
 				
-				case 5:
+					case 5:
 					
-					new CrossDefense(Utilities.Defense.ROUGH_TERRAIN, orientation);
-				break;
+						new CrossDefense(Utilities.Defense.ROUGH_TERRAIN, orientation);
+					break;
 				
-				case 6:
+					case 6:
 					
-					new CrossDefense(Utilities.Defense.ROCK_WALL, orientation);
-				break;
+						new CrossDefense(Utilities.Defense.ROCK_WALL, orientation);
+					break;
 		
-				case 7:
+					case 7:
 					
-					new CrossDefense(Utilities.Defense.MOAT, orientation);
-				break;
+						new CrossDefense(Utilities.Defense.MOAT, orientation);
+					break;
 					
-				case 8:
+					case 8:
 					
-					new CrossDefense(Utilities.Defense.RAMPARTS, orientation);
-					
-				break;
+						new CrossDefense(Utilities.Defense.RAMPARTS, orientation);
+					break;
 				
-				case 9:
+					case 9:
 
-					driveTrain.resetNavX(135.0);
-					new SpyBotLowGoal().start();
-				break;
+						driveTrain.resetNavX(135.0);
+						new SpyBotLowGoal().start();
+					break;
 				
-				case 10:
+					case 10:
 					
-					new LowBarLowGoal().start();
-				break;
+						new LowBarLowGoal().start();
+					break;
 				
-				default: 
+					default: 
 					
-					new ReleaseIntake().start();
-					driveTrain.arcadeDrive(0.0, 0.0);
-				break;
-			}
-	    }
-    	else {
+						new ReleaseIntake().start();
+						driveTrain.arcadeDrive(0.0, 0.0);
+					break;
+	    		}
+	    	}else{
+
+	        		switch (defense){
+	        		
+	        		case 4:
+	        			
+	    				new OpenClassC(Constants.CROSS_LOWBAR_DISTANCE,Constants.CROSS_LOWBAR_VELOCITY, 
+	    						Constants.CROSS_LOWBAR_ACCEL_LIMIT, Constants.CROSS_LOWBAR_EXTRA_TIME, 
+	    						Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY, orientation, classC);
+	        		break;
+	        		
+	    			case 5:
+	    				
+	    				new OpenClassC(Constants.CROSS_MOAT_DISTANCE, Constants.CROSS_MOAT_VELOCITY,
+	    						Constants.CROSS_MOAT_ACCEL_LIMIT, Constants.CROSS_MOAT_EXTRA_TIME,
+	    						Constants.CROSS_MOAT_GYRO_PROPORTIONALITY, orientation, classC);
+	    			break;
+	    			
+	    			case 6:
+	    			
+	    				new OpenClassC(Constants.CROSS_ROCKWALL_DISTANCE, Constants.CROSS_RAMPARTS_VELOCITY,
+	    						Constants.CROSS_ROCKWALL_ACCEL_LIMIT, Constants.CROSS_ROCKWALL_EXTRA_TIME,
+	    						Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY, orientation, classC);
+	    			break;
+	    			
+	    			case 7:
+	    				
+	    				new OpenClassC(Constants.CROSS_ROUGHTERRAIN_DISTANCE, Constants.CROSS_ROUGHTERRAIN_VELOCITY,
+	    						Constants.CROSS_ROCKWALL_ACCEL_LIMIT, Constants.CROSS_ROUGHTERRAIN_EXTRA_TIME,
+	    						Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY, orientation, classC);
+	    			break;
+	    			
+	    			case 8:
+	    				
+	    				new OpenClassC(Constants.CROSS_RAMPARTS_DISTANCE, Constants.CROSS_RAMPARTS_VELOCITY,
+	    						Constants.CROSS_RAMPARTS_ACCEL_LIMIT, Constants.CROSS_RAMPARTS_EXTRA_TIME,
+	    						Constants.CROSS_RAMPARTS_GYRO_PROPORTIONALITY, orientation, classC);
+	    			break;
+	        		}	
+	    		}
+	    	}
+    	else{
     		
     		driveTrain.resetNavX(180.0);
     		new CrossNScore(defense, pos).start();
     	}
+			
     }
     
     protected void execute() {
