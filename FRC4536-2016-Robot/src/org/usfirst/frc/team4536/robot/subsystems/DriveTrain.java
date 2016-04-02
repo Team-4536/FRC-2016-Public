@@ -151,7 +151,7 @@ public class DriveTrain extends Subsystem {
     	} else if (getRightEncoder() >= getLeftEncoder() && getRight) {
     		return getRightEncoder();
     	} else {
-    		System.out.println("Both encoders seem to be broken! Warning: Returning right.");
+    		System.out.println("WARNING!!! Using broken right encoder!!!");
     		return getRightEncoder();
     	}
     }
