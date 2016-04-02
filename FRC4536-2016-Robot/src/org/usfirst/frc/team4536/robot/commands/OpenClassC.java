@@ -17,6 +17,7 @@ public class OpenClassC extends CommandGroup {
     	TeleopTurn turnOne;
     	DriveTrapezoidProfile moveOver;
     	TeleopTurn turnTwo;
+    	DriveTrapezoidProfile crossClassC;
     	
     	if (orientation){
     		
@@ -32,11 +33,16 @@ public class OpenClassC extends CommandGroup {
     		
     		addSequential(turnOne);
     		
-    		moveOver = new DriveTrapezoidProfile(Constants.DISTANCE_BETWEEN_DEFENSES*defensesOver, Constants.SPEED_LIMIT, Constants.ACCEL_LIMIT_DRIVE);
+    		moveOver = new DriveTrapezoidProfile(Constants.DISTANCE_BETWEEN_DEFENSES*defensesOver, 
+    				Constants.SPEED_LIMIT, Constants.ACCEL_LIMIT_DRIVE);
     		addSequential(moveOver);
     		
     		turnTwo = new TeleopTurn(180);
     		addSequential(turnTwo);
+    		
+    		crossClassC = new DriveTrapezoidProfile(Constants.DISTANCE_BETWEEN_ALIGNMENT_LINE_AND_CLASSC,
+    				Constants.SPEED_LIMIT,Constants.ACCEL_LIMIT_DRIVE);
+    		addSequential(crossClassC);
     		
     	}else{
     		
@@ -52,11 +58,16 @@ public class OpenClassC extends CommandGroup {
     		
     		addSequential(turnOne);
     		
-    		moveOver = new DriveTrapezoidProfile(-(Constants.DISTANCE_BETWEEN_DEFENSES*defensesOver), Constants.SPEED_LIMIT, Constants.ACCEL_LIMIT_DRIVE);
+    		moveOver = new DriveTrapezoidProfile(-(Constants.DISTANCE_BETWEEN_DEFENSES*defensesOver),
+    				Constants.SPEED_LIMIT, Constants.ACCEL_LIMIT_DRIVE);
     		addSequential(moveOver);
     		
     		turnTwo = new TeleopTurn(0);
     		addSequential(turnTwo);
+    		
+    		crossClassC = new DriveTrapezoidProfile(-Constants.DISTANCE_BETWEEN_ALIGNMENT_LINE_AND_CLASSC,
+    				Constants.SPEED_LIMIT,Constants.ACCEL_LIMIT_DRIVE);
+    		addSequential(crossClassC);
     	}
     	
     }
