@@ -107,6 +107,7 @@ public class Constants {
 	public static final double CROSS_MOAT_GYRO_PROPORTIONALITY = -0.04; //Feet per seconds squared
 	
 	public static final double DISTANCE_BETWEEN_DEFENSES = 50/12; // Feet between the center of two defenses
+	public static final double DISTANCE_BETWEEN_ALIGNMENT_LINE_AND_CLASSC = 9.0; // Feet, should be tweeked
 	
 	/*---------------------------------------Defense Alignment Positions----------------*/
 	
