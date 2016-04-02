@@ -27,9 +27,9 @@ public class DriveTrapezoidProfile extends CommandBase {
 	
 	/**
 	 * @author Liam
-	 * @param distance The desired distance the robot should travel. May be negative or positive to indicate direction.
-	 * @param maxSpeed The maximum possible speed the robot could be traveling at. Always positive.
-	 * @param maxAcceleration The maximum possible acceleration the speed can change by. Always positive.
+	 * @param distance The desired distance the robot should travel in feet. May be negative or positive to indicate direction.
+	 * @param maxSpeed The maximum possible speed the robot could be traveling at in feet per second. Always positive.
+	 * @param maxAcceleration The maximum possible acceleration the speed can change by in feet per second squared. Always positive.
 	 */
     public DriveTrapezoidProfile(double distance, double maxSpeed, double maxAcceleration) {
 
@@ -39,9 +39,9 @@ public class DriveTrapezoidProfile extends CommandBase {
     
 	/**
 	 * @author Liam
-	 * @param distance The desired distance the robot should travel. May be negative or positive to indicate direction.
-	 * @param maxSpeed The maximum possible speed the robot could be traveling at. Always positive.
-	 * @param maxAcceleration The maximum possible acceleration the speed can change by. Always positive.
+	 * @param distance The desired distance the robot should travel in feet. May be negative or positive to indicate direction.
+	 * @param maxSpeed The maximum possible speed the robot could be traveling at in feet per second. Always positive.
+	 * @param maxAcceleration The maximum possible acceleration the speed can change by in feet per second squared. Always positive.
 	 * @param custom gyro proportionality constant to override the default. Useful for command groups that may require more correction due to terrain.
 	 */
     public DriveTrapezoidProfile(double distance, double maxSpeed, double maxAcceleration, double gyroProportionality) {
@@ -79,7 +79,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     
     protected void execute() {
     	
-    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * (trapezoid.idealDistance(timer.get())*12 - driveTrain.getRightEncoder())),
+    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * (trapezoid.idealDistance(timer.get())*12 - driveTrain.getLeftEncoder())),
     							(proportionalityConstant * Utilities.angleDifference(startingAngle,driveTrain.getAngle())));
     	//Ask Caleb or Mairead on the implementation of feedforward+feedback
     	

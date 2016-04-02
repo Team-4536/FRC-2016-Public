@@ -11,7 +11,7 @@ public class ReachOuterWorks extends CommandGroup {
     
     public  ReachOuterWorks(boolean forward) {
     	
-    	addSequential(new ReleaseIntake());
+    	addParallel(new ReleaseIntake());
     	
     	if (forward) {
     		addSequential(new DriveTrapezoidProfile(Constants.REACH_DEFENSE_DISTANCE, Constants.REACH_DEFENSE_VELOCITY, Constants.REACH_DEFENSE_ACCELERATION));

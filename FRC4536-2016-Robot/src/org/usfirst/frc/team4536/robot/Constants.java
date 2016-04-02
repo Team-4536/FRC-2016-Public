@@ -58,12 +58,14 @@ public class Constants {
 	
 	/*-------------------------------------AutoMode Time Outs---------------------------*/
 	
-	public static final double REACH_DEFENSE_TIME_OUT = 0.9; // In seconds
+	public static final double REACH_DEFENSE_TIME_OUT = 0.9; // 0.9 In seconds
 	public static final double PICK_UP_BALL_TIME_OUT = 0.1; // In seconds
 	
-	public static final double CROSS_LOWBAR_EXTRA_TIME = 1.0; //In seconds
-	public static final double CROSS_ROCKWALL_EXTRA_TIME = 2.0; //In seconds
-	public static final double CROSS_MOAT_EXTRA_TIME = 4.0;
+	public static final double CROSS_LOWBAR_EXTRA_TIME = 1.0; // In seconds
+	public static final double CROSS_ROCKWALL_EXTRA_TIME = 2.0; // In seconds
+	public static final double CROSS_MOAT_EXTRA_TIME = 4.0; // In seconds
+	public static final double CROSS_RAMPARTS_EXTRA_TIME = 3.0; // In seconds, needs to be tweaked
+	public static final double CROSS_ROUGHTERRAIN_EXTRA_TIME = 3.0; // In seconds, needs to be tweaked
 	
 	/*-------------------------------------Auto Mode Distances--------------------------*/
 	
@@ -86,7 +88,7 @@ public class Constants {
 	public static final double CROSS_LOWBAR_VELOCITY = 5.0; //Feet per second
 	public static final double CROSS_LOWBAR_ACCEL_LIMIT = 4.0; // Feet per second squared
 	
-	public static final double CROSS_ROCKWALL_DISTANCE = 12.0; //Feet
+	public static final double CROSS_ROCKWALL_DISTANCE = 13.5; //Feet
 	public static final double CROSS_ROCKWALL_VELOCITY = 5.0; //Feet per second
 	public static final double CROSS_ROCKWALL_ACCEL_LIMIT = 3.0; // Feet per second squared
 
@@ -94,43 +96,48 @@ public class Constants {
 	public static final double CROSS_ROUGHTERRAIN_VELOCITY = 3.0; //Feet per second
 	public static final double CROSS_ROUGHTERRAIN_ACCEL_LIMIT = 3.0; // Feet per second squared
 
-	public static final double CROSS_RAMPARTS_DISTANCE = 15.0; //Feet
+	public static final double CROSS_RAMPARTS_DISTANCE = 16.0; //Feet
 	public static final double CROSS_RAMPARTS_VELOCITY = 7.0; //Feet per second
 	public static final double CROSS_RAMPARTS_ACCEL_LIMIT = 5.0; // Feet per second squared
 	public static final double CROSS_RAMPARTS_GYRO_PROPORTIONALITY = -0.05;
 	
-	public static final double CROSS_MOAT_DISTANCE = 16.0; //Feet
+	public static final double CROSS_MOAT_DISTANCE = 16.0; // Feet
 	public static final double CROSS_MOAT_VELOCITY = 8.0; //Feet per second
 	public static final double CROSS_MOAT_ACCEL_LIMIT = 6.0; // Feet per second squared
+	public static final double CROSS_MOAT_GYRO_PROPORTIONALITY = -0.04; //Feet per seconds squared
+	
+	public static final double DISTANCE_BETWEEN_DEFENSES = 50/12; // Feet between the center of two defenses
+	public static final double DISTANCE_BETWEEN_ALIGNMENT_LINE_AND_CLASSC = 9.0; // Feet, should be tweeked
 	
 	/*---------------------------------------Defense Alignment Positions----------------*/
 	
 	//Defense 2
-	public static final double DEFENSE_ALIGNMENT2_ANGLE = 10.0;
+	public static final double DEFENSE_ALIGNMENT2_ANGLE = 190.0;
 	public static final double DEFENSE_ALIGNMENT2_DISTANCE = -4.0;
 	public static final boolean DEFENSE_ALIGNMENT2_TURN = false;
 	public static final boolean DEFENSE_ALIGNMENT2_ULTRA = false;
 	
 	//Defense 3
-	public static final double DEFENSE_ALIGNMENT3_ANGLE = -30.0;
+	public static final double DEFENSE_ALIGNMENT3_ANGLE = 150.0;
 	public static final double DEFENSE_ALIGNMENT3_DISTANCE = -6.0;
 	public static final boolean DEFENSE_ALIGNMENT3_TURN = false;
 	public static final boolean DEFENSE_ALIGNMENT3_ULTRA = false;
 	
 	//Defense 4
-	public static final double DEFENSE_ALIGNMENT4_ANGLE = 55.0;
+	public static final double DEFENSE_ALIGNMENT4_ANGLE = 235.0;
 	public static final double DEFENSE_ALIGNMENT4_DISTANCE = -7.5;
 	public static final boolean DEFENSE_ALIGNMENT4_TURN = true;
 	public static final boolean DEFENSE_ALIGNMENT4_ULTRA = false;
 	
 	//Defense 5
-	public static final double DEFENSE_ALIGNMENT5_ANGLE = 10.0;
+	public static final double DEFENSE_ALIGNMENT5_ANGLE = 190.0;
 	public static final double DEFENSE_ALIGNMENT5_DISTANCE = -5.0;
 	public static final boolean DEFENSE_ALIGNMENT5_TURN = true;
 	public static final boolean DEFENSE_ALIGNMENT5_ULTRA = false;
 	
 	//Finishing Routine
-	public static final double DEFAULT_FINISHING_ANGLE = 120;
+	public static final double RIGHT_LOW_GOAL_ANGLE = -60;
+	public static final double LEFT_LOW_GOAL_ANGLE = 60;
 	
 	/*---------------------------------------Intake-------------------------------------*/
 	
@@ -139,7 +146,7 @@ public class Constants {
 	public static final double HOLD_SPEED = 0.00; // Throttle value; not moving
 	public static final double INTAKE_STICTION = 0.06; //Full battery
 	public static final double INTAKE_SPEED_CURVE = 1; // Unitless exponent
-	public static final double INTAKE_RELEASE_TIMEOUT = 0.25; // in seconds
+	public static final double INTAKE_RELEASE_TIMEOUT = 1.25; // in seconds
 	public static final double INTAKE_RELEASE_SPEED = 0.5; // in throttle
 	
 	/*---------------------------------------Scisor Lift--------------------------------*/
