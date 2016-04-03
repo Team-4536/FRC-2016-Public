@@ -184,6 +184,13 @@ public class Constants {
 	public static double variable3 = 0.0;
 	public static double variable4 = 0.0;
 	public static double variable5 = 0.0;
+	public static double variable8 = 0.0;
+	public static double variable9 = 0.0;
+	public static double variable10 = 0.0;
+	public static double variable11 = 0.0;
+	public static double variable12 = 0.0;
+	public static double variable13 = 0.0;
+	public static double variable14 = 0.0;
 	public static boolean variable6 = true;
 	public static int variable7 = 0;
 	
@@ -196,6 +203,14 @@ public class Constants {
 		SmartDashboard.putNumber("Variable 5: ", 0.0);
 		SmartDashboard.putBoolean("Variable 6: ", true);
 		SmartDashboard.putNumber("Variable 7: ", 0);
+		SmartDashboard.putNumber("Variable 8: ", 0.0);
+		SmartDashboard.putNumber("Variable 9: ", 0.0);
+		SmartDashboard.putNumber("Variable 10: ", 0.0);
+		SmartDashboard.putNumber("Variable 11: ", 0.0);
+		SmartDashboard.putNumber("Variable 12: ", 0.0);
+		SmartDashboard.putNumber("Variable 13: ", 0.0);
+		SmartDashboard.putNumber("Variable 14: ", 0.0);
+
 	}
 	
 	public static void updateVariables() {
@@ -207,5 +222,12 @@ public class Constants {
 		variable5 = SmartDashboard.getNumber("Variable 5: ");
 		variable6 = SmartDashboard.getBoolean("Variable 6: ");
 		variable7 = SmartDashboard.getInt("Variable 7: ");
+		variable8 = SmartDashboard.getNumber("Variable 8: ");
+		variable9 = SmartDashboard.getNumber("Variable 9: ");
+		variable10 = SmartDashboard.getNumber("Variable 10: ");
+		variable11 = SmartDashboard.getNumber("Variable 11: ");
+		variable12 = SmartDashboard.getNumber("Variable 12: ");
+		variable13 = SmartDashboard.getNumber("Variable 13: ");
+		variable14 = SmartDashboard.getNumber("Variable 14: ");
 	}
 }
