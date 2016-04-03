@@ -12,8 +12,9 @@ public class DriveTrapezoidProfile extends CommandBase {
 	
 	Timer timer = new Timer();
 	TrapezoidProfile trapezoid;
-	double startingAngle;
-	double proportionalityConstant = Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY;
+	private double startingAngle;
+	private double proportionalityConstant = Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY;
+	private double startingDistance;
 	
 	/**
 	 * @author Liam
@@ -72,14 +73,15 @@ public class DriveTrapezoidProfile extends CommandBase {
     	timer.reset();
     	timer.start();
     	
-    	driveTrain.resetEncoders();
+    	//driveTrain.resetEncoders();
     	startingAngle = driveTrain.getAngle();
+    	startingDistance = driveTrain.getEncoder();
     	setTimeout(trapezoid.getTimeNeeded() + Constants.TRAPEZOID_PROFILE_TIMEOUT_OFFSET);
     }
     
     protected void execute() {
     	
-    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * (trapezoid.idealDistance(timer.get())*12 - driveTrain.getLeftEncoder())),
+    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * (trapezoid.idealDistance(timer.get())*12 + startingDistance - driveTrain.getEncoder())),
     							(proportionalityConstant * Utilities.angleDifference(startingAngle,driveTrain.getAngle())));
     	//Ask Caleb or Mairead on the implementation of feedforward+feedback
     	
