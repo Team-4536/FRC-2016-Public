@@ -21,7 +21,9 @@ public class SmartDashboardCommand extends CommandBase {
 		turnTrapezoid = new TurnTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
 	
 		/*-----Commands to Run-----*/
-		SmartDashboard.putData(new TurnTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3));
+		//SmartDashboard.putData(new TurnTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3));
+		//SmartDashboard.putData(new DriveRectangleProfile(Constants.variable1, Constants.variable2));
+		SmartDashboard.putData( new WheelieStomp());
 		turnProfile = new TurningTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
     }
 	
