@@ -135,23 +135,24 @@ public class DriveTrain extends Subsystem {
     	boolean getLeft = true;
     	boolean getRight = true;
     	
+    	//these are so I can have shorter and less repetitive code
+    	double rEnc = Math.abs(getRightEncoder());
+    	double lEnc = Math.abs(getLeftEncoder());
+    	
     	//checks the left encoder for obvious errors
-    	if (getLeftEncoder() > 10000) {
+    	if (lEnc > 10000) {
     		System.out.println("error: Left encoder way too high!");
     		getLeft = false;
     	} 
     	//checks the right encoder for obvious errors
-    	if (getRightEncoder() > 10000) {
+    	if (lEnc > 10000) {
     		System.out.println("error: Right encoder way too high!");
     		getRight = false;
     	} 
     	//to add more conditions/checks, just put in if-elses 
     	//ending in getLeft or getRight = false.
     	
-    	//these are so I can have shorter and less repetitive if statements
-    	double rEnc = Math.abs(getRightEncoder());
-    	double lEnc = Math.abs(getLeftEncoder());
-    	
+    	//TODO test encoders in auto
     	if (rEnc >= lEnc && getRight) {
     		return getRightEncoder();
     	} else if (lEnc >= rEnc && getLeft) {
