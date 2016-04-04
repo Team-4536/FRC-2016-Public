@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4536.robot.commands;
 
+import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.RectangleProfile;
 import org.usfirst.frc.team4536.robot.Utilities;
 
@@ -52,6 +53,10 @@ public class DriveRectangleProfile extends CommandBase {
     }
     
     protected boolean isFinished() {
+    	if(driveTrain.getEncoder() == Constants.ENCODER_FAILURE) {
+    		return true;
+    	}
+    	
 		if(Math.abs(driveTrain.getEncoder() - desiredDistance) < 0.04
 				//in feet, true if the robot is within half of an inch away from the desired distance
 			&& Math.abs(driveTrain.getRate()) < 0.5)

@@ -92,6 +92,10 @@ public class DriveTrapezoidProfile extends CommandBase {
     
     protected boolean isFinished() {
     	
+    	if (driveTrain.getEncoder() == Constants.ENCODER_FAILURE) {
+    		return true;
+    	}
+    	
 		if ((driveTrain.getEncoder() >= (trapezoid.getDistance()*12 - Constants.TRAPEZOID_DISTANCE_THRESHOLD) &&
 				driveTrain.getEncoder() <= (trapezoid.getDistance()*12 + Constants.TRAPEZOID_DISTANCE_THRESHOLD)) &&
 			(driveTrain.getRate() >= -Constants.TRAPEZOID_SPEED_THRESHOLD
