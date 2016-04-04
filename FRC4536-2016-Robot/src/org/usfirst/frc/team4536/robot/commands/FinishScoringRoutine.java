@@ -24,7 +24,6 @@ public class FinishScoringRoutine extends CommandGroup {
     		addSequential(new TeleopTurn(Constants.LEFT_LOW_GOAL_ANGLE, 240, 180));
     		addSequential(new DriveTrapezoidProfile(1.0));
     		addSequential(new EjectBoulderAccelLimited());
-	    	
     	}
     }
 }
