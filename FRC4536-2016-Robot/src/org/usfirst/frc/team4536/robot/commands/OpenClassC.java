@@ -9,10 +9,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class OpenClassC extends CommandGroup {
 	
-    public  OpenClassC(double distance, double velocity, double accel, double extratime, double gyro, boolean orientation, double defensesOver) {
+    public  OpenClassC(boolean orientation, double defensesOver) {
         
-    	addParallel(new ReleaseIntake());
-    	
     	DriveTrapezoidProfile crossDefense;
     	TeleopTurn turnOne;
     	DriveTrapezoidProfile moveOver;
@@ -27,21 +25,15 @@ public class OpenClassC extends CommandGroup {
         		turnOne = new TeleopTurn(270);
         	}
     		
-        	crossDefense = new DriveTrapezoidProfile(distance, velocity, accel);
-        	double maxTime = crossDefense.getNeededTime() + extratime;
-    		addSequential(crossDefense, maxTime);
-    		
     		addSequential(turnOne);
     		
-    		moveOver = new DriveTrapezoidProfile(Constants.DISTANCE_BETWEEN_DEFENSES*defensesOver, 
-    				Constants.SPEED_LIMIT, Constants.ACCEL_LIMIT_DRIVE);
+    		moveOver = new DriveTrapezoidProfile(Constants.DISTANCE_BETWEEN_DEFENSES*defensesOver);
     		addSequential(moveOver);
     		
     		turnTwo = new TeleopTurn(180);
     		addSequential(turnTwo);
     		
-    		crossClassC = new DriveTrapezoidProfile(Constants.DISTANCE_BETWEEN_ALIGNMENT_LINE_AND_CLASSC,
-    				Constants.SPEED_LIMIT,Constants.ACCEL_LIMIT_DRIVE);
+    		crossClassC = new DriveTrapezoidProfile(Constants.DISTANCE_BETWEEN_ALIGNMENT_LINE_AND_CLASSC);
     		addSequential(crossClassC);
     		
     	}else{
@@ -52,21 +44,15 @@ public class OpenClassC extends CommandGroup {
         		turnOne = new TeleopTurn(-270);
         	}
     		
-        	crossDefense = new DriveTrapezoidProfile(-distance, velocity, accel);
-        	double maxTime = crossDefense.getNeededTime() + extratime;
-    		addSequential(crossDefense, maxTime);
-    		
     		addSequential(turnOne);
     		
-    		moveOver = new DriveTrapezoidProfile(-(Constants.DISTANCE_BETWEEN_DEFENSES*defensesOver),
-    				Constants.SPEED_LIMIT, Constants.ACCEL_LIMIT_DRIVE);
+    		moveOver = new DriveTrapezoidProfile(-(Constants.DISTANCE_BETWEEN_DEFENSES*(Math.abs(defensesOver)-1) + Constants.DISTANCE_BETWEEN_DEFENSES/2));
     		addSequential(moveOver);
     		
     		turnTwo = new TeleopTurn(0);
     		addSequential(turnTwo);
     		
-    		crossClassC = new DriveTrapezoidProfile(-Constants.DISTANCE_BETWEEN_ALIGNMENT_LINE_AND_CLASSC,
-    				Constants.SPEED_LIMIT,Constants.ACCEL_LIMIT_DRIVE);
+    		crossClassC = new DriveTrapezoidProfile(-Constants.DISTANCE_BETWEEN_ALIGNMENT_LINE_AND_CLASSC);
     		addSequential(crossClassC);
     	}
     	
