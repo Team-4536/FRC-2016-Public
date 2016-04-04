@@ -136,24 +136,28 @@ public class DriveTrain extends Subsystem {
     	boolean getRight = true;
     	
     	//checks the left encoder for obvious errors
-    	if (getLeftEncoder() > 1000000) {
+    	if (getLeftEncoder() > 10000) {
     		System.out.println("error: Left encoder way too high!");
     		getLeft = false;
-    	}
+    	} 
     	//checks the right encoder for obvious errors
-    	if (getRightEncoder() > 1000000) {
+    	if (getRightEncoder() > 10000) {
     		System.out.println("error: Right encoder way too high!");
     		getRight = false;
-    	}
+    	} 
+    	//to add more conditions/checks, just put in if-elses 
+    	//ending in getLeft or getRight = false.
     	
-    	//uses the highest-number apparently working encoder
-    	//TODO test if my changing the order lets it catch the broken left encoder
-    	//the left encoder on Zenith is actually broken only returns 0
-    	if (getRightEncoder() > getLeftEncoder() && getRight) {
+    	//these are so I can have shorter and less repetitive if statements
+    	double rEnc = Math.abs(getRightEncoder());
+    	double lEnc = Math.abs(getLeftEncoder());
+    	
+    	if (rEnc >= lEnc && getRight) {
     		return getRightEncoder();
-    	} else if (getLeftEncoder() >= getRightEncoder() && getLeft) {
+    	} else if (lEnc >= rEnc && getLeft) {
     		return getLeftEncoder();
     	} else {
+    		//TODO make something happen if both encoders are seemingly broken
     		System.out.println("WARNING!!! Using broken right encoder!!!");
     		return getRightEncoder();
     	}
