@@ -94,6 +94,10 @@ public class TurnTrapezoidProfile extends CommandBase {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
+    	if (driveTrain.getEncoder() == Constants.ENCODER_FAILURE) {
+    		return true;
+    	}
+    	
     	if ((driveTrain.getNavXYaw() >= turnProfile.getAngle()-Constants.TURNING_TRAPEZOID_ANGLE_THRESHOLD &&
     			driveTrain.getNavXYaw() <= turnProfile.getAngle() + Constants.TURNING_TRAPEZOID_ANGLE_THRESHOLD) &&
     		(driveTrain.getYawRate() >= -Constants.TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD &&
