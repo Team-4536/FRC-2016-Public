@@ -93,20 +93,20 @@ public class DriveTrapezoidProfile extends CommandBase {
     protected boolean isFinished() {
     	
     	if (driveTrain.getEncoder() == Constants.ENCODER_FAILURE) {
-    		return true;
-    	}
+			return isTimedOut();
+    	} 
     	
 		if ((driveTrain.getEncoder() >= (trapezoid.getDistance()*12 - Constants.TRAPEZOID_DISTANCE_THRESHOLD) &&
 				driveTrain.getEncoder() <= (trapezoid.getDistance()*12 + Constants.TRAPEZOID_DISTANCE_THRESHOLD)) &&
 			(driveTrain.getRate() >= -Constants.TRAPEZOID_SPEED_THRESHOLD
 				&& driveTrain.getRate() <= Constants.TRAPEZOID_SPEED_THRESHOLD) &&
 			(driveTrain.getNavXYaw() >= -Constants.TRAPEZOID_ANGLE_THRESHOLD
-					&& driveTrain.getNavXYaw() <= Constants.TRAPEZOID_ANGLE_THRESHOLD) && 
+				&& driveTrain.getNavXYaw() <= Constants.TRAPEZOID_ANGLE_THRESHOLD) && 
 			(driveTrain.getYawRate() >= -Constants.TRAPEZOID_ANGULAR_SPEED_THRESHOLD
-					&& driveTrain.getYawRate() <= Constants.TRAPEZOID_ANGULAR_SPEED_THRESHOLD)){ //conditions may cancel
+				&& driveTrain.getYawRate() <= Constants.TRAPEZOID_ANGULAR_SPEED_THRESHOLD)){ //conditions may cancel
 			
 			return true;
-		}
+		} 
 		else { //Timeout may cancel
 			
 			return isTimedOut();

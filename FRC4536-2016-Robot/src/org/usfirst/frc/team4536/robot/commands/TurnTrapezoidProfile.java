@@ -95,7 +95,7 @@ public class TurnTrapezoidProfile extends CommandBase {
     protected boolean isFinished() {
     	
     	if (driveTrain.getEncoder() == Constants.ENCODER_FAILURE) {
-    		return true;
+    		return isTimedOut();
     	}
     	
     	if ((driveTrain.getNavXYaw() >= turnProfile.getAngle()-Constants.TURNING_TRAPEZOID_ANGLE_THRESHOLD &&

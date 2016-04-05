@@ -30,15 +30,15 @@ public class DriveTrain extends Subsystem {
 	public double oldForwardThrottle;
 	public double oldTurnThrottle;
 	
-	private boolean getLeft = true; //is the left encoder working?
-	private boolean getRight = true; //is the right encoder working?
-	private boolean getLeftMaybe = true; //is the left encoder absolutely working?
-	private boolean getRightMaybe = true; //is the right encoder absolutely working?
+	private boolean getLeft; //is the left encoder working?
+	private boolean getRight; //is the right encoder working?
+	private boolean getLeftMaybe; //is the left encoder absolutely working?
+	private boolean getRightMaybe; //is the right encoder absolutely working?
 	
 	/*---------Sensor Values---------*/
 	
-	double backDist, frontDist; //These are in feet
-	double leftDist; //This is in inches
+	double backDist, frontDist; //These are in feet 
+	double leftDist; //This is in inches 
 	double prevNavXYaw;
 	
 	/**
@@ -72,6 +72,12 @@ public class DriveTrain extends Subsystem {
 		frontUltra = new AnalogInput(frontUltraChannel);
 		backUltra = new AnalogInput(backUltraChannel);
 		leftIR = new AnalogInput(leftIRChannel);
+		
+		//encoder failure booleans
+    	getLeft = true;
+    	getRight = true;
+    	getLeftMaybe = true;
+    	getRightMaybe = true;
 
 		
 		try {
@@ -141,11 +147,7 @@ public class DriveTrain extends Subsystem {
      * @author Sheila
      * @return larger encoder distance (left or right) in inches
      */
-    public double getEncoder() {
-    	getLeft = true;
-    	getRight = true;
-    	getLeftMaybe = true;
-    	getRightMaybe = true;
+    public double getEncoder() { //TODO test autostop timeout
     	double rEnc = Math.abs(getRightEncoder());
     	double lEnc = Math.abs(getLeftEncoder());
     	
