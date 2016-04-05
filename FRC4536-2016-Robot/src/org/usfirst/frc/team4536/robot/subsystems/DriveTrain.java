@@ -32,6 +32,8 @@ public class DriveTrain extends Subsystem {
 	
 	private boolean getLeft = true; //is the left encoder working?
 	private boolean getRight = true; //is the right encoder working?
+	private boolean getLeftMaybe = true; //is the left encoder absolutely working?
+	private boolean getRightMaybe = true; //is the right encoder absolutely working?
 	
 	/*---------Sensor Values---------*/
 	
@@ -140,9 +142,10 @@ public class DriveTrain extends Subsystem {
      * @return larger encoder distance (left or right) in inches
      */
     public double getEncoder() {
-    	//TODO should these be reset with the NavX, or here?
     	getLeft = true;
     	getRight = true;
+    	getLeftMaybe = true;
+    	getRightMaybe = true;
     	double rEnc = Math.abs(getRightEncoder());
     	double lEnc = Math.abs(getLeftEncoder());
     	
@@ -152,7 +155,7 @@ public class DriveTrain extends Subsystem {
     		getLeft = false;
     	} else if (lEnc < rEnc - 10) {
     		System.out.println("potential error: left encoder is lower. ");
-    		getLeft = false;
+    		getLeftMaybe = false;
     	}
     	
     	//checks the right encoder for the same errors
@@ -161,7 +164,7 @@ public class DriveTrain extends Subsystem {
     		getRight = false;
     	} else if (lEnc < rEnc - 10) {
     		System.out.println("potential error: right encoder is lower. ");
-    		getRight = false;
+    		getRightMaybe = false;
     	}
     	
     	if (getLeft) {
@@ -175,7 +178,7 @@ public class DriveTrain extends Subsystem {
     
     /**
      * @author Sheila
-     * @return true if (probably) working, false if (potentially) broken
+     * @return true if (probably) working, false if broken
      */
     public boolean getLeftEncoderFailState() {
     	return getLeft;
@@ -183,10 +186,26 @@ public class DriveTrain extends Subsystem {
     
     /**
      * @author Sheila
-     * @return true if (probably) working, false if (potentially) broken
+     * @return true if (probably) working, false if broken
      */
     public boolean getRightEncoderFailState() {
     	return getRight;
+    }
+    
+    /**
+     * @author Sheila
+     * @return true if working, false if (potentially) broken
+     */
+    public boolean getLeftEncoderMaybeFailState() {
+    	return getLeftMaybe;
+    }
+    
+    /**
+     * @author Sheila
+     * @return true if working, false if (potentially) broken
+     */
+    public boolean getRightEncoderMaybeFailState() {
+    	return getRightMaybe;
     }
     
     /**
