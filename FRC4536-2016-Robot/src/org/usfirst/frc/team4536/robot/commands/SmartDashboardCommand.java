@@ -48,6 +48,7 @@ public class SmartDashboardCommand extends CommandBase {
 		//SmartDashboard.putNumber("range", maxUltra.getRange());
 		SmartDashboard.putNumber("Offset: ", driveTrain.getOffset());
 		SmartDashboard.putNumber("Ball Distance: ", intake.getdistance());
+		SmartDashboard.putBoolean("Left Encoder Failure: ", driveTrain.);
 
 		/*-----Display NavX Values-----*/
 		

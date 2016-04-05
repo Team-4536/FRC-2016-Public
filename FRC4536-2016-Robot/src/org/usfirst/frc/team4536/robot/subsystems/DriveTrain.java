@@ -1,13 +1,16 @@
 package org.usfirst.frc.team4536.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.AnalogInput;
+
 import org.usfirst.frc.team4536.robot.*;
 import org.usfirst.frc.team4536.robot.commands.DriveAccelLimited;
+
 import com.kauailabs.navx.frc.AHRS;
 
 public class DriveTrain extends Subsystem {
@@ -141,22 +144,26 @@ public class DriveTrain extends Subsystem {
     	
     	//checks the left encoder for obvious errors
     	if (lEnc > 10000) {
-    		System.out.println("error: Left encoder way too high!");
+    		System.out.println("error: Left encoder way too high! ");
     		getLeft = false;
-    	} 
+    	} else if (lEnc < rEnc - 10) {
+    		System.out.println("potential error: left encoder is lower. ");
+    	}
     	//checks the right encoder for obvious errors
     	if (lEnc > 10000) {
-    		System.out.println("error: Right encoder way too high!");
+    		System.out.println("error: Right encoder way too high! ");
     		getRight = false;
-    	} 
+    	} else if (lEnc < rEnc - 10) {
+    		System.out.println("potential error: right encoder is lower. ");
+    	}
     	//to add more conditions/checks, just put in if-elses 
     	//ending in getLeft or getRight = false.
     	
-    	//TODO test encoders in auto
-    	if (rEnc >= lEnc && getRight) {
-    		return getRightEncoder();
-    	} else if (lEnc >= rEnc && getLeft) {
+    	//TODO add smart dashboard record of breaks
+    	if (lEnc >= rEnc && getLeft) {
     		return getLeftEncoder();
+    	} else if (rEnc >= lEnc && getRight) {
+    		return getRightEncoder();
     	} else {
     		System.out.println("Double encoder failure.");
     		return Constants.ENCODER_FAILURE;
