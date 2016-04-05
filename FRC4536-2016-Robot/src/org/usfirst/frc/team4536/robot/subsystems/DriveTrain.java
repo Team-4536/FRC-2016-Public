@@ -30,6 +30,9 @@ public class DriveTrain extends Subsystem {
 	public double oldForwardThrottle;
 	public double oldTurnThrottle;
 	
+	private boolean getLeft = true; //is the left encoder working?
+	private boolean getRight = true; //is the right encoder working?
+	
 	/*---------Sensor Values---------*/
 	
 	double backDist, frontDist; //These are in feet
@@ -130,44 +133,60 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
+     * a method to return the working encoder (default left), or 
+     * return key number (in Constants class) if  both are broken. 
+     * Note: this will /always/ use the higher encoder, every call.
      * @author Sheila
      * @return larger encoder distance (left or right) in inches
      */
     public double getEncoder() {
-    	//the encoders are assumed to work unless an error is found
-    	boolean getLeft = true;
-    	boolean getRight = true;
-    	
-    	//these are so I can have shorter and less repetitive code
+    	//TODO should these be reset with the NavX, or here?
+    	getLeft = true;
+    	getRight = true;
     	double rEnc = Math.abs(getRightEncoder());
     	double lEnc = Math.abs(getLeftEncoder());
     	
-    	//checks the left encoder for obvious errors
+    	//checks the left encoder for potential errors
     	if (lEnc > 10000) {
     		System.out.println("error: Left encoder way too high! ");
     		getLeft = false;
     	} else if (lEnc < rEnc - 10) {
     		System.out.println("potential error: left encoder is lower. ");
+    		getLeft = false;
     	}
-    	//checks the right encoder for obvious errors
+    	
+    	//checks the right encoder for the same errors
     	if (lEnc > 10000) {
     		System.out.println("error: Right encoder way too high! ");
     		getRight = false;
     	} else if (lEnc < rEnc - 10) {
     		System.out.println("potential error: right encoder is lower. ");
+    		getRight = false;
     	}
-    	//to add more conditions/checks, just put in if-elses 
-    	//ending in getLeft or getRight = false.
     	
-    	//TODO add smart dashboard record of breaks
-    	if (lEnc >= rEnc && getLeft) {
+    	if (getLeft) {
     		return getLeftEncoder();
-    	} else if (rEnc >= lEnc && getRight) {
-    		return getRightEncoder();
+    	} else if (getRight) {
+    		return getRightEncoder(); 
     	} else {
-    		System.out.println("Double encoder failure.");
     		return Constants.ENCODER_FAILURE;
     	}
+    }
+    
+    /**
+     * @author Sheila
+     * @return true if (probably) working, false if (potentially) broken
+     */
+    public boolean getLeftEncoderFailState() {
+    	return getLeft;
+    }
+    
+    /**
+     * @author Sheila
+     * @return true if (probably) working, false if (potentially) broken
+     */
+    public boolean getRightEncoderFailState() {
+    	return getRight;
     }
     
     /**
