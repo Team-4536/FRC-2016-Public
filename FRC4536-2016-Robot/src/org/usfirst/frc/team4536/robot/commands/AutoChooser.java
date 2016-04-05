@@ -51,7 +51,7 @@ public class AutoChooser extends CommandGroup {
     	autoChooser.addObject(" CrossRockWall", 6);
     	autoChooser.addObject(" CrossMoat", 7);
     	autoChooser.addObject(" CrossRamparts", 8);
-    	autoChooser.addObject(" Spy Box Low Goal Auto: ", 9);
+    	autoChooser.addObject(" Spy Bot Low Goal Auto: ", 9);
     	autoChooser.addObject(" LowBarLowGoal", 10);
     	SmartDashboard.putData(" Auto Chooser", autoChooser);
     	
@@ -85,18 +85,21 @@ public class AutoChooser extends CommandGroup {
 	    	case 0:
 	
 	    		CommandBase.driveTrain.resetNavX(0.0);
+	    		System.out.println(CommandBase.driveTrain.getOffset());
 	    		orientation = true;
 	    	break;
 	    	
 	    	case 1:
 	
 	    		CommandBase.driveTrain.resetNavX(180.0);
+	    		System.out.println(CommandBase.driveTrain.getOffset());
 	    		orientation = false;
 	    	break;
 	    	
 	    	default:
 	    		
 	    		orientation = true;
+	    		System.out.println(CommandBase.driveTrain.getOffset());
 	    	break;
 		}
 	

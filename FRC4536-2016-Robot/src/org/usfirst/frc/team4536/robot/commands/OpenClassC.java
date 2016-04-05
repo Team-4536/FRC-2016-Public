@@ -27,7 +27,7 @@ public class OpenClassC extends CommandGroup {
     		
     		addSequential(turnOne);
     		
-    		moveOver = new DriveTrapezoidProfile(Constants.DISTANCE_BETWEEN_DEFENSES*defensesOver);
+    		moveOver = new DriveTrapezoidProfile(-Constants.DISTANCE_BETWEEN_DEFENSES*defensesOver);
     		addSequential(moveOver);
     		
     		turnTwo = new TeleopTurn(180);
