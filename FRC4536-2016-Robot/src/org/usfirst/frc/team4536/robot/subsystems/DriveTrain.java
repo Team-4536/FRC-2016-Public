@@ -132,7 +132,7 @@ public class DriveTrain extends Subsystem {
      */
     public double getEncoder() {
     	
-    	return getRightEncoder();
+    	return getLeftEncoder();
     }
     
     /**
