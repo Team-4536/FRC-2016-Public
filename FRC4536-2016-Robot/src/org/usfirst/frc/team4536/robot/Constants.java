@@ -67,8 +67,8 @@ public class Constants {
 	
 	/*-------------------------------------Auto Mode Distances--------------------------*/
 	
-	public static final double LOW_BAR_LOW_GOAL_FIRST_LEG_DISTANCE = 4.0; // in feet
-	public static final double LOW_BAR_lOW_GOAL_SECOND_LEG_DISTANCE = 6.0; // in feet
+	public static final double LOW_BAR_LOW_GOAL_FIRST_LEG_DISTANCE = 4.25; // in feet
+	public static final double LOW_BAR_lOW_GOAL_SECOND_LEG_DISTANCE = 7.0; // in feet
 	public static final double LOW_BAR_LOW_GOAL_FIRST_LEG_ANGLE = 10.0; // in degrees
 	public static final double LOW_BAR_LOW_GOAL_SECOND_LEG_ANGLE = 50.0; // in degrees
 	
