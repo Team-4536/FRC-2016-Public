@@ -99,7 +99,7 @@ public class Constants {
 	public static final double CROSS_RAMPARTS_ACCEL_LIMIT = 5.0; // Feet per second squared
 	public static final double CROSS_RAMPARTS_GYRO_PROPORTIONALITY = -0.05;
 	
-	public static final double CROSS_MOAT_DISTANCE = 16.0; // Feet
+	public static final double CROSS_MOAT_DISTANCE = 17.0; // 16.0 Feet
 	public static final double CROSS_MOAT_VELOCITY = 8.0; //Feet per second
 	public static final double CROSS_MOAT_ACCEL_LIMIT = 6.0; // Feet per second squared
 	
@@ -119,7 +119,7 @@ public class Constants {
 	
 	//Defense 4
 	public static final double DEFENSE_ALIGNMENT4_ANGLE = 235.0;
-	public static final double DEFENSE_ALIGNMENT4_DISTANCE = -7.5;
+	public static final double DEFENSE_ALIGNMENT4_DISTANCE = -8.5; //7.5
 	public static final boolean DEFENSE_ALIGNMENT4_TURN = true;
 	public static final boolean DEFENSE_ALIGNMENT4_ULTRA = false;
 	
