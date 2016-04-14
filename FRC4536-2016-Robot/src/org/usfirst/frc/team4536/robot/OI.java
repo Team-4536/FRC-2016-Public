@@ -32,6 +32,7 @@ public class OI {
 	public static Button TurnNDriveRightGoal;
 	public static Button TurnNDriveLeftGoal;
 	public static Button TurnNDrive90;
+	public static Button flipDriving;
 	
 	/**
 	 * @author Liam
@@ -53,6 +54,7 @@ public class OI {
 		TurnNDriveRightGoal = new JoystickButton(mainStick, RobotMap.HOLD_AT_ANGLE_FOR_RIGHT_GOAL);
 		TurnNDriveLeftGoal = new JoystickButton(mainStick, RobotMap.HOLD_AT_ANGLE_FOR_LEFT_GOAL);
 		TurnNDrive90 = new JoystickButton(mainStick, 6);
+		flipDriving = new JoystickButton(mainStick, 7);
 		
 		/*-------------------Actions------------------------*/
 
@@ -66,6 +68,7 @@ public class OI {
 		TurnNDriveRightGoal.whenPressed(new TurnNDrive(-60));
 		TurnNDriveLeftGoal.whenPressed(new TurnNDrive(60));
 		TurnNDrive90.whenPressed(new TurnNDrive(90));
+		flipDriving.whenPressed(new FlipJoystickX());
 
 		/*------------------Canceling actions--------------*/
 		
