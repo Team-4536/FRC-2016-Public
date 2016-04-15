@@ -18,6 +18,8 @@ public class Constants {
 	public static final double DRIVE_TRAIN_MAX_VELOCITY = 13.; //Feet per second, measured on blocks, 12.68 Battery Voltage
 	public static final double DRIVE_TRAIN_MAX_ANGULAR_VELOCITY = 400; // Degrees per second, measured on carpet, 12.83 Battery Voltage
 	
+	public static final int FLIP_DIRECTIONS_TIMEOUT = 1;
+	
 	/*--------------------------------------Profiles----------------------------------*/
 	
 	//Trapezoid
@@ -143,7 +145,7 @@ public class Constants {
 	public static final double INTAKE_RELEASE_TIMEOUT = 1.25; // in seconds
 	public static final double INTAKE_RELEASE_SPEED = 0.5; // in throttle
 	
-	/*---------------------------------------Scisor Lift--------------------------------*/
+	/*---------------------------------------Scissor Lift--------------------------------*/
 	
 	public static final double SCISSOR_SAFE_FULL_SPEED_TIME = 0.1; // In seconds, the time it takes to achieve full speed
 	public static final int SCALE_TIME_LIMIT = 20; //in seconds, how long we have to use the scissor lift each match end
