@@ -22,23 +22,23 @@ public class CrossDefense {
 	   
 	   case LOW_BAR:
 		   
-		   return new CrossLowBar();
+		   return new CrossLowBar(orientation);
 	   
 	   case MOAT:
 		   
-		   return new CrossMoat();
+		   return new CrossMoat(orientation);
 		   
 	   case ROCK_WALL:
 		   
-		   return new CrossRockWall();
+		   return new CrossRockWall(orientation);
 		   
 	   case ROUGH_TERRAIN:
 		   
-		   return new CrossRoughTerrain();
+		   return new CrossRoughTerrain(orientation);
 	
 	   case RAMPARTS:
 		   
-		   return new CrossRamparts();
+		   return new CrossRamparts(orientation);
 		   
 	   default:
 		   
