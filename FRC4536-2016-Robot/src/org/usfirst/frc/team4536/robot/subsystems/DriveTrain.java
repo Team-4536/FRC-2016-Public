@@ -232,6 +232,39 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	/**
+	 * @author Liam
+	 * 
+	 */
+	public double getNavXAngle() {
+		
+		return navX.getAngle();
+	}
+	
+	/**
+	 * @author Liam
+	 */
+	public double getFusedHeading() {
+		
+		return navX.getFusedHeading();
+	}
+	
+	/**
+	 * @author Liam
+	 */
+	public double getNavXAnglePID() {
+		
+		return navX.pidGet();
+	}
+	
+	/**
+	 * @author  Liam
+	 */
+	public double getCompassHeading() {
+		
+		return navX.getCompassHeading();
+	}
+	
+	/**
 	 * @author Audrey
 	 * @return NavX Pitch or the angle of the robot around an axis from left to right
 	 * @return If output is positive, robot is tilting forward
