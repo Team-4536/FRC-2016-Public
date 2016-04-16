@@ -39,13 +39,14 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
         driveTrainCommand = new DriveTrainCommand();
-        autoChooser = new AutoChooser();
         driveIntake = new DriveIntakeArm();
         intakeAccelLimited = new DriveIntakeAccelLimited();
         smartDashboardCommand = new SmartDashboardCommand();
         driveAccelLimited = new DriveAccelLimited();
         safeDriveScissorLift = new SafeDriveScissorLift();
         superSafeDriveScissorLift = new SuperSafeDriveScissorLift();
+        
+        autoChooser = new AutoChooser();
         
         OI.buttonHandling();
         
@@ -65,7 +66,8 @@ public class Robot extends IterativeRobot {
         CommandBase.driveTrain.resetAccelValues();
         
         CommandBase.intake.resetAccelValues();
-    	
+
+        autoChooser = new AutoChooser();
         if (autoChooser != null) {
         	
         	autoChooser.start();

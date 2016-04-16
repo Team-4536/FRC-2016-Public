@@ -3,12 +3,15 @@ package org.usfirst.frc.team4536.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team4536.robot.Constants;
+import org.usfirst.frc.team4536.robot.CrossDefense;
 import org.usfirst.frc.team4536.robot.Utilities;
 import org.usfirst.frc.team4536.robot.commands.*;
 import org.usfirst.frc.team4536.robot.subsystems.DriveTrain;
+
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+
 import org.usfirst.frc.team4536.robot.commands.*;
 
 /**
@@ -16,7 +19,7 @@ import org.usfirst.frc.team4536.robot.commands.*;
  *auto chooser chooses the autonomous mode which will be executed for the duration of the match.
  *orientation chooses whether the robot goes over the defense forwards or backwards.
  */
-public class AutoChooser extends CommandBase {
+public class AutoChooser extends CommandGroup {
 	
 	SendableChooser autoChooser;
 	SendableChooser orientationChooser; //Picks whether the robot is going forward or backward over a defense
@@ -25,6 +28,7 @@ public class AutoChooser extends CommandBase {
 	private boolean orientation = true; // true is forward, false is backward
 	
 	boolean forward = true;
+	Command defense = new ReleaseIntake();
 
     public AutoChooser() {
     	
@@ -61,27 +65,26 @@ public class AutoChooser extends CommandBase {
     	defensePositionChooser.addObject(" Position 4", 4);
     	defensePositionChooser.addObject(" Position 5", 5);
     	SmartDashboard.putData(" Defense Position Chooser", defensePositionChooser);
-    }
+ 
     
-    protected void initialize() {
-    	
     	int defense = (int) autoChooser.getSelected().hashCode();
     	
     	int pos = (int) defensePositionChooser.getSelected().hashCode();
     	
     	if (pos == 1 || pos == 0) {
     	
+    		//TODO Add orientation to new autoChooser
 	    	switch ((int) orientationChooser.getSelected().hashCode()) {
 	    	
 		    	case 0:
 
-		    		driveTrain.resetNavX(0.0);
+		    		CommandBase.driveTrain.resetNavX(0.0);
 		    		orientation = true;
 		    	break;
 		    	
 		    	case 1:
 
-		    		driveTrain.resetNavX(180.0);
+		    		CommandBase.driveTrain.resetNavX(180.0);
 		    		orientation = false;
 		    	break;
 		    	
@@ -95,86 +98,95 @@ public class AutoChooser extends CommandBase {
 			
 				case 0:
 					
-					new ReleaseIntake().start();
+					//System.out.println("Auto: Release Intake");
+					addSequential(new ReleaseIntake());
+					
 				break;
 					
 				case 1:
+
+					//System.out.println("Auto: Do Nothing");
+					addSequential(new DoNothing());
 					
-					new DoNothing().start();
 				break;
 				
 				case 2:
-					
-					new ReachOuterWorks(orientation).start();
+
+					//System.out.println("Auto: Reach Outer Works");
+					addSequential(new ReachOuterWorks(orientation));
 					
 				break;
 			
 				case 3:
+
+					//System.out.println("Auto: Pick Up Boulder");
+					addSequential(new PickUpBoulder());
 					
-					new PickUpBoulder().start();
 				break;
 				
 				case 4:
-					
-					new CrossDefense(Utilities.Defense.LOW_BAR, orientation);
+
+					//System.out.println("Auto: Defense_LowBar");
+					addSequential(CrossDefense.chooseDefense(Utilities.Defense.LOW_BAR, orientation));
+				
 				break;
 				
 				case 5:
+
+					//System.out.println("Auto: Defense_RoughTerrain");
+					addSequential(CrossDefense.chooseDefense(Utilities.Defense.ROUGH_TERRAIN, orientation));
 					
-					new CrossDefense(Utilities.Defense.ROUGH_TERRAIN, orientation);
 				break;
 				
 				case 6:
+
+					//System.out.println("Auto: Defense_RockWall");
+					addSequential(CrossDefense.chooseDefense(Utilities.Defense.ROCK_WALL, orientation));
 					
-					new CrossDefense(Utilities.Defense.ROCK_WALL, orientation);
 				break;
 		
 				case 7:
+
+					//System.out.println("Auto: Defense_Moat");
+					addSequential(CrossDefense.chooseDefense(Utilities.Defense.MOAT, orientation));
 					
-					new CrossDefense(Utilities.Defense.MOAT, orientation);
 				break;
 					
 				case 8:
-					
-					new CrossDefense(Utilities.Defense.RAMPARTS, orientation);
+
+					//System.out.println("Auto: Defense_Ramparts");
+					addSequential(CrossDefense.chooseDefense(Utilities.Defense.RAMPARTS, orientation));
 					
 				break;
 				
 				case 9:
-
-					driveTrain.resetNavX(135.0);
-					new SpyBotLowGoal().start();
+					
+					//TODO Check this reset!!!
+					CommandBase.driveTrain.resetNavX(135.0);
+					//System.out.println("Auto: Defense_Goal_SpyBot");
+					addSequential(new SpyBotLowGoal());
 				break;
 				
 				case 10:
+
+					//System.out.println("Auto: Defense_Goal_LowBar");
+					addSequential(new LowBarLowGoal());
 					
-					new LowBarLowGoal().start();
 				break;
 				
 				default: 
-					
-					new ReleaseIntake().start();
-					driveTrain.arcadeDrive(0.0, 0.0);
+
+					//System.out.println("Auto: ReleaseIntake");
+					addSequential(new ReleaseIntake());
+				
 				break;
 			}
 	    }
     	else {
     		
-    		driveTrain.resetNavX(180.0);
-    		new CrossNScore(defense, pos).start();
+    		CommandBase.driveTrain.resetNavX(180.0);
+			//System.out.println("Auto Cross And Score");
+    		addSequential(new CrossNScore(defense, pos));
     	}
-    }
-    
-    protected void execute() {
-    }
-    
-    protected boolean isFinished() {
-        return false;
-    }
-    
-    protected void end() {
-    }
-    
-    protected void interrupted() {
     }
 }
