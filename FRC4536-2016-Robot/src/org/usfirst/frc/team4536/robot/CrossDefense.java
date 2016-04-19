@@ -3,6 +3,7 @@ package org.usfirst.frc.team4536.robot;
 import org.usfirst.frc.team4536.robot.Utilities.Defense;
 import org.usfirst.frc.team4536.robot.commands.CrossLowBar;
 import org.usfirst.frc.team4536.robot.commands.CrossMoat;
+import org.usfirst.frc.team4536.robot.commands.CrossPortcullis;
 import org.usfirst.frc.team4536.robot.commands.CrossRamparts;
 import org.usfirst.frc.team4536.robot.commands.CrossRockWall;
 import org.usfirst.frc.team4536.robot.commands.CrossRoughTerrain;
@@ -39,6 +40,10 @@ public class CrossDefense {
 	   case RAMPARTS:
 		   
 		   return new CrossRamparts();
+		   
+	   case PORTCULLIS:
+		   
+		   return new CrossPortcullis();
 		   
 	   default:
 		   
