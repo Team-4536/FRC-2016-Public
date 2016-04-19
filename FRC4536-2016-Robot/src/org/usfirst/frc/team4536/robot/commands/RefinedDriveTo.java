@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class RefinedDriveTo extends CommandGroup {
     
-    public  RefinedDriveTo() {
+    public RefinedDriveTo() {
     	addSequential(new UpdateDriveTrain());
     	addSequential(new DriveTo());
     }

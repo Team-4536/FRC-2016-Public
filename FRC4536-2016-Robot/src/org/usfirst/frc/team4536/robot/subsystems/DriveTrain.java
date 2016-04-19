@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import org.usfirst.frc.team4536.robot.*;
 import org.usfirst.frc.team4536.robot.commands.DriveAccelLimited;
 import com.kauailabs.navx.frc.AHRS;
+import java.lang.Math;
 
 public class DriveTrain extends Subsystem {
 	
@@ -29,12 +30,17 @@ public class DriveTrain extends Subsystem {
 	
 	/*---------Sensor Values---------*/
 	
-	public double backDist, frontDist, correctedBackDist, correctedFrontDist; //These are in feet
+	public double backDist, frontDist, correctedBackDist, correctedFrontDist, backRev1, frontRev1; //These are in feet
 	double leftDist; //This is in inches
 	double prevNavXYaw;
 	
 	double b1, b2, b3, b4, b5, b6, b7, b8; //These are for the previous values of the back ultrasonic
 	double f1, f2, f3, f4, f5, f6, f7, f8; //These are for the previous values of the front ultrasonic
+	
+	boolean bB1, bB2, bB3, bB4, bB5, bB6, bB7, bB8;
+	boolean fB1, fB2, fB3, fB4, fB5, fB6, fB7, fB8;
+	
+	int goodBack, goodFront;
 	
 	/**
 	 * @author Noah
@@ -338,7 +344,74 @@ public class DriveTrain extends Subsystem {
 	 * @return The distance behind the robot in feet
 	 */
 	public double getBackDist() {
-		correctedBackDist = (b1 + b2 + b3 + b4 + b5 + b6 + b7 + b8) / 8;
+		correctedBackDist = 0;
+		goodBack = 0;
+		backRev1 = (b1 + b2 + b3 + b4 + b5 + b6 + b7 + b8) / 8;
+		if ((b1 > backRev1 && b1 - 1 < backRev1) || (b1 < backRev1 && b1 + 1 < backRev1)) {
+			bB1 = false;
+		}
+		else {
+			bB1 = true;
+			correctedBackDist = correctedBackDist + b1;
+			goodBack = goodBack + 1;
+		}
+		if ((b2 > backRev1 && b2 - 2 < backRev1) || (b2 < backRev1 && b2 + 2 < backRev1)) {
+			bB2 = false;
+		}
+		else {
+			bB2 = true;
+			correctedBackDist = correctedBackDist + b2;
+			goodBack = goodBack + 1;
+		}
+		if ((b3 > backRev1 && b3 - 3 < backRev1) || (b3 < backRev1 && b3 + 3 < backRev1)) {
+			bB3 = false;
+		}
+		else {
+			bB3 = true;
+			correctedBackDist = correctedBackDist + b3;
+			goodBack = goodBack + 1;
+		}
+		if ((b4 > backRev1 && b4 - 4 < backRev1) || (b4 < backRev1 && b4 + 4 < backRev1)) {
+			bB4 = false;
+		}
+		else {
+			bB4 = true;
+			correctedBackDist = correctedBackDist + b4;
+			goodBack = goodBack + 1;
+		}
+		if ((b5 > backRev1 && b5 - 5 < backRev1) || (b5 < backRev1 && b5 + 5 < backRev1)) {
+			bB5 = false;
+		}
+		else {
+			bB5 = true;
+			correctedBackDist = correctedBackDist + b5;
+			goodBack = goodBack + 1;
+		}
+		if ((b6 > backRev1 && b6 - 6 < backRev1) || (b6 < backRev1 && b6 + 6 < backRev1)) {
+			bB6 = false;
+		}
+		else {
+			bB6 = true;
+			correctedBackDist = correctedBackDist + b6;
+			goodBack = goodBack + 1;
+		}
+		if ((b7 > backRev1 && b7 - 7 < backRev1) || (b7 < backRev1 && b7 + 7 < backRev1)) {
+			bB7 = false;
+		}
+		else {
+			bB7 = true;
+			correctedBackDist = correctedBackDist + b7;
+			goodBack = goodBack + 1;
+		}
+		if ((b8 > backRev1 && b8 - 8 < backRev1) || (b8 < backRev1 && b8 + 8 < backRev1)) {
+			bB8 = false;
+		}
+		else {
+			bB8 = true;
+			correctedBackDist = correctedBackDist + b8;
+			goodBack = goodBack + 1;
+		}
+		correctedBackDist = correctedBackDist / goodBack;
 		return correctedBackDist;
 	}
 	
