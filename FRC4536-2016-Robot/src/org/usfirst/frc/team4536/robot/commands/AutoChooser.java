@@ -52,6 +52,7 @@ public class AutoChooser extends CommandGroup {
     	autoChooser.addObject(" CrossRamparts", 8);
     	autoChooser.addObject(" Spy Box Low Goal Auto: ", 9);
     	autoChooser.addObject(" LowBarLowGoal", 10);
+    	autoChooser.addObject(" CrossPortcullis: ", 11);
     	SmartDashboard.putData(" Auto Chooser", autoChooser);
     	
     	orientationChooser.addDefault(" Forwards", 0);
@@ -171,6 +172,9 @@ public class AutoChooser extends CommandGroup {
 					
 				break;
 				
+				case 11:
+					
+					addSequential(CrossDefense.chooseDefense(Utilities.Defense.PORTCULLIS, orientation));
 				default: 
 
 					//System.out.println("Auto: ReleaseIntake");
