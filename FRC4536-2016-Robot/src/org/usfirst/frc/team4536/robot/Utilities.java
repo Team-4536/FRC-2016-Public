@@ -256,7 +256,7 @@ public class Utilities {
 	
 	/**
 	 * @author Audrey
-	 * Numbered 0-4
+	 * Numbered 0-5
 	 */
-	public enum Defense{LOW_BAR, MOAT, ROCK_WALL, ROUGH_TERRAIN, RAMPARTS};
+	public enum Defense{LOW_BAR, MOAT, ROCK_WALL, ROUGH_TERRAIN, RAMPARTS, PORTCULLIS};
 }
