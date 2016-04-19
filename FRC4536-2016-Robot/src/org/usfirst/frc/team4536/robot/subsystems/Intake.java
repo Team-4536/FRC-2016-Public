@@ -65,6 +65,22 @@ public class Intake extends Subsystem {
     	throttle = Utilities.accelLimit(throttle, oldThrottle, Constants.ACCEL_LIMIT_INTAKE);
     	setThrottle(throttle);
     }
+    
+    /**
+     * @author Audrey
+     * 
+     * @param throttle	The signal value [-1, 1] sent to the (intake arm?) motor,
+     * after being edited to create an acceleration limit. Positive values eject 
+     * the ball and negative values intake the ball so it's intuitive for a 
+     * joystick interface.
+     *
+     * @param accel limit Can be set to accel limit other than default
+     */
+    public void setThrottleAccelLimited(double throttle, double accel) {
+    	
+    	throttle = Utilities.accelLimit(throttle, oldThrottle, accel);
+    	setThrottle(throttle);
+    }
 
 	
 	/**
