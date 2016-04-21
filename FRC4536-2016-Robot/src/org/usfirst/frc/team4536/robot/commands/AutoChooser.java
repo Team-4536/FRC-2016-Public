@@ -24,6 +24,7 @@ public class AutoChooser extends CommandGroup {
 	SendableChooser autoChooser;
 	SendableChooser orientationChooser; //Picks whether the robot is going forward or backward over a defense
 	SendableChooser defensePositionChooser; // Picks which defense position the defense you are crossing is
+	SendableChooser stealBoulderChooser; //Picks whether to steal a midline boulder or not
 	
 	private boolean orientation = true; // true is forward, false is backward
 	
@@ -37,7 +38,7 @@ public class AutoChooser extends CommandGroup {
     	autoChooser = new SendableChooser();
     	orientationChooser = new SendableChooser();
     	defensePositionChooser = new SendableChooser();
-    
+    	stealBoulderChooser = new SendableChooser();
     	
     	/*-----AutoChooser Options----*/
     	
@@ -66,6 +67,9 @@ public class AutoChooser extends CommandGroup {
     	defensePositionChooser.addObject(" Position 5", 5);
     	SmartDashboard.putData(" Defense Position Chooser", defensePositionChooser);
  
+    	stealBoulderChooser.addObject(" Don't Steal", 0);
+    	stealBoulderChooser.addObject(" Steal Boulder", 1);
+    	SmartDashboard.putData(" Steal Boulder Chooser", stealBoulderChooser);    	
     
     	int defense = (int) autoChooser.getSelected().hashCode();
     	
@@ -94,6 +98,10 @@ public class AutoChooser extends CommandGroup {
 		    	break;
 	    	}	
 	
+	    	if((int)stealBoulderChooser.getSelected().hashCode() == 1) {
+	    		new StealBoulderAuto();
+	    	}
+	    	
 			switch (defense) {
 			
 				case 0:
