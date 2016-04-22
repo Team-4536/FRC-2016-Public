@@ -16,7 +16,7 @@ public class StealBoulderAuto extends CommandGroup {
 	    	
 			DriveTrapezoidProfile backUp;
 			
-        	backUp = new DriveTrapezoidProfile(Constants.STEAL_BACKUP_DISTANCE, Constants.STEAL_BACKUP_VELOCITY, Constants.STEAL_BACKUP_ACCEL_LIMIT, Constants.STEAL_BACKUP_GYRO_PROPORTIONALITY);
+        	backUp = new DriveTrapezoidProfile(Constants.STEAL_BACKUP_DISTANCE, Constants.STEAL_BACKUP_VELOCITY, Constants.STEAL_BACKUP_ACCEL_LIMIT);
         	double maxTime = backUp.getNeededTime() + 1;
     		addSequential(backUp, maxTime);
 	    } //TODO back up (like 6 inches), turn, move to defense, turn, move to next auto

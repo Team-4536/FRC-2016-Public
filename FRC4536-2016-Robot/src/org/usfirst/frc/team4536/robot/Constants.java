@@ -103,6 +103,10 @@ public class Constants {
 	public static final double CROSS_MOAT_VELOCITY = 8.0; //Feet per second
 	public static final double CROSS_MOAT_ACCEL_LIMIT = 6.0; // Feet per second squared
 	
+	public static final double STEAL_BACKUP_DISTANCE = 0.5; //Feet
+	public static final double STEAL_BACKUP_VELOCITY = 1.0; //Feet per second
+	public static final double STEAL_BACKUP_ACCEL_LIMIT = 3.0; //Feet per second squared
+	
 	/*---------------------------------------Defense Alignment Positions----------------*/
 	
 	//Defense 2
