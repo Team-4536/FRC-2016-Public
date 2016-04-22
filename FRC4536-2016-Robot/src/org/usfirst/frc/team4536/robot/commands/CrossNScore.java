@@ -8,7 +8,7 @@ import org.usfirst.frc.team4536.robot.commands.DefenseAlignmentPosition;
 /**
  *
  */
-public class CrossNScore extends CommandGroup {
+public class CrossNScore extends CommandGroup { 
 	
 	private boolean orientation;
     
