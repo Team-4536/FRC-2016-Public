@@ -4,20 +4,17 @@ import org.usfirst.frc.team4536.robot.Constants;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
+ * intakes ball from midline, turns & backs out, and turns back to (to be determined) defense.
  * @author Sheila
- * 
- * @param forward	are we crossing this defense forward(true) or backward(false)?
  */
 public class StealBoulderAuto extends CommandGroup {
     
 	public  StealBoulderAuto() {
 		
-			addParallel(new ReleaseIntake());
-	    	
-			DriveTrapezoidProfile backUp;
-			
-        	backUp = new DriveTrapezoidProfile(Constants.STEAL_BACKUP_DISTANCE, Constants.STEAL_BACKUP_VELOCITY, Constants.STEAL_BACKUP_ACCEL_LIMIT);
-        	double maxTime = backUp.getNeededTime() + 1;
-    		addSequential(backUp, maxTime);
-	    } //TODO back up (like 6 inches), turn, move to defense, turn, move to next auto
+			//addSequential(new AutoIntake());
+    		addSequential(new DriveTrapezoidProfile(Constants.STEAL_BOULDER_FIRST_LEG_DISTANCE));
+    		addSequential(new TurnTrapezoidProfile(Constants.STEAL_BOULDER_FIRST_LEG_ANGLE));
+    		addSequential(new DriveTrapezoidProfile(Constants.STEAL_BOULDER_SECOND_LEG_DISTANCE));
+    		addSequential(new TurnTrapezoidProfile(Constants.STEAL_BOULDER_SECOND_LEG_ANGLE));
+	    } 
 }
