@@ -45,6 +45,7 @@ public class Robot extends IterativeRobot {
         driveAccelLimited = new DriveAccelLimited();
         safeDriveScissorLift = new SafeDriveScissorLift();
         superSafeDriveScissorLift = new SuperSafeDriveScissorLift();
+        autoChooser = new AutoChooser();
         
         OI.buttonHandling();
         
