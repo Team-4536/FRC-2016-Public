@@ -99,7 +99,7 @@ public class AutoChooser extends CommandGroup {
 	    	}	
 	
 	    	if((int)stealBoulderChooser.getSelected().hashCode() == 1) {
-	    		new StealBoulderAuto();
+	    		addSequential(new StealBoulderAuto());
 	    	}
 	    	
 			switch (defense) {
