@@ -4,6 +4,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Constants {
 	
+	public static final double DEFENSE_LENGTH = 4.2; //Feet
+	//warning; this is a guestimate TODO tweak defense length constant
+	
 	/*---------------------------------------Drive Train--------------------------------*/
 
 	public static final double SPEED_CURVE_STRAIGHT = 2.4; // Unitless exponent

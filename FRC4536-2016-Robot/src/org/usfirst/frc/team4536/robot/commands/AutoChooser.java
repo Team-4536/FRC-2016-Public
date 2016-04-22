@@ -70,7 +70,7 @@ public class AutoChooser extends CommandGroup {
     	stealBoulderChooser.addObject(" Don't Steal", 0);
     	stealBoulderChooser.addObject(" Steal Boulder", 1);
     	SmartDashboard.putData(" Steal Boulder Chooser", stealBoulderChooser);    	
-    
+    //TODO add position chooser to steal boulder
     	int defense = (int) autoChooser.getSelected().hashCode();
     	
     	int pos = (int) defensePositionChooser.getSelected().hashCode();
