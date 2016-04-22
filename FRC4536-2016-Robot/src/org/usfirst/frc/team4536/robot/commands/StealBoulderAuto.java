@@ -11,7 +11,7 @@ public class StealBoulderAuto extends CommandGroup {
     
 	public  StealBoulderAuto() {
 		
-			//addSequential(new AutoIntake());
+			addSequential(new AutoIntake());
     		addSequential(new DriveTrapezoidProfile(Constants.STEAL_BOULDER_FIRST_LEG_DISTANCE));
     		addSequential(new TurnTrapezoidProfile(Constants.STEAL_BOULDER_FIRST_LEG_ANGLE));
     		addSequential(new DriveTrapezoidProfile(Constants.STEAL_BOULDER_SECOND_LEG_DISTANCE));
