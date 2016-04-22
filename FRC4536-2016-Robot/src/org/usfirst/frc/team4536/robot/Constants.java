@@ -54,7 +54,7 @@ public class Constants {
 	
 	/*---------------------------------------Encoders-----------------------------------*/
 	
-	public static final double DRIVE_ENCODER_PROPORTIONALITY_CONSTANT = 2.; //Ticks per inch
+	public static final double DRIVE_ENCODER_PROPORTIONALITY_CONSTANT = 4.0; //Ticks per inch
 	//TODO switch proportionality back to 16
 	
 	/*-------------------------------------AutoMode Time Outs---------------------------*/
@@ -104,10 +104,10 @@ public class Constants {
 	public static final double CROSS_MOAT_VELOCITY = 8.0; //Feet per second
 	public static final double CROSS_MOAT_ACCEL_LIMIT = 6.0; // Feet per second squared
 	
-	public static final double STEAL_BOULDER_FIRST_LEG_DISTANCE = 0.5; // in feet
-	public static final double STEAL_BOULDER_SECOND_LEG_DISTANCE = 4.0; // in feet
-	public static final double STEAL_BOULDER_FIRST_LEG_ANGLE = 90.0; // in degrees (180 to -180)
-	public static final double STEAL_BOULDER_SECOND_LEG_ANGLE = -90.0; // in degrees (180 to -180)
+	public static final double STEAL_BOULDER_FIRST_LEG_DISTANCE = -0.5; // in feet
+	public static final double STEAL_BOULDER_SECOND_LEG_DISTANCE = -4.0; // in feet
+	public static final double STEAL_BOULDER_FIRST_LEG_ANGLE = -90.0; // in degrees (180 to -180)
+	public static final double STEAL_BOULDER_SECOND_LEG_ANGLE = 90.0; // in degrees (180 to -180)
 	
 	/*---------------------------------------Defense Alignment Positions----------------*/
 	
