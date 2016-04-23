@@ -128,11 +128,17 @@ public class DriveTrain extends Subsystem {
     
     /**
      * @author Audrey
-     * @return right encoder distance in inches
+     * @return encoder distance in inches of the encoder with the greater distance
      */
     public double getEncoder() {
+    	if(Math.abs(getLeftEncoder()) > Math.abs(getRightEncoder())){
+    		System.out.println("Using left");
+    		return getLeftEncoder();
+    	}else{
+    		System.out.println("Using right");
+    		return getRightEncoder();
+    	}
     	
-    	return getLeftEncoder();
     }
     
     /**
