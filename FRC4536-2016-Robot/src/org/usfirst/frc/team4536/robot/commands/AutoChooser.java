@@ -69,8 +69,8 @@ public class AutoChooser extends CommandGroup {
  
     	stealBoulderChooser.addObject(" Don't Steal", 0);
     	stealBoulderChooser.addObject(" Steal Boulder", 1);
-    	SmartDashboard.putData(" Steal Boulder Chooser", stealBoulderChooser);    	
-    //TODO add position chooser to steal boulder
+    	SmartDashboard.putData(" Steal Boulder Chooser", stealBoulderChooser);   
+    	
     	int defense = (int) autoChooser.getSelected().hashCode();
     	
     	int pos = (int) defensePositionChooser.getSelected().hashCode();
@@ -198,7 +198,9 @@ public class AutoChooser extends CommandGroup {
 			//System.out.println("Auto Cross And Score");
     		if(steal == 1) {
     			addSequential(new StealBoulderAuto(defense));
-    		}
+    		} else {
+    			addSequential(new ReleaseIntake());
+    		} //TODO remove release intake from default, add to upper steal
     		addSequential(new CrossNScore(defense, pos));
     	}
     }

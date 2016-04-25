@@ -15,12 +15,13 @@ public class StealBoulderAuto extends CommandGroup {
 	
 	public  StealBoulderAuto(int position) {
 		
-		double positionDistance = position*4.2;
+		double positionDistance = position*Constants.DEFENSE_LENGTH;
 		
 		addSequential(new AutoIntake());
 		addSequential(new DriveTrapezoidProfile(Constants.STEAL_BOULDER_FIRST_LEG_DISTANCE));
 		addSequential(new TurnTrapezoidProfile(Constants.STEAL_BOULDER_FIRST_LEG_ANGLE));
-		addSequential(new DriveTrapezoidProfile(Constants.STEAL_BOULDER_SECOND_LEG_DISTANCE+positionDistance));
-		addSequential(new TurnTrapezoidProfile(Constants.STEAL_BOULDER_SECOND_LEG_ANGLE), 4);
+		addSequential(new DriveTrapezoidProfile(Constants.STEAL_BOULDER_SECOND_LEG_DISTANCE 
+															- positionDistance));
+		addSequential(new TurnTrapezoidProfile(Constants.STEAL_BOULDER_SECOND_LEG_ANGLE));
     } 
 }
