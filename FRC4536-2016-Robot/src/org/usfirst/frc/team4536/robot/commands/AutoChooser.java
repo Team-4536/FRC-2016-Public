@@ -75,6 +75,8 @@ public class AutoChooser extends CommandGroup {
     	
     	int pos = (int) defensePositionChooser.getSelected().hashCode();
     	
+    	int steal = (int) stealBoulderChooser.getSelected().hashCode();
+    	
     	if (pos == 1 || pos == 0) {
     	
     		//TODO Add orientation to new autoChooser
@@ -98,7 +100,7 @@ public class AutoChooser extends CommandGroup {
 		    	break;
 	    	}	
 	
-	    	if((int)stealBoulderChooser.getSelected().hashCode() == 1) {
+	    	if(steal == 1) {
 	    		addSequential(new StealBoulderAuto());
 	    	}
 	    	
@@ -194,6 +196,9 @@ public class AutoChooser extends CommandGroup {
     		
     		CommandBase.driveTrain.resetNavX(180.0);
 			//System.out.println("Auto Cross And Score");
+    		if(steal == 1) {
+    			addSequential(new StealBoulderAuto(defense));
+    		}
     		addSequential(new CrossNScore(defense, pos));
     	}
     }
