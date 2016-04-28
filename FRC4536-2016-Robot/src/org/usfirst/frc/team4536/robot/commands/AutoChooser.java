@@ -198,9 +198,7 @@ public class AutoChooser extends CommandGroup {
 			//System.out.println("Auto Cross And Score");
     		if(steal == 1) {
     			addSequential(new StealBoulderAuto(defense));
-    		} else {
-    			addSequential(new ReleaseIntake());
-    		} //TODO remove release intake from default, add to upper steal
+    		} //TODO remove release intake from default (github merge warning), add to steal elses
     		addSequential(new CrossNScore(defense, pos));
     	}
     }
