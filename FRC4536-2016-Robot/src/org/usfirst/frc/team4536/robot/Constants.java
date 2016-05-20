@@ -36,7 +36,7 @@ public class Constants {
 	//Turning Trapezoid
 	public static final double TURNING_TRAPEOID_GYRO_PROPORTIONALITY = 0.04; // Throttle per degree
 	public static final double TURNING_TRAPEZOID_TIMEOUT_OFFSET = 0.5; // in seconds, added to the base timeout time which is the time needed
-	public static final double TURNING_TRAPEZOID_ANGLE_THRESHOLD = 2.0; // in degrees
+	public static final double TURNING_TRAPEZOID_ANGLE_THRESHOLD = 1.0; // in degrees
 	public static final double TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD = 1.0; // in degrees per second
 	public static final double TURNING_TRAPEZOID_DEFAULT_ANGULAR_SPEED = 200; // in degrees per second
 	public static final double TURNING_TRAPEZOID_DEFAULT_ANGULAR_ACCELERATION = 90; // in degrees per second squared
