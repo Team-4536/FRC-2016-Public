@@ -12,12 +12,14 @@ public class DriveTrapezoidProfile extends CommandBase {
 	
 	Timer timer = new Timer();
 	TrapezoidProfile trapezoid;
-	double startingAngle;
-	double proportionalityConstant = Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY;
+	private double startingAngle;
+	private double proportionalityConstant = Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY;
+	private double accumulatedDistanceError = 0.0;
+	private double accumulatedAngleError = 0.0;
 	
 	/**
 	 * @author Liam
-	 * @param the distance desired to be travelled
+	 * @param the distance desired to be travelled in feet
 	 * Sets the Max Speed and Acceleration to the defaults defined in constants
 	 */
 	public DriveTrapezoidProfile(double distance) {
@@ -29,7 +31,11 @@ public class DriveTrapezoidProfile extends CommandBase {
 	 * @author Liam
 	 * @param distance The desired distance the robot should travel in feet. May be negative or positive to indicate direction.
 	 * @param maxSpeed The maximum possible speed the robot could be traveling at in feet per second. Always positive.
+<<<<<<< HEAD
 	 * @param maxAcceleration The maximum possible acceleration the speed can change by in feet per second squared. Always positive.
+=======
+	 * @param maxAcceleration The maximum possible acceleration in feet per second squared the speed can change by. Always positive.
+>>>>>>> refs/remotes/origin/DriveTrapezoidIntegral
 	 */
     public DriveTrapezoidProfile(double distance, double maxSpeed, double maxAcceleration) {
 
@@ -40,8 +46,13 @@ public class DriveTrapezoidProfile extends CommandBase {
 	/**
 	 * @author Liam
 	 * @param distance The desired distance the robot should travel in feet. May be negative or positive to indicate direction.
+<<<<<<< HEAD
 	 * @param maxSpeed The maximum possible speed the robot could be traveling at in feet per second. Always positive.
 	 * @param maxAcceleration The maximum possible acceleration the speed can change by in feet per second squared. Always positive.
+=======
+	 * @param maxSpeed The maximum possible speed the robot could be traveling at in feet per second. Scalar so Always positive.
+	 * @param maxAcceleration The maximum possible acceleration in feet per second squared the speed can change by. Always positive.
+>>>>>>> refs/remotes/origin/DriveTrapezoidIntegral
 	 * @param custom gyro proportionality constant to override the default. Useful for command groups that may require more correction due to terrain.
 	 */
     public DriveTrapezoidProfile(double distance, double maxSpeed, double maxAcceleration, double gyroProportionality) {
@@ -61,7 +72,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     
     /**
      * @author Audrey
-     * @return time needed from the trapezoid profile method
+     * @return time needed from the trapezoid profile method in seconds
      */
     public double getNeededTime(){
     	
@@ -72,20 +83,64 @@ public class DriveTrapezoidProfile extends CommandBase {
     	timer.reset();
     	timer.start();
     	
+    	accumulatedDistanceError = 0.0;
+    	accumulatedAngleError = 0.0;
+    	
     	driveTrain.resetEncoders();
     	startingAngle = driveTrain.getAngle();
     	setTimeout(trapezoid.getTimeNeeded() + Constants.TRAPEZOID_PROFILE_TIMEOUT_OFFSET);
     }
     
+    /**
+     * @author Liam
+     * @return the error in the distance between where the robot is and where it should be in inches.
+     */
+    public double getDistanceError() {
+    	
+    	double error = trapezoid.idealDistance(timer.get())*12 - driveTrain.getRightEncoder();
+    	
+    	return error;
+    }
+    
+    /**
+     * @author Liam
+     * @return the accumulated error over time in the distance between where the robot is and where it should be in inches.
+     */
+    public double getAccumulatedDistanceError() {
+    	
+    	accumulatedDistanceError += getDistanceError() * Utilities.getCycleTime();
+    	
+    	return accumulatedDistanceError;
+    }
+    
+    /**
+     * @author Liam
+     * @return the error in the angle between what angle the robot is at and the angle it should be at in degrees.
+     */
+    public double getAngleError() {
+    	
+    	double error = Utilities.angleDifference(startingAngle,driveTrain.getAngle());
+    	
+    	return error;
+    }
+    
+    /**
+     * @author Liam
+     * @return the accumulated error over time in the angle between what angle the robot is at and the angle it should be at in degrees.
+     */
+    public double getAccumulatedAngleError() {
+    	
+    	accumulatedAngleError += getAngleError() * Utilities.getCycleTime();
+    	
+    	return accumulatedAngleError;
+    }
+    
     protected void execute() {
     	
-    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * (trapezoid.idealDistance(timer.get())*12 - driveTrain.getEncoder())),
-    							(proportionalityConstant * Utilities.angleDifference(startingAngle,driveTrain.getAngle())));
-    	//Ask Caleb or Mairead on the implementation of feedforward+feedback
+    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * getDistanceError()) + Constants.TRAPEZOID_INTEGRAL * getAccumulatedDistanceError(),
+    							(proportionalityConstant * getAngleError() - Constants.TURNING_TRAPEZOID_INTEGRAL * getAccumulatedAngleError()));
     	
     	System.out.println(driveTrain.getEncoder()/12);
-    	//Since getDistance is in feet, you have to divide by 12 to inches
-    	
     }
     
     protected boolean isFinished() {
@@ -99,9 +154,13 @@ public class DriveTrapezoidProfile extends CommandBase {
     		(driveTrain.getYawRate() >= -Constants.TRAPEZOID_ANGULAR_SPEED_THRESHOLD
     				&& driveTrain.getYawRate() <= Constants.TRAPEZOID_ANGULAR_SPEED_THRESHOLD)){ //conditions may cancel
     		
+    		System.out.println("Drive Trapezoid Profile finished from ending criteria.");
+    		
     		return true;
     	}
     	else { //Timeout may cancel
+    		
+    		System.out.println("Drive Trapezoid profile finished from timeout.");
     		
     		return isTimedOut();
     	}

@@ -5,11 +5,13 @@ import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Utilities;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4536.robot.TurningTrapezoidProfile;
+import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 
 public class SmartDashboardCommand extends CommandBase {
 	
-	TurningTrapezoidProfile turnProfile;
-	TurnTrapezoidProfile turnTrapezoid;
+	//TurningTrapezoidProfile turnProfile;
+	//TurnTrapezoidProfile turnTrapezoid;
+	DriveTrapezoidProfile trapezoid;
 	
 	public SmartDashboardCommand() {
 		
@@ -18,11 +20,10 @@ public class SmartDashboardCommand extends CommandBase {
 	
 	protected void initialize() {
 		
-		turnTrapezoid = new TurnTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
-	
+		//turnTrapezoid = new TurnTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
+		trapezoid = new DriveTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
 		/*-----Commands to Run-----*/
-		SmartDashboard.putData(turnTrapezoid);
-		turnProfile = new TurningTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
+		SmartDashboard.putData(trapezoid);
     }
 	
     protected void execute() {
@@ -47,8 +48,12 @@ public class SmartDashboardCommand extends CommandBase {
 		//SmartDashboard.putNumber("range", maxUltra.getRange());
 		SmartDashboard.putNumber("Offset: ", driveTrain.getOffset());
 		SmartDashboard.putNumber("Ball Distance: ", intake.getdistance());
-		SmartDashboard.putNumber("Accumulated Error", turnTrapezoid.getAccumulatedError());
-		SmartDashboard.putNumber("Error: ", turnTrapezoid.getError());
+		//SmartDashboard.putNumber("Accumulated Error", turnTrapezoid.getAccumulatedError());
+		//SmartDashboard.putNumber("Error: ", turnTrapezoid.getError());
+		SmartDashboard.putNumber("Accumulated Angle Error", trapezoid.getAccumulatedAngleError());
+		SmartDashboard.putNumber("Angle Error: ", trapezoid.getAngleError());
+		SmartDashboard.putNumber("Accumulated Distance Error: ", trapezoid.getAccumulatedDistanceError());
+		SmartDashboard.putNumber("Distance Error: ", trapezoid.getDistanceError());
 		
 		/*-----Display NavX Values-----*/
 		
@@ -67,22 +72,22 @@ public class SmartDashboardCommand extends CommandBase {
 		
 		SmartDashboard.putNumber("Test Output 1: ", 0);
 		SmartDashboard.putNumber("Test Output 2: ", 0);
-		SmartDashboard.putNumber("Test Output 3: ", turnProfile.timeNeeded());
+		//SmartDashboard.putNumber("Test Output 3: ", turnProfile.timeNeeded());
 		SmartDashboard.putNumber("Test Output 4: ", 0.0);
 		SmartDashboard.putNumber("Test Output 5: ", 0.0);
-		SmartDashboard.putNumber("Test Output 6: ", turnProfile.idealVelocity(Utilities.getTime()-5));
-		SmartDashboard.putNumber("Test Output 7: ", turnProfile.idealDistance(Utilities.getTime()-5));
-		SmartDashboard.putNumber("Test Output 8: ", turnProfile.timeNeeded());
-		SmartDashboard.putNumber("Test Output 9: ", turnProfile.throttle(Utilities.getTime() - 5));
+		//SmartDashboard.putNumber("Test Output 6: ", turnProfile.idealVelocity(Utilities.getTime()-5));
+		//SmartDashboard.putNumber("Test Output 7: ", turnProfile.idealDistance(Utilities.getTime()-5));
+		//SmartDashboard.putNumber("Test Output 8: ", turnProfile.timeNeeded());
+		//SmartDashboard.putNumber("Test Output 9: ", turnProfile.throttle(Utilities.getTime() - 5));
 		
-		if (turnProfile.isTriangle()) {
+		/*if (turnProfile.isTriangle()) {
 			
 			SmartDashboard.putString("Triangle or Trapezoid: ", "Triangle");
 		}
 		else {
 			
 			SmartDashboard.putString("Triangle or Trapezoid: ", "Trapezoid");
-		}
+		}*/
     }
     
     protected boolean isFinished() {

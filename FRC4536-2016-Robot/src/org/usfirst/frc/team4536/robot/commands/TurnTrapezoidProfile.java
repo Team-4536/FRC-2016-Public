@@ -120,9 +120,13 @@ public class TurnTrapezoidProfile extends CommandBase {
     		(driveTrain.getYawRate() >= -Constants.TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD &&
     			driveTrain.getYawRate() <= Constants.TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD)){ // Conditions may end
     		
+    		System.out.println("TurnTrapezoidProfile finished from ending criteria.");
+    		
     		return true;
     	}
     	else { // time out may end
+    		
+    		System.out.println("TurnTrapezoidProfile finished from timing out.");
     		
     		return isTimedOut();
     	}
