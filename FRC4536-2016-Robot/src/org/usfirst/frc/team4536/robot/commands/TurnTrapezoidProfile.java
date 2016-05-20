@@ -107,7 +107,7 @@ public class TurnTrapezoidProfile extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	    	
-    	double throttle = turnProfile.throttle(timer.get()) - proportionalityConstant * getError() - Constants.variable4 * getAccumulatedError(); 
+    	double throttle = turnProfile.throttle(timer.get()) - proportionalityConstant * getError() - Constants.TURNING_TRAPEZOID_INTEGRAL * getAccumulatedError(); 
     	
     	driveTrain.arcadeDrive(0.0, throttle);
     }
