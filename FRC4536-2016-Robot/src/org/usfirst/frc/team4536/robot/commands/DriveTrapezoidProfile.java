@@ -128,7 +128,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     
     protected void execute() {
     	
-    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * getDistanceError()) + Constants.variable4 * getAccumulatedDistanceError(),
+    	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * getDistanceError()) + Constants.TRAPEZOID_INTEGRAL * getAccumulatedDistanceError(),
     							(proportionalityConstant * getAngleError() - Constants.TURNING_TRAPEZOID_INTEGRAL * getAccumulatedAngleError()));
     	
     	System.out.println(driveTrain.getEncoder()/12);
