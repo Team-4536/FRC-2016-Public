@@ -15,11 +15,12 @@ public class TurnTrapezoidProfile extends CommandBase {
 	TurningTrapezoidProfile turnProfile;
 	private double proportionalityConstant;
 	private double angleDiff;
+	private double accumulatedError = 0.0; // The accumulated error over time
 	
 	/**
 	 * @author Liam
-	 * @param angle the angle desired to be traveled to
-	 * Sets the max angular speed and acceleration to the defaults defined in Constants
+	 * @param angle the angle desired to be traveled to in degrees
+	 * Sets the max angular speed in degrees per second and acceleration in degrees per second squared to the defaults defined in Constants
 	 */
 	public TurnTrapezoidProfile(double angle) {
 		
@@ -28,9 +29,9 @@ public class TurnTrapezoidProfile extends CommandBase {
 
 	/**
 	 * @author Liam
-	 * @param angle The desired angle the robot should travel to. May be negative or positive to indicate direction on the range [-180, 180]. Negative is left and positive is right.
-	 * @param maxAngularSpeed The maximum possible angular speed the robot could be traveling at. Always positive.
-	 * @param maxAngularAcceleration The maximum possible angular acceleration the speed can change by. Always positive.
+	 * @param angle The desired angle the robot should travel to in degrees. May be negative or positive to indicate direction on the range [-180, 180]. Negative is left and positive is right.
+	 * @param maxAngularSpeed The maximum possible angular speed the robot could be traveling at in degrees per second. Scalar value so always positive.
+	 * @param maxAngularAcceleration The maximum possible angular acceleration in degrees per second squared the speed can change by. Always positive.
 	 */
     public TurnTrapezoidProfile(double angle, double angularSpeed, double angularAcceleration) {
     	
@@ -42,9 +43,9 @@ public class TurnTrapezoidProfile extends CommandBase {
     
 	/**
 	 * @author Liam
-	 * @param angle The desired angle the robot should travel to. May be negative or positive to indicate direction.
-	 * @param maxAngularSpeed The maximum possible angular speed the robot could be traveling at. Always positive.
-	 * @param maxAngularAcceleration The maximum possible angular acceleration the speed can change by. Always positive.
+	 * @param angle The desired angle the robot should travel to in degrees. May be negative or positive to indicate direction.
+	 * @param maxAngularSpeed The maximum possible angular speed the robot could be traveling at in degrees per second. Scalar so always positive.
+	 * @param maxAngularAcceleration The maximum possible angular acceleration in degrees per second squared the speed can change by. Always positive.
 	 * @param custom gyro proportionality constant to override the default. Useful for command groups that may require more correction due to terrain.
 	 */
     public TurnTrapezoidProfile(double angle, double angularSpeed, double angularAcceleration, double gyroProportionality) {
@@ -64,18 +65,40 @@ public class TurnTrapezoidProfile extends CommandBase {
     
     /**
      * @author Liam
-     * @return time needed from the trapezoid profile method
+     * @return time needed from the trapezoid profile method in seconds
      */
     public double getNeededTime(){
     	
     	return turnProfile.timeNeeded();
     }
+    
+	/**
+	 * @author Liam
+	 * @return the accumulatedError in degree seconds
+	 */
+	public double getAccumulatedError() {
+		
+		accumulatedError += getError() * Utilities.getCycleTime();
+		
+		return accumulatedError;
+	}
+	
+	/**
+	 * @author Liam
+	 * @return the error from the most recent cycle of code in degree seconds
+	 */
+	public double getError() {
+		
+		double diff = -Utilities.angleDifference(driveTrain.getNavXYaw(), turnProfile.idealDistance(timer.get()));
+		
+		return diff;
+	}
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	
     	driveTrain.resetNavX(driveTrain.getAngle());
-    	
+    	accumulatedError = 0.0;
     	timer.reset();
     	timer.start();
     	setTimeout(turnProfile.timeNeeded() + Constants.TURNING_TRAPEZOID_TIMEOUT_OFFSET);
@@ -83,10 +106,8 @@ public class TurnTrapezoidProfile extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	double diff = -Utilities.angleDifference(driveTrain.getNavXYaw(), turnProfile.idealDistance(timer.get()));
-    	
-    	double throttle = turnProfile.throttle(timer.get()) - proportionalityConstant * diff; 
+    	    	
+    	double throttle = turnProfile.throttle(timer.get()) - proportionalityConstant * getError() - Constants.TURNING_TRAPEZOID_INTEGRAL * getAccumulatedError(); 
     	
     	driveTrain.arcadeDrive(0.0, throttle);
     }

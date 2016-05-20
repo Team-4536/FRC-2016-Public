@@ -21,7 +21,7 @@ public class SmartDashboardCommand extends CommandBase {
 		turnTrapezoid = new TurnTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
 	
 		/*-----Commands to Run-----*/
-		SmartDashboard.putData(new TurnTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3));
+		SmartDashboard.putData(turnTrapezoid);
 		turnProfile = new TurningTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
     }
 	
@@ -47,7 +47,9 @@ public class SmartDashboardCommand extends CommandBase {
 		//SmartDashboard.putNumber("range", maxUltra.getRange());
 		SmartDashboard.putNumber("Offset: ", driveTrain.getOffset());
 		SmartDashboard.putNumber("Ball Distance: ", intake.getdistance());
-
+		SmartDashboard.putNumber("Accumulated Error", turnTrapezoid.getAccumulatedError());
+		SmartDashboard.putNumber("Error: ", turnTrapezoid.getError());
+		
 		/*-----Display NavX Values-----*/
 		
 		SmartDashboard.putNumber("Yaw: ", driveTrain.getNavXYaw());
