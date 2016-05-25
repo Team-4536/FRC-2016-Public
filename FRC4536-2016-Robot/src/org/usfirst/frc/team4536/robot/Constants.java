@@ -41,7 +41,7 @@ public class Constants {
 	public static final double TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD = 1.0; // in degrees per second
 	public static final double TURNING_TRAPEZOID_DEFAULT_ANGULAR_SPEED = 200; // in degrees per second
 	public static final double TURNING_TRAPEZOID_DEFAULT_ANGULAR_ACCELERATION = 90; // in degrees per second squared
-	public static final double TURNING_TRAPEZOID_INTEGRAL = 0.003; // in units of throttle per degrees seconds
+	public static final double TURNING_TRAPEZOID_INTEGRAL = 0.001; // in units of throttle per degrees seconds
 	
 	//Zenith
 	public static final double ZENITH_DRIVE_TRAIN_MAX_ANGULAR_VELOCITY = 400; // In degrees per second
@@ -72,7 +72,7 @@ public class Constants {
 	public static final double LOW_BAR_LOW_GOAL_FIRST_LEG_DISTANCE = 4.25; // 4.5 in feet
 	public static final double LOW_BAR_lOW_GOAL_SECOND_LEG_DISTANCE = 6.5; // in feet
 	public static final double LOW_BAR_LOW_GOAL_FIRST_LEG_ANGLE = 10.0; // in degrees
-	public static final double LOW_BAR_LOW_GOAL_SECOND_LEG_ANGLE = 50.0; // in degrees
+	public static final double LOW_BAR_LOW_GOAL_SECOND_LEG_ANGLE = 60.0; // in degrees
 	
 	public static final double SPY_BOT_LOW_GOAL_FIRST_LEG_DISTANCE = 4.5; // in feet 
 	public static final double SPY_BOT_LOW_GOAL_SECOND_LEG_DISTANCE = 5.3; // in feet
