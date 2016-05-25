@@ -27,6 +27,11 @@ public class DriveTrapezoidProfile extends CommandBase {
 		this(distance, Constants.TRAPEZOID_DEFAULT_SPEED, Constants.TRAPEZOID_DEFAULT_ACCELERATION);
 	}
 	
+	/**
+	 * @author Liam
+	 * @param the distance desired to be travelled in feet
+	 * @param the angle the profile should maintain
+	 */
 	public DriveTrapezoidProfile(double distance, double angle) {
 		
 		this(distance, Constants.TRAPEZOID_DEFAULT_SPEED, Constants.TRAPEZOID_DEFAULT_ACCELERATION);
