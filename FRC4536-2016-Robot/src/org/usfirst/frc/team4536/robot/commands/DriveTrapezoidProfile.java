@@ -27,6 +27,12 @@ public class DriveTrapezoidProfile extends CommandBase {
 		this(distance, Constants.TRAPEZOID_DEFAULT_SPEED, Constants.TRAPEZOID_DEFAULT_ACCELERATION);
 	}
 	
+	public DriveTrapezoidProfile(double distance, double angle) {
+		
+		this(distance, Constants.TRAPEZOID_DEFAULT_SPEED, Constants.TRAPEZOID_DEFAULT_ACCELERATION);
+		startingAngle = angle;
+	}
+	
 	/**
 	 * @author Liam
 	 * @param distance The desired distance the robot should travel in feet. May be negative or positive to indicate direction.
