@@ -28,7 +28,6 @@ public class Robot extends IterativeRobot {
     Command driveScissorLift;
     Command driveAccelLimited;
     Command intakeAccelLimited;
-    Command flipRelay;
     Command safeDriveScissorLift;
     Command superSafeDriveScissorLift;
     Command startIntakeRelay;
@@ -100,11 +99,6 @@ public class Robot extends IterativeRobot {
     	CommandBase.driveTrain.resetAccelValues();
     	
     	CommandBase.intake.resetAccelValues();
-    	
-        if (flipRelay != null) {
-        	
-        	flipRelay.start();
-        }
     	
     	
         if (driveAccelLimited != null) {
