@@ -18,7 +18,7 @@ public class Constants {
 	public static final double DRIVE_TRAIN_MAX_VELOCITY = 13.; //Feet per second, measured on blocks, 12.68 Battery Voltage
 	public static final double DRIVE_TRAIN_MAX_ANGULAR_VELOCITY = 400; // Degrees per second, measured on carpet, 12.83 Battery Voltage
 	
-	public static final int FLIP_DIRECTIONS_TIMEOUT = 1;
+	public static final int FLIP_DIRECTIONS_TIMEOUT = 0;
 	
 	/*--------------------------------------Profiles----------------------------------*/
 	
