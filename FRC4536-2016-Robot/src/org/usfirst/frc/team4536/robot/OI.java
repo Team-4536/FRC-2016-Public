@@ -54,7 +54,7 @@ public class OI {
 		TurnNDriveRightGoal = new JoystickButton(mainStick, RobotMap.HOLD_AT_ANGLE_FOR_RIGHT_GOAL);
 		TurnNDriveLeftGoal = new JoystickButton(mainStick, RobotMap.HOLD_AT_ANGLE_FOR_LEFT_GOAL);
 		TurnNDrive90 = new JoystickButton(mainStick, 6);
-		flipDriving = new JoystickButton(mainStick, 7);
+		flipDriving = new JoystickButton(mainStick, RobotMap.FLIP_JOYSTICK);
 		
 		/*-------------------Actions------------------------*/
 
