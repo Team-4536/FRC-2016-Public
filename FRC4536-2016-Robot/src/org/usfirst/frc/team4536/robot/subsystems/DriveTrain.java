@@ -65,7 +65,7 @@ public class DriveTrain extends Subsystem {
 		frontUltra = new AnalogInput(frontUltraChannel);
 		backUltra = new AnalogInput(backUltraChannel);
 		leftIR = new AnalogInput(leftIRChannel);
-		flipDirection = false;
+		flipDirection = true;
 
 		
 		try {
@@ -102,7 +102,7 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
-     * sets the teleop driving direction (false = normal, true = backwards)
+     * sets the teleop driving direction (false = backwards, true = normal)
      * @author Sheila
      */
     public void setFlipDirection(boolean dir) {
@@ -135,12 +135,14 @@ public class DriveTrain extends Subsystem {
      * @param turnThrottle - Throttle for horizontal motion of the drivetrain (+ right, - left)
      */
     public void arcadeDrive(double forwardThrottle, double turnThrottle) {
-
     	oldForwardThrottle = forwardThrottle;
     	oldTurnThrottle = turnThrottle;
     	
-    	tankDrive(forwardThrottle + turnThrottle, forwardThrottle - turnThrottle);
-    	
+    	if(flipDirection){
+    		tankDrive(forwardThrottle + turnThrottle, forwardThrottle - turnThrottle);
+    	}else{
+    		tankDrive(forwardThrottle - turnThrottle, forwardThrottle + turnThrottle);
+    	}
     }
     
     /**
