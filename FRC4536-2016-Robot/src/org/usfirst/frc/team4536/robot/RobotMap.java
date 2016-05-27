@@ -32,6 +32,7 @@ public class RobotMap {
     public static final int AUTO_INTAKE_BUTTON_NUMBER = 4;
     public static final int PLOP_BUTTON_NUMBER = 12;
     public static final int DEPLOY_SCISSORS_BUTTON_NUMBER = 1;
+    public static final int FLIP_JOYSTICK = 7;
     
     public static final int HOLD_AT_CURRENT_ANGLE = 1;
     public static final int HOLD_AT_0_DEGREES = 3;

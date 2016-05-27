@@ -26,6 +26,7 @@ public class DriveTrain extends Subsystem {
 	private double offset = 0.0;
 	public double oldForwardThrottle;
 	public double oldTurnThrottle;
+	private boolean flipDirection;
 	
 	/*---------Sensor Values---------*/
 	
@@ -64,6 +65,7 @@ public class DriveTrain extends Subsystem {
 		frontUltra = new AnalogInput(frontUltraChannel);
 		backUltra = new AnalogInput(backUltraChannel);
 		leftIR = new AnalogInput(leftIRChannel);
+		flipDirection = true;
 
 		
 		try {
@@ -84,15 +86,47 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
+     * @author Sheila
+     * @return true if driving in reverse of joystick input
+     */
+    public boolean getFlipDirection() {
+    	return flipDirection;
+    }
+    
+    /**
+     * flips teleop driving (forward/backward)
+     * @author Sheila
+     */
+    public void flipDirection() {
+    	flipDirection = !flipDirection;
+    }
+    
+    /**
+     * sets the teleop driving direction (false = backwards, true = normal)
+     * @author Sheila
+     */
+    public void setFlipDirection(boolean dir) {
+    	flipDirection = dir;
+    }
+    
+    /**
      * @ author Max and Liam
      * @ param leftThrottle - The throttle input into the left motors, positive value is left/forward
      * @ param rightThrottle - The throttle input into the right motors, positive value is right/forward
      */
     public void tankDrive(double leftThrottle, double rightThrottle) {
-    	leftBackVictorSP.set(leftThrottle);
-    	leftFrontVictorSP.set(leftThrottle);
-    	rightBackVictorSP.set(-rightThrottle);
-    	rightFrontVictorSP.set(-rightThrottle);
+	    if(flipDirection) {
+	    	leftBackVictorSP.set(leftThrottle);
+	    	leftFrontVictorSP.set(leftThrottle);
+	    	rightBackVictorSP.set(-rightThrottle);
+	    	rightFrontVictorSP.set(-rightThrottle);
+    	} else {
+	    	leftBackVictorSP.set(-leftThrottle);
+	    	leftFrontVictorSP.set(-leftThrottle);
+	    	rightBackVictorSP.set(rightThrottle);
+	    	rightFrontVictorSP.set(rightThrottle);
+    		
+    	}
     }
     
     /**
@@ -101,12 +135,14 @@ public class DriveTrain extends Subsystem {
      * @param turnThrottle - Throttle for horizontal motion of the drivetrain (+ right, - left)
      */
     public void arcadeDrive(double forwardThrottle, double turnThrottle) {
-
     	oldForwardThrottle = forwardThrottle;
     	oldTurnThrottle = turnThrottle;
     	
-    	tankDrive(forwardThrottle + turnThrottle, forwardThrottle - turnThrottle);
-    	
+    	if(flipDirection){
+    		tankDrive(forwardThrottle + turnThrottle, forwardThrottle - turnThrottle);
+    	}else{
+    		tankDrive(forwardThrottle - turnThrottle, forwardThrottle + turnThrottle);
+    	}
     }
     
     /**

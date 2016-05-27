@@ -32,6 +32,7 @@ public class OI {
 	public static Button TurnNDriveRightGoal;
 	public static Button TurnNDriveLeftGoal;
 	public static Button RunIntakeForClimb;
+	public static Button flipDriving;
 	
 	/**
 	 * @author Liam
@@ -53,6 +54,8 @@ public class OI {
 		TurnNDriveRightGoal = new JoystickButton(mainStick, RobotMap.HOLD_AT_ANGLE_FOR_RIGHT_GOAL);
 		TurnNDriveLeftGoal = new JoystickButton(mainStick, RobotMap.HOLD_AT_ANGLE_FOR_LEFT_GOAL);
 		RunIntakeForClimb = new JoystickButton(mainStick, 6);
+		flipDriving = new JoystickButton(mainStick, RobotMap.FLIP_JOYSTICK);
+
 		
 		/*-------------------Actions------------------------*/
 
@@ -66,6 +69,8 @@ public class OI {
 		TurnNDriveRightGoal.whenPressed(new TurnNDrive(-60));
 		TurnNDriveLeftGoal.whenPressed(new TurnNDrive(60));
 		RunIntakeForClimb.whileHeld(new RunIntakeWithInput(1.0));
+		flipDriving.whenPressed(new FlipJoystickX());
+
 
 		/*------------------Canceling actions--------------*/
 		
