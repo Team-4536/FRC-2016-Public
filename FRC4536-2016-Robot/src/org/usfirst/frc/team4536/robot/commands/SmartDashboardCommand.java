@@ -81,6 +81,10 @@ public class SmartDashboardCommand extends CommandBase {
 			
 			SmartDashboard.putString("Triangle or Trapezoid: ", "Trapezoid");
 		}
+		
+		/*-----Encoder Failure Recognition-----*/
+		
+		SmartDashboard.putBoolean("Encoders ready: ", driveTrain.testEncoder(Constants.DRIVE_ENCODER_RANGE));
     }
     
     protected boolean isFinished() {
