@@ -18,6 +18,7 @@ public class Constants {
 	public static final double DRIVE_TRAIN_MAX_VELOCITY = 13.; //Feet per second, measured on blocks, 12.68 Battery Voltage
 	public static final double DRIVE_TRAIN_MAX_ANGULAR_VELOCITY = 400; // Degrees per second, measured on carpet, 12.83 Battery Voltage
 	
+	
 	/*--------------------------------------Profiles----------------------------------*/
 	
 	//Trapezoid
@@ -55,6 +56,9 @@ public class Constants {
 	/*---------------------------------------Encoders-----------------------------------*/
 	
 	public static final double DRIVE_ENCODER_PROPORTIONALITY_CONSTANT = 16.; //Ticks per inch
+	
+
+	public static final double DRIVE_ENCODER_RANGE = 24.0; //Acceptable difference between two encoders in inches
 	
 	/*-------------------------------------AutoMode Time Outs---------------------------*/
 	
