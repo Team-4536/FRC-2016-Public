@@ -143,6 +143,26 @@ public class DriveTrain extends Subsystem {
     
     /**
      * @author Audrey
+     * @param Acceptable difference two encoders between in inches
+     * @return if the difference between the two encoders is acceptable
+     */
+    public boolean testEncoder(double range) {
+    	
+    	double leftEncoder = getLeftEncoder();
+    	double rightEncoder = getRightEncoder();
+    	
+    	double difference = Math.abs(leftEncoder - rightEncoder);
+    		
+    	if(difference > range){
+    		return false;
+    	}else{
+    		return true;
+    	}
+    		
+    }
+    
+    /**
+     * @author Audrey
      * @return right encoder rate in inches per second
      */
     public double getRate() {
