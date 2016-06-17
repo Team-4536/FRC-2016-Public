@@ -13,10 +13,10 @@ public class LowBarLowGoal extends CommandGroup {
     public  LowBarLowGoal() {
     	
     	addSequential(new CrossLowBar());
-    	addSequential(new TurnTrapezoidProfile(Constants.LOW_BAR_LOW_GOAL_FIRST_LEG_ANGLE));
-    	addSequential(new DriveTrapezoidProfile(Constants.LOW_BAR_LOW_GOAL_FIRST_LEG_DISTANCE)); // 7
-    	addSequential(new TurnTrapezoidProfile(Constants.LOW_BAR_LOW_GOAL_SECOND_LEG_ANGLE)); // 50
-    	addSequential(new DriveTrapezoidProfile(Constants.LOW_BAR_lOW_GOAL_SECOND_LEG_DISTANCE)); // 5
+    	addSequential(new TeleopTurn(Constants.LOW_BAR_LOW_GOAL_FIRST_LEG_ANGLE));
+    	addSequential(new DriveTrapezoidProfile(Constants.LOW_BAR_LOW_GOAL_FIRST_LEG_DISTANCE, Constants.TRAPEZOID_DEFAULT_SPEED, Constants.TRAPEZOID_DEFAULT_ACCELERATION, Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY, Constants.LOW_BAR_LOW_GOAL_FIRST_LEG_ANGLE)); // 7
+    	addSequential(new TeleopTurn(Constants.LOW_BAR_LOW_GOAL_SECOND_LEG_ANGLE)); // 50
+    	addSequential(new DriveTrapezoidProfile(Constants.LOW_BAR_lOW_GOAL_SECOND_LEG_DISTANCE, Constants.TRAPEZOID_DEFAULT_SPEED, Constants.TRAPEZOID_DEFAULT_ACCELERATION, Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY, Constants.LOW_BAR_LOW_GOAL_FIRST_LEG_ANGLE)); // 5
     	addSequential(new EjectBoulderAccelLimited());
     }
 }

@@ -11,7 +11,7 @@ public class SmartDashboardCommand extends CommandBase {
 	
 	//TurningTrapezoidProfile turnProfile;
 	//TurnTrapezoidProfile turnTrapezoid;
-	DriveTrapezoidProfile trapezoid;
+	TeleopTurn turnTrapezoid = new TeleopTurn(Constants.variable1, Constants.variable2, Constants.variable3);;
 	
 	public SmartDashboardCommand() {
 		
@@ -21,9 +21,9 @@ public class SmartDashboardCommand extends CommandBase {
 	protected void initialize() {
 		
 		//turnTrapezoid = new TurnTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
-		trapezoid = new DriveTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
+		turnTrapezoid = new TeleopTurn(Constants.variable1, Constants.variable2, Constants.variable3);
 		/*-----Commands to Run-----*/
-		SmartDashboard.putData(trapezoid);
+		SmartDashboard.putData(turnTrapezoid);
     }
 	
     protected void execute() {
@@ -50,10 +50,10 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putNumber("Ball Distance: ", intake.getdistance());
 		//SmartDashboard.putNumber("Accumulated Error", turnTrapezoid.getAccumulatedError());
 		//SmartDashboard.putNumber("Error: ", turnTrapezoid.getError());
-		SmartDashboard.putNumber("Accumulated Angle Error", trapezoid.getAccumulatedAngleError());
-		SmartDashboard.putNumber("Angle Error: ", trapezoid.getAngleError());
-		SmartDashboard.putNumber("Accumulated Distance Error: ", trapezoid.getAccumulatedDistanceError());
-		SmartDashboard.putNumber("Distance Error: ", trapezoid.getDistanceError());
+		//SmartDashboard.putNumber("Accumulated Angle Error", trapezoid.getAccumulatedAngleError());
+		//SmartDashboard.putNumber("Angle Error: ", trapezoid.getAngleError());
+		//SmartDashboard.putNumber("Accumulated Distance Error: ", trapezoid.getAccumulatedDistanceError());
+		//SmartDashboard.putNumber("Distance Error: ", trapezoid.getDistanceError());
 		
 		/*-----Display NavX Values-----*/
 		

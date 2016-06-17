@@ -23,7 +23,8 @@ public class Constants {
 	//Trapezoid
 	
 	public static final double TRAPEZOID_FORWARD_PROPORTIONALITY = 0.07; // units of throttle per inch
-	public static final double TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY = -0.03; // Units of throttle per degree
+	public static final double TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY = -0.09; //0.03 Units of throttle per degree
+	public static final double DEFAULT_CROSSING_GYRO_PROPORTIONALITY = -0.03;
 	public static final double TRAPEZOID_PROFILE_TIMEOUT_OFFSET = 0.5; // In seconds. Increases the timeout which is timeNeeded by this offset.
 	public static final double TRAPEZOID_DISTANCE_THRESHOLD = 1.0; // In inches
 	public static final double TRAPEZOID_SPEED_THRESHOLD = 1.0; // In inches per second
