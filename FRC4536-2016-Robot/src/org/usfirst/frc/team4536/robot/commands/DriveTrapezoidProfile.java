@@ -13,7 +13,7 @@ public class DriveTrapezoidProfile extends CommandBase {
 	Timer timer = new Timer();
 	TrapezoidProfile trapezoid;
 	private double startingAngle;
-	private double proportionalityConstant = Constants.TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY;
+	private double proportionalityConstant = Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY;
 	private double accumulatedDistanceError = 0.0;
 	private double accumulatedAngleError = 0.0;
 	
@@ -25,6 +25,17 @@ public class DriveTrapezoidProfile extends CommandBase {
 	public DriveTrapezoidProfile(double distance) {
 		
 		this(distance, Constants.TRAPEZOID_DEFAULT_SPEED, Constants.TRAPEZOID_DEFAULT_ACCELERATION);
+	}
+	
+	/**
+	 * @author Liam
+	 * @param the distance desired to be travelled in feet
+	 * @param the angle the profile should maintain
+	 */
+	public DriveTrapezoidProfile(double distance, double angle) {
+		
+		this(distance, Constants.TRAPEZOID_DEFAULT_SPEED, Constants.TRAPEZOID_DEFAULT_ACCELERATION);
+		startingAngle = angle;
 	}
 	
 	/**
@@ -59,6 +70,20 @@ public class DriveTrapezoidProfile extends CommandBase {
     	
     	this(distance, maxSpeed, maxAcceleration);
     	proportionalityConstant = gyroProportionality;
+    }
+    
+    /**
+     * @author Liam
+	 * @param distance The desired distance the robot should travel in feet. May be negative or positive to indicate direction.
+	 * @param maxSpeed The maximum possible speed the robot could be traveling at in feet per second. Always positive.
+	 * @param maxAcceleration The maximum possible acceleration the speed can change by in feet per second squared. Always positive.
+	 * @param custom gyro proportionality constant to override the default. Useful for command groups that may require more correction due to terrain.
+	 * @param the angle the profile should maintain
+     */
+    public DriveTrapezoidProfile(double distance, double maxSpeed, double maxAcceleration, double gyroProportionality, double angle) {
+    	
+    	this(distance, maxSpeed, maxAcceleration, gyroProportionality);
+    	startingAngle = angle;
     }
     
     /**

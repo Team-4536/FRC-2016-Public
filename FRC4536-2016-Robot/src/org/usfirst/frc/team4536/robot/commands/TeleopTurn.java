@@ -15,6 +15,7 @@ public class TeleopTurn extends CommandBase {
 	TurningTrapezoidProfile turnProfile;
 	private double proportionalityConstant;
 	private double angleDiff;
+	private double accumulatedError = 0.0;
 	
 	double desiredAngle;
 	double angularSpeed;
@@ -81,6 +82,28 @@ public class TeleopTurn extends CommandBase {
     	
     	return turnProfile.timeNeeded();
     }
+    
+	/**
+	 * @author Liam
+	 * @return the accumulatedError in degree seconds
+	 */
+	public double getAccumulatedError() {
+		
+		accumulatedError += getError() * Utilities.getCycleTime();
+		
+		return accumulatedError;
+	}
+    
+	/**
+	 * @author Liam
+	 * @return the error from the most recent cycle of code in degree seconds
+	 */
+	public double getError() {
+		
+		double diff = -Utilities.angleDifference(driveTrain.getAngle(), turnProfile.idealDistance(timer.get()));
+		
+		return diff;
+	}
 
     // Called just before this Command runs the first time
     protected void initialize() {
@@ -99,14 +122,12 @@ public class TeleopTurn extends CommandBase {
     	
     	time = timer.get();
     	
-    	navXCorrection = Utilities.angleDifference(driveTrain.getAngle(), (startingAngle + turnProfile.idealDistance(time)));
+    	navXCorrection = Utilities.angleDifference(driveTrain.getNavXYaw(), (startingAngle + turnProfile.idealDistance(time)));
     	
     	driveTrain.arcadeDriveAccelLimit(0, turnProfile.throttle(this.getTime())
     			+ proportionalityConstant*navXCorrection);
     	
     	System.out.println(turnProfile.idealDistance(time));
-   
-    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -25,7 +25,8 @@ public class Constants {
 	//Trapezoid
 	
 	public static final double TRAPEZOID_FORWARD_PROPORTIONALITY = 0.07; // units of throttle per inch
-	public static final double TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY = -0.03; // Units of throttle per degree
+	public static final double TRAPEZOID_FORWARD_GYRO_PROPORTIONALITY = -0.09; //0.03 Units of throttle per degree
+	public static final double DEFAULT_CROSSING_GYRO_PROPORTIONALITY = -0.03;
 	public static final double TRAPEZOID_PROFILE_TIMEOUT_OFFSET = 0.5; // In seconds. Increases the timeout which is timeNeeded by this offset.
 	public static final double TRAPEZOID_DISTANCE_THRESHOLD = 1.0; // In inches
 	public static final double TRAPEZOID_SPEED_THRESHOLD = 1.0; // In inches per second
@@ -43,7 +44,7 @@ public class Constants {
 	public static final double TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD = 1.0; // in degrees per second
 	public static final double TURNING_TRAPEZOID_DEFAULT_ANGULAR_SPEED = 200; // in degrees per second
 	public static final double TURNING_TRAPEZOID_DEFAULT_ANGULAR_ACCELERATION = 90; // in degrees per second squared
-	public static final double TURNING_TRAPEZOID_INTEGRAL = 0.003; // in units of throttle per degrees seconds
+	public static final double TURNING_TRAPEZOID_INTEGRAL = 0.001; // in units of throttle per degrees seconds
 	
 	//Zenith
 	public static final double ZENITH_DRIVE_TRAIN_MAX_ANGULAR_VELOCITY = 400; // In degrees per second
@@ -74,7 +75,7 @@ public class Constants {
 	public static final double LOW_BAR_LOW_GOAL_FIRST_LEG_DISTANCE = 4.25; // 4.5 in feet
 	public static final double LOW_BAR_lOW_GOAL_SECOND_LEG_DISTANCE = 6.5; // in feet
 	public static final double LOW_BAR_LOW_GOAL_FIRST_LEG_ANGLE = 10.0; // in degrees
-	public static final double LOW_BAR_LOW_GOAL_SECOND_LEG_ANGLE = 50.0; // in degrees
+	public static final double LOW_BAR_LOW_GOAL_SECOND_LEG_ANGLE = 60.0; // in degrees
 	
 	public static final double SPY_BOT_LOW_GOAL_FIRST_LEG_DISTANCE = 4.5; // in feet 
 	public static final double SPY_BOT_LOW_GOAL_SECOND_LEG_DISTANCE = 5.3; // in feet
