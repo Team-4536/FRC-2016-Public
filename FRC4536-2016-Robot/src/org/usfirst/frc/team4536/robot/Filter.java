@@ -175,4 +175,28 @@ public class Filter {
 		
 		return Math.pow(getStandardDeviation(), 2);
 	}
+	
+	/**
+	 * @author Liam
+	 * @return the range of the values from the data points in the sample
+	 */
+	public double getRange() {
+		
+		if (filter.size() > 0) {
+			
+			return filter.get(filter.size()-1) - filter.get(0);
+		}
+		
+		return 0;
+	}
+	
+	/**
+	 * @author Liam
+	 * @param value the new data point
+	 * @return the Z-Score of the new data point
+	 */
+	double calculateZScore(double value) {
+		
+		return (value - getMean())/getStandardDeviation();
+	}
 }
