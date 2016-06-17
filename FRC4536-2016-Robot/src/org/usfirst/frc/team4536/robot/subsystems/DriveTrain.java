@@ -273,7 +273,7 @@ public class DriveTrain extends Subsystem {
 	 */
 	public double getYawRate() {
 		
-		return navX.getRawGyroZ();
+		return navX.getRate()*180/(2*Math.PI);
 	}
 	
 	/**
