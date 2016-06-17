@@ -20,6 +20,9 @@ public class Constants {
 	
 	public static final int FLIP_DIRECTIONS_TIMEOUT = 0;
 	
+	/*--------------------------------------Filters-----------------------------------*/
+	
+	public static final int DEFAULT_SAMPLE_SIZE = 11;
 	/*--------------------------------------Profiles----------------------------------*/
 	
 	//Trapezoid
