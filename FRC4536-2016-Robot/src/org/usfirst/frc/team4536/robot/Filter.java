@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4536.robot;
 
+
 import java.util.ArrayList;
+import java.lang.Math;
 import java.util.Collections;
 
 public class Filter {
@@ -142,5 +144,35 @@ public class Filter {
 		}
 		
 		return sum / filter.size();
+	}
+	
+	/**
+	 * @author Liam
+	 * @return the standard deviation of the sample
+	 * within one standard deviation (~68%), within two (~96%), within three ~100%
+	 */
+	public double getStandardDeviation() {
+		
+		double sigma = 0.0; //sum
+		double mean = getMean();
+		double standardDeviation = 0.0;
+		
+		for (int i = 0; i < filter.size(); i++) {
+			
+			sigma += Math.pow(filter.get(i)-mean, 2);
+		}
+		
+		standardDeviation = Math.sqrt(sigma/filter.size());
+		
+		return standardDeviation;
+	}
+	
+	/**
+	 * @author Liam
+	 * @return the variance of the sample
+	 */
+	public double getVariance() {
+		
+		return Math.pow(getStandardDeviation(), 2);
 	}
 }
