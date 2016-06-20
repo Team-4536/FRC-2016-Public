@@ -199,4 +199,20 @@ public class Filter {
 		
 		return (value - getMean())/getStandardDeviation();
 	}
+	
+	/**
+	 * @author Liam
+	 * Overrides the default object toString() method. Returns all the data points in the sample in CSV (Comma Separated Value) format
+	 */
+	public String toString() {
+		
+		String data = "";
+		
+		for (int i = 0; i < filter.size(); i++) {
+			
+			data += filter.get(i) + ",";
+		}
+		
+		return data;
+	}
 }
