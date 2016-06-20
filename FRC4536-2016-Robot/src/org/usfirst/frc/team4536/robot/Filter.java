@@ -57,6 +57,8 @@ public class Filter {
 	 */
 	public void update(double value) {
 		
+		//Possible logic:
+		//(calculateZScore(value) > 5) ? 
 		filter.add(value);
 		Collections.sort(filter);
 	}
@@ -195,10 +197,12 @@ public class Filter {
 	 * @param value the new data point
 	 * @return the Z-Score of the new data point
 	 */
-	double calculateZScore(double value) {
+	public double calculateZScore(double value) {
 		
 		return (value - getMean())/getStandardDeviation();
 	}
+	
+	
 	
 	/**
 	 * @author Liam
