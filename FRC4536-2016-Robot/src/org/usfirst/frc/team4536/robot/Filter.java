@@ -7,9 +7,9 @@ import java.util.Collections;
 
 public class Filter {
 	
-	ArrayList <Double> filter;
-	double startTime = 0.0;
-	double duration = 0.0;
+	private final ArrayList <Double> filter;
+	private double startTime = 0.0;
+	private double duration = 0.0;
 	
 	/**
 	 * @author Liam
@@ -56,9 +56,7 @@ public class Filter {
 	 * @param value the value added to the sample
 	 */
 	public void update(double value) {
-		
-		//Possible logic:
-		//(calculateZScore(value) > 5) ? 
+
 		filter.add(value);
 		Collections.sort(filter);
 	}
@@ -202,7 +200,17 @@ public class Filter {
 		return (value - getMean())/getStandardDeviation();
 	}
 	
-	
+	/**
+	 * @author Liam
+	 * @param zScore a zScore to corrspond to a value from the sample
+	 * use this to determine the value of a z score in relation to the sample data
+	 */
+	public double calculateValue(double zScore) {
+		
+		double value = zScore*getStandardDeviation() + getMean();
+		
+		return value;
+	}
 	
 	/**
 	 * @author Liam
