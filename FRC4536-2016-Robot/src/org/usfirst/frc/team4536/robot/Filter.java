@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4536.robot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.lang.Math;
 import java.util.Collections;
 
@@ -48,6 +49,21 @@ public class Filter {
 		
 		this();
 		this.duration = duration;
+	}
+	
+	/**
+	 * @author Liam
+	 * @param values an array of sequence of parameter values
+	 * a vararg constructor which takes in an array or a sequence of values to construct a filter
+	 */
+	public Filter(double... values) {
+		
+		filter = new ArrayList<Double>();
+		
+		for (Double data: values) {
+			
+			filter.add(data);
+		}
 	}
 	
 	/**
