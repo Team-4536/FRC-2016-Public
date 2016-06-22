@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4536.robot;
 
-
 import java.util.ArrayList;
 import java.lang.Math;
 import java.util.Collections;
@@ -52,13 +51,42 @@ public class Filter {
 	}
 	
 	/**
+	 *@author Liam
+	 *@param aL the array list to copy the contents of aL2. aL gets cleared().
+	 *@param aL2 the array list to be copied
+	 */
+	public static void copyListContents(ArrayList <Double> aL, ArrayList <Double> aL2) {
+		
+		aL.clear();
+		
+		for (Double data: aL2) {
+			
+			aL.add(data);
+		}
+	}
+	
+	/**
+	 *@author Liam
+	 *@param aL the array list to copy the contents of aL2. aL gets cleared().
+	 *@param aL2 the array list to be copied
+	 */
+	public static void copyListContents(ArrayList <Double> aL, ArrayList <Double> aL2, int numDataPoints) {
+		
+		aL.clear();
+		
+		for (int i = aL2.size() - numDataPoints; i < aL2.size(); i++) {
+			
+			aL.add(aL2.get(i));
+		}
+	}
+	
+	/**
 	 * @author Liam
 	 * @param value the value added to the sample
 	 */
 	public void update(double value) {
-
+		
 		filter.add(value);
-		Collections.sort(filter);
 	}
 	
 	/**
@@ -86,12 +114,17 @@ public class Filter {
 	 */
 	public double getMode() {
 		
+		ArrayList <Double> sample = new ArrayList<Double>();
+		
+		copyListContents(sample, filter);
+		Collections.sort(sample);
+		
 		short modeIndex = 0;
 		short freq = 1;
 		short valFreq = 0;
-		for (int i = 1; i < filter.size(); i++) {
+		for (int i = 1; i < sample.size(); i++) {
 			
-			if (filter.get(i).equals(filter.get(i-1))) {
+			if (sample.get(i).equals(sample.get(i-1))) {
 				
 				freq++;
 				
@@ -113,7 +146,50 @@ public class Filter {
 			}
 		}
 		
-		return filter.get(modeIndex);
+		return sample.get(modeIndex);
+	}
+	
+	/**
+	 * @author Liam
+	 * @param numDataPoints the number of recent data points to use
+	 * @return the first most frequently occurring value in the sample
+	 */
+	public double getMode(int numDataPoints) {
+		
+		ArrayList <Double> sample = new ArrayList<Double>();
+		
+		copyListContents(sample, filter, numDataPoints);
+		Collections.sort(sample);
+		
+		short modeIndex = 0;
+		short freq = 1;
+		short valFreq = 0;
+		
+		for (int i = 1; i < sample.size(); i++) {
+			
+			if (sample.get(i).equals(sample.get(i-1))) {
+				
+				freq++;
+				
+				if (freq > valFreq) {
+					
+					valFreq = freq;
+					modeIndex = (short) (i-1);
+				}
+			}
+			else {
+				
+				if (freq > valFreq) {
+					
+					valFreq = freq;
+					modeIndex = (short) (i-1);
+				}
+				
+				freq = 1;
+			}
+		}
+		
+		return sample.get(modeIndex);
 	}
 	
 	/**
@@ -122,12 +198,37 @@ public class Filter {
 	 */
 	public double getMedian() {
 		
-		if ((filter.size() % 2) == 1) {
-			
-			return filter.get((int)(filter.size()/2));
-		}
+		ArrayList <Double> sample = new ArrayList<Double>();
 		
-		return (filter.get((int) (filter.size()/2)) + filter.get((int) (filter.size()/2)-1))/2;
+		copyListContents(sample, filter);
+		Collections.sort(sample);
+		
+		if ((sample.size() % 2) == 1) {
+			
+			return sample.get((int)(sample.size()/2));
+		}
+				
+		return (sample.get((int) (sample.size()/2)) + sample.get((int) (sample.size()/2)-1))/2;
+	}
+	
+	/**
+	 * @author Liam
+	 * @param numDataPoints the number of recent data points to use
+	 * @return the median value of the sample
+	 */
+	public double getMedian(int numDataPoints) {
+		
+		ArrayList <Double> sample = new ArrayList<Double>();
+		
+		copyListContents(sample, filter, numDataPoints);
+		Collections.sort(sample);
+		
+		if ((sample.size() % 2) == 1) {
+			
+			return sample.get((int)(sample.size()/2));
+		}
+				
+		return (sample.get((int) (sample.size()/2)) + sample.get((int) (sample.size()/2)-1))/2;
 	}
 	
 	/**
@@ -144,6 +245,23 @@ public class Filter {
 		}
 		
 		return sum / filter.size();
+	}
+	
+	/**
+	 * @author Liam
+	 * @param numDataPoints the number of recent data points to use
+	 * @return the average value of the most recent number of data points specified
+	 */
+	public double getMean(int numDataPoints) {
+		
+		double sum = 0.0;
+		
+		for (int i = filter.size() - numDataPoints; i < filter.size(); i++) {
+			
+			sum += filter.get(i);
+		}
+		
+		return sum / numDataPoints;
 	}
 	
 	/**
@@ -169,6 +287,32 @@ public class Filter {
 	
 	/**
 	 * @author Liam
+	 * @param numDataPoints the number of recent data points to use
+	 * @return the standard deviation of the sample
+	 * within one standard deviation (~68%), within two (~96%), within three ~100%
+	 */
+	public double getStandardDeviation(int numDataPoints) {
+		
+		double sigma = 0.0; //sum
+		double mean = getMean(numDataPoints);
+		double standardDeviation = 0.0;
+		
+		ArrayList <Double> sample = new ArrayList<Double>();
+		
+		copyListContents(sample, filter, numDataPoints);
+		
+		for (int i = 0; i < sample.size(); i++) {
+			
+			sigma += Math.pow(sample.get(i)-mean, 2);
+		}
+		
+		standardDeviation = Math.sqrt(sigma/sample.size());
+		
+		return standardDeviation;
+	}
+	
+	/**
+	 * @author Liam
 	 * @return the variance of the sample
 	 */
 	public double getVariance() {
@@ -178,16 +322,43 @@ public class Filter {
 	
 	/**
 	 * @author Liam
+	 * @param numDataPoints the number of recent data points to use
+	 * @return the variance of the sample
+	 */
+	public double getVariance(int numDataPoints) {
+		
+		return Math.pow(getStandardDeviation(numDataPoints), 2);
+	}
+	
+	/**
+	 * @author Liam
 	 * @return the range of the values from the data points in the sample
 	 */
 	public double getRange() {
 		
-		if (filter.size() > 0) {
-			
-			return filter.get(filter.size()-1) - filter.get(0);
-		}
+		ArrayList <Double> sample = new ArrayList<Double>();
 		
-		return 0;
+		copyListContents(sample, filter);
+		Collections.sort(sample);
+		
+		return (sample.size() > 0) ? (sample.get(sample.size() - 1) - sample.get(0))
+				: 0;
+	}
+	
+	/**
+	 * @author Liam
+	 * @param numDataPoints the number of recent data points to use
+	 * @return the range of the values from the data points in the sample
+	 */
+	public double getRange(int numDataPoints) {
+		
+		ArrayList <Double> sample = new ArrayList<Double>();
+		
+		copyListContents(sample, filter, numDataPoints);
+		Collections.sort(sample);
+		
+		return (sample.size() > 0) ? (sample.get(sample.size() - 1) - sample.get(0))
+				: 0;
 	}
 	
 	/**
@@ -202,12 +373,36 @@ public class Filter {
 	
 	/**
 	 * @author Liam
+	 * @param value the new data point
+	 * @param numDataPoints the number of recent data points to use
+	 * @return the Z-Score of the new data point
+	 */
+	public double calculateZScore(double value, int numDataPoints) {
+		
+		return (value - getMean(numDataPoints))/getStandardDeviation(numDataPoints);
+	}
+	
+	/**
+	 * @author Liam
 	 * @param zScore a zScore to corrspond to a value from the sample
 	 * use this to determine the value of a z score in relation to the sample data
 	 */
 	public double calculateValue(double zScore) {
 		
 		double value = zScore*getStandardDeviation() + getMean();
+		
+		return value;
+	}
+	
+	/**
+	 * @author Liam
+	 * @param zScore a zScore to corrspond to a value from the sample
+	 * @param numDataPoints the number of recent data points to use
+	 * use this to determine the value of a z score in relation to the sample data
+	 */
+	public double calculateValue(double zScore, int numDataPoints) {
+		
+		double value = zScore*getStandardDeviation(numDataPoints) + getMean(numDataPoints);
 		
 		return value;
 	}
