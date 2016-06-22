@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class Utilities {
 	
+	private Utilities() {} // prevent object construction which is useless. All variables and methods are static.
 	
 	/*-----------------------------------------------------Objects---------------------------------------*/
 	

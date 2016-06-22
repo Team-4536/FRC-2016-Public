@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Constants {
 	
+	private Constants() {} // prevent object construction which is useless. All variables and methods are static.
+	
 	/*---------------------------------------Drive Train--------------------------------*/
 
 	public static final double SPEED_CURVE_STRAIGHT = 2.4; // Unitless exponent

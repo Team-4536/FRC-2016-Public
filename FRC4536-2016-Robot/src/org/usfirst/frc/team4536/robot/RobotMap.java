@@ -8,6 +8,8 @@ package org.usfirst.frc.team4536.robot;
  */
 public class RobotMap {
 	
+	private RobotMap() {} // prevent object construction which is useless. All variables and methods are static.
+	
 	/*-------------------------------------Motor Channels------------------------------------*/	
 
     public static final int LEFT_MOTOR_FRONT = 1;

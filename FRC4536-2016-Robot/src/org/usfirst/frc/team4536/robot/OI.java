@@ -11,6 +11,8 @@ import org.usfirst.frc.team4536.robot.commands.*;
  */
 public class OI {
 	
+	private OI() {} // prevent object construction which is useless. All variables and methods are static.
+	
 	/*----------------Initializations------------------*/
 	
 	//Joysticks
