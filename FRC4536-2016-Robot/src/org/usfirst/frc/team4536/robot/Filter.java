@@ -102,6 +102,11 @@ public class Filter {
 	 */
 	public void update(double value) {
 		
+		if (filter.size() > 20) {
+			
+			filter.remove(0);
+		}
+		
 		filter.add(value);
 	}
 	
