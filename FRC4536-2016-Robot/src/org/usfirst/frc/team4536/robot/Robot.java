@@ -31,6 +31,9 @@ public class Robot extends IterativeRobot {
     Command safeDriveScissorLift;
     Command superSafeDriveScissorLift;
     Command startIntakeRelay;
+    Command startCamera;
+    Command processVision;
+    Command intakeCurrent;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -45,6 +48,7 @@ public class Robot extends IterativeRobot {
         driveAccelLimited = new DriveAccelLimited();
         safeDriveScissorLift = new SafeDriveScissorLift();
         superSafeDriveScissorLift = new SuperSafeDriveScissorLift();
+        intakeCurrent = new IntakeCurrent();
         
         OI.buttonHandling();
         
@@ -119,6 +123,11 @@ public class Robot extends IterativeRobot {
         if (superSafeDriveScissorLift != null) {
         	
         	superSafeDriveScissorLift.start();
+        }
+        
+        if (intakeCurrent != null) {
+        	
+        	intakeCurrent.start();
         }
         
         Utilities.startTimer();
