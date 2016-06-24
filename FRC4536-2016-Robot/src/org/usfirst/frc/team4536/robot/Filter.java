@@ -88,11 +88,18 @@ public class Filter {
 	 */
 	public static void copyListContents(ArrayList <Double> aL, ArrayList <Double> aL2, int numDataPoints) {
 		
-		aL.clear();
-		
-		for (int i = aL2.size() - numDataPoints; i < aL2.size(); i++) {
+		if (numDataPoints > aL2.size()) {
 			
-			aL.add(aL2.get(i));
+			copyListContents(aL, aL2);
+		}
+		else {
+			
+			aL.clear();
+			
+			for (int i = aL2.size() - numDataPoints; i < aL2.size(); i++) {
+				
+				aL.add(aL2.get(i));
+			}
 		}
 	}
 	
@@ -114,7 +121,7 @@ public class Filter {
 	 * @author Liam
 	 * @return the size of the sample
 	 */
-	public int size() {
+	public int getSize() {
 		
 		return filter.size();
 	}
@@ -177,40 +184,47 @@ public class Filter {
 	 */
 	public double getMode(int numDataPoints) {
 		
-		ArrayList <Double> sample = new ArrayList<Double>();
-		
-		copyListContents(sample, filter, numDataPoints);
-		Collections.sort(sample);
-		
-		short modeIndex = 0;
-		short freq = 1;
-		short valFreq = 0;
-		
-		for (int i = 1; i < sample.size(); i++) {
+		if (numDataPoints > filter.size()) {
 			
-			if (sample.get(i).equals(sample.get(i-1))) {
-				
-				freq++;
-				
-				if (freq > valFreq) {
-					
-					valFreq = freq;
-					modeIndex = (short) (i-1);
-				}
-			}
-			else {
-				
-				if (freq > valFreq) {
-					
-					valFreq = freq;
-					modeIndex = (short) (i-1);
-				}
-				
-				freq = 1;
-			}
+			return getMode();
 		}
-		
-		return sample.get(modeIndex);
+		else {
+			
+			ArrayList <Double> sample = new ArrayList<Double>();
+			
+			copyListContents(sample, filter, numDataPoints);
+			Collections.sort(sample);
+			
+			short modeIndex = 0;
+			short freq = 1;
+			short valFreq = 0;
+			
+			for (int i = 1; i < sample.size(); i++) {
+				
+				if (sample.get(i).equals(sample.get(i-1))) {
+					
+					freq++;
+					
+					if (freq > valFreq) {
+						
+						valFreq = freq;
+						modeIndex = (short) (i-1);
+					}
+				}
+				else {
+					
+					if (freq > valFreq) {
+						
+						valFreq = freq;
+						modeIndex = (short) (i-1);
+					}
+					
+					freq = 1;
+				}
+			}
+			
+			return sample.get(modeIndex);
+		}
 	}
 	
 	/**
@@ -239,17 +253,17 @@ public class Filter {
 	 */
 	public double getMedian(int numDataPoints) {
 		
-		ArrayList <Double> sample = new ArrayList<Double>();
-		
-		copyListContents(sample, filter, numDataPoints);
-		Collections.sort(sample);
-		
-		if ((sample.size() % 2) == 1) {
+			ArrayList <Double> sample = new ArrayList<Double>();
 			
-			return sample.get((int)(sample.size()/2));
-		}
+			copyListContents(sample, filter, numDataPoints);
+			Collections.sort(sample);
+			
+			if ((sample.size() % 2) == 1) {
 				
-		return (sample.get((int) (sample.size()/2)) + sample.get((int) (sample.size()/2)-1))/2;
+				return sample.get((int)(sample.size()/2));
+			}
+					
+			return (sample.get((int) (sample.size()/2)) + sample.get((int) (sample.size()/2)-1))/2;
 	}
 	
 	/**
@@ -275,14 +289,21 @@ public class Filter {
 	 */
 	public double getMean(int numDataPoints) {
 		
-		double sum = 0.0;
-		
-		for (int i = filter.size() - numDataPoints; i < filter.size(); i++) {
+		if (numDataPoints > filter.size()) {
 			
-			sum += filter.get(i);
+			return getMean();
 		}
-		
-		return sum / numDataPoints;
+		else {
+			
+			double sum = 0.0;
+			
+			for (int i = filter.size() - numDataPoints; i < filter.size(); i++) {
+				
+				sum += filter.get(i);
+			}
+			
+			return sum / numDataPoints;
+		}
 	}
 	
 	/**
