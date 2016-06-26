@@ -9,7 +9,7 @@ import org.usfirst.frc.team4536.robot.commands.*;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-public class OI {
+public final class OI {
 	
 	private OI() {} // prevent object construction which is useless. All variables and methods are static.
 	

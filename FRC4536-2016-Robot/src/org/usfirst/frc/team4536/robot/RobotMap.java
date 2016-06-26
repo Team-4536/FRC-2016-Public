@@ -6,7 +6,7 @@ package org.usfirst.frc.team4536.robot;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
-public class RobotMap {
+public final class RobotMap {
 	
 	private RobotMap() {} // prevent object construction which is useless. All variables and methods are static.
 	

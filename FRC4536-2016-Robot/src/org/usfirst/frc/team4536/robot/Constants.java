@@ -2,7 +2,7 @@ package org.usfirst.frc.team4536.robot;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class Constants {
+public final class Constants {
 	
 	private Constants() {} // prevent object construction which is useless. All variables and methods are static.
 	
