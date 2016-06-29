@@ -119,6 +119,15 @@ public class Filter {
 	
 	/**
 	 * @author Liam
+	 * clears the contents of the filter
+	 */
+	public void clear() {
+		
+		filter.clear();
+	}
+	
+	/**
+	 * @author Liam
 	 * @return the size of the sample
 	 */
 	public int getSize() {
