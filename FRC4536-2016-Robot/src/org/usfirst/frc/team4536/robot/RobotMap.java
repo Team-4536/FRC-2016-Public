@@ -6,7 +6,9 @@ package org.usfirst.frc.team4536.robot;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
-public class RobotMap {
+public final class RobotMap {
+	
+	private RobotMap() {} // prevent object construction which is useless. All variables and methods are static.
 	
 	/*-------------------------------------Motor Channels------------------------------------*/	
 
@@ -19,6 +21,15 @@ public class RobotMap {
     public static final int INTAKE_MOTOR_CHANNEL = 4;
     
     public static final int SCISSOR_MOTOR = 5;
+    
+    /*-------------------------------------Power Distribution Panels-------------------------*/
+    
+    public static final int PDP_SCISSOR_LIFT = 0;
+    public static final int PDP_RIGHT_MOTOR_FRONT = 2;
+    public static final int PDP_INTAKE = 12;
+    public static final int PDP_RIGHT_MOTOR_BACK = 13;
+    public static final int PDP_LEFT_MOTOR_FRONT = 14;
+    public static final int PDP_LEFT_MOTOR_BACK = 15;
     
     /*-------------------------------------Joystick Ports---------------------------------*/
     public static final int MAIN_STICK = 0; // (Also the left stick for tank drive)

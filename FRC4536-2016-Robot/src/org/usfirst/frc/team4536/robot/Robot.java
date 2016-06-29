@@ -31,6 +31,8 @@ public class Robot extends IterativeRobot {
     Command safeDriveScissorLift;
     Command superSafeDriveScissorLift;
     Command startIntakeRelay;
+    Command startCamera;
+    Command processVision;
 
     /**
      * This function is run when the robot is first started up and should be

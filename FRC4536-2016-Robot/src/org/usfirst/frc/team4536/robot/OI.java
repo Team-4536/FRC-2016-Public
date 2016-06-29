@@ -9,7 +9,9 @@ import org.usfirst.frc.team4536.robot.commands.*;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-public class OI {
+public final class OI {
+	
+	private OI() {} // prevent object construction which is useless. All variables and methods are static.
 	
 	/*----------------Initializations------------------*/
 	
@@ -33,6 +35,7 @@ public class OI {
 	public static Button TurnNDriveLeftGoal;
 	public static Button RunIntakeForClimb;
 	public static Button flipDriving;
+	public static Button autoIntakeBall;
 	
 	/**
 	 * @author Liam
@@ -45,6 +48,7 @@ public class OI {
 		hold = new JoystickButton(secondaryStick, 7);
 		autoIntake = new JoystickButton(secondaryStick, 4);
 		plop = new JoystickButton(secondaryStick, 12);
+		autoIntakeBall = new JoystickButton(secondaryStick, 1);
 		
 		deployScissors = new JoystickButton(tertiaryStick, 1);
 		
@@ -70,6 +74,7 @@ public class OI {
 		TurnNDriveLeftGoal.whenPressed(new TurnNDrive(60));
 		RunIntakeForClimb.whileHeld(new RunIntakeWithInput(1.0));
 		flipDriving.whenPressed(new FlipJoystickX());
+		autoIntakeBall.whenPressed(new IntakeCurrent());
 
 
 		/*------------------Canceling actions--------------*/
@@ -78,6 +83,7 @@ public class OI {
 		eject.whenReleased(new DriveIntakeAccelLimited());
 		hold.whenReleased(new DriveIntakeAccelLimited());
 		autoIntake.whenReleased(new DriveIntakeAccelLimited());
+		autoIntakeBall.whenReleased(new DriveIntakeAccelLimited());
 		
 		TurnNDriveCurrentAngle.whenReleased(new DriveAccelLimited());
 		TurnNDrive0.whenReleased(new DriveAccelLimited());

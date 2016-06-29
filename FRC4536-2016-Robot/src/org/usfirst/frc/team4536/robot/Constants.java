@@ -2,7 +2,9 @@ package org.usfirst.frc.team4536.robot;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class Constants {
+public final class Constants {
+	
+	private Constants() {} // prevent object construction which is useless. All variables and methods are static.
 	
 	/*---------------------------------------Drive Train--------------------------------*/
 
@@ -20,6 +22,9 @@ public class Constants {
 	
 	public static final int FLIP_DIRECTIONS_TIMEOUT = 0;
 	
+	/*--------------------------------------Filters-----------------------------------*/
+	
+	public static final int DEFAULT_SAMPLE_SIZE = 11;
 	/*--------------------------------------Profiles----------------------------------*/
 	
 	//Trapezoid
@@ -147,6 +152,7 @@ public class Constants {
 	public static final double INTAKE_SPEED_CURVE = 1; // Unitless exponent
 	public static final double INTAKE_RELEASE_TIMEOUT = 1.1; // in seconds
 	public static final double INTAKE_RELEASE_SPEED = 0.5; // in throttle
+	public static final double AUTO_INTAKE_CURRENT = 6.0; // in amps
 	
 	/*---------------------------------------Scissor Lift--------------------------------*/
 	
