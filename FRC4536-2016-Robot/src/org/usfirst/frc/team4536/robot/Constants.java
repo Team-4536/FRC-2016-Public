@@ -25,6 +25,7 @@ public final class Constants {
 	/*--------------------------------------Filters-----------------------------------*/
 	
 	public static final int DEFAULT_SAMPLE_SIZE = 11;
+	
 	/*--------------------------------------Profiles----------------------------------*/
 	
 	//Trapezoid
@@ -41,6 +42,10 @@ public final class Constants {
 	public static final double TRAPEZOID_DEFAULT_ACCELERATION = 4; // feet per second squared
 	public static final double TRAPEZOID_INTEGRAL = 0.015; // in units of throttle per inch seconds, tuned for 10 feet, longer and shorter distances will work but with not as much accuracy
 	//about the max the robot will reasonably allow is -0.1 (damped oscillation at end)
+	
+	//Brace Against Wall
+	
+	public static final double JERK_COLLISION_THRESHOLD = 0.5;
 	
 	//Turning Trapezoid
 	public static final double TURNING_TRAPEOID_GYRO_PROPORTIONALITY = 0.04; // Throttle per degree
