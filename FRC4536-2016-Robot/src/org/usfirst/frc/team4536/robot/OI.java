@@ -35,6 +35,7 @@ public final class OI {
 	public static Button TurnNDriveLeftGoal;
 	public static Button RunIntakeForClimb;
 	public static Button flipDriving;
+	public static Button autoIntakeBall;
 	
 	/**
 	 * @author Liam
@@ -47,6 +48,7 @@ public final class OI {
 		hold = new JoystickButton(secondaryStick, 7);
 		autoIntake = new JoystickButton(secondaryStick, 4);
 		plop = new JoystickButton(secondaryStick, 12);
+		autoIntakeBall = new JoystickButton(secondaryStick, 1);
 		
 		deployScissors = new JoystickButton(tertiaryStick, 1);
 		
@@ -72,6 +74,7 @@ public final class OI {
 		TurnNDriveLeftGoal.whenPressed(new TurnNDrive(60));
 		RunIntakeForClimb.whileHeld(new RunIntakeWithInput(1.0));
 		flipDriving.whenPressed(new FlipJoystickX());
+		autoIntakeBall.whenPressed(new IntakeCurrent());
 
 
 		/*------------------Canceling actions--------------*/
@@ -80,6 +83,7 @@ public final class OI {
 		eject.whenReleased(new DriveIntakeAccelLimited());
 		hold.whenReleased(new DriveIntakeAccelLimited());
 		autoIntake.whenReleased(new DriveIntakeAccelLimited());
+		autoIntakeBall.whenReleased(new DriveIntakeAccelLimited());
 		
 		TurnNDriveCurrentAngle.whenReleased(new DriveAccelLimited());
 		TurnNDrive0.whenReleased(new DriveAccelLimited());
