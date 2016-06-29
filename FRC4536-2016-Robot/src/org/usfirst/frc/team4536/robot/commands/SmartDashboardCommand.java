@@ -43,7 +43,6 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putNumber("Drive Train Right Encoder: ", driveTrain.getRightEncoder());
 		SmartDashboard.putNumber("Drive Train Right Rate: ", driveTrain.getRightRate());
 		SmartDashboard.putNumber("Drive Train Left Rate: ", driveTrain.getLeftRate());
-		SmartDashboard.putNumber("Previous Forward Throttle", driveTrain.oldForwardThrottle);
 		SmartDashboard.putNumber("Turn Rate in Degrees per Second: ", driveTrain.getYawRate());
 		//SmartDashboard.putNumber("range", maxUltra.getRange());
 		SmartDashboard.putNumber("Offset: ", driveTrain.getOffset());
@@ -61,7 +60,12 @@ public class SmartDashboardCommand extends CommandBase {
     	SmartDashboard.putNumber("Pitch: ", driveTrain.getNavXRoll()); // This depends on the orientation of the RoboRIO
     	SmartDashboard.putNumber("Roll: ", driveTrain.getNavXPitch()); // This depends on the orientation of the RoboRIO
     	SmartDashboard.putNumber("Field Centric Angle: ", driveTrain.getAngle());
-		
+    	SmartDashboard.putNumber("JerkX: ", driveTrain.getJerkX());
+    	SmartDashboard.putNumber("JerkY: ", driveTrain.getJerkY());
+    	SmartDashboard.putNumber("JerkZ: ", driveTrain.getJerkZ());
+    	SmartDashboard.putNumber("Orthogonal Jerk: ", driveTrain.getOrthoganalJerk());
+    	SmartDashboard.putBoolean("Collision: ", (driveTrain.getJerkX() > Constants.variable1 || driveTrain.getJerkY() > Constants.variable1)? true : false);
+
 		/*-----Running Commands on Subsystems-----*/
 		
 		SmartDashboard.putData(driveTrain);
