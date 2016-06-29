@@ -317,6 +317,84 @@ public class Filter {
 	
 	/**
 	 * @author Liam
+	 * @return the mean of the middle quartiles of the sample
+	 */
+	public double getMedianMean() {
+		
+		ArrayList <Double> sample = new ArrayList<Double>();
+		
+		copyListContents(sample, filter);
+		Collections.sort(sample);
+		System.out.println(sample);
+		
+		int baseFour = sample.size()/4;
+		
+		for (int i = 0; i < baseFour; i++) {
+			
+			sample.remove((int) 0);
+		}
+		
+		System.out.println(sample);
+		
+		for (int i = 0; i < baseFour; i++) {
+			
+			sample.remove(sample.size() - 1);
+		}
+		
+		System.out.println(sample);
+		
+		double sum = 0.0;
+		
+		for (double num: sample) {
+			
+			sum += num;
+		}
+		
+		return sum/sample.size();
+	}
+	
+	/**
+	 * @author Liam
+	 * @param numDataPoints the number of recent data points to use
+	 * @return the mean of the middle quartiles of the sample of the most recent number of data points specified
+	 */
+	public double getMedianMean(int numDataPoints) {
+		
+		ArrayList <Double> sample = new ArrayList<Double>();
+		
+		copyListContents(sample, filter, numDataPoints);
+		Collections.sort(sample);
+		
+		System.out.println(sample);
+		
+		int baseFour = sample.size()/4;
+		
+		for (int i = 0; i < baseFour; i++) {
+			
+			sample.remove((int) 0);
+		}
+		
+		System.out.println(sample);
+		
+		for (int i = 0; i < baseFour; i++) {
+			
+			sample.remove(sample.size() - 1);
+		}
+		
+		System.out.println(sample);
+		
+		double sum = 0.0;
+		
+		for (double num: sample) {
+			
+			sum += num;
+		}
+		
+		return sum/sample.size();
+	}
+	
+	/**
+	 * @author Liam
 	 * @return the standard deviation of the sample
 	 * within one standard deviation (~68%), within two (~96%), within three ~100%
 	 */
