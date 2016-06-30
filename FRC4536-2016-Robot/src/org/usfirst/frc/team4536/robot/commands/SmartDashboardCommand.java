@@ -11,17 +11,20 @@ public class SmartDashboardCommand extends CommandBase {
 	
 	//TurningTrapezoidProfile turnProfile;
 	//TurnTrapezoidProfile turnTrapezoid;
-	BraceAgainstWall braceAgainstWall = new BraceAgainstWall(Constants.variable1, Constants.variable2, Constants.variable3);;
+	BraceAgainstWall braceAgainstWall = new BraceAgainstWall(Constants.variable1, Constants.variable2, Constants.variable3,
+																Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY, driveTrain.getAngle(),
+																Constants.variable4);
 	
 	public SmartDashboardCommand() {
 		
 	}
 	
-	
 	protected void initialize() {
 		
 		//turnTrapezoid = new TurnTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
-		braceAgainstWall = new BraceAgainstWall(Constants.variable1, Constants.variable2, Constants.variable3);
+		BraceAgainstWall braceAgainstWall = new BraceAgainstWall(Constants.variable1, Constants.variable2, Constants.variable3,
+				Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY, driveTrain.getAngle(),
+				Constants.variable4);
 		
 		/*-----Commands to Run-----*/
 		SmartDashboard.putData(braceAgainstWall);
