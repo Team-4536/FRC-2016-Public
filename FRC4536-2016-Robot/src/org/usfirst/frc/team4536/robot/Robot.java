@@ -151,7 +151,7 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         Utilities.updateCycleTime();
         Constants.updateVariables();
-        
+        CommandBase.driveTrain.update();
     }
     
     /**

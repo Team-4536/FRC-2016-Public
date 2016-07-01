@@ -6,24 +6,30 @@ import org.usfirst.frc.team4536.robot.Utilities;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4536.robot.TurningTrapezoidProfile;
 import org.usfirst.frc.team4536.robot.TrapezoidProfile;
+import org.usfirst.frc.team4536.robot.commands.AutoApproachPickupBoulder;
 
 public class SmartDashboardCommand extends CommandBase {
 	
 	//TurningTrapezoidProfile turnProfile;
 	//TurnTrapezoidProfile turnTrapezoid;
-	TeleopTurn turnTrapezoid = new TeleopTurn(Constants.variable1, Constants.variable2, Constants.variable3);;
+	BraceAgainstWall braceAgainstWall = new BraceAgainstWall(Constants.variable1, Constants.variable2, Constants.variable3,
+																Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY, driveTrain.getAngle(),
+																Constants.variable4);
 	
 	public SmartDashboardCommand() {
 		
 	}
 	
-	
 	protected void initialize() {
 		
 		//turnTrapezoid = new TurnTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
-		turnTrapezoid = new TeleopTurn(Constants.variable1, Constants.variable2, Constants.variable3);
+		BraceAgainstWall braceAgainstWall = new BraceAgainstWall(Constants.variable1, Constants.variable2, Constants.variable3,
+				Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY, driveTrain.getAngle(),
+				Constants.variable4);
+		
 		/*-----Commands to Run-----*/
-		SmartDashboard.putData(turnTrapezoid);
+		SmartDashboard.putData(braceAgainstWall);
+		SmartDashboard.putData(new AutoApproachPickupBoulder());
     }
 	
     protected void execute() {
@@ -43,17 +49,10 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putNumber("Drive Train Right Encoder: ", driveTrain.getRightEncoder());
 		SmartDashboard.putNumber("Drive Train Right Rate: ", driveTrain.getRightRate());
 		SmartDashboard.putNumber("Drive Train Left Rate: ", driveTrain.getLeftRate());
-		SmartDashboard.putNumber("Previous Forward Throttle", driveTrain.oldForwardThrottle);
 		SmartDashboard.putNumber("Turn Rate in Degrees per Second: ", driveTrain.getYawRate());
 		//SmartDashboard.putNumber("range", maxUltra.getRange());
 		SmartDashboard.putNumber("Offset: ", driveTrain.getOffset());
 		SmartDashboard.putNumber("Ball Distance: ", intake.getdistance());
-		//SmartDashboard.putNumber("Accumulated Error", turnTrapezoid.getAccumulatedError());
-		//SmartDashboard.putNumber("Error: ", turnTrapezoid.getError());
-		//SmartDashboard.putNumber("Accumulated Angle Error", trapezoid.getAccumulatedAngleError());
-		//SmartDashboard.putNumber("Angle Error: ", trapezoid.getAngleError());
-		//SmartDashboard.putNumber("Accumulated Distance Error: ", trapezoid.getAccumulatedDistanceError());
-		//SmartDashboard.putNumber("Distance Error: ", trapezoid.getDistanceError());
 		
 		/*-----Display NavX Values-----*/
 		
@@ -61,7 +60,12 @@ public class SmartDashboardCommand extends CommandBase {
     	SmartDashboard.putNumber("Pitch: ", driveTrain.getNavXRoll()); // This depends on the orientation of the RoboRIO
     	SmartDashboard.putNumber("Roll: ", driveTrain.getNavXPitch()); // This depends on the orientation of the RoboRIO
     	SmartDashboard.putNumber("Field Centric Angle: ", driveTrain.getAngle());
-		
+    	SmartDashboard.putNumber("JerkX: ", driveTrain.getJerkX());
+    	SmartDashboard.putNumber("JerkY: ", driveTrain.getJerkY());
+    	SmartDashboard.putNumber("JerkZ: ", driveTrain.getJerkZ());
+    	SmartDashboard.putNumber("Orthogonal Jerk: ", driveTrain.getOrthoganalJerk());
+    	SmartDashboard.putBoolean("Collision: ", (driveTrain.getJerkX() > Constants.variable4 || driveTrain.getJerkY() > Constants.variable4)? true : false);
+
 		/*-----Running Commands on Subsystems-----*/
 		
 		SmartDashboard.putData(driveTrain);
@@ -72,22 +76,9 @@ public class SmartDashboardCommand extends CommandBase {
 		
 		SmartDashboard.putNumber("Test Output 1: ", 0);
 		SmartDashboard.putNumber("Test Output 2: ", 0);
-		//SmartDashboard.putNumber("Test Output 3: ", turnProfile.timeNeeded());
+		SmartDashboard.putNumber("Test Output 3: ", 0);
 		SmartDashboard.putNumber("Test Output 4: ", 0.0);
 		SmartDashboard.putNumber("Test Output 5: ", 0.0);
-		//SmartDashboard.putNumber("Test Output 6: ", turnProfile.idealVelocity(Utilities.getTime()-5));
-		//SmartDashboard.putNumber("Test Output 7: ", turnProfile.idealDistance(Utilities.getTime()-5));
-		//SmartDashboard.putNumber("Test Output 8: ", turnProfile.timeNeeded());
-		//SmartDashboard.putNumber("Test Output 9: ", turnProfile.throttle(Utilities.getTime() - 5));
-		
-		/*if (turnProfile.isTriangle()) {
-			
-			SmartDashboard.putString("Triangle or Trapezoid: ", "Triangle");
-		}
-		else {
-			
-			SmartDashboard.putString("Triangle or Trapezoid: ", "Trapezoid");
-		}*/
     }
     
     protected boolean isFinished() {

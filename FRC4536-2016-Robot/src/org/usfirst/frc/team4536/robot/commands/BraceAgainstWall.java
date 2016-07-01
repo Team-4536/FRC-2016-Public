@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.Timer;
 /**
  *@author Liam
  */
-public class DriveTrapezoidProfile extends CommandBase {
+public class BraceAgainstWall extends CommandBase {
 	
 	Timer timer = new Timer();
 	TrapezoidProfile trapezoid;
@@ -16,13 +16,15 @@ public class DriveTrapezoidProfile extends CommandBase {
 	private double proportionalityConstant = Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY;
 	private double accumulatedDistanceError = 0.0;
 	private double accumulatedAngleError = 0.0;
+	private boolean collision = false;
+	private double jerkThreshold = Constants.JERK_COLLISION_THRESHOLD;
 	
 	/**
 	 * @author Liam
 	 * @param the distance desired to be travelled in feet
 	 * Sets the Max Speed and Acceleration to the defaults defined in constants
 	 */
-	public DriveTrapezoidProfile(double distance) {
+	public BraceAgainstWall(double distance) {
 		
 		this(distance, Constants.TRAPEZOID_DEFAULT_SPEED, Constants.TRAPEZOID_DEFAULT_ACCELERATION);
 	}
@@ -32,7 +34,7 @@ public class DriveTrapezoidProfile extends CommandBase {
 	 * @param the distance desired to be travelled in feet
 	 * @param the angle the profile should maintain
 	 */
-	public DriveTrapezoidProfile(double distance, double angle) {
+	public BraceAgainstWall(double distance, double angle) {
 		
 		this(distance, Constants.TRAPEZOID_DEFAULT_SPEED, Constants.TRAPEZOID_DEFAULT_ACCELERATION);
 		startingAngle = angle;
@@ -42,13 +44,9 @@ public class DriveTrapezoidProfile extends CommandBase {
 	 * @author Liam
 	 * @param distance The desired distance the robot should travel in feet. May be negative or positive to indicate direction.
 	 * @param maxSpeed The maximum possible speed the robot could be traveling at in feet per second. Always positive.
-<<<<<<< HEAD
 	 * @param maxAcceleration The maximum possible acceleration the speed can change by in feet per second squared. Always positive.
-=======
-	 * @param maxAcceleration The maximum possible acceleration in feet per second squared the speed can change by. Always positive.
->>>>>>> refs/remotes/origin/DriveTrapezoidIntegral
 	 */
-    public DriveTrapezoidProfile(double distance, double maxSpeed, double maxAcceleration) {
+    public BraceAgainstWall(double distance, double maxSpeed, double maxAcceleration) {
 
     	requires(driveTrain);
     	trapezoid = new TrapezoidProfile(distance, maxSpeed, maxAcceleration);
@@ -66,7 +64,7 @@ public class DriveTrapezoidProfile extends CommandBase {
 >>>>>>> refs/remotes/origin/DriveTrapezoidIntegral
 	 * @param custom gyro proportionality constant to override the default. Useful for command groups that may require more correction due to terrain.
 	 */
-    public DriveTrapezoidProfile(double distance, double maxSpeed, double maxAcceleration, double gyroProportionality) {
+    public BraceAgainstWall(double distance, double maxSpeed, double maxAcceleration, double gyroProportionality) {
     	
     	this(distance, maxSpeed, maxAcceleration);
     	proportionalityConstant = gyroProportionality;
@@ -80,10 +78,25 @@ public class DriveTrapezoidProfile extends CommandBase {
 	 * @param custom gyro proportionality constant to override the default. Useful for command groups that may require more correction due to terrain.
 	 * @param the angle the profile should maintain
      */
-    public DriveTrapezoidProfile(double distance, double maxSpeed, double maxAcceleration, double gyroProportionality, double angle) {
+    public BraceAgainstWall(double distance, double maxSpeed, double maxAcceleration, double gyroProportionality, double angle) {
     	
     	this(distance, maxSpeed, maxAcceleration, gyroProportionality);
     	startingAngle = angle;
+    }
+    
+    /**
+     * @author Liam
+	 * @param distance The desired distance the robot should travel in feet. May be negative or positive to indicate direction.
+	 * @param maxSpeed The maximum possible speed the robot could be traveling at in feet per second. Always positive.
+	 * @param maxAcceleration The maximum possible acceleration the speed can change by in feet per second squared. Always positive.
+	 * @param custom gyro proportionality constant to override the default. Useful for command groups that may require more correction due to terrain.
+	 * @param the angle the profile should maintain
+	 * @param the jerk threshold for determining a collision
+     */
+    public BraceAgainstWall(double distance, double maxSpeed, double maxAcceleration, double gyroProportionality, double angle, double jerkThreshold) {
+    	
+    	this(distance, maxSpeed, maxAcceleration, gyroProportionality, angle);
+    	this.jerkThreshold = jerkThreshold;
     }
     
     /**
@@ -160,6 +173,16 @@ public class DriveTrapezoidProfile extends CommandBase {
     	return accumulatedAngleError;
     }
     
+    public boolean isCollision() {
+    	
+    	if (driveTrain.getOrthoganalJerk() > jerkThreshold) {
+    		
+    		collision = true;
+    	}
+    	
+    	return collision;
+    }
+    
     protected void execute() {
     	
     	driveTrain.arcadeDrive(trapezoid.throttle(timer.get()) + (Constants.TRAPEZOID_FORWARD_PROPORTIONALITY * getDistanceError()) + Constants.TRAPEZOID_INTEGRAL * getAccumulatedDistanceError(),
@@ -168,7 +191,13 @@ public class DriveTrapezoidProfile extends CommandBase {
     
     protected boolean isFinished() {
     	
-    	if ((driveTrain.getEncoder() >= (trapezoid.getDistance()*12 - Constants.TRAPEZOID_DISTANCE_THRESHOLD) &&
+    	if (isCollision()) {
+    		
+    		System.out.println("Brace Against Wall finished from collision.");
+    		
+    		return true;
+    	}
+    	else if ((driveTrain.getEncoder() >= (trapezoid.getDistance()*12 - Constants.TRAPEZOID_DISTANCE_THRESHOLD) &&
     			driveTrain.getEncoder() <= (trapezoid.getDistance()*12 + Constants.TRAPEZOID_DISTANCE_THRESHOLD)) &&
         	(driveTrain.getRate() >= -Constants.TRAPEZOID_SPEED_THRESHOLD
     			&& driveTrain.getRate() <= Constants.TRAPEZOID_SPEED_THRESHOLD) &&
@@ -177,13 +206,13 @@ public class DriveTrapezoidProfile extends CommandBase {
     		(driveTrain.getYawRate() >= -Constants.TRAPEZOID_ANGULAR_SPEED_THRESHOLD
     				&& driveTrain.getYawRate() <= Constants.TRAPEZOID_ANGULAR_SPEED_THRESHOLD)){ //conditions may cancel
     		
-    		System.out.println("Drive Trapezoid Profile finished from ending criteria.");
+    		System.out.println("Brace Against Wall finished from ending criteria.");
     		
     		return true;
     	}
     	else { //Timeout may cancel
     		
-    		System.out.println("Drive Trapezoid profile finished from timeout.");
+    		System.out.println("Brace Against Wall finished from timeout.");
     		
     		return isTimedOut();
     	}

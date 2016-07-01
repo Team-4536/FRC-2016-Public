@@ -24,15 +24,24 @@ public class DriveTrain extends Subsystem {
 	AnalogInput leftIR;
 	
 	private double offset = 0.0;
-	public double oldForwardThrottle;
-	public double oldTurnThrottle;
+	private double oldForwardThrottle;
+	private double oldTurnThrottle;
 	private boolean flipDirection;
 	
 	/*---------Sensor Values---------*/
 	
-	double backDist, frontDist; //These are in feet
-	double leftDist; //This is in inches
-	double prevNavXYaw;
+	private double backDist, frontDist; //These are in feet
+	private double leftDist; //This is in inches
+	private double prevNavXYaw;
+	private double prevLinearAccelX = 0.0;
+	private double prevLinearAccelY = 0.0;
+	private double prevLinearAccelZ = 0.0;
+	private double currLinearAccelX = 0.0;
+	private double currLinearAccelY = 0.0;
+	private double currLinearAccelZ = 0.0;
+	private double jerkX = 0.0;
+	private double jerkY = 0.0;
+	private double jerkZ = 0.0;
 	
 	/**
 	 * @author Noah
@@ -69,10 +78,13 @@ public class DriveTrain extends Subsystem {
 
 		
 		try {
+			
 	          navX = new AHRS(SPI.Port.kMXP); 
-	      } catch (RuntimeException ex ) {
+	          
+	    } catch (RuntimeException ex ) {
+	    	
 	          DriverStation.reportError("Error instantiating navX-MXP:  " + ex.getMessage(), true);
-	      }
+	    }
 		
 		leftBackVictorSP.set(0.0);
 		leftFrontVictorSP.set(0.0);
@@ -160,6 +172,24 @@ public class DriveTrain extends Subsystem {
 
     
     	arcadeDrive(forwardThrottle, turnThrottle);
+    }
+    
+    /**
+     * @author Liam
+     */
+    public void update() {
+    	
+		currLinearAccelX = navX.getWorldLinearAccelX();
+		currLinearAccelY = navX.getWorldLinearAccelY();
+		currLinearAccelZ = navX.getWorldLinearAccelZ();
+		
+		jerkX = currLinearAccelX - prevLinearAccelX;
+		jerkY = currLinearAccelY - prevLinearAccelY;
+		jerkZ = currLinearAccelZ - prevLinearAccelZ;
+		
+		prevLinearAccelX = currLinearAccelX;
+		prevLinearAccelY = currLinearAccelY;
+		prevLinearAccelZ = currLinearAccelZ;
     }
     
     /**
@@ -310,6 +340,40 @@ public class DriveTrain extends Subsystem {
 	public double getYawRate() {
 		
 		return navX.getRate()*180/(2*Math.PI);
+	}
+	
+	/**
+	 * @author Liam
+	 * @return the absolute value of the linear jerk along the x-axis 
+	 */
+	public double getJerkX() {
+		
+		return Math.abs(jerkX);
+	}
+	
+	/**
+	 * @author Liam
+	 * @return the absolute value of the linear jerk along the y-axis
+	 */
+	public double getJerkY() {
+		
+		return Math.abs(jerkY);
+	}
+	
+	/**
+	 * @author Liam
+	 * @return the absolute value of the linear jerk along the z-axis
+	 */
+	public double getJerkZ() {
+		
+		return Math.abs(jerkZ);
+	}
+	
+	public double getOrthoganalJerk() {
+		
+		double orth = Math.sqrt(Math.pow(getJerkX(), 2) + Math.pow(getJerkY(), 2) + Math.pow(getJerkZ(), 2));
+		
+		return orth;
 	}
 	
 	/**
