@@ -6,6 +6,7 @@ import org.usfirst.frc.team4536.robot.Utilities;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4536.robot.TurningTrapezoidProfile;
 import org.usfirst.frc.team4536.robot.TrapezoidProfile;
+import org.usfirst.frc.team4536.robot.commands.AutoApproachPickupBoulder;
 
 public class SmartDashboardCommand extends CommandBase {
 	
@@ -28,6 +29,7 @@ public class SmartDashboardCommand extends CommandBase {
 		
 		/*-----Commands to Run-----*/
 		SmartDashboard.putData(braceAgainstWall);
+		SmartDashboard.putData(new AutoApproachPickupBoulder());
     }
 	
     protected void execute() {

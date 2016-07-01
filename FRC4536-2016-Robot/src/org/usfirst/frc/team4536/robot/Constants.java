@@ -45,7 +45,12 @@ public final class Constants {
 	
 	//Brace Against Wall
 	
-	public static final double JERK_COLLISION_THRESHOLD = 0.1;
+	public static final double JERK_COLLISION_THRESHOLD = 0.2;
+	
+	//AutoApproachBallPickup
+	
+	public static final double AUTO_APPROACH_SPEED = 1;
+	
 	
 	//Turning Trapezoid
 	public static final double TURNING_TRAPEOID_GYRO_PROPORTIONALITY = 0.04; // Throttle per degree
