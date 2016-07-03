@@ -3,6 +3,7 @@ package org.usfirst.frc.team4536.robot;
 import java.lang.Math;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Timer;
+import exceptions.NegativeCycleTimeException;
 
 public final class Utilities {
 	
@@ -10,18 +11,18 @@ public final class Utilities {
 	
 	/*-----------------------------------------------------Objects---------------------------------------*/
 	
-	public static PowerDistributionPanel powerDistributionPanel = new PowerDistributionPanel();
-	public static Timer timer = new Timer();
+	private static final PowerDistributionPanel powerDistributionPanel = new PowerDistributionPanel();
+	private static final Timer timer = new Timer();
 	
 	/*-----------------------------------------------------variables--------------------------------------------*/
 	
 	/*-----Cycle Time-----*/
 	private static double currentTime, prevTime = 0.0;
-	public static double cycleTime = 0.0;
+	private static double cycleTime = 0.0;
 	
 	/*-----AccelerationLimit-----*/
 	private static double throttleDiff, accelerationLimit = 0.0;
-	public static double finalThrottle = 0.0;
+	private static double finalThrottle = 0.0;
 	
 	/*------------------------------------------------------methods---------------------------------------------*/
 	
@@ -136,19 +137,32 @@ public final class Utilities {
 	/**
 	 * @author Kool Guy Donald Trump
 	 * Updates the cycle time calculation of our code. This should only be called once per cycle or it will be incorrect.
+	 * @throws NegativeCycleTimeException a RuntimeException occurring when cycle time is negative which is dangerous.
 	 */
-	public static final void updateCycleTime() {
+	public static final void updateCycleTime() throws NegativeCycleTimeException {
 		
 		currentTime = getTime();
 		cycleTime = currentTime - prevTime;
+		
+		if (cycleTime < 0) {
+			
+			throw new NegativeCycleTimeException();
+		}
+		
 		prevTime = currentTime;
 	}
 	
 	/**
 	 * @author Kool Guy Donald Trump
 	 * @return The cycle time of our code in seconds.
+	 * @throws NegativeCycleTimeException a RuntimeException occurring when cycle time is negative which is dangerous.
 	 */
-	public static final double getCycleTime() {
+	public static final double getCycleTime() throws NegativeCycleTimeException {
+		
+		if (cycleTime < 0) {
+			
+			throw new NegativeCycleTimeException();
+		}
 		
 		return cycleTime;
 	}
