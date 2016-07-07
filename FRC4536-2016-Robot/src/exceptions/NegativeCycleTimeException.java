@@ -10,7 +10,8 @@ public class NegativeCycleTimeException extends RuntimeException{
 		this.errorMessage = "Negative Cycle times don't make sense."
 				+ " This can be dangerous because any code using acceleration limits"
 				+ " can suddenly reverse direction violently upon being enabled for a"
-				+ " second time in a row."; 
+				+ " second time in a row. This presents a danger to humans standing around"
+				+ "the robot as the driver can't control it."; 
 	}
 	
 	public NegativeCycleTimeException(String errorMessage) {
