@@ -94,6 +94,7 @@ public final class Constants {
 	public static final double LOW_BAR_LOW_GOAL_FIRST_LEG_ANGLE = 10.0; // in degrees
 	public static final double LOW_BAR_LOW_GOAL_SECOND_LEG_ANGLE = 60.0; // in degrees
 	
+	public static final double SPY_BOT_ANGLE = 135.0;
 	public static final double SPY_BOT_LOW_GOAL_FIRST_LEG_DISTANCE = 4.5; // in feet 
 	public static final double SPY_BOT_LOW_GOAL_SECOND_LEG_DISTANCE = 5.3; // in feet
 	public static final double SPY_BOT_LOW_GOAL_TURN_ANGLE = -75; // in degrees
@@ -165,6 +166,7 @@ public final class Constants {
 	public static final double INTAKE_RELEASE_TIMEOUT = 1.1; // in seconds
 	public static final double INTAKE_RELEASE_SPEED = 0.5; // in throttle
 	public static final double AUTO_INTAKE_CURRENT = 20.0; // in amps
+	public static final double AUTO_INTAKE_DELAY = 1.0; // in seconds
 	
 	/*---------------------------------------Scissor Lift--------------------------------*/
 	
