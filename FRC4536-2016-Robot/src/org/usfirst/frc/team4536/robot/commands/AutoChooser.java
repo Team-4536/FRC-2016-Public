@@ -142,7 +142,7 @@ public class AutoChooser extends CommandBase {
 				
 				case 9:
 
-					driveTrain.resetNavX(135.0);
+					driveTrain.resetNavX(Constants.SPY_BOT_ANGLE);
 					new SpyBotLowGoal().start();
 				break;
 				
