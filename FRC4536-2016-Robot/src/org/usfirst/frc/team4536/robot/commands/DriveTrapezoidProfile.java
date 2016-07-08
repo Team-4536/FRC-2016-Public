@@ -12,7 +12,7 @@ public class DriveTrapezoidProfile extends CommandBase {
 	
 	Timer timer = new Timer();
 	TrapezoidProfile trapezoid;
-	private double startingAngle;
+	private double desiredAngle = -720;
 	private double proportionalityConstant = Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY;
 	private double accumulatedDistanceError = 0.0;
 	private double accumulatedAngleError = 0.0;
@@ -35,18 +35,14 @@ public class DriveTrapezoidProfile extends CommandBase {
 	public DriveTrapezoidProfile(double distance, double angle) {
 		
 		this(distance, Constants.TRAPEZOID_DEFAULT_SPEED, Constants.TRAPEZOID_DEFAULT_ACCELERATION);
-		startingAngle = angle;
+		desiredAngle = angle;
 	}
 	
 	/**
 	 * @author Liam
 	 * @param distance The desired distance the robot should travel in feet. May be negative or positive to indicate direction.
 	 * @param maxSpeed The maximum possible speed the robot could be traveling at in feet per second. Always positive.
-<<<<<<< HEAD
-	 * @param maxAcceleration The maximum possible acceleration the speed can change by in feet per second squared. Always positive.
-=======
 	 * @param maxAcceleration The maximum possible acceleration in feet per second squared the speed can change by. Always positive.
->>>>>>> refs/remotes/origin/DriveTrapezoidIntegral
 	 */
     public DriveTrapezoidProfile(double distance, double maxSpeed, double maxAcceleration) {
 
@@ -57,13 +53,8 @@ public class DriveTrapezoidProfile extends CommandBase {
 	/**
 	 * @author Liam
 	 * @param distance The desired distance the robot should travel in feet. May be negative or positive to indicate direction.
-<<<<<<< HEAD
-	 * @param maxSpeed The maximum possible speed the robot could be traveling at in feet per second. Always positive.
-	 * @param maxAcceleration The maximum possible acceleration the speed can change by in feet per second squared. Always positive.
-=======
 	 * @param maxSpeed The maximum possible speed the robot could be traveling at in feet per second. Scalar so Always positive.
 	 * @param maxAcceleration The maximum possible acceleration in feet per second squared the speed can change by. Always positive.
->>>>>>> refs/remotes/origin/DriveTrapezoidIntegral
 	 * @param custom gyro proportionality constant to override the default. Useful for command groups that may require more correction due to terrain.
 	 */
     public DriveTrapezoidProfile(double distance, double maxSpeed, double maxAcceleration, double gyroProportionality) {
@@ -83,7 +74,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     public DriveTrapezoidProfile(double distance, double maxSpeed, double maxAcceleration, double gyroProportionality, double angle) {
     	
     	this(distance, maxSpeed, maxAcceleration, gyroProportionality);
-    	startingAngle = angle;
+    	desiredAngle = angle;
     }
     
     /**
@@ -112,7 +103,12 @@ public class DriveTrapezoidProfile extends CommandBase {
     	accumulatedAngleError = 0.0;
     	
     	driveTrain.resetEncoders();
-    	startingAngle = driveTrain.getAngle();
+    	
+    	if (desiredAngle < -360) {
+    		
+    		desiredAngle = driveTrain.getAngle();
+    	}
+    	
     	setTimeout(trapezoid.getTimeNeeded() + Constants.TRAPEZOID_PROFILE_TIMEOUT_OFFSET);
     }
     
@@ -144,7 +140,7 @@ public class DriveTrapezoidProfile extends CommandBase {
      */
     public double getAngleError() {
     	
-    	double error = Utilities.angleDifference(startingAngle,driveTrain.getAngle());
+    	double error = Utilities.angleDifference(desiredAngle, driveTrain.getAngle());
     	
     	return error;
     }
@@ -177,13 +173,9 @@ public class DriveTrapezoidProfile extends CommandBase {
     		(driveTrain.getYawRate() >= -Constants.TRAPEZOID_ANGULAR_SPEED_THRESHOLD
     				&& driveTrain.getYawRate() <= Constants.TRAPEZOID_ANGULAR_SPEED_THRESHOLD)){ //conditions may cancel
     		
-    		System.out.println("Drive Trapezoid Profile finished from ending criteria.");
-    		
     		return true;
     	}
     	else { //Timeout may cancel
-    		
-    		System.out.println("Drive Trapezoid profile finished from timeout.");
     		
     		return isTimedOut();
     	}
