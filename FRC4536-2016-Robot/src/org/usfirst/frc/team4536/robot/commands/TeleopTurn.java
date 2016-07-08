@@ -11,18 +11,18 @@ import edu.wpi.first.wpilibj.Timer;
  */
 public class TeleopTurn extends CommandBase {
 	
-	Timer timer = new Timer();
-	TurningTrapezoidProfile turnProfile;
+	private Timer timer = new Timer();
+	private TurningTrapezoidProfile turnProfile;
 	private double proportionalityConstant;
 	private double angleDiff;
 	private double accumulatedError = 0.0;
 	
-	double desiredAngle;
-	double angularSpeed;
-	double angularAccel;
-	double startingAngle; 
-	double navXCorrection;
-	double time;
+	private double desiredAngle;
+	private double angularSpeed;
+	private double angularAccel;
+	private double startingAngle; 
+	private double navXCorrection;
+	private double time;
 	
 	/**
 	 * @author Liam
