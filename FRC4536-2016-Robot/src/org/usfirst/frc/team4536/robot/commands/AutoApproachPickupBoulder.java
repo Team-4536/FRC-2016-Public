@@ -14,12 +14,10 @@ public class AutoApproachPickupBoulder extends CommandGroup {
 	 * @author Liam
 	 */
     public  AutoApproachPickupBoulder() {
-
-    	addSequential(new BraceAgainstWall(Constants.AUTO_APPROACH_DEFAULT_DISTANCE,
-    										Constants.AUTO_APPROACH_SPEED, Constants.AUTO_APPROACH_ACCELERATION,
-											Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY, CommandBase.driveTrain.getAngle(),
-											Constants.AUTO_APPROACH_JERK_COLLISION_THRESHOLD));
-    	addSequential(new IntakeCurrent());
+    	
+    	addParallel(new IntakeCurrent());
+    	addSequential(new DriveTrapezoidProfile(Constants.AUTO_APPROACH_DEFAULT_DISTANCE,
+    										Constants.AUTO_APPROACH_SPEED, Constants.AUTO_APPROACH_ACCELERATION));
     }
     
     /**
@@ -27,11 +25,10 @@ public class AutoApproachPickupBoulder extends CommandGroup {
      * @param distance the distance the robot should roam for to collide with boulders and try to pick them up.
      */
     public AutoApproachPickupBoulder(double distance) {
+
     	
-    	addSequential(new BraceAgainstWall(distance,
-				Constants.AUTO_APPROACH_SPEED, Constants.AUTO_APPROACH_ACCELERATION,
-				Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY, CommandBase.driveTrain.getAngle(),
-				Constants.AUTO_APPROACH_JERK_COLLISION_THRESHOLD));
-    	addSequential(new IntakeCurrent());
+    	addParallel(new IntakeCurrent());
+    	addSequential(new DriveTrapezoidProfile(distance,
+    										Constants.AUTO_APPROACH_SPEED, Constants.AUTO_APPROACH_ACCELERATION));
     }
 }
