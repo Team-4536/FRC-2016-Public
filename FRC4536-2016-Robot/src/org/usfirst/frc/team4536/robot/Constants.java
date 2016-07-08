@@ -164,7 +164,7 @@ public final class Constants {
 	public static final double INTAKE_SPEED_CURVE = 1; // Unitless exponent
 	public static final double INTAKE_RELEASE_TIMEOUT = 1.1; // in seconds
 	public static final double INTAKE_RELEASE_SPEED = 0.5; // in throttle
-	public static final double AUTO_INTAKE_CURRENT = 6.0; // in amps
+	public static final double AUTO_INTAKE_CURRENT = 20.0; // in amps
 	
 	/*---------------------------------------Scissor Lift--------------------------------*/
 	
