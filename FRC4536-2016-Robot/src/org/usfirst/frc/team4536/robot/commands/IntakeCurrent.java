@@ -7,7 +7,7 @@ import org.usfirst.frc.team4536.robot.RobotMap;
 import org.usfirst.frc.team4536.robot.Utilities;
 
 /**
- *
+ *@author Liam
  */
 public class IntakeCurrent extends CommandBase {
 	
@@ -26,19 +26,17 @@ public class IntakeCurrent extends CommandBase {
     protected void initialize() {
     	
     	startingTime = Utilities.getTime();
-    	System.out.println("Starting Time: " + startingTime);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	System.out.println("Time: "  + (Utilities.getTime() - startingTime));
-    	
     	intake.setThrottle(1.0);
     	
-    	if (Utilities.getTime() - startingTime > 1)
-    	filter.update(Utilities.getCurrent(RobotMap.PDP_INTAKE));
-    	System.out.println(filter.getMean(numDataPoints));
+    	if (Utilities.getTime() - startingTime > Constants.AUTO_INTAKE_DELAY) {
+    		
+    		filter.update(Utilities.getCurrent(RobotMap.PDP_INTAKE));
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
