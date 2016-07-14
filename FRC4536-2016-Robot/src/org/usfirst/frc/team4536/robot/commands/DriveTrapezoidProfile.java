@@ -12,7 +12,8 @@ public class DriveTrapezoidProfile extends CommandBase {
 	
 	Timer timer = new Timer();
 	TrapezoidProfile trapezoid;
-	private double desiredAngle = -720;
+	private double desiredAngle = 0.0;
+	private boolean fieldAngle = true;
 	private double proportionalityConstant = Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY;
 	private double accumulatedDistanceError = 0.0;
 	private double accumulatedAngleError = 0.0;
@@ -36,6 +37,7 @@ public class DriveTrapezoidProfile extends CommandBase {
 		
 		this(distance, Constants.TRAPEZOID_DEFAULT_SPEED, Constants.TRAPEZOID_DEFAULT_ACCELERATION);
 		desiredAngle = angle;
+		fieldAngle = false;
 	}
 	
 	/**
@@ -104,7 +106,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     	
     	driveTrain.resetEncoders();
     	
-    	if (desiredAngle < -360) {
+    	if (fieldAngle) {
     		
     		desiredAngle = driveTrain.getAngle();
     	}
