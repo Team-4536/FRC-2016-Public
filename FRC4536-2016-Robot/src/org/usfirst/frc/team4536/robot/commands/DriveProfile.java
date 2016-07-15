@@ -90,8 +90,14 @@ public class DriveProfile extends CommandBase {
     /**
      * @author Liam
      * @return the error in the distance between where the robot is and where it should be in inches.
+     * @throws RuntimeException when you call this method on a turn profile. Turn profiles don't track distance error.
      */
-    public double getDistanceError() {
+    public double getDistanceError() throws RuntimeException {
+    	
+    	if (profile instanceof TurnProfile) {
+    		
+    		throw new RuntimeException("You should not be calling distance error on a turning profile.");
+    	}
     	
     	double error = profile.idealDistance(timer.get())*12 - driveTrain.getRightEncoder();
     	
@@ -102,7 +108,7 @@ public class DriveProfile extends CommandBase {
      * @author Liam
      * @return the accumulated error over time in the distance between where the robot is and where it should be in inches.
      */
-    public double getAccumulatedDistanceError() {
+    public double getAccumulatedDistanceError() throws RuntimeException {
     	
     	accumulatedDistanceError += getDistanceError() * Utilities.getCycleTime();
     	
@@ -141,7 +147,7 @@ public class DriveProfile extends CommandBase {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    protected void execute() throws RuntimeException {
     	
     	if (profile instanceof TurnProfile) {
     		
