@@ -28,6 +28,15 @@ public final class Constants {
 	
 	/*--------------------------------------Profiles----------------------------------*/
 	
+	//Rectangle
+	
+	public static final double RECTANGLE_FORWARD_PROPORTIONALITY = 0.75;
+	public static final double RECTANGLE_TURN_PROPORTIONALITY = 0.4;
+	public static final double RECTANGLE_DISTANCE_THRESHOLD = 0.5;
+	public static final double RECTANGLE_VELOCITY_THRESHOLD = 0.5;
+	public static final double RECTANGLE_ANGLE_THRESHOLD = 1.0;
+	public static final double RECTANGLE_ANGULAR_SPEED_THRESHOLD = 1.0;
+	
 	//Trapezoid
 	
 	public static final double TRAPEZOID_FORWARD_PROPORTIONALITY = 0.07; // units of throttle per inch
@@ -55,6 +64,7 @@ public final class Constants {
 	public static final double AUTO_APPROACH_JERK_COLLISION_THRESHOLD = 0.15; //meters per second cubed
 	
 	//Turning Trapezoid
+	
 	public static final double TURNING_TRAPEOID_GYRO_PROPORTIONALITY = 0.04; // Throttle per degree
 	public static final double TURNING_TRAPEZOID_TIMEOUT_OFFSET = 0.5; // in seconds, added to the base timeout time which is the time needed
 	public static final double TURNING_TRAPEZOID_ANGLE_THRESHOLD = 1.0; // in degrees
@@ -62,6 +72,10 @@ public final class Constants {
 	public static final double TURNING_TRAPEZOID_DEFAULT_ANGULAR_SPEED = 200; // in degrees per second
 	public static final double TURNING_TRAPEZOID_DEFAULT_ANGULAR_ACCELERATION = 90; // in degrees per second squared
 	public static final double TURNING_TRAPEZOID_INTEGRAL = 0.001; // in units of throttle per degrees seconds
+	
+	//Turning Rectangle
+	
+	public static final double TURNING_RECTANGLE_GYRO_PROPORTIONALITY = 0.009;
 	
 	//Zenith
 	public static final double ZENITH_DRIVE_TRAIN_MAX_ANGULAR_VELOCITY = 400; // In degrees per second
