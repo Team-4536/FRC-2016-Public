@@ -22,4 +22,10 @@ public abstract class Profile {
 	 * @returns The distance the robot should be at
 	 */
 	public abstract double idealDistance(double time);
+	
+	/**
+	 * @author Liam
+	 * @return timeNeeded the theoretical time needed for the profile to execute without correction
+	 */
+	public abstract double getTimeNeeded();
 }
