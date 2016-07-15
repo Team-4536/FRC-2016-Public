@@ -65,7 +65,7 @@ public class TurningTrapezoidProfile extends Profile{
 		 * @author Liam
 		 * @return timeNeeded the theoretical time need for the profile to execute without correction
 		 */
-		public double timeNeeded() {
+		public double getTimeNeeded() {
 			
 			return this.timeNeeded;
 		}

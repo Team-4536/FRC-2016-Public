@@ -69,7 +69,7 @@ public class TurnTrapezoidProfile extends CommandBase {
      */
     public double getNeededTime(){
     	
-    	return turnProfile.timeNeeded();
+    	return turnProfile.getTimeNeeded();
     }
     
 	/**
@@ -101,7 +101,7 @@ public class TurnTrapezoidProfile extends CommandBase {
     	accumulatedError = 0.0;
     	timer.reset();
     	timer.start();
-    	setTimeout(turnProfile.timeNeeded() + Constants.TURNING_TRAPEZOID_TIMEOUT_OFFSET);
+    	setTimeout(turnProfile.getTimeNeeded() + Constants.TURNING_TRAPEZOID_TIMEOUT_OFFSET);
     }
 
     // Called repeatedly when this Command is scheduled to run

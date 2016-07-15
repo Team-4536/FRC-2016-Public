@@ -80,7 +80,7 @@ public class TeleopTurn extends CommandBase {
      */
     public double getNeededTime(){
     	
-    	return turnProfile.timeNeeded();
+    	return turnProfile.getTimeNeeded();
     }
     
 	/**
@@ -114,7 +114,7 @@ public class TeleopTurn extends CommandBase {
     	startingAngle = driveTrain.getAngle();
     	angleDiff = Utilities.angleDifference(startingAngle, desiredAngle);
     	turnProfile = new TurningTrapezoidProfile(angleDiff, angularSpeed, angularAccel);
-    	setTimeout(turnProfile.timeNeeded() + Constants.TURNING_TRAPEZOID_TIMEOUT_OFFSET);
+    	setTimeout(turnProfile.getTimeNeeded() + Constants.TURNING_TRAPEZOID_TIMEOUT_OFFSET);
     }
     
     //TODO add integral correction that Turn Trapezoid Profile possesses and see if it improve accuracy
