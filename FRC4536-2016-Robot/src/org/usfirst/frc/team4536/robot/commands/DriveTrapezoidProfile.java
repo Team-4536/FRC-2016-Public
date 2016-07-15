@@ -77,6 +77,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     	
     	this(distance, maxSpeed, maxAcceleration, gyroProportionality);
     	desiredAngle = angle;
+    	fieldAngle = false;
     }
     
     /**
@@ -100,11 +101,10 @@ public class DriveTrapezoidProfile extends CommandBase {
     protected void initialize() {
     	timer.reset();
     	timer.start();
+    	driveTrain.resetEncoders();
     	
     	accumulatedDistanceError = 0.0;
     	accumulatedAngleError = 0.0;
-    	
-    	driveTrain.resetEncoders();
     	
     	if (fieldAngle) {
     		
