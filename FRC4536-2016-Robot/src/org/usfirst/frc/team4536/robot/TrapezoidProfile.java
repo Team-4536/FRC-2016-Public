@@ -63,7 +63,7 @@ public class TrapezoidProfile extends Profile{
 		
 		/**
 		 * @author Liam
-		 * @return timeNeeded the theoretical time need for the profile to execute without correction
+		 * @return timeNeeded the theoretical time needed for the profile to execute without correction
 		 */
 		public double getTimeNeeded() {
 			

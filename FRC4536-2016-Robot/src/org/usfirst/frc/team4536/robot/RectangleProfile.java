@@ -70,5 +70,13 @@ public class RectangleProfile extends Profile {
 		else
 			return distance;
 	}
-
+	
+	/**
+	 * @author Liam
+	 * @return timeNeeded the theoretical time needed for the profile to execute without correction
+	 */
+	public double getTimeNeeded() {
+		
+		return this.timeNeeded;
+	}
 }
