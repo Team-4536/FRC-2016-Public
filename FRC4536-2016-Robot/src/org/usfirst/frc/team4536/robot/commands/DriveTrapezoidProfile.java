@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.Timer;
  */
 public class DriveTrapezoidProfile extends CommandBase {
 	
-	Timer timer = new Timer();
-	TrapezoidProfile trapezoid;
+	private Timer timer = new Timer();
+	private TrapezoidProfile trapezoid;
 	private double desiredAngle = 0.0;
 	private boolean fieldAngle = true;
 	private double proportionalityConstant = Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY;
