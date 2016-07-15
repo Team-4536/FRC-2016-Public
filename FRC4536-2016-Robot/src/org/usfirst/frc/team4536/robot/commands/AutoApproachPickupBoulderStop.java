@@ -14,7 +14,8 @@ public class AutoApproachPickupBoulderStop extends CommandBase {
 	
 	Timer timer = new Timer();
 	TrapezoidProfile trapezoid;
-	private double desiredAngle = -720;
+	private boolean fieldAngle = true;
+	private double desiredAngle = 0.0;
 	private double proportionalityConstant = Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY;
 	private double accumulatedDistanceError = 0.0;
 	private double accumulatedAngleError = 0.0;
@@ -41,6 +42,7 @@ public class AutoApproachPickupBoulderStop extends CommandBase {
 		
 		this(distance, Constants.TRAPEZOID_DEFAULT_SPEED, Constants.TRAPEZOID_DEFAULT_ACCELERATION);
 		desiredAngle = angle;
+		fieldAngle = false;
 	}
 	
 	/**
@@ -82,6 +84,7 @@ public class AutoApproachPickupBoulderStop extends CommandBase {
     	
     	this(distance, maxSpeed, maxAcceleration, gyroProportionality);
     	desiredAngle = angle;
+    	fieldAngle = false;
     }
     
     /**
@@ -105,14 +108,13 @@ public class AutoApproachPickupBoulderStop extends CommandBase {
     protected void initialize() {
     	timer.reset();
     	timer.start();
+    	driveTrain.resetEncoders();
     	startingTime = Utilities.getTime();
     	
     	accumulatedDistanceError = 0.0;
     	accumulatedAngleError = 0.0;
     	
-    	driveTrain.resetEncoders();
-    	
-    	if (desiredAngle < -360) {
+    	if (fieldAngle) {
     		
     		desiredAngle = driveTrain.getAngle();
     	}
