@@ -32,6 +32,8 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putData(new AutoApproachPickupBoulder());
 		SmartDashboard.putData(new AutoApproachPickupBoulderStop(4));
 		SmartDashboard.putData(new DriveTrapezoidProfile(4, 60));
+		SmartDashboard.putData( new DriveProfile(new TrapezoidProfile(4, 1, 1)));
+		SmartDashboard.putData(new DriveProfile(new TurningTrapezoidProfile(60, 90, 90)));
     }
 	
     protected void execute() {
