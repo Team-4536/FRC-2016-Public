@@ -13,6 +13,8 @@ public class BraceAgainstWall extends CommandBase {
 	Timer timer = new Timer();
 	TrapezoidProfile trapezoid;
 	private double startingAngle;
+	private double desiredAngle = 0.0;
+	private boolean fieldAngle = true;
 	private double proportionalityConstant = Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY;
 	private double accumulatedDistanceError = 0.0;
 	private double accumulatedAngleError = 0.0;
@@ -37,7 +39,8 @@ public class BraceAgainstWall extends CommandBase {
 	public BraceAgainstWall(double distance, double angle) {
 		
 		this(distance, Constants.TRAPEZOID_DEFAULT_SPEED, Constants.TRAPEZOID_DEFAULT_ACCELERATION);
-		startingAngle = angle;
+		desiredAngle = angle;
+		fieldAngle = false;
 	}
 	
 	/**
@@ -55,13 +58,8 @@ public class BraceAgainstWall extends CommandBase {
 	/**
 	 * @author Liam
 	 * @param distance The desired distance the robot should travel in feet. May be negative or positive to indicate direction.
-<<<<<<< HEAD
 	 * @param maxSpeed The maximum possible speed the robot could be traveling at in feet per second. Always positive.
 	 * @param maxAcceleration The maximum possible acceleration the speed can change by in feet per second squared. Always positive.
-=======
-	 * @param maxSpeed The maximum possible speed the robot could be traveling at in feet per second. Scalar so Always positive.
-	 * @param maxAcceleration The maximum possible acceleration in feet per second squared the speed can change by. Always positive.
->>>>>>> refs/remotes/origin/DriveTrapezoidIntegral
 	 * @param custom gyro proportionality constant to override the default. Useful for command groups that may require more correction due to terrain.
 	 */
     public BraceAgainstWall(double distance, double maxSpeed, double maxAcceleration, double gyroProportionality) {
@@ -81,7 +79,8 @@ public class BraceAgainstWall extends CommandBase {
     public BraceAgainstWall(double distance, double maxSpeed, double maxAcceleration, double gyroProportionality, double angle) {
     	
     	this(distance, maxSpeed, maxAcceleration, gyroProportionality);
-    	startingAngle = angle;
+    	desiredAngle = angle;
+    	fieldAngle = false;
     }
     
     /**
@@ -120,12 +119,16 @@ public class BraceAgainstWall extends CommandBase {
     protected void initialize() {
     	timer.reset();
     	timer.start();
+    	driveTrain.resetEncoders();
     	
     	accumulatedDistanceError = 0.0;
     	accumulatedAngleError = 0.0;
     	
-    	driveTrain.resetEncoders();
-    	startingAngle = driveTrain.getAngle();
+    	if (fieldAngle) {
+    		
+    		desiredAngle = driveTrain.getAngle();
+    	}
+    	
     	setTimeout(trapezoid.getTimeNeeded() + Constants.TRAPEZOID_PROFILE_TIMEOUT_OFFSET);
     }
     
@@ -157,7 +160,7 @@ public class BraceAgainstWall extends CommandBase {
      */
     public double getAngleError() {
     	
-    	double error = Utilities.angleDifference(startingAngle,driveTrain.getAngle());
+    	double error = Utilities.angleDifference(desiredAngle, driveTrain.getAngle());
     	
     	return error;
     }
