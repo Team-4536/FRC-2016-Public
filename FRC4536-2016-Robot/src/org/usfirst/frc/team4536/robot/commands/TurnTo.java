@@ -3,6 +3,7 @@ package org.usfirst.frc.team4536.robot.commands;
 import org.usfirst.frc.team4536.robot.Utilities;
 import org.usfirst.frc.team4536.robot.RectangleProfileForTurning;
 import edu.wpi.first.wpilibj.Timer;
+import org.usfirst.frc.team4536.robot.Constants;
 
 public class TurnTo extends CommandBase {
 	
@@ -34,7 +35,7 @@ public class TurnTo extends CommandBase {
     protected void execute() {
     	time = timer.get();
     	
-    	throttle = rectangle.getThrottle(time) - 0.009*(Utilities.angleDifference(rectangle.getIdealAngle(time), driveTrain.getNavXYaw()));
+    	throttle = rectangle.throttle(time) - Constants.TURNING_RECTANGLE_GYRO_PROPORTIONALITY*(Utilities.angleDifference(rectangle.idealDistance(time), driveTrain.getNavXYaw()));
     	
     	driveTrain.arcadeDrive(0, throttle);
     	
