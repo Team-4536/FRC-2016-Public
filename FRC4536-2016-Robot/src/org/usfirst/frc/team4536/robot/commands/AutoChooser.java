@@ -48,6 +48,7 @@ public class AutoChooser extends CommandBase {
     	autoChooser.addObject(" CrossRamparts", 8);
     	autoChooser.addObject(" Spy Box Low Goal Auto: ", 9);
     	autoChooser.addObject(" LowBarLowGoal", 10);
+    	autoChooser.addObject(" 2 Goal Spy Bot Auto: ", 11);
     	SmartDashboard.putData(" Auto Chooser", autoChooser);
     	
     	orientationChooser.addDefault(" Forwards", 0);
@@ -149,6 +150,12 @@ public class AutoChooser extends CommandBase {
 				case 10:
 					
 					new LowBarLowGoal().start();
+				break;
+				
+				case 11:
+					
+			    	driveTrain.resetNavX(Constants.SPY_BOT_ANGLE);
+					new Auto2LowGoal().start();
 				break;
 				
 				default: 

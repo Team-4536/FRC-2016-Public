@@ -11,14 +11,16 @@ public class Auto2LowGoal extends CommandGroup {
     
     public  Auto2LowGoal() {
     	
-    	CommandBase.driveTrain.resetNavX(Constants.SPY_BOT_ANGLE);
     	addParallel(new ReleaseIntake());
-    	addSequential(new TeleopTurn(90));
-    	addSequential(new EjectBoulderAccelLimited());
-    	addSequential(new TeleopTurn(180));
-    	addSequential(new DriveTrapezoidProfile(14));
-    	addSequential(new AutoApproachPickupBoulderStop(4, 180));
-    	addSequential(new TeleopTurn(0));
-    	addSequential(new LowBarLowGoal());
+    	addSequential(new TeleopTurn(90.0));
+    	addSequential(new EjectBoulderAccelLimited(), 1.0);
+    	addSequential(new TeleopTurn(180.0));
+    	addSequential(new DriveTrapezoidProfile(15.0, 180.0));
+    	addSequential(new AutoApproachPickupBoulderStop(4.0, 180.0));
+    	addSequential(new TeleopTurn(0.0));
+    	addSequential(new DriveTrapezoidProfile(17, 0.0));
+    	addSequential(new TeleopTurn(60.0));
+    	addSequential(new EjectBoulderAccelLimited(), 2.0);
+    	//addSequential(new LowBarLowGoal());
     }
 }

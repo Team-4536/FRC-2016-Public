@@ -20,6 +20,12 @@ public class EjectBoulderAccelLimited extends CommandBase {
     }
     
     protected boolean isFinished() {
+    	
+    	if (isTimedOut()) {
+    		
+    		return true;
+    	}
+    	
         return false;
     }
     

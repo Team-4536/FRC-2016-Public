@@ -32,7 +32,6 @@ public class DriveTrain extends Subsystem {
 	
 	private double backDist, frontDist; //These are in feet
 	private double leftDist; //This is in inches
-	private double prevNavXYaw;
 	private double prevLinearAccelX = 0.0;
 	private double prevLinearAccelY = 0.0;
 	private double prevLinearAccelZ = 0.0;
