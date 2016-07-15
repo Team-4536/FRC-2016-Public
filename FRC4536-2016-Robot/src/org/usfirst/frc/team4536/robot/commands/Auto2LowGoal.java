@@ -17,8 +17,7 @@ public class Auto2LowGoal extends CommandGroup {
     	addSequential(new TeleopTurn(180.0));
     	addSequential(new DriveTrapezoidProfile(15.0, 180.0));
     	addSequential(new AutoApproachPickupBoulderStop(4.0, 180.0));
-    	addSequential(new TeleopTurn(0.0));
-    	addSequential(new DriveTrapezoidProfile(17, 0.0));
+    	addSequential(new DriveTrapezoidProfile(-17, 180.0));
     	addSequential(new TeleopTurn(60.0));
     	addSequential(new EjectBoulderAccelLimited(), 2.0);
     	//addSequential(new LowBarLowGoal());
