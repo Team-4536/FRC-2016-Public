@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4536.robot.commands;
 
+import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.RectangleProfile;
 import org.usfirst.frc.team4536.robot.Utilities;
 import edu.wpi.first.wpilibj.Timer;
@@ -40,7 +41,7 @@ public class DriveRectangleProfile extends CommandBase {
     	time = timer.get();
     	
     	driveTrain.arcadeDrive(rectangle.throttle(time)
-    			+ 0.75*(rectangle.idealDistance(time) - driveTrain.getEncoder()/12),
+    			+ Constants.RECTANGLE_FORWARD_PROPORTIONALITY*(rectangle.idealDistance(time) - driveTrain.getEncoder()/12),
     			(maxVelocity/24.6)*Utilities.angleDifference(driveTrain.getNavXYaw() , 0));
     	//Ask Caleb or Mairead on the implementation of feedforward+feedback
     	
@@ -50,9 +51,9 @@ public class DriveRectangleProfile extends CommandBase {
     }
     
     protected boolean isFinished() {
-    	if(Math.abs(driveTrain.getEncoder() - desiredDistance) < 0.04
+    	if(Math.abs(driveTrain.getEncoder() - desiredDistance) < Constants.RECTANGLE_DISTANCE_THRESHOLD
     			//in feet, true if the robot is within half of an inch away from the desired distance
-    		&& Math.abs(driveTrain.getRate()) < 0.5)
+    		&& Math.abs(driveTrain.getRate()) < Constants.RECTANGLE_VELOCITY_THRESHOLD)
     			//in inches, true in the robot is moving at a steep of less than half an inch
     	{
     		return true;
