@@ -20,9 +20,7 @@ public class TeleopTurn extends CommandBase {
 	private double desiredAngle;
 	private double angularSpeed;
 	private double angularAccel;
-	private double startingAngle; 
-	private double navXCorrection;
-	private double time;
+	private double startingAngle;
 	
 	/**
 	 * @author Liam
@@ -71,7 +69,7 @@ public class TeleopTurn extends CommandBase {
      */
     public double getTime() {
     	
-    	return time;
+    	return timer.get();
     }
     
     /**
@@ -100,7 +98,7 @@ public class TeleopTurn extends CommandBase {
 	 */
 	public double getError() {
 		
-		double diff = Utilities.angleDifference(driveTrain.getAngle(), (startingAngle + turnProfile.idealDistance(time)));
+		double diff = Utilities.angleDifference(driveTrain.getAngle(), (startingAngle + turnProfile.idealDistance(timer.get())));
 		
 		return diff;
 	}
@@ -117,44 +115,25 @@ public class TeleopTurn extends CommandBase {
     	setTimeout(turnProfile.getTimeNeeded() + Constants.TURNING_TRAPEZOID_TIMEOUT_OFFSET);
     }
     
-    //TODO add integral correction that Turn Trapezoid Profile possesses and see if it improve accuracy
-    //TODO replace driveTrain.getNavXYaw() with driveTrain.getAngle()
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	/*time = timer.get();
-    	
-    	navXCorrection = Utilities.angleDifference(driveTrain.getAngle(), (startingAngle + turnProfile.idealDistance(time)));
-    	
-    	driveTrain.arcadeDriveAccelLimit(0, turnProfile.throttle(this.getTime())
-    			+ proportionalityConstant*navXCorrection);*/
-    	
-    	time = timer.get();
-    	
-    	navXCorrection = Utilities.angleDifference(driveTrain.getAngle(), (startingAngle + turnProfile.idealDistance(time)));
-    	
-    	driveTrain.arcadeDriveAccelLimit(0, turnProfile.throttle(this.getTime())
+    	driveTrain.arcadeDriveAccelLimit(0, turnProfile.throttle(timer.get())
     			+ proportionalityConstant*getError() + Constants.TURNING_TRAPEZOID_INTEGRAL * getAccumulatedError());
-    	
-    	//double throttle = turnProfile.throttle(timer.get()) + proportionalityConstant * getError(); 
-    	
-    	//double throttle = turnProfile.throttle(timer.get()) - proportionalityConstant * getError() - Constants.TURNING_TRAPEZOID_INTEGRAL * getAccumulatedError(); 
-
-    	//driveTrain.arcadeDrive(0.0, throttle);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
     	if ((Math.abs(driveTrain.getAngle() - desiredAngle) <= Constants.TURNING_TRAPEZOID_ANGLE_THRESHOLD  &&
-    		(driveTrain.getYawRate()) <= Constants.TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD)){ // Conditions may end
+    		(Math.abs(driveTrain.getYawRate())) <= Constants.TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD)){ // Conditions may end
     		
     		return true;
     	}
     	else { // time out may end
     		
-    		return isTimedOut();	}
-    	
+    		return isTimedOut();
+    	}
     }
 
     // Called once after isFinished returns true
