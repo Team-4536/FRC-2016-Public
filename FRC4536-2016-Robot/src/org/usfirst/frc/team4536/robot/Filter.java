@@ -3,6 +3,7 @@ package org.usfirst.frc.team4536.robot;
 import java.util.ArrayList;
 import java.lang.Math;
 import java.util.Collections;
+import java.util.function.Predicate;
 
 public class Filter {
 	
@@ -311,6 +312,75 @@ public class Filter {
 			}
 			
 			return sum / numDataPoints;
+		}
+	}
+	
+	/**
+	 * @author Liam
+	 * @param p lambda expression to filter outliers
+	 * @return the mean of the smaple with outliers removed based on lambda expression
+	 */
+	public double getMean(Predicate<Double> p) {
+		
+		ArrayList <Double> sample = new ArrayList<Double>();
+		double sum = 0.0;
+		
+		copyListContents(sample, filter);
+		Collections.sort(sample);
+		
+		sample.removeIf(p);
+		
+		//Debug
+		System.out.println(sample);
+		
+		for (int i = 0; i < sample.size(); i ++) {
+			
+			sum += sample.get(i);
+		}
+		
+		return sum / sample.size();
+	}
+	
+	/**
+	 * @author Liam
+	 * @param numDataPoints the number of recent data points to use
+	 * @return the average value of the most recent number of data points specified
+	 * Note: If you're using other methods for the lambda, make sure to use the overloaded version with numDataPoints
+	 */
+	public double getMean(Predicate<Double> p, int numDataPoints) {
+		
+		ArrayList <Double> sample = new ArrayList<Double>();
+		
+		if (numDataPoints > filter.size()) {
+			
+			return getMean(p);
+		}
+		else {
+			
+			double sum = 0.0;
+			copyListContents(sample, filter, numDataPoints);
+			Collections.sort(sample);
+			
+			sample.removeIf(p);
+			
+			if (numDataPoints > sample.size()) {
+				
+				for (int i = 0; i < sample.size(); i ++) {
+					
+					sum += sample.get(i);
+				}
+				
+				return sum / sample.size();
+			}
+			else{
+				
+				for (int i = sample.size() - numDataPoints; i < sample.size(); i++) {
+					
+					sum += sample.get(i);
+				}
+				
+				return sum / numDataPoints;
+			}
 		}
 	}
 	
