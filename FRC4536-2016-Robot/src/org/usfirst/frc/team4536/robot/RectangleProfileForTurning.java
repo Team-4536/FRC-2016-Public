@@ -1,5 +1,4 @@
 package org.usfirst.frc.team4536.robot;
-import org.usfirst.frc.team4536.robot.Constants;
 
 public class RectangleProfileForTurning extends TurnProfile {
 
