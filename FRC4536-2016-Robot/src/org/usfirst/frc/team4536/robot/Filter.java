@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4536.robot;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.lang.Math;
 import java.util.Collections;
 
