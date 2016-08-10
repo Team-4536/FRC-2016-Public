@@ -9,6 +9,7 @@ import java.lang.Math;
  */
 public class TrapezoidProfile extends Profile {
 
+	private double angle = 0.0;
 	private double distance; // distance The distance the profile should travel in feet. Negative distances move backwards, positive forwards.
 	private double timeNeeded; // The time needed to execute the profile In seconds
 	private double desiredMaxSpeed; // maxSpeed The maximum speed the profile may achieve in feet per second. Speed is a scalar so it's always positive.
@@ -142,7 +143,7 @@ public class TrapezoidProfile extends Profile {
 	 */
 	public double idealAngle(double time) {
 		
-		return 0.0;
+		return angle;
 	}
 	
 	/**
@@ -276,7 +277,7 @@ public class TrapezoidProfile extends Profile {
 	 */
 	public double getAngle() {
 		
-		return 0.0;
+		return angle;
 	}
 	
 	/**
@@ -285,7 +286,7 @@ public class TrapezoidProfile extends Profile {
 	 */
 	public void setAngle(double angle) {
 		
-		return;
+		this.angle = angle;
 	}
 	
 	/**
