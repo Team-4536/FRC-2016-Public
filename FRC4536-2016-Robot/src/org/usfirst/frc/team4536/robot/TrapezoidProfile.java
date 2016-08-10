@@ -7,7 +7,7 @@ import java.lang.Math;
  * @author Liam
  *
  */
-public class TrapezoidProfile extends DriveStraightProfile implements Integral{
+public class TrapezoidProfile extends Profile {
 
 	private double distance; // distance The distance the profile should travel in feet. Negative distances move backwards, positive forwards.
 	private double timeNeeded; // The time needed to execute the profile In seconds
@@ -28,16 +28,6 @@ public class TrapezoidProfile extends DriveStraightProfile implements Integral{
 		this.distance = distance;
 		this.desiredMaxSpeed = Math.abs(maxSpeed);
 		this.desiredMaxAcceleration = Math.abs(maxAcceleration);
-		
-		driveProportionality = Constants.TRAPEZOID_FORWARD_PROPORTIONALITY;
-		driveIntegral = Constants.TRAPEZOID_INTEGRAL;
-		turnProportionality = Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY;
-		turnIntegral = Constants.TURNING_TRAPEZOID_INTEGRAL;
-		timeoutOffset = Constants.TRAPEZOID_PROFILE_TIMEOUT_OFFSET;
-		distanceThreshold = Constants.TRAPEZOID_DISTANCE_THRESHOLD;
-		velocityThreshold = Constants.TRAPEZOID_SPEED_THRESHOLD;
-		angleThreshold = Constants.TRAPEZOID_ANGLE_THRESHOLD;
-		angularVelocityThreshold = Constants.TRAPEZOID_ANGULAR_SPEED_THRESHOLD;
 		
 		criticalTime = this.desiredMaxSpeed/this.desiredMaxAcceleration;
 		criticalDistance = criticalTime * this.desiredMaxSpeed/2;
@@ -69,6 +59,16 @@ public class TrapezoidProfile extends DriveStraightProfile implements Integral{
 	public double throttle(double time) {
 
 		return Utilities.adjustForStiction(idealVelocity(time), Constants.FORWARD_STICTION, Constants.DRIVE_TRAIN_MAX_VELOCITY);
+	}
+	
+	public double leftThrottle(double time) {
+		
+		return throttle(time);
+	}
+	
+	public double rightThrottle(double time) {
+		
+		return throttle(time);
 	}
 	
 	/**
@@ -138,7 +138,45 @@ public class TrapezoidProfile extends DriveStraightProfile implements Integral{
 	
 	/**
 	 * @author Liam
-	 * @return distance the robot should be at by that time
+	 * For compatibility for DriveProfile Command execution, dummy method for this profile
+	 */
+	public double idealAngle(double time) {
+		
+		return 0.0;
+	}
+	
+	/**
+	 * @author Liam
+	 * For compatibility for DriveProfile Command execution, dummy method for this profile
+	 */
+	public double idealAngularVelocity(double time) {
+		
+		return 0.0;
+	}
+	
+	/**
+	 * @author Liam
+	 * @param time the time instant in the profile in seconds
+	 * @return the distance the left side should have travelled in inches
+	 */
+	public double idealLeftDistance(double time) {
+		
+		return idealDistance(time)*12;
+	}
+	
+	/**
+	 * @author Liam
+	 * @param time the time instant in the profile in seconds
+	 * @return the distance the right side should have travelled in inches
+	 */
+	public double idealRightDistance(double time) {
+		
+		return idealDistance(time)*12;
+	}
+	
+	/**
+	 * @author Liam
+	 * @return distance the robot should be at by that time in feet
 	 */
 	public double idealDistance(double time) {
 		
@@ -234,82 +272,35 @@ public class TrapezoidProfile extends DriveStraightProfile implements Integral{
 	
 	/**
 	 * @author Liam
-	 * @return timeoutOffset. The time added to the timeNeeded to set the timeout.
+	 * For compatibility for DriveProfile Command execution, dummy method for this profile
 	 */
-	public double getTimeoutOffset() {
+	public double getAngle() {
 		
-		return timeoutOffset;
+		return 0.0;
 	}
 	
 	/**
 	 * @author Liam
-	 * @return the turn proportionality constant for the integral which converts accumulated angle error (degrees) to throttle
+	 * For compatibility, dummy method
 	 */
-	public double getTurnIntegral() {
+	public void setAngle(double angle) {
 		
-		return turnIntegral;
+		return;
 	}
 	
 	/**
 	 * @author Liam
-	 * @return the turn proportionality constant which converts angle error (degrees) to throttle
 	 */
-	public double getTurnProportionality() {
+	public double getRightDistance() {
 		
-		return turnProportionality;
+		return getDistance();
 	}
 	
 	/**
 	 * @author Liam
-	 * @return the drive proportionality constant for the integral which converts accumulated distance error (inches) to throttle
 	 */
-	public double getDriveIntegral() {
+	public double getLeftDistance() {
 		
-		return driveIntegral;
-	}
-	
-	/**
-	 * @author Liam
-	 * @return the drive proportionality constant which converts distance error (inches) to throttle
-	 */
-	public double getDriveProportionality() {
-		
-		return driveProportionality;
-	}
-	
-	/**
-	 * @author Liam
-	 * @return the distance threshold for the tolerance on command termination criteria
-	 */
-	public double getDistanceThreshold() {
-		
-		return distanceThreshold;
-	}
-	
-	/**
-	 * @author Liam
-	 * @return the velocity threshold for the tolerance on command termination criteria
-	 */
-	public double getVelocityThreshold() {
-		
-		return velocityThreshold;
-	}
-	
-	/**
-	 * @author Liam
-	 * @return the angle threshold of the profile for command termination
-	 */
-	public double getAngleThreshold() {
-		
-		return angleThreshold;
-	}
-	
-	/**
-	 * @author Liam
-	 * @return the angular velocity threshold of the profile for command termination
-	 */
-	public double getAngularVelocityThreshold() {
-		
-		return angularVelocityThreshold;
+		return getDistance();
 	}
 }
