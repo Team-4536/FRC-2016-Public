@@ -65,7 +65,8 @@ public final class Constants {
 	
 	//Turning Trapezoid
 	
-	public static final double TURNING_TRAPEOID_GYRO_PROPORTIONALITY = 0.04; // Throttle per degree
+	public static final double WHEEL_DISTANCE_FROM_ROBOT_CENTER = 13.0; // in inches
+	public static final double TURNING_TRAPEOID_GYRO_PROPORTIONALITY = 0.05; // Throttle per degree
 	public static final double TURNING_TRAPEZOID_TIMEOUT_OFFSET = 0.5; // in seconds, added to the base timeout time which is the time needed
 	public static final double TURNING_TRAPEZOID_ANGLE_THRESHOLD = 1.0; // in degrees
 	public static final double TURNING_TRAPEZOID_ANGULAR_SPEED_THRESHOLD = 1.0; // in degrees per second
