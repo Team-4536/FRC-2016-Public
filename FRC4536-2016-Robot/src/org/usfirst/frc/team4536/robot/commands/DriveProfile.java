@@ -4,8 +4,6 @@ import edu.wpi.first.wpilibj.Timer;
 import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.Profile;
 import org.usfirst.frc.team4536.robot.Utilities;
-import org.usfirst.frc.team4536.robot.TurnProfile;
-import org.usfirst.frc.team4536.robot.DriveStraightProfile;
 import org.usfirst.frc.team4536.robot.Integral;
 import java.util.ArrayList;
 
@@ -15,14 +13,26 @@ import java.util.ArrayList;
 public class DriveProfile extends CommandBase {
 
 	private final Profile profile;
-	private ArrayList<Profile> profiles;
 	private final Timer timer = new Timer();
 	private double desiredAngle = 0.0;
 	private double startingAngle = 0.0;
 	private boolean fieldAngle = true;
-	private double turnProportionality = Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY;
-	private double accumulatedDistanceError = 0.0;
+	private double accumulatedLeftDistanceError = 0.0;
+	private double accumulatedRightDistanceError = 0.0;
 	private double accumulatedAngleError = 0.0;
+	
+	//Correction Constants
+	private double turnProportionality = Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY; //TODO change constant
+	private double turnIntegral = Constants.TURNING_TRAPEZOID_INTEGRAL;
+	private double driveProportionality = Constants.TRAPEZOID_FORWARD_PROPORTIONALITY;
+	private double driveIntegral = Constants.TRAPEZOID_INTEGRAL;
+	
+	//Thresholds
+	private double distanceThreshold = Constants.TRAPEZOID_DISTANCE_THRESHOLD;
+	private double velocityThreshold = Constants.TRAPEZOID_SPEED_THRESHOLD;
+	private double angleThreshold = Constants.TRAPEZOID_ANGLE_THRESHOLD;
+	private double angularVelocityThreshold = Constants.TRAPEZOID_ANGULAR_SPEED_THRESHOLD;
+	private double timeOutOffset = Constants.TRAPEZOID_PROFILE_TIMEOUT_OFFSET;
     
     public DriveProfile(Profile profile) {
     	
@@ -67,7 +77,8 @@ public class DriveProfile extends CommandBase {
     	timer.reset();
     	timer.start();
     	
-    	accumulatedDistanceError = 0.0;
+    	accumulatedLeftDistanceError = 0.0;
+    	accumulatedRightDistanceError = 0.0;
     	accumulatedAngleError = 0.0;
     	
     	driveTrain.resetEncoders();
@@ -77,42 +88,55 @@ public class DriveProfile extends CommandBase {
     		desiredAngle = driveTrain.getAngle();
     	}
     	
-    	if (profile instanceof TurnProfile) {
-    		
-        	startingAngle = driveTrain.getAngle();
-        	double angleDiff = Utilities.angleDifference(startingAngle, desiredAngle);
-        	((TurnProfile) profile).setTurnProfile(angleDiff);
-    	}
+    	startingAngle = driveTrain.getAngle();
+    	double angleDiff = Utilities.angleDifference(startingAngle, desiredAngle);
+    	profile.setAngle(angleDiff);
 
-    	setTimeout(profile.getTimeNeeded() + profile.getTimeoutOffset());
+    	setTimeout(profile.getTimeNeeded() + timeOutOffset);
     }
     
     /**
      * @author Liam
      * @return the error in the distance between where the robot is and where it should be in inches.
-     * @throws RuntimeException when you call this method on a turn profile. Turn profiles don't track distance error.
      */
-    public double getDistanceError() throws RuntimeException {
+    public double getLeftDistanceError() {
     	
-    	if (profile instanceof TurnProfile) {
-    		
-    		throw new RuntimeException("You should not be calling distance error on a turning profile.");
-    	}
+    	double leftError = profile.idealLeftDistance(timer.get()) - driveTrain.getLeftEncoder();
     	
-    	double error = profile.idealDistance(timer.get())*12 - driveTrain.getRightEncoder();
+    	return leftError;
+    }
+    
+    /**
+     * @author Liam
+     * @return the error in the distance between where the robot is and where it should be in inches.
+     */
+    public double getRightDistanceError() {
     	
-    	return error;
+    	double rightError = profile.idealRightDistance(timer.get()) - driveTrain.getRightEncoder();
+    	
+    	return rightError;
     }
     
     /**
      * @author Liam
      * @return the accumulated error over time in the distance between where the robot is and where it should be in inches.
      */
-    public double getAccumulatedDistanceError() throws RuntimeException {
+    public double getAccumulatedLeftDistanceError() {
     	
-    	accumulatedDistanceError += getDistanceError() * Utilities.getCycleTime();
+    	accumulatedLeftDistanceError += getLeftDistanceError() * Utilities.getCycleTime();
     	
-    	return accumulatedDistanceError;
+    	return accumulatedLeftDistanceError;
+    }
+    
+    /**
+     * @author Liam
+     * @return the accumulated error over time in the distance between where the robot is and where it should be in inches.
+     */
+    public double getAccumulatedRightDistanceError() {
+    	
+    	accumulatedRightDistanceError += getRightDistanceError() * Utilities.getCycleTime();
+    	
+    	return accumulatedRightDistanceError;
     }
     
     /**
@@ -123,14 +147,7 @@ public class DriveProfile extends CommandBase {
     	
     	double error;
     	
-    	if (profile instanceof TurnProfile) {
-    		
-    		error = Utilities.angleDifference(driveTrain.getAngle(), (startingAngle + profile.idealDistance(timer.get())));
-    		
-    		return error;
-    	}
-    	
-    	error = Utilities.angleDifference(desiredAngle, driveTrain.getAngle());
+		error = Utilities.angleDifference(driveTrain.getAngle(), (startingAngle + profile.idealAngle(timer.get())));
     	
     	return error;
     }
@@ -147,68 +164,31 @@ public class DriveProfile extends CommandBase {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() throws RuntimeException {
-    	
-    	if (profile instanceof TurnProfile) {
-    		
-    		if (profile instanceof Integral) {
-    			
-	        	driveTrain.arcadeDriveAccelLimit(0.0, profile.throttle(timer.get())
-	        			+ profile.getTurnProportionality()*getAngleError() + profile.getTurnIntegral() * getAccumulatedAngleError());
-    		}
-    		else {
-    			
-    			driveTrain.arcadeDrive(0.0, profile.throttle(timer.get())
-    					+ profile.getTurnProportionality()*getAngleError());
-    		}
-    	}
-    	else {
-    		
-    		if (profile instanceof Integral) {
-    			
-	        	driveTrain.arcadeDrive(profile.throttle(timer.get()) + ((DriveStraightProfile) profile).getDriveProportionality() * getDistanceError() + ((DriveStraightProfile) profile).getDriveIntegral() * getAccumulatedDistanceError(),
-						(profile.getTurnProportionality() * getAngleError() - profile.getTurnIntegral() * getAccumulatedAngleError()));
-    		}
-    		else {
-    			
-    			driveTrain.arcadeDrive(profile.throttle(timer.get()) + ((DriveStraightProfile) profile).getDriveProportionality() * getDistanceError(),
-    					(profile.getTurnProportionality() * getAngleError()));
-    		}
-    	}
+    protected void execute() {
+
+    	driveTrain.tankDrive(profile.leftThrottle(timer.get()) + driveProportionality * getLeftDistanceError() + driveIntegral * getAccumulatedLeftDistanceError() + turnProportionality * getAngleError(),
+				profile.rightThrottle(timer.get()) - turnProportionality * getAngleError());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	
-    	if (profile instanceof TurnProfile) {
+    	if ((driveTrain.getLeftEncoder() >= (profile.getLeftDistance()*12 - distanceThreshold) &&
+    			driveTrain.getLeftEncoder() <= (profile.getLeftDistance()*12 + distanceThreshold)) &&
+        	(driveTrain.getRate() >= -velocityThreshold
+    			&& driveTrain.getRate() <= velocityThreshold) &&
+    		(driveTrain.getNavXYaw() >= -angleThreshold
+    				&& driveTrain.getNavXYaw() <= angleThreshold) && 
+    		(driveTrain.getYawRate() >= -angularVelocityThreshold
+    				&& driveTrain.getYawRate() <= angularVelocityThreshold)){ //conditions may cancel
     		
-        	if ((Math.abs(driveTrain.getAngle() - desiredAngle) <= profile.getAngleThreshold()  &&
-            		(Math.abs(driveTrain.getYawRate()) <= profile.getAngularVelocityThreshold()))){ // Conditions may end
-        		
-        		return true;
-        	}
-        	else { // time out may end
-        		
-        		return isTimedOut();
-        	}
+    		System.out.println("FINISHIMO!!!!");
+    		
+    		return true;
     	}
-    	else {
+    	else { //Timeout may cancel
     		
-        	if ((driveTrain.getEncoder() >= ((DriveStraightProfile) profile).getDistance()*12 - ((DriveStraightProfile) profile).getDistanceThreshold() &&
-        			driveTrain.getEncoder() <= ((DriveStraightProfile) profile).getDistance()*12 + ((DriveStraightProfile) profile).getDistanceThreshold()) &&
-            	(driveTrain.getRate() >= -((DriveStraightProfile) profile).getVelocityThreshold()
-        			&& driveTrain.getRate() <= ((DriveStraightProfile) profile).getVelocityThreshold()) &&
-        		(driveTrain.getNavXYaw() >= -profile.getAngleThreshold()
-        				&& driveTrain.getNavXYaw() <= profile.getAngleThreshold()) && 
-        		(driveTrain.getYawRate() >= -profile.getAngularVelocityThreshold()
-        				&& driveTrain.getYawRate() <= profile.getAngularVelocityThreshold())){ //conditions may cancel
-        		
-        		return true;
-        	}
-        	else { //Timeout may cancel
-        		
-        		return isTimedOut();
-        	}
+    		return isTimedOut();
     	}
     }
 
