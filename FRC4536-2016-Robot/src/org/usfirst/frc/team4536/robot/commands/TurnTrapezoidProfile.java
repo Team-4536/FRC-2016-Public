@@ -89,7 +89,7 @@ public class TurnTrapezoidProfile extends CommandBase {
 	 */
 	public double getError() {
 		
-		double diff = -Utilities.angleDifference(driveTrain.getNavXYaw(), turnProfile.idealDistance(timer.get()));
+		double diff = -Utilities.angleDifference(driveTrain.getNavXYaw(), turnProfile.idealLeftDistance(timer.get()));
 		
 		return diff;
 	}
@@ -107,9 +107,9 @@ public class TurnTrapezoidProfile extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	    	
-    	double throttle = turnProfile.throttle(timer.get()) - proportionalityConstant * getError() - Constants.TURNING_TRAPEZOID_INTEGRAL * getAccumulatedError(); 
+    	//double throttle = turnProfile.throttle(timer.get()) - proportionalityConstant * getError() - Constants.TURNING_TRAPEZOID_INTEGRAL * getAccumulatedError(); 
     	
-    	driveTrain.arcadeDrive(0.0, throttle);
+    	//driveTrain.arcadeDrive(0.0, throttle);
     }
 
     // Make this return true when this Command no longer needs to run execute()
