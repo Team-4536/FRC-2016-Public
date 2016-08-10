@@ -22,7 +22,7 @@ public class DriveProfile extends CommandBase {
 	private double accumulatedAngleError = 0.0;
 	
 	//Correction Constants
-	private double turnProportionality = Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY; //TODO change constant
+	private double turnProportionality = Constants.TURNING_TRAPEOID_GYRO_PROPORTIONALITY; //TODO change constant
 	private double turnIntegral = Constants.TURNING_TRAPEZOID_INTEGRAL;
 	private double driveProportionality = Constants.TRAPEZOID_FORWARD_PROPORTIONALITY;
 	private double driveIntegral = Constants.TRAPEZOID_INTEGRAL;
@@ -91,6 +91,10 @@ public class DriveProfile extends CommandBase {
     	startingAngle = driveTrain.getAngle();
     	double angleDiff = Utilities.angleDifference(startingAngle, desiredAngle);
     	profile.setAngle(angleDiff);
+    	
+    	System.out.println("Desired Angle: " + desiredAngle);
+    	System.out.println("Starting Angle: " + startingAngle);
+    	System.out.println("Angle Difference: " + angleDiff);
 
     	setTimeout(profile.getTimeNeeded() + timeOutOffset);
     }
@@ -168,6 +172,8 @@ public class DriveProfile extends CommandBase {
 
     	driveTrain.tankDrive(profile.leftThrottle(timer.get()) + driveProportionality * getLeftDistanceError() + driveIntegral * getAccumulatedLeftDistanceError() + turnProportionality * getAngleError(),
 				profile.rightThrottle(timer.get()) - turnProportionality * getAngleError());
+    	
+    	System.out.println(getAngleError());
     }
 
     // Make this return true when this Command no longer needs to run execute()
