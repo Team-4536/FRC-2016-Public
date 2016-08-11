@@ -1,13 +1,14 @@
 package org.usfirst.frc.team4536.robot;
 
 import java.lang.Math;
+import org.usfirst.frc.team4536.robot.commands.CommandBase;
 
 /**
  * 
  * @author Liam
  *
  */
-public class TurningTrapezoidProfile extends TurnProfile implements Integral{
+public class TurningTrapezoidProfile extends Profile implements Integral{
 	
 	private double angle; // angle The angle the profile should travel in degrees. Negative angles turn left, positive right.
 	private double timeNeeded; // The time needed to execute the profile In seconds
@@ -29,12 +30,6 @@ public class TurningTrapezoidProfile extends TurnProfile implements Integral{
 		this.desiredMaxAngularSpeed = maxAngularSpeed;
 		this.desiredMaxAngularAcceleration = maxAngularAcceleration;
 		
-		turnProportionality = Constants.TURNING_TRAPEOID_GYRO_PROPORTIONALITY;
-		turnIntegral = Constants.TURNING_TRAPEZOID_INTEGRAL;
-		timeoutOffset = Constants.TURNING_TRAPEZOID_TIMEOUT_OFFSET;
-		angleThreshold = Constants.TRAPEZOID_ANGLE_THRESHOLD;
-		angularVelocityThreshold = Constants.TRAPEZOID_ANGULAR_SPEED_THRESHOLD;
-		
 		criticalTime = this.desiredMaxAngularSpeed/this.desiredMaxAngularAcceleration;
 		criticalAngle = criticalTime * this.desiredMaxAngularSpeed/2;
 		
@@ -63,9 +58,9 @@ public class TurningTrapezoidProfile extends TurnProfile implements Integral{
 	 * @param maxAngularSpeed The maximum speed the profile may achieve in degrees per second. Angular speed is a scalar so it's always positive.
 	 * @param maxAngularAcceleration The maximum angular acceleration the angular speed can change by in degrees per second squared. We treat acceleration as the raw change in angular speed and thus as a scalar so it is always positive.
 	 */
-	public void setTurnProfile(double angleDiff) {
+	public void setAngle(double angle) {
 		
-		this.angle = angleDiff;
+		this.angle = angle;
 		
 		criticalTime = this.desiredMaxAngularSpeed/this.desiredMaxAngularAcceleration;
 		criticalAngle = criticalTime * this.desiredMaxAngularSpeed/2;
@@ -88,15 +83,25 @@ public class TurningTrapezoidProfile extends TurnProfile implements Integral{
 			this.timeNeeded = (2*criticalTime) + ((Math.abs(this.angle) - 2*criticalAngle)/this.desiredMaxAngularSpeed);
 		}
 	}
+	
+	public double leftThrottle(double time) {
+		
+		return turnThrottle(time);
+	}
+	
+	public double rightThrottle(double time) {
+		
+		return -turnThrottle(time);
+	}
 		
 	/**
 	 * @author Liam
 	 * @param The amount of time since the profile has started
 	 * @returns The throttle the robot should be at
 	 */
-	public double throttle(double time) {
+	public double turnThrottle(double time) {
 
-		return Utilities.adjustForStiction(idealVelocity(time), Constants.TURN_STICTION, Constants.DRIVE_TRAIN_MAX_ANGULAR_VELOCITY);
+		return Utilities.adjustForStiction(idealAngularVelocity(time), Constants.TURN_STICTION, Constants.DRIVE_TRAIN_MAX_ANGULAR_VELOCITY);
 	}
 	
 	/**
@@ -110,10 +115,19 @@ public class TurningTrapezoidProfile extends TurnProfile implements Integral{
 	
 	/**
 	 * @author Liam
+	 * For compatibility for DriveProfile Command execution, dummy method for this profile
+	 */
+	public double idealVelocity(double time) {
+		
+		return 0.0;
+	}
+	
+	/**
+	 * @author Liam
 	 * @param time The amount of time since the profile has started
 	 * @returns The angular velocity the robot should be at
 	 */
-	public double idealVelocity(double time) {
+	public double idealAngularVelocity(double time) {
 		
 		double velocity;
 		
@@ -166,9 +180,28 @@ public class TurningTrapezoidProfile extends TurnProfile implements Integral{
 	
 	/**
 	 * @author Liam
+	 * @return the distance the left side should have travelled in inches. This profile doesn't care about distance.
+	 */
+	public double idealLeftDistance(double time) {
+		
+		return CommandBase.driveTrain.getLeftEncoder();
+		//return 2*Math.PI*idealAngle(time)*(Constants.WHEEL_DISTANCE_FROM_ROBOT_CENTER/12)/360;
+	}
+	
+	/**
+	 * @author Liam
+	 * @return the distance the right side should have travelled in inches. This profile doesn't care about distance.
+	 */
+	public double idealRightDistance(double time) {
+		
+		return CommandBase.driveTrain.getRightEncoder();
+	}
+	
+	/**
+	 * @author Liam
 	 * @return angle the robot should be at by that time
 	 */
-	public double idealDistance(double time) {
+	public double idealAngle(double time) {
 		
 		double angle;
 		
@@ -253,55 +286,28 @@ public class TurningTrapezoidProfile extends TurnProfile implements Integral{
 	
 	/**
 	 * @author Liam
+	 * For compatibility for DriveProfile Command execution, dummy method for this profile
+	 */
+	public double getLeftDistance() {
+		
+		return 2*Math.PI*getAngle()*(Constants.WHEEL_DISTANCE_FROM_ROBOT_CENTER/12)/360;
+	}
+	
+	/**
+	 * @author Liam
+	 * For compatibility for DriveProfile Command execution, dummy method for this profile
+	 */
+	public double getRightDistance() {
+		
+		return -2*Math.PI*getAngle()*(Constants.WHEEL_DISTANCE_FROM_ROBOT_CENTER/12)/360;
+	}
+	
+	/**
+	 * @author Liam
 	 * @return the angle the profile will travel to
 	 */
 	public double getAngle() {
 		
 		return angle;
-	}
-	
-	/**
-	 * @author Liam
-	 * @return timeoutOffset. The time added to the timeNeeded to set the timeout.
-	 */
-	public double getTimeoutOffset() {
-		
-		return timeoutOffset;
-	}
-	
-	/**
-	 * @author Liam
-	 * @return the turn proportionality constant for the integral which converts accumulated angle error (degrees) to throttle
-	 */
-	public double getTurnIntegral() {
-		
-		return turnIntegral;
-	}
-	
-	/**
-	 * @author Liam
-	 * @return the turn proportionality constant which converts angle error (degrees) to throttle
-	 */
-	public double getTurnProportionality() {
-		
-		return turnProportionality;
-	}
-	
-	/**
-	 * @author Liam
-	 * @return the angle threshold of the profile for command termination
-	 */
-	public double getAngleThreshold() {
-		
-		return angleThreshold;
-	}
-	
-	/**
-	 * @author Liam
-	 * @return the angular velocity threshold of the profile for command termination
-	 */
-	public double getAngularVelocityThreshold() {
-		
-		return angularVelocityThreshold;
 	}
 }
