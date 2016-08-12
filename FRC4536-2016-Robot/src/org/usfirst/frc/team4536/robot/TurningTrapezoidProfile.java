@@ -55,6 +55,15 @@ public class TurningTrapezoidProfile extends Profile implements Integral{
 	/**
 	 * @author Liam
 	 * @param angleDiff The angle the profile should travel in degrees. Negative angles turn counterclockwise, positive turn clockwise.
+	 */
+	public TurningTrapezoidProfile (double angle) {
+		
+		this(angle, Constants.TURNING_TRAPEZOID_DEFAULT_ANGULAR_SPEED, Constants.TURNING_TRAPEZOID_DEFAULT_ANGULAR_ACCELERATION);
+	}
+	
+	/**
+	 * @author Liam
+	 * @param angleDiff The angle the profile should travel in degrees. Negative angles turn counterclockwise, positive turn clockwise.
 	 * @param maxAngularSpeed The maximum speed the profile may achieve in degrees per second. Angular speed is a scalar so it's always positive.
 	 * @param maxAngularAcceleration The maximum angular acceleration the angular speed can change by in degrees per second squared. We treat acceleration as the raw change in angular speed and thus as a scalar so it is always positive.
 	 */
