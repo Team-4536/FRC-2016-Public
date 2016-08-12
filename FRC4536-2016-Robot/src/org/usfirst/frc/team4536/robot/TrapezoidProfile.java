@@ -51,6 +51,17 @@ public class TrapezoidProfile extends Profile {
 			this.timeNeeded = (2*criticalTime) + ((Math.abs(this.distance) - 2*criticalDistance)/this.desiredMaxSpeed);
 		}
 	}
+	
+	/**
+	 * @author Liam
+	 * @param distance The distance the profile should travel in feet. Negative distances move backwards, positive forwards.
+	 * @param maxSpeed The maximum speed the profile may achieve in feet per second. Speed is a scalar so it's always positive.
+	 * @param maxAcceleration The maximum acceleration the speed can change by in feet per second squared. We treat acceleration as the raw change in speed and thus as a scalar so it is always positive.
+	 */
+	public TrapezoidProfile (double distance) {
+		
+		this(distance, Constants.TRAPEZOID_DEFAULT_SPEED, Constants.TRAPEZOID_DEFAULT_ACCELERATION);
+	}
 		
 	/**
 	 * @author Liam
