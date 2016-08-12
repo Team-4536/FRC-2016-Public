@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc.team4536.robot.TurningTrapezoidProfile;
 
 /**
  *
@@ -9,7 +10,7 @@ public class TurnNDrive extends CommandGroup {
     
     public  TurnNDrive(double angle) {
     	
-    	addSequential(new TeleopTurn(angle));
+    	addSequential(new DriveProfile(new TurningTrapezoidProfile(angle), angle));
     	addSequential(new DriveStraight(angle));
     }
     	
@@ -36,4 +37,3 @@ public class TurnNDrive extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
  }
-
