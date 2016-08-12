@@ -2,6 +2,8 @@ package org.usfirst.frc.team4536.robot.commands;
 
 import org.usfirst.frc.team4536.robot.Constants;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc.team4536.robot.TurningTrapezoidProfile;
+import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 
 /**
  * @author Sheila
@@ -15,14 +17,14 @@ public class CrossRoughTerrain extends CommandGroup {
     	
     	addParallel(new ReleaseIntake());
     	
-    	DriveTrapezoidProfile crossRoughTerrain;
+    	DriveProfile crossRoughTerrain;
     	
     	if (forward) {
-    		crossRoughTerrain = new DriveTrapezoidProfile(Constants.CROSS_ROUGHTERRAIN_DISTANCE, Constants.CROSS_ROUGHTERRAIN_VELOCITY, Constants.CROSS_ROUGHTERRAIN_ACCEL_LIMIT);
+    		crossRoughTerrain = new DriveProfile(new TrapezoidProfile(Constants.CROSS_ROUGHTERRAIN_DISTANCE, Constants.CROSS_ROUGHTERRAIN_VELOCITY, Constants.CROSS_ROUGHTERRAIN_ACCEL_LIMIT));
     		double maxTime = crossRoughTerrain.getNeededTime() + 1;
     		addSequential(crossRoughTerrain, maxTime);
     	} else {
-    		crossRoughTerrain = new DriveTrapezoidProfile(-Constants.CROSS_ROUGHTERRAIN_DISTANCE, Constants.CROSS_ROUGHTERRAIN_VELOCITY, Constants.CROSS_ROUGHTERRAIN_ACCEL_LIMIT);
+    		crossRoughTerrain = new DriveProfile(new TrapezoidProfile(-Constants.CROSS_ROUGHTERRAIN_DISTANCE, Constants.CROSS_ROUGHTERRAIN_VELOCITY, Constants.CROSS_ROUGHTERRAIN_ACCEL_LIMIT));
     		double maxTime = crossRoughTerrain.getNeededTime() + 1;
     		addSequential(crossRoughTerrain, maxTime);
     	}

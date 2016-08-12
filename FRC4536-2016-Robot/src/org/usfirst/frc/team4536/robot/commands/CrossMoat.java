@@ -2,6 +2,8 @@ package org.usfirst.frc.team4536.robot.commands;
 
 import org.usfirst.frc.team4536.robot.Constants;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc.team4536.robot.TurningTrapezoidProfile;
+import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 
 public class CrossMoat extends CommandGroup {
 
@@ -13,14 +15,14 @@ public class CrossMoat extends CommandGroup {
     	
     	addParallel(new ReleaseIntake());
     	
-		DriveTrapezoidProfile crossMoat;
+		DriveProfile crossMoat;
 		
     	if (forward){
-        	crossMoat = new DriveTrapezoidProfile(Constants.CROSS_MOAT_DISTANCE, Constants.CROSS_MOAT_VELOCITY, Constants.CROSS_MOAT_ACCEL_LIMIT, -0.04);
+        	crossMoat = new DriveProfile(new TrapezoidProfile(Constants.CROSS_MOAT_DISTANCE, Constants.CROSS_MOAT_VELOCITY, Constants.CROSS_MOAT_ACCEL_LIMIT), CommandBase.driveTrain.getAngle(), -0.04);
         	double maxTime = crossMoat.getNeededTime() + Constants.CROSS_MOAT_EXTRA_TIME;
     		addSequential(crossMoat, maxTime);
     	}else{
-        	crossMoat = new DriveTrapezoidProfile(-Constants.CROSS_MOAT_DISTANCE, Constants.CROSS_MOAT_VELOCITY, Constants.CROSS_MOAT_ACCEL_LIMIT, -0.04);
+        	crossMoat = new DriveProfile(new TrapezoidProfile(-Constants.CROSS_MOAT_DISTANCE, Constants.CROSS_MOAT_VELOCITY, Constants.CROSS_MOAT_ACCEL_LIMIT), CommandBase.driveTrain.getAngle(), -0.04);
         	double maxTime = crossMoat.getNeededTime() + Constants.CROSS_MOAT_EXTRA_TIME;
     		addSequential(crossMoat, maxTime);
     	}

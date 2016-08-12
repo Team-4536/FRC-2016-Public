@@ -1,7 +1,8 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import org.usfirst.frc.team4536.robot.Constants;
-
+import org.usfirst.frc.team4536.robot.TurningTrapezoidProfile;
+import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -16,8 +17,8 @@ public class AutoApproachPickupBoulder extends CommandGroup {
     public  AutoApproachPickupBoulder() {
     	
     	addParallel(new IntakeCurrent());
-    	addSequential(new DriveTrapezoidProfile(Constants.AUTO_APPROACH_DEFAULT_DISTANCE,
-    										Constants.AUTO_APPROACH_SPEED, Constants.AUTO_APPROACH_ACCELERATION));
+    	addSequential(new DriveProfile(new TrapezoidProfile(Constants.AUTO_APPROACH_DEFAULT_DISTANCE,
+    										Constants.AUTO_APPROACH_SPEED, Constants.AUTO_APPROACH_ACCELERATION)));
     }
     
     /**
@@ -28,7 +29,7 @@ public class AutoApproachPickupBoulder extends CommandGroup {
 
     	
     	addParallel(new IntakeCurrent());
-    	addSequential(new DriveTrapezoidProfile(distance,
-    										Constants.AUTO_APPROACH_SPEED, Constants.AUTO_APPROACH_ACCELERATION));
+    	addSequential(new DriveProfile(new TrapezoidProfile(distance,
+    										Constants.AUTO_APPROACH_SPEED, Constants.AUTO_APPROACH_ACCELERATION)));
     }
 }

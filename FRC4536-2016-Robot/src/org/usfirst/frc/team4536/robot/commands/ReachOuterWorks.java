@@ -2,6 +2,8 @@ package org.usfirst.frc.team4536.robot.commands;
 
 import org.usfirst.frc.team4536.robot.Constants;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc.team4536.robot.TurningTrapezoidProfile;
+import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 
 /**
  *@author Liam
@@ -14,10 +16,10 @@ public class ReachOuterWorks extends CommandGroup {
     	addParallel(new ReleaseIntake());
     	
     	if (forward) {
-    		addSequential(new DriveTrapezoidProfile(Constants.REACH_DEFENSE_DISTANCE, Constants.REACH_DEFENSE_VELOCITY, Constants.REACH_DEFENSE_ACCELERATION));
+    		addSequential(new DriveProfile(new TrapezoidProfile(Constants.REACH_DEFENSE_DISTANCE, Constants.REACH_DEFENSE_VELOCITY, Constants.REACH_DEFENSE_ACCELERATION)));
     	}
     	else {    		
-    		addSequential(new DriveTrapezoidProfile(-Constants.REACH_DEFENSE_DISTANCE, Constants.REACH_DEFENSE_VELOCITY, Constants.REACH_DEFENSE_ACCELERATION));
+    		addSequential(new DriveProfile(new TrapezoidProfile(-Constants.REACH_DEFENSE_DISTANCE, Constants.REACH_DEFENSE_VELOCITY, Constants.REACH_DEFENSE_ACCELERATION)));
     	}
     }
     

@@ -2,7 +2,8 @@ package org.usfirst.frc.team4536.robot.commands;
 
 import org.usfirst.frc.team4536.robot.Constants;
 import edu.wpi.first.wpilibj.command.CommandGroup;
-
+import org.usfirst.frc.team4536.robot.TurningTrapezoidProfile;
+import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 
 public class CrossRockWall extends CommandGroup {
 	
@@ -14,14 +15,14 @@ public class CrossRockWall extends CommandGroup {
 		
 		addParallel(new ReleaseIntake());
     	
-		DriveTrapezoidProfile crossRockWall;
+		DriveProfile crossRockWall;
 		
     	if (forward){
-        	crossRockWall = new DriveTrapezoidProfile(Constants.CROSS_ROCKWALL_DISTANCE, Constants.CROSS_ROCKWALL_VELOCITY, Constants.CROSS_ROCKWALL_ACCEL_LIMIT);
+        	crossRockWall = new DriveProfile(new TrapezoidProfile(Constants.CROSS_ROCKWALL_DISTANCE, Constants.CROSS_ROCKWALL_VELOCITY, Constants.CROSS_ROCKWALL_ACCEL_LIMIT));
         	double maxTime = crossRockWall.getNeededTime() + Constants.CROSS_ROCKWALL_EXTRA_TIME;
     		addSequential(crossRockWall, maxTime);
     	}else{
-        	crossRockWall = new DriveTrapezoidProfile(-Constants.CROSS_ROCKWALL_DISTANCE, Constants.CROSS_ROCKWALL_VELOCITY, Constants.CROSS_ROCKWALL_ACCEL_LIMIT);
+        	crossRockWall = new DriveProfile(new TrapezoidProfile(-Constants.CROSS_ROCKWALL_DISTANCE, Constants.CROSS_ROCKWALL_VELOCITY, Constants.CROSS_ROCKWALL_ACCEL_LIMIT));
         	double maxTime = crossRockWall.getNeededTime() + Constants.CROSS_ROCKWALL_EXTRA_TIME;
     		addSequential(crossRockWall, maxTime);
     	}

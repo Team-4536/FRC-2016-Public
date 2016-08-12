@@ -31,9 +31,10 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putData(braceAgainstWall);
 		SmartDashboard.putData(new AutoApproachPickupBoulder());
 		SmartDashboard.putData(new AutoApproachPickupBoulderStop(4));
-		SmartDashboard.putData(new DriveTrapezoidProfile(4, 60));
-		SmartDashboard.putData( new DriveProfile(new TrapezoidProfile(4, 1, 1)));
-		SmartDashboard.putData(new DriveProfile(new TurningTrapezoidProfile(60, 90, 90)));
+		SmartDashboard.putData("STRAIGHT", new DriveProfile(new TrapezoidProfile(4, 1, 1), 60));
+		SmartDashboard.putData("TURNING", new DriveProfile(new TurningTrapezoidProfile(60, 90, 90)));
+		SmartDashboard.putData("TURNING + ABS", new DriveProfile(new TurningTrapezoidProfile(60, 90, 90), 60, Constants.TURNING_TRAPEOID_GYRO_PROPORTIONALITY));
+		SmartDashboard.putData("Turning Stiction", new DriveAccelLimited());
     }
 	
     protected void execute() {
