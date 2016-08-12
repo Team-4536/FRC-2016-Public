@@ -112,7 +112,7 @@ public final class Constants {
 	public static final double SPY_BOT_ANGLE = 135.0;
 	public static final double SPY_BOT_LOW_GOAL_FIRST_LEG_DISTANCE = 4.5; // in feet 
 	public static final double SPY_BOT_LOW_GOAL_SECOND_LEG_DISTANCE = 5.3; // in feet
-	public static final double SPY_BOT_LOW_GOAL_TURN_ANGLE = -75; // in degrees
+	public static final double SPY_BOT_LOW_GOAL_TURN_ANGLE = 60;// in degrees
 	public static final double SPY_BOT_LOW_GOAL_MAX_ANGULAR_SPEED = 150; // in degrees per second
 	public static final double SPY_BOT_LOW_GOAL_MAX_ANGULAR_ACCELERATION = 90; // in degrees per second squared
 	
