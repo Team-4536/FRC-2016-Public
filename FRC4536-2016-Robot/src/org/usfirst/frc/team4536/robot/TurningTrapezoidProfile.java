@@ -17,7 +17,9 @@ public class TurningTrapezoidProfile extends Profile implements Integral{
 	private double criticalAngle; // This determines whether the profile is a triangle or a trapezoid.
 	private double criticalTime; // This is the time it takes to reach maxSpeed if it is reached
 	private boolean triangle; // Whether the profile develops a triangle or trapezoid profile
-	
+	private double prevAngularVelocity = 0.0;
+	private double currAngularVelocity = 0.0;
+	private double timeStamp = 0.0;
 	/**
 	 * @author Liam
 	 * @param angleDiff The angle the profile should travel in degrees. Negative angles turn counterclockwise, positive turn clockwise.
@@ -185,6 +187,26 @@ public class TurningTrapezoidProfile extends Profile implements Integral{
 			
 			return velocity;
 		}
+	}
+	
+	/**
+	 * @author Liam
+	 * @param time The amount of time since the profile has started
+	 * @return the angular acceleration the robot should be at in degrees/second^2
+	 */
+	public double idealAcceleration(double time) {
+		
+		double idealAngularVeloc = idealVelocity(time);
+		double idealAngularAccel = (idealAngularVeloc - prevAngularVelocity)/Utilities.getCycleTime();
+		
+		//TODO show Caleb
+		//protect calculation if this is used multiple times in a cycle. I think there are other place we could use this logic ...
+		if (timeStamp < Utilities.getTime()) {
+			
+			prevAngularVelocity = idealAngularVeloc;
+		}
+		
+		return idealAngularAccel;
 	}
 	
 	/**
