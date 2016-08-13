@@ -17,6 +17,9 @@ public class TrapezoidProfile extends Profile {
 	private double criticalDistance; // This determines whether the profile is a triangle or a trapezoid.
 	private double criticalTime; // This is the time it takes to reach maxSpeed if it is reached
 	private boolean triangle; // Whether the profile develops a triangle or trapezoid profile
+	private double prevVelocity = 0.0;
+	private double currVelocity = 0.0;
+	private double timeStamp = 0.0;
 	
 	/**
 	 * @author Liam
@@ -95,7 +98,7 @@ public class TrapezoidProfile extends Profile {
 	/**
 	 * @author Liam
 	 * @param time The amount of time since the profile has started
-	 * @returns The velocity the robot should be at
+	 * @returns The velocity the robot should be at in feet/second
 	 */
 	public double idealVelocity(double time) {
 		
@@ -146,6 +149,26 @@ public class TrapezoidProfile extends Profile {
 			
 			return velocity;
 		}
+	}
+	
+	/**
+	 * @author Liam
+	 * @param time The amount of time since the profile has started
+	 * @return the acceleration the robot should be at in feet/second^2
+	 */
+	public double idealAcceleration(double time) {
+		
+		double idealVeloc = idealVelocity(time);
+		double idealAccel = (idealVeloc - prevVelocity)/Utilities.getCycleTime();
+		
+		//TODO show Caleb
+		//protect calculation if this is used multiple times in a cycle. I think there are other place we could use this logic ...
+		if (timeStamp < Utilities.getTime()) {
+			
+			prevVelocity = idealVeloc;
+		}
+		
+		return idealAccel;
 	}
 	
 	/**
