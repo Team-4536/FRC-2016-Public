@@ -5,7 +5,8 @@ public abstract class Profile {
 	
 	public abstract double leftThrottle(double time);
 	public abstract double rightThrottle(double time);
-	public abstract double idealVelocity(double time);
+	public abstract double idealLeftVelocity(double time);
+	public abstract double idealRightVelocity(double time);
 	public abstract double idealAngularVelocity(double time);
 	public abstract double idealLeftDistance(double time);
 	public abstract double idealRightDistance(double time);
