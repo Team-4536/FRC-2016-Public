@@ -150,6 +150,25 @@ public class TrapezoidProfile extends Profile {
 	
 	/**
 	 * @author Liam
+	 * @param time The amount of time since the profile has started 
+	 * @The velocity the robot should be at
+	 */
+	public double idealLeftVelocity(double time) {
+		
+		return idealVelocity(time);
+	}
+	
+	/**
+	 * @author Liam
+	 * @param time The amount of time since the profile has started 
+	 * @The velocity the robot should be at
+	 */
+	public double idealRightVelocity(double time) {
+		
+		return idealVelocity(time);
+	}
+	/**
+	 * @author Liam
 	 * For compatibility for DriveProfile Command execution, dummy method for this profile
 	 */
 	public double idealAngle(double time) {

@@ -128,7 +128,25 @@ public class TurningTrapezoidProfile extends Profile implements Integral{
 	 */
 	public double idealVelocity(double time) {
 		
-		return 0.0;
+		return CommandBase.driveTrain.getLeftRate();
+	}
+	
+	/**
+	 * @author Liam
+	 * For compatibility for DriveProfile Command execution, dummy method for this profile
+	 */
+	public double idealLeftVelocity(double time) {
+		
+		return idealVelocity(time);
+	}
+	
+	/**
+	 * @author Liam
+	 * For compatibility for DriveProfile Command execution, dummy method for this profile
+	 */
+	public double idealRightVelocity(double time) {
+		
+		return idealVelocity(time);
 	}
 	
 	/**
