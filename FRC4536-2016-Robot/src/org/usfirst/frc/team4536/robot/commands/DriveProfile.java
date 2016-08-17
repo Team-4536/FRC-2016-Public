@@ -145,6 +145,28 @@ public class DriveProfile extends CommandBase {
     
     /**
      * @author Liam
+     * @return the error in velocity the velocity of the robot
+     */
+    public double getLeftVelocityError() {
+    	
+    	double leftVelocityError = profile.idealLeftVelocity(timer.get()) - driveTrain.getLeftRate();
+    	
+    	return leftVelocityError;
+    }
+    
+    /**
+     * @author Liam
+     * @return the error in velocity the velocity of the robot
+     */
+    public double getRightVelocityError() {
+    	
+    	double rightVelocityError = profile.idealRightVelocity(timer.get()) - driveTrain.getRightRate();
+    	
+    	return rightVelocityError;
+    }
+    
+    /**
+     * @author Liam
      * @return the error in the angle between what angle the robot is at and the angle it should be at in degrees.
      */
     public double getAngleError() {
@@ -169,8 +191,8 @@ public class DriveProfile extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-
-    	driveTrain.tankDrive(profile.leftThrottle(timer.get()) + driveProportionality * getLeftDistanceError() + driveIntegral * getAccumulatedLeftDistanceError() + turnProportionality * getAngleError(),
+    	//(profile.leftThrottle(timer.get()) + driveProportionality * getLeftDistanceError() + driveIntegral * getAccumulatedLeftDistanceError() + turnProportionality * getAngleError()
+    	driveTrain.tankDrive(profile.leftThrottle(timer.get()) + driveProportionality * getLeftDistanceError() + Constants.variable1 * getLeftVelocityError() + Constants.variable2 * getAccumulatedLeftDistanceError() + turnProportionality * getAngleError(),
 				profile.rightThrottle(timer.get()) - turnProportionality * getAngleError());
     	
     	System.out.println(getAngleError());
