@@ -197,14 +197,10 @@ public class TurningTrapezoidProfile extends Profile implements Integral{
 	public double idealAcceleration(double time) {
 		
 		double idealAngularVeloc = idealVelocity(time);
-		double idealAngularAccel = (idealAngularVeloc - prevAngularVelocity)/Utilities.getCycleTime();
 		
-		//TODO show Caleb
-		//protect calculation if this is used multiple times in a cycle. I think there are other place we could use this logic ...
-		if (timeStamp < Utilities.getTime()) {
-			
-			prevAngularVelocity = idealAngularVeloc;
-		}
+		prevAngularVelocity = idealVelocity(time - Utilities.getCycleTime());
+		
+		double idealAngularAccel = (idealAngularVeloc - prevAngularVelocity)/Utilities.getCycleTime();
 		
 		return idealAngularAccel;
 	}

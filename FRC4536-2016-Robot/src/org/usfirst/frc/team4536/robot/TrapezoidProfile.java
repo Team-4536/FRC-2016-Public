@@ -159,14 +159,9 @@ public class TrapezoidProfile extends Profile {
 	public double idealAcceleration(double time) {
 		
 		double idealVeloc = idealVelocity(time);
-		double idealAccel = (idealVeloc - prevVelocity)/Utilities.getCycleTime();
+		prevVelocity = idealVelocity(time - Utilities.getCycleTime());
 		
-		//TODO show Caleb
-		//protect calculation if this is used multiple times in a cycle. I think there are other place we could use this logic ...
-		if (timeStamp < Utilities.getTime()) {
-			
-			prevVelocity = idealVeloc;
-		}
+		double idealAccel = (idealVeloc - prevVelocity)/Utilities.getCycleTime();
 		
 		return idealAccel;
 	}
