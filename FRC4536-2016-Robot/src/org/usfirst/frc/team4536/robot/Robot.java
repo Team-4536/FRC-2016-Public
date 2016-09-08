@@ -103,10 +103,7 @@ public class Robot extends IterativeRobot {
     	CommandBase.intake.resetAccelValues();
     	
     	
-        if (driveAccelLimited != null) {
-        	
-        	driveAccelLimited.start();
-        }
+        
         
         if (smartDashboardCommand != null) {
         	
@@ -151,6 +148,8 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         Utilities.updateCycleTime();
         Constants.updateVariables();
+        
+        driveAccelLimited.start();
         
     }
     

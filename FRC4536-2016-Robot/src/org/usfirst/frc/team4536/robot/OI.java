@@ -36,6 +36,7 @@ public final class OI {
 	public static Button RunIntakeForClimb;
 	public static Button flipDriving;
 	public static Button autoIntakeBall;
+	public static Button sloMode;
 	
 	/**
 	 * @author Liam
@@ -91,5 +92,9 @@ public final class OI {
 		TurnNDriveRightGoal.whenReleased(new DriveAccelLimited());
 		TurnNDriveLeftGoal.whenReleased(new DriveAccelLimited());
 		RunIntakeForClimb.whenReleased(new DriveIntakeAccelLimited());
+		
+		sloMode = new JoystickButton(mainStick, 12);
+		sloMode.whileHeld(new SloMode());
+		
 	}
 }
