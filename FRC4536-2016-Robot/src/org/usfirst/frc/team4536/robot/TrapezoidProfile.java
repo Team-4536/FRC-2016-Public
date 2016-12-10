@@ -3,12 +3,11 @@ package org.usfirst.frc.team4536.robot;
 import java.lang.Math;
 
 /**
- * 
- * @author Liam
- *
+ * @author Audrey
  */
 public class TrapezoidProfile extends Profile {
 
+	//doubles for these profiles
 	private double angle = 0.0;
 	private double distance; // distance The distance the profile should travel in feet. Negative distances move backwards, positive forwards.
 	private double timeNeeded; // The time needed to execute the profile In seconds
@@ -19,10 +18,10 @@ public class TrapezoidProfile extends Profile {
 	private boolean triangle; // Whether the profile develops a triangle or trapezoid profile
 	
 	/**
-	 * @author Liam
-	 * @param distance The distance the profile should travel in feet. Negative distances move backwards, positive forwards.
-	 * @param maxSpeed The maximum speed the profile may achieve in feet per second. Speed is a scalar so it's always positive.
-	 * @param maxAcceleration The maximum acceleration the speed can change by in feet per second squared. We treat acceleration as the raw change in speed and thus as a scalar so it is always positive.
+	 * @author Audrey
+	 * @param distance The distance the profile should travel in feet. - moves backwards, + forwards.
+	 * @param maxSpeed The maximum speed in feet per second. Always +.
+	 * @param maxAcceleration The maximum acceleration in feet per second squared. Always +.
 	 */
 	public TrapezoidProfile (double distance, double maxSpeed, double maxAcceleration) {
 		
@@ -53,10 +52,9 @@ public class TrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
-	 * @param distance The distance the profile should travel in feet. Negative distances move backwards, positive forwards.
-	 * @param maxSpeed The maximum speed the profile may achieve in feet per second. Speed is a scalar so it's always positive.
-	 * @param maxAcceleration The maximum acceleration the speed can change by in feet per second squared. We treat acceleration as the raw change in speed and thus as a scalar so it is always positive.
+	 * @author Audrey
+	 * @param distance The distance the profile should travel in feet. - moves backwards, + forwards.
+	 * Uses default speed and accelerations
 	 */
 	public TrapezoidProfile (double distance) {
 		
@@ -64,7 +62,7 @@ public class TrapezoidProfile extends Profile {
 	}
 		
 	/**
-	 * @author Liam
+	 * @author Audrey
 	 * @param time The amount of time since the profile has started
 	 * @returns The throttle the robot should be at
 	 */
