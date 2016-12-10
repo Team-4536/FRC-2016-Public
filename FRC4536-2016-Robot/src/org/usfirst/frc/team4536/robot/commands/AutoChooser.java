@@ -152,12 +152,6 @@ public class AutoChooser extends CommandBase {
 					new LowBarLowGoal().start();
 				break;
 				
-				case 11:
-					
-			    	driveTrain.resetNavX(Constants.SPY_BOT_ANGLE);
-					new Auto2LowGoal().start();
-				break;
-				
 				default: 
 					
 					new ReleaseIntake().start();

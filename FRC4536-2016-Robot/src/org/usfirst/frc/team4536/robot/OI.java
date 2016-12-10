@@ -74,7 +74,6 @@ public final class OI {
 		TurnNDriveLeftGoal.whenPressed(new TurnNDrive(60));
 		RunIntakeForClimb.whileHeld(new RunIntakeWithInput(1.0));
 		flipDriving.whenPressed(new FlipJoystickX());
-		autoIntakeBall.whenPressed(new IntakeCurrent());
 
 
 		/*------------------Canceling actions--------------*/

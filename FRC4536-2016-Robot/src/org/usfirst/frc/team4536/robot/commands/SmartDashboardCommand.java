@@ -6,7 +6,6 @@ import org.usfirst.frc.team4536.robot.Utilities;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4536.robot.TurningTrapezoidProfile;
 import org.usfirst.frc.team4536.robot.TrapezoidProfile;
-import org.usfirst.frc.team4536.robot.commands.AutoApproachPickupBoulder;
 
 public class SmartDashboardCommand extends CommandBase {
 	
@@ -29,8 +28,6 @@ public class SmartDashboardCommand extends CommandBase {
 		
 		/*-----Commands to Run-----*/
 		SmartDashboard.putData(braceAgainstWall);
-		SmartDashboard.putData(new AutoApproachPickupBoulder());
-		SmartDashboard.putData(new AutoApproachPickupBoulderStop(4));
 		SmartDashboard.putData("STRAIGHT", new DriveProfile(new TrapezoidProfile(4, 1, 1), 60));
 		SmartDashboard.putData("TURNING", new DriveProfile(new TurningTrapezoidProfile(60, 90, 90)));
 		SmartDashboard.putData("TURNING + ABS", new DriveProfile(new TurningTrapezoidProfile(60, 90, 90), 60, Constants.TURNING_TRAPEOID_GYRO_PROPORTIONALITY));
