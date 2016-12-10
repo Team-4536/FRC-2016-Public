@@ -38,10 +38,13 @@ public final class OI {
 	public static Button autoIntakeBall;
 	
 	/**
-	 * @author Liam
+	 * @author Audrey
 	 * This instantiates Button handling.
+	 * Sets location, what the button does, and how to cancel that action
 	 */
 	public static void buttonHandling () {
+		
+		/*-------------------Locations---------------------*/
 		
 		intake = new JoystickButton(secondaryStick, 5);
 		eject = new JoystickButton(secondaryStick, 6);
