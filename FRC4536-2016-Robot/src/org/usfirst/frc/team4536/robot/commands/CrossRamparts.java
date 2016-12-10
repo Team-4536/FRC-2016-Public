@@ -2,13 +2,12 @@ package org.usfirst.frc.team4536.robot.commands;
 
 import org.usfirst.frc.team4536.robot.Constants;
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import org.usfirst.frc.team4536.robot.TurningTrapezoidProfile;
 import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 
 /**
- * @author Sheila
+ * @author Audrey
  * 
- * @param forward	are we crossing this defense forward(true) or backward(false)?
+ * @param forward are we crossing this defense forward (true) or backward (false)?
  */
 public class CrossRamparts extends CommandGroup {
     
@@ -29,7 +28,10 @@ public class CrossRamparts extends CommandGroup {
 	    	}
 	}
 	
-	
+	/**
+	 * @author Noah
+	 * Does the true case (forward)
+	 */
 	public CrossRamparts() {
 		this(true);
 	}

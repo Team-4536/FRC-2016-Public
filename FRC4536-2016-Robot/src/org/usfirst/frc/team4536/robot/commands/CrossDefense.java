@@ -5,13 +5,12 @@ import org.usfirst.frc.team4536.robot.Utilities;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * @author Noah
+ * Command group for deciding which auto to run
  */
 public class CrossDefense extends CommandGroup {
     
     public  CrossDefense(Utilities.Defense defense, boolean forward) {
-    	
-    	//Utilities.Defense defenseEnum = Utilities.Defense.values()[defense];
     	
     	switch(defense){
       

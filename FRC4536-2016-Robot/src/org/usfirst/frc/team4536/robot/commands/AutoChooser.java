@@ -1,20 +1,14 @@
 package org.usfirst.frc.team4536.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.Utilities;
-import org.usfirst.frc.team4536.robot.commands.*;
-import org.usfirst.frc.team4536.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.command.CommandGroup;
-import org.usfirst.frc.team4536.robot.commands.*;
 
 /**
- *@author Liam
- *auto chooser chooses the autonomous mode which will be executed for the duration of the match.
- *orientation chooses whether the robot goes over the defense forwards or backwards.
+ * @author Noah
+ * auto chooser chooses the autonomous mode which will be executed for the duration of the match.
+ * orientation chooses whether the robot goes over the defense forwards or backwards.
  */
 public class AutoChooser extends CommandBase {
 	

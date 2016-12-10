@@ -4,6 +4,10 @@ import org.usfirst.frc.team4536.robot.Constants;
 
 import edu.wpi.first.wpilibj.Timer;
 
+/**
+ * @author Noah
+ * Command to automatically intake the ball using an ultrasonic sensor
+ */
 public class AutoIntake extends CommandBase {
 	
 	Timer time = new Timer();

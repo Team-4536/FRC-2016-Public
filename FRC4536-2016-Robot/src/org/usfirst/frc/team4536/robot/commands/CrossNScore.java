@@ -1,12 +1,11 @@
 package org.usfirst.frc.team4536.robot.commands;
 
-import org.usfirst.frc.team4536.robot.Utilities;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import org.usfirst.frc.team4536.robot.commands.DefenseAlignmentPosition;
 
 /**
- *
+ * @author Noah
+ * Command group for deciding which position and defense to score from.
  */
 public class CrossNScore extends CommandGroup {
 	
