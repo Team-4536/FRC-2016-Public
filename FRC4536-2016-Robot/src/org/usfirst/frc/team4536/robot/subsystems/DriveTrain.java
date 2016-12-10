@@ -97,7 +97,7 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
-     * @author Sheila
+     * @author Noah
      * @return true if driving in reverse of joystick input
      */
     public boolean getFlipDirection() {
@@ -105,23 +105,23 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
+     * @author Noah
      * flips teleop driving (forward/backward)
-     * @author Sheila
      */
     public void flipDirection() {
     	flipDirection = !flipDirection;
     }
     
     /**
-     * sets the teleop driving direction (false = backwards, true = normal)
      * @author Sheila
+     * sets the teleop driving direction (false = backwards, true = normal)
      */
     public void setFlipDirection(boolean dir) {
     	flipDirection = dir;
     }
     
     /**
-     * @ author Max and Liam
+     * @ author Noah
      * @ param leftThrottle - The throttle input into the left motors, positive value is left/forward
      * @ param rightThrottle - The throttle input into the right motors, positive value is right/forward
      */
@@ -141,7 +141,7 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
-     * @author Max and Liam
+     * @author Noah
      * @param forwardThrottle - Throttle for forward motion of the drivetrain (+ forward, - backwards) 
      * @param turnThrottle - Throttle for horizontal motion of the drivetrain (+ right, - left)
      */
@@ -157,7 +157,7 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
-     * @author Sheila and Audrey
+     * @author Audrey
      * @param forwardThrottle - see arcadeDrive
      * @param turnThrottle - see arcadeDrive
      */
@@ -275,7 +275,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Noah
 	 * 
 	 */
 	public void resetAccelValues() {
@@ -322,7 +322,7 @@ public class DriveTrain extends Subsystem {
 	 * @author Liam
 	 * Resets the NavX
 	 * 
-	 * @author Sheila
+	 * @author Noah
 	 * Adds yawOffset to the current navX offset (in degrees 0-360, 
 	 * but don't worry about going over we've got code for that)
 	 */
@@ -368,15 +368,8 @@ public class DriveTrain extends Subsystem {
 		return Math.abs(jerkZ);
 	}
 	
-	public double getOrthoganalJerk() {
-		
-		double orth = Math.sqrt(Math.pow(getJerkX(), 2) + Math.pow(getJerkY(), 2) + Math.pow(getJerkZ(), 2));
-		
-		return orth;
-	}
-	
 	/**
-	 * @author Sheila
+	 * @author Noah
 	 * 
 	 * this sets the offset of the navX angle; this is meant to be used 
 	 * for setting the starting angle. It will add this number to the 
@@ -387,7 +380,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	/**
-	 * @author Sheila
+	 * @author Noah
 	 * 
 	 * this gets the offset of the navX angle; the offset is meant to be 
 	 * used for setting a custom starting angle. 
@@ -397,7 +390,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	/**
-	 * @author Mairead (and later Sheila)
+	 * @author Noah
 	 * @return The angle the robot is at from 0 to 360
 	 */
 	public double getAngle(){

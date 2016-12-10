@@ -9,25 +9,13 @@ import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 
 public class SmartDashboardCommand extends CommandBase {
 	
-	//TurningTrapezoidProfile turnProfile;
-	//TurnTrapezoidProfile turnTrapezoid;
-	BraceAgainstWall braceAgainstWall = new BraceAgainstWall(Constants.variable1, Constants.variable2, Constants.variable3,
-																Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY, driveTrain.getAngle(),
-																Constants.variable4);
-	
 	public SmartDashboardCommand() {
 		
 	}
 	
 	protected void initialize() {
 		
-		//turnTrapezoid = new TurnTrapezoidProfile(Constants.variable1, Constants.variable2, Constants.variable3);
-		BraceAgainstWall braceAgainstWall = new BraceAgainstWall(Constants.variable1, Constants.variable2, Constants.variable3,
-				Constants.DEFAULT_CROSSING_GYRO_PROPORTIONALITY, driveTrain.getAngle(),
-				Constants.variable4);
-		
 		/*-----Commands to Run-----*/
-		SmartDashboard.putData(braceAgainstWall);
 		SmartDashboard.putData("STRAIGHT", new DriveProfile(new TrapezoidProfile(4, 1, 1), 60));
 		SmartDashboard.putData("TURNING", new DriveProfile(new TurningTrapezoidProfile(60, 90, 90)));
 		SmartDashboard.putData("TURNING + ABS", new DriveProfile(new TurningTrapezoidProfile(60, 90, 90), 60, Constants.TURNING_TRAPEOID_GYRO_PROPORTIONALITY));
@@ -65,7 +53,6 @@ public class SmartDashboardCommand extends CommandBase {
     	SmartDashboard.putNumber("JerkX: ", driveTrain.getJerkX());
     	SmartDashboard.putNumber("JerkY: ", driveTrain.getJerkY());
     	SmartDashboard.putNumber("JerkZ: ", driveTrain.getJerkZ());
-    	SmartDashboard.putNumber("Orthogonal Jerk: ", driveTrain.getOrthoganalJerk());
     	SmartDashboard.putBoolean("Collision: ", (driveTrain.getJerkX() > Constants.variable4 || driveTrain.getJerkY() > Constants.variable4)? true : false);
 
 		/*-----Running Commands on Subsystems-----*/
