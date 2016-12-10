@@ -42,6 +42,10 @@ public class ScissorLift extends Subsystem {
 		oldThrottle = throttle;
     }
 	
+	/**
+	 * @author Noah
+	 * @param throttle
+	 */
 	public void safeDrive(double throttle) {
 		double tempVar = throttle;
 		throttle = Utilities.limit(throttle, -1.0, 0.0);
