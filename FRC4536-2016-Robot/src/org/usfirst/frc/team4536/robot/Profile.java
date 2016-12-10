@@ -1,6 +1,9 @@
 package org.usfirst.frc.team4536.robot;
 
-//TODO add protected members for proportionality and integral constants
+/**
+ * @author Audrey
+ * Doubles for the trapezoid, rectangle, etc. profiles
+ */
 public abstract class Profile {
 	
 	public abstract double leftThrottle(double time);
