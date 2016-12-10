@@ -21,11 +21,7 @@ public final class Constants {
 	public static final double DRIVE_TRAIN_MAX_ANGULAR_VELOCITY = 400; // Degrees per second, measured on carpet, 12.83 Battery Voltage
 	
 	public static final int FLIP_DIRECTIONS_TIMEOUT = 0;
-	
-	/*--------------------------------------Filters-----------------------------------*/
-	
-	public static final int DEFAULT_SAMPLE_SIZE = 11;
-	
+		
 	/*--------------------------------------Profiles----------------------------------*/
 	
 	//Rectangle
@@ -100,7 +96,7 @@ public final class Constants {
 	
 	public static final double CROSS_LOWBAR_EXTRA_TIME = 1.0; // In seconds
 	public static final double CROSS_ROCKWALL_EXTRA_TIME = 1.0; // In seconds
-	public static final double CROSS_MOAT_EXTRA_TIME = 1.0; //
+	public static final double CROSS_MOAT_EXTRA_TIME = 1.0; //In seconds
 	
 	/*-------------------------------------Auto Mode Distances--------------------------*/
 	
@@ -144,32 +140,32 @@ public final class Constants {
 	/*---------------------------------------Defense Alignment Positions----------------*/
 	
 	//Defense 2
-	public static final double DEFENSE_ALIGNMENT2_ANGLE = 190.0;
-	public static final double DEFENSE_ALIGNMENT2_DISTANCE = -5.0; //4.0
-	public static final boolean DEFENSE_ALIGNMENT2_TURN = false;
-	public static final boolean DEFENSE_ALIGNMENT2_ULTRA = false;
+	public static final double DEFENSE_ALIGNMENT2_ANGLE = 190.0;//In degrees
+	public static final double DEFENSE_ALIGNMENT2_DISTANCE = -5.0; //In feet
+	public static final boolean DEFENSE_ALIGNMENT2_TURN = false;//unitless boolean
+	public static final boolean DEFENSE_ALIGNMENT2_ULTRA = false;//unitless boolean
 	
 	//Defense 3
-	public static final double DEFENSE_ALIGNMENT3_ANGLE = 150.0;
-	public static final double DEFENSE_ALIGNMENT3_DISTANCE = -6.0;
-	public static final boolean DEFENSE_ALIGNMENT3_TURN = false;
-	public static final boolean DEFENSE_ALIGNMENT3_ULTRA = false;
+	public static final double DEFENSE_ALIGNMENT3_ANGLE = 150.0;//In degrees
+	public static final double DEFENSE_ALIGNMENT3_DISTANCE = -6.0;//In feet
+	public static final boolean DEFENSE_ALIGNMENT3_TURN = false;//unitless boolean
+	public static final boolean DEFENSE_ALIGNMENT3_ULTRA = false;//unitless boolean
 	
 	//Defense 4
-	public static final double DEFENSE_ALIGNMENT4_ANGLE = 225.0; //235
-	public static final double DEFENSE_ALIGNMENT4_DISTANCE = -9.25; //8.5
-	public static final boolean DEFENSE_ALIGNMENT4_TURN = true;
-	public static final boolean DEFENSE_ALIGNMENT4_ULTRA = false;
+	public static final double DEFENSE_ALIGNMENT4_ANGLE = 225.0; //In degrees
+	public static final double DEFENSE_ALIGNMENT4_DISTANCE = -9.25; //In feet
+	public static final boolean DEFENSE_ALIGNMENT4_TURN = true;//unitless boolean
+	public static final boolean DEFENSE_ALIGNMENT4_ULTRA = false;//unitless boolean
 	
 	//Defense 5
-	public static final double DEFENSE_ALIGNMENT5_ANGLE = 190.0;
-	public static final double DEFENSE_ALIGNMENT5_DISTANCE = -6.5; //5.0
-	public static final boolean DEFENSE_ALIGNMENT5_TURN = true;
-	public static final boolean DEFENSE_ALIGNMENT5_ULTRA = false;
+	public static final double DEFENSE_ALIGNMENT5_ANGLE = 190.0;//In degrees
+	public static final double DEFENSE_ALIGNMENT5_DISTANCE = -6.5; //In feet
+	public static final boolean DEFENSE_ALIGNMENT5_TURN = true;//unitless boolean
+	public static final boolean DEFENSE_ALIGNMENT5_ULTRA = false;//unitless boolean
 	
 	//Finishing Routine
-	public static final double RIGHT_LOW_GOAL_ANGLE = -60;
-	public static final double LEFT_LOW_GOAL_ANGLE = 60;
+	public static final double RIGHT_LOW_GOAL_ANGLE = -60;//In degrees
+	public static final double LEFT_LOW_GOAL_ANGLE = 60;//In degrees
 	
 	/*---------------------------------------Intake-------------------------------------*/
 	
@@ -187,33 +183,23 @@ public final class Constants {
 	
 	public static final double SCISSOR_SAFE_FULL_SPEED_TIME = 0.1; // In seconds, the time it takes to achieve full speed
 	public static final int SCALE_TIME_LIMIT = 20; //in seconds, how long we have to use the scissor lift each match end
-	
-	/*----------------------------------Auto Intake Constants----------------------------*/
-	
-	public static final int AUTO_INTAKE_TIMEOUT = 5;
-	public static final double AUTO_INTAKE_FAR_DIST = .75;
-	public static final double AUTO_INTAKE_CLOSE_DIST = .35;
-	public static final double AUTO_INTAKE_FAST_SPEED = .75;
-	public static final double AUTO_INTAKE_SLOW_SPEED = .35;
-	
+
 	/*----------------------------------Plop Boulder Constants----------------------------*/
 	
-	public static final double PLOP_BOULDER_TIMEOUT = 2.0;
-	public static final double PLOP_BOULDER_FAR_DIST = 0.75;
-	public static final double PLOP_BOULDER_CLOSE_DIST = 0.25;
-	public static final double PLOP_BOULDER_FAST_SPEED = 0.75;
-	public static final double PLOP_BOULDER_SLOW_SPEED = 0.35;
+	public static final double PLOP_BOULDER_TIMEOUT = 2.0;//In seconds
+	public static final double PLOP_BOULDER_FAR_DIST = 0.75;//In feet
+	public static final double PLOP_BOULDER_CLOSE_DIST = 0.25;//In feet
+	public static final double PLOP_BOULDER_FAST_SPEED = 0.75;//Throttle
+	public static final double PLOP_BOULDER_SLOW_SPEED = 0.35;//Throttle
 	
 	/*-----------------------------------Sensor Constants-------------------------------*/
 	
 	public static final double MAX_ULTRA_CONVERSION = 92.0;
 	
-	/*-----Access Values-----*/
-	/*@author Liam
-	 * If you have displayed a number on the SmartDashboard you may
-	 * change it and access its value. This allows for rapid development
-	 * of constants because we can tweak values without re-deploying code.
-	 * We can also run test cases quickly, all from the SmartDashboard.
+	/*------------------------------------Access Values---------------------------------*/
+	/*@author Audrey
+	 * This section is for changing a value without redeploying code.
+	 * Useful for tweaking specific auto values
 	 */
 	
 	public static double variable1 = 0.0;
