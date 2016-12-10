@@ -59,6 +59,9 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 	}
 
+	/**
+	 * This function is run during autonomous
+	 */
     public void autonomousInit() {
         
         CommandBase.driveTrain.resetEncoders();
@@ -94,6 +97,9 @@ public class Robot extends IterativeRobot {
         Constants.updateVariables();
     }
 
+    /**
+     * This function is called during teleop
+     */
     public void teleopInit() {
     	
     	CommandBase.driveTrain.resetEncoders();
