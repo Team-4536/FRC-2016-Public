@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- * @author Liam
+ * @author Noah
  * A system for lifting the robot
  */
 public class ScissorLift extends Subsystem {
@@ -33,7 +33,7 @@ public class ScissorLift extends Subsystem {
 	}
 		
 	/**
-	 * @author Liam
+	 * @author Noah
 	 * @param Throttle the value [-1, 1] sent to the motor. Negative values make it climb.
 	 * Positive values make it go down.
 	 */
@@ -51,38 +51,7 @@ public class ScissorLift extends Subsystem {
 	}
 	
 	/**
-	 * @author Sheila
-	 * 
-	 * sets the relay to the 'on' position (releases the scissor lift)
-	 */
-	public void relayOn() {
-		relay.set(Relay.Value.kOn);
-	}
-	
-	/**
-	 * @author Sheila
-	 * 
-	 * sets the relay to the 'off' position (holds the scissor lift folded)
-	 */
-	public void relayOff() {
-		relay.set(Relay.Value.kOff);
-	}
-
-	/**
-	 * @author Sheila
-	 * 
-	 * checks whether the relay is off, and sets it to whatever it's not
-	 */
-	public void relayFlip() {
-		if (relay.get() == Relay.Value.kOff){ 
-			relayOn();
-		} else {
-			relayOff();
-		}
-	}
-	
-	/**
-	 * @author Liam
+	 * @author Noah
 	 */
 	public void resetValues() {
 		

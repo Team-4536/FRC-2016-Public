@@ -10,7 +10,7 @@ import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.Utilities;
 
 /**
- *@author Liam
+ *@author Noah
  * Intake system for capturing and ejecting game balls
  */
 public class Intake extends Subsystem {
@@ -41,7 +41,7 @@ public class Intake extends Subsystem {
     }
     
     /**
-     * @author Liam
+     * @author Noah
      * @param throttle The signal value [-1, 1] sent to the intake motor.
      * Positive values eject the ball and negative values intake the ball so it's
      * intuitive for a joystick interface.
@@ -53,9 +53,8 @@ public class Intake extends Subsystem {
     }
     
     /**
-     * @author Sheila
-     * 
-     * @param throttle	The signal value [-1, 1] sent to the (intake arm?) motor,
+     * @author Noah
+     * @param throttle	The signal value [-1, 1] sent to the motor,
      * after being edited to create an acceleration limit. Positive values eject 
      * the ball and negative values intake the ball so it's intuitive for a 
      * joystick interface.
@@ -68,7 +67,7 @@ public class Intake extends Subsystem {
 
 	
 	/**
-	 * @author Liam
+	 * @author Noah
 	 * 
 	 */
 	public void resetAccelValues() {

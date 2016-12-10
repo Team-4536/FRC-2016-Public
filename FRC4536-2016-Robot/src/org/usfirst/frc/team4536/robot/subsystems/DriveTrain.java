@@ -113,7 +113,7 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
-     * @author Sheila
+     * @author Noah
      * sets the teleop driving direction (false = backwards, true = normal)
      */
     public void setFlipDirection(boolean dir) {
@@ -174,17 +174,14 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
-     * @author Liam
+     * @author Noah
+     * Updates the values for the navX
      */
     public void update() {
     	
 		currLinearAccelX = navX.getWorldLinearAccelX();
 		currLinearAccelY = navX.getWorldLinearAccelY();
 		currLinearAccelZ = navX.getWorldLinearAccelZ();
-		
-		jerkX = currLinearAccelX - prevLinearAccelX;
-		jerkY = currLinearAccelY - prevLinearAccelY;
-		jerkZ = currLinearAccelZ - prevLinearAccelZ;
 		
 		prevLinearAccelX = currLinearAccelX;
 		prevLinearAccelY = currLinearAccelY;
@@ -333,7 +330,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Noah
 	 * @return the rate of turning in degrees per second
 	 */
 	public double getYawRate() {
@@ -342,7 +339,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Noah
 	 * @return the absolute value of the linear jerk along the x-axis 
 	 */
 	public double getJerkX() {
@@ -351,7 +348,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Noah
 	 * @return the absolute value of the linear jerk along the y-axis
 	 */
 	public double getJerkY() {
@@ -360,7 +357,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Noah
 	 * @return the absolute value of the linear jerk along the z-axis
 	 */
 	public double getJerkZ() {
