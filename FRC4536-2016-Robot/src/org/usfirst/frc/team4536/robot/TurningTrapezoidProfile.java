@@ -8,7 +8,7 @@ import org.usfirst.frc.team4536.robot.commands.CommandBase;
  * @author Liam
  *
  */
-public class TurningTrapezoidProfile extends Profile implements Integral{
+public class TurningTrapezoidProfile extends Profile {
 	
 	private double angle; // angle The angle the profile should travel in degrees. Negative angles turn left, positive right.
 	private double timeNeeded; // The time needed to execute the profile In seconds

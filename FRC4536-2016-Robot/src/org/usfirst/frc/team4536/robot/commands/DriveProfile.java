@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.Timer;
 import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.Profile;
 import org.usfirst.frc.team4536.robot.Utilities;
-import org.usfirst.frc.team4536.robot.Integral;
 import java.util.ArrayList;
 
 /**
