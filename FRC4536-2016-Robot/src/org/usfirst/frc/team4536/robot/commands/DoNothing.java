@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 /**
- *@author Liam
+ *@author Audrey
  *This Command does nothing, it's for safety and auto modes
  */
 public final class DoNothing extends CommandBase {
