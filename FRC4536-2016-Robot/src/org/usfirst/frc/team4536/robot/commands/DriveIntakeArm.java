@@ -5,7 +5,8 @@ import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Utilities;
 
 /**
- *
+ *@author Audrey
+ *This command is for driving without an acceleration limit, but with a dead zone and speed curve
  */
 public class DriveIntakeArm extends CommandBase {
 
