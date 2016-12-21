@@ -5,7 +5,7 @@ import org.usfirst.frc.team4536.robot.commands.CommandBase;
 
 /**
  * 
- * @author Liam
+ * @author Audrey
  *
  */
 public class TurningTrapezoidProfile extends Profile {
@@ -19,10 +19,10 @@ public class TurningTrapezoidProfile extends Profile {
 	private boolean triangle; // Whether the profile develops a triangle or trapezoid profile
 	
 	/**
-	 * @author Liam
-	 * @param angleDiff The angle the profile should travel in degrees. Negative angles turn counterclockwise, positive turn clockwise.
-	 * @param maxAngularSpeed The maximum speed the profile may achieve in degrees per second. Angular speed is a scalar so it's always positive.
-	 * @param maxAngularAcceleration The maximum angular acceleration the angular speed can change by in degrees per second squared. We treat acceleration as the raw change in angular speed and thus as a scalar so it is always positive.
+	 * @author Audrey
+	 * @param angleDiff The angle the profile travels in degrees. - angles turn counterclockwise, + turn clockwise.
+	 * @param maxAngularSpeed The maximum speed that may be achieved in degrees per second. Always positive.
+	 * @param maxAngularAcceleration The maximum angular acceleration in degrees per second squared. Always positive.
 	 */
 	public TurningTrapezoidProfile (double angle, double maxAngularSpeed, double maxAngularAcceleration) {
 		
@@ -53,8 +53,8 @@ public class TurningTrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
-	 * @param angleDiff The angle the profile should travel in degrees. Negative angles turn counterclockwise, positive turn clockwise.
+	 * @author Audrey
+	 * @param angleDiff The angle the profile should travel in degrees. - angles turn counterclockwise, + turn clockwise.
 	 */
 	public TurningTrapezoidProfile (double angle) {
 		
@@ -62,10 +62,10 @@ public class TurningTrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
-	 * @param angleDiff The angle the profile should travel in degrees. Negative angles turn counterclockwise, positive turn clockwise.
-	 * @param maxAngularSpeed The maximum speed the profile may achieve in degrees per second. Angular speed is a scalar so it's always positive.
-	 * @param maxAngularAcceleration The maximum angular acceleration the angular speed can change by in degrees per second squared. We treat acceleration as the raw change in angular speed and thus as a scalar so it is always positive.
+	 * @author Audrey
+	 * @param angleDiff The angle the profile should travel in degrees. - turn counterclockwise, + turn clockwise.
+	 * @param maxAngularSpeed The maximum speed the profile may achieve in degrees per second. Always positive.
+	 * @param maxAngularAcceleration The maximum angular acceleration in degrees per second squared. Always positive.
 	 */
 	public void setAngle(double angle) {
 		
@@ -93,20 +93,26 @@ public class TurningTrapezoidProfile extends Profile {
 		}
 	}
 	
+	/**
+	 * @author Audrey
+	 */
 	public double leftThrottle(double time) {
 		
 		return turnThrottle(time);
 	}
 	
+	/**
+	 * @author Audrey
+	 */
 	public double rightThrottle(double time) {
 		
 		return -turnThrottle(time);
 	}
 		
 	/**
-	 * @author Liam
+	 * @author Audrey
 	 * @param The amount of time since the profile has started
-	 * @returns The throttle the robot should be at
+	 * @returns The throttle at which the robot should be
 	 */
 	public double turnThrottle(double time) {
 
@@ -114,7 +120,7 @@ public class TurningTrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Audrey
 	 * @return timeNeeded the theoretical time need for the profile to execute without correction
 	 */
 	public double getTimeNeeded() {
@@ -123,7 +129,7 @@ public class TurningTrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Audrey
 	 * For compatibility for DriveProfile Command execution, dummy method for this profile
 	 */
 	public double idealVelocity(double time) {
@@ -132,9 +138,9 @@ public class TurningTrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Audrey
 	 * @param time The amount of time since the profile has started
-	 * @returns The angular velocity the robot should be at
+	 * @returns The angular velocity at which the robot should be
 	 */
 	public double idealAngularVelocity(double time) {
 		
@@ -188,8 +194,8 @@ public class TurningTrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
-	 * @return the distance the left side should have travelled in inches. This profile doesn't care about distance.
+	 * @author Audrey
+	 * @return the distance the left side should have traveled in inches. This profile doesn't care about distance.
 	 */
 	public double idealLeftDistance(double time) {
 		
@@ -198,8 +204,8 @@ public class TurningTrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
-	 * @return the distance the right side should have travelled in inches. This profile doesn't care about distance.
+	 * @author Audrey
+	 * @return the distance the right side should have traveled in inches. This profile doesn't care about distance.
 	 */
 	public double idealRightDistance(double time) {
 		
@@ -207,8 +213,8 @@ public class TurningTrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
-	 * @return angle the robot should be at by that time
+	 * @author Audrey
+	 * @return angle the robot at which should be by that time
 	 */
 	public double idealAngle(double time) {
 		
@@ -285,8 +291,8 @@ public class TurningTrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
-	 * @return triangle whether the profile has developed a triangle or trapezoid profile
+	 * @author Audrey
+	 * @return triangle whether the profile has developed a triangle (true)or trapezoid profile(false)
 	 */
 	public boolean isTriangle() {
 		
@@ -294,7 +300,7 @@ public class TurningTrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Audrey
 	 * For compatibility for DriveProfile Command execution, dummy method for this profile
 	 */
 	public double getLeftDistance() {
@@ -303,7 +309,7 @@ public class TurningTrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Audrey
 	 * For compatibility for DriveProfile Command execution, dummy method for this profile
 	 */
 	public double getRightDistance() {
@@ -312,8 +318,8 @@ public class TurningTrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
-	 * @return the angle the profile will travel to
+	 * @author Audrey
+	 * @return the angle to which the profile will travel
 	 */
 	public double getAngle() {
 		
