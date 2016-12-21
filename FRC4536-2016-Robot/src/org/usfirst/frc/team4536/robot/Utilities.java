@@ -26,7 +26,7 @@ public final class Utilities {
 	/*------------------------------------------------------methods---------------------------------------------*/
 	
 	/**
-	 * @ author Kool Guy Donald Trump
+	 * @author Audrey
 	 * @param input value to be limited.
 	 * @param lowerBound minimum value input will be no greater than.
 	 * @param upperBound maximum value input will be no less than.
@@ -43,7 +43,7 @@ public final class Utilities {
 	}
 	
 	/**
-	 * @author Olivia
+	 * @author Olivia & Audrey
 	 * @param input value to be limited.
 	 * @param bound constrains the input value with a maximum value of bound and a minimum value of negative bound.
 	 * @return value after being constrained by upper and lower bounds.
@@ -54,7 +54,7 @@ public final class Utilities {
 	}
 	
 	/**
-	 * @author Kool Guy Donald Trump
+	 * @author Audrey
 	 * @param input value to be limited
 	 * @return value after being constrained with a maximum value of 1 and a minimum value of -1.
 	 */
@@ -64,7 +64,7 @@ public final class Utilities {
 	}
 	
 	/**
-	 * @author Kool Guy Donald Trump
+	 * @author Audrey
 	 * @param input value to be raised to a power (or curved)
 	 * @param curve exponent that the method uses to curve the input (curves smaller than 0.1 are invalid)
 	 * @return input value raised an exponent (curved)
@@ -82,7 +82,7 @@ public final class Utilities {
 	}
 
 	/**
-	 * @author Kool Guy Donald Trump
+	 * @author Audrey
 	 * @param input value that needs to be of a certain magnitude
 	 * @param deadZone magnitude the input should be greater than
 	 * @return input if greater than magnitude, 0 if not
@@ -96,7 +96,7 @@ public final class Utilities {
 	}
 	
 	/**
-	 *@ author Kool Guy Donald Trump
+	 *@author Audrey
 	 * Starts the timer.
 	 */
 	public static final void startTimer() {
@@ -106,7 +106,7 @@ public final class Utilities {
 	}
 	
 	/**
-	 * @author Kool Guy Donald Trump
+	 * @author Audrey
 	 * Resets the timer by making the start time the current time so all time values are then compared to that new more recent time.
 	 */
 	public static final void resetTimer() {
@@ -116,7 +116,7 @@ public final class Utilities {
 	}
 	
 	/**
-	 * @author Kool Guy Donald Trump
+	 * @author Audrey
 	 * Stops the timer.
 	 */
 	public static final void stopTimer() {
@@ -125,7 +125,7 @@ public final class Utilities {
 	}
 	
 	/**
-	 * @author Kool Guy Donald Trump
+	 * @author Audrey
 	 * @return the current time of the timer in seconds.
 	 */
 	public static final double getTime() {
@@ -134,7 +134,7 @@ public final class Utilities {
 	}
 	
 	/**
-	 * @author Kool Guy Donald Trump
+	 * @author Audrey
 	 * Updates the cycle time calculation of our code. This should only be called once per cycle or it will be incorrect.
 	 */
 	public static final void updateCycleTime() {
@@ -145,7 +145,7 @@ public final class Utilities {
 	}
 	
 	/**
-	 * @author Kool Guy Donald Trump
+	 * @author Audrey
 	 * @return The cycle time of our code in seconds.
 	 */
 	public static final double getCycleTime() {
@@ -154,7 +154,7 @@ public final class Utilities {
 	}
 	
 	/**
-	 * @author Kool Guy Donald Trump
+	 * @author Audrey
 	 * @param throttle - the throttle of an object.
 	 * @param prevThrottle - Throttle Value from previous cycle of code.
 	 * @param fullSpeedTime - The amount of time it will take the throttle to reach full speed. Range: [0, infinity+). It is a double. 
@@ -178,7 +178,7 @@ public final class Utilities {
 	}
 	
 	/**
-	 * @author Kool Guy Donald Trump
+	 * @author Audrey
 	 * @return The total current drawn from the power distribution board from ALL robot systems.
 	 */
 	public static final double getTotalCurrent() {
@@ -187,7 +187,7 @@ public final class Utilities {
 	}
 	
 	/**
-	 *@author Liam
+	 *@author Audrey
 	 *@param slot the slot in the power distribution panel 
 	 * for which you want to know the current.
 	 */
@@ -197,7 +197,7 @@ public final class Utilities {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Audrey
 	 */
 	public static final double getVoltage() {
 		
@@ -205,7 +205,7 @@ public final class Utilities {
 	}
 	
 	/**
-	 *@author Mairead
+	 *@author Audrey
 	 *@param startingAngle The angle the robot is turning from
 	 *@param desiredAngle The angle the robot is turning to
 	 *@return The difference between those two angles as a number from -180 to 180
@@ -226,7 +226,7 @@ public final class Utilities {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Audrey
 	 * @param velocity The current velocity of the motor system in feet per second
 	 * @param stiction The static friction of the motor system in throttle
 	 * @param maxVelocity The max velocity of the motor system in feet per second
