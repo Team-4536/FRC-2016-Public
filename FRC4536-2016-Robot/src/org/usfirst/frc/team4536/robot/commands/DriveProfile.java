@@ -7,7 +7,8 @@ import org.usfirst.frc.team4536.robot.Utilities;
 import java.util.ArrayList;
 
 /**
- *@author Liam
+ *@author Audrey
+ *This command is for the rectangle profile
  */
 public class DriveProfile extends CommandBase {
 
@@ -53,7 +54,7 @@ public class DriveProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Audrey
      * @return time in seconds since the command was started
      */
     public double getTime() {
@@ -99,7 +100,7 @@ public class DriveProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Audrey
      * @return the error in the distance between where the robot is and where it should be in inches.
      */
     public double getLeftDistanceError() {
@@ -110,7 +111,7 @@ public class DriveProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Audrey
      * @return the error in the distance between where the robot is and where it should be in inches.
      */
     public double getRightDistanceError() {
@@ -121,7 +122,7 @@ public class DriveProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Audrey
      * @return the accumulated error over time in the distance between where the robot is and where it should be in inches.
      */
     public double getAccumulatedLeftDistanceError() {
@@ -132,7 +133,7 @@ public class DriveProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Audrey
      * @return the accumulated error over time in the distance between where the robot is and where it should be in inches.
      */
     public double getAccumulatedRightDistanceError() {
@@ -143,7 +144,7 @@ public class DriveProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Audrey
      * @return the error in the angle between what angle the robot is at and the angle it should be at in degrees.
      */
     public double getAngleError() {
@@ -156,7 +157,7 @@ public class DriveProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Audrey
      * @return the accumulated error over time in the angle between what angle the robot is at and the angle it should be at in degrees.
      */
     public double getAccumulatedAngleError() {
