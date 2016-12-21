@@ -5,6 +5,7 @@ import java.lang.Math;
 /**
  * @author Audrey
  */
+
 public class TrapezoidProfile extends Profile {
 
 	//doubles for these profiles
@@ -82,7 +83,7 @@ public class TrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Audrey
 	 * @return timeNeeded the theoretical time needed for the profile to execute without correction
 	 */
 	public double getTimeNeeded() {
@@ -91,9 +92,9 @@ public class TrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Audrey
 	 * @param time The amount of time since the profile has started
-	 * @returns The velocity the robot should be at
+	 * @returns The velocity at which the robot should be
 	 */
 	public double idealVelocity(double time) {
 		
@@ -165,9 +166,9 @@ public class TrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
-	 * @param time the time instant in the profile in seconds
-	 * @return the distance the left side should have travelled in inches
+	 * @author Audrey
+	 * @param time instant in the profile in seconds
+	 * @return the distance the left side should have traveled in inches
 	 */
 	public double idealLeftDistance(double time) {
 		
@@ -175,9 +176,9 @@ public class TrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
-	 * @param time the time instant in the profile in seconds
-	 * @return the distance the right side should have travelled in inches
+	 * @author Audrey
+	 * @param time instant in the profile in seconds
+	 * @return the distance the right side should have traveled in inches
 	 */
 	public double idealRightDistance(double time) {
 		
@@ -185,7 +186,7 @@ public class TrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Audrey
 	 * @return distance the robot should be at by that time in feet
 	 */
 	public double idealDistance(double time) {
@@ -263,8 +264,8 @@ public class TrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
-	 * @return triangle whether the profile has developed a triangle or trapezoid profile
+	 * @author Audrey
+	 * @return triangle whether the profile has developed a triangle (true) or trapezoid (false) profile
 	 */
 	public boolean isTriangle() {
 		
@@ -272,7 +273,7 @@ public class TrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Audrey
 	 * @return the distance the profile will travel
 	 */
 	public double getDistance() {
@@ -299,7 +300,7 @@ public class TrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Audrey
 	 */
 	public double getRightDistance() {
 		
@@ -307,7 +308,7 @@ public class TrapezoidProfile extends Profile {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Audrey
 	 */
 	public double getLeftDistance() {
 		
