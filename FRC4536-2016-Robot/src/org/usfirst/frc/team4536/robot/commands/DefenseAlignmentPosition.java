@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *@author Liam
+ *This is for selecting an defense and position in a scoring auto mode
  */
 public class DefenseAlignmentPosition extends CommandGroup {
     
@@ -69,9 +70,8 @@ public class DefenseAlignmentPosition extends CommandGroup {
 	        	addSequential(new DriveProfile(new TrapezoidProfile(Constants.DEFENSE_ALIGNMENT5_DISTANCE), Constants.DEFENSE_ALIGNMENT5_ANGLE));
 	        	
 	        	if (Constants.DEFENSE_ALIGNMENT2_ULTRA) {
-	        		
-	        		//TODO add ultra code here
-		        	addSequential(new FinishScoringRoutine(Constants.DEFENSE_ALIGNMENT5_TURN));
+	        	
+	        		addSequential(new FinishScoringRoutine(Constants.DEFENSE_ALIGNMENT5_TURN));
 	        	}
 	        	else {
 	        		
