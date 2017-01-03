@@ -6,7 +6,7 @@ import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *@author Liam
+ *@author Noah
  *Score in the low goal after crossing the low goal
  */
 public class LowBarLowGoal extends CommandGroup {

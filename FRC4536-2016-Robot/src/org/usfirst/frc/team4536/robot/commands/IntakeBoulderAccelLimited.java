@@ -1,13 +1,9 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import org.usfirst.frc.team4536.robot.Constants;
-import org.usfirst.frc.team4536.robot.OI;
-import org.usfirst.frc.team4536.robot.Utilities;
-
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *@author Sheila
+ *@author Noah
  */
 public class IntakeBoulderAccelLimited extends CommandBase {
 	

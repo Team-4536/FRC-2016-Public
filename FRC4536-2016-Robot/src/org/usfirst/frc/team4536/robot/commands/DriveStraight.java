@@ -4,10 +4,8 @@ import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Utilities;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 /**
- *@author Liam
+ *@author Noah
  */
 public class DriveStraight extends CommandBase {
 	

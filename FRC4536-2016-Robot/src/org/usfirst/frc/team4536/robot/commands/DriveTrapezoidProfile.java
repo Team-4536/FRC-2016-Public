@@ -6,7 +6,7 @@ import org.usfirst.frc.team4536.robot.Utilities;
 import edu.wpi.first.wpilibj.Timer;
 
 /**
- *@author Liam
+ *@author Noah
  */
 public class DriveTrapezoidProfile extends CommandBase {
 	
@@ -19,7 +19,7 @@ public class DriveTrapezoidProfile extends CommandBase {
 	private double accumulatedAngleError = 0.0;
 	
 	/**
-	 * @author Liam
+	 * @author Noah
 	 * @param the distance desired to be travelled in feet
 	 * Sets the Max Speed and Acceleration to the defaults defined in constants
 	 */
@@ -29,7 +29,7 @@ public class DriveTrapezoidProfile extends CommandBase {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Noah
 	 * @param the distance desired to be travelled in feet
 	 * @param the angle the profile should maintain
 	 */
@@ -41,7 +41,7 @@ public class DriveTrapezoidProfile extends CommandBase {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Noah
 	 * @param distance The desired distance the robot should travel in feet. May be negative or positive to indicate direction.
 	 * @param maxSpeed The maximum possible speed the robot could be traveling at in feet per second. Always positive.
 	 * @param maxAcceleration The maximum possible acceleration in feet per second squared the speed can change by. Always positive.
@@ -66,7 +66,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Noah
 	 * @param distance The desired distance the robot should travel in feet. May be negative or positive to indicate direction.
 	 * @param maxSpeed The maximum possible speed the robot could be traveling at in feet per second. Always positive.
 	 * @param maxAcceleration The maximum possible acceleration the speed can change by in feet per second squared. Always positive.
@@ -81,7 +81,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Noah
      * @return time in seconds since the command was started
      */
     public double getTime() {
@@ -115,7 +115,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Noah
      * @return the error in the distance between where the robot is and where it should be in inches.
      */
     public double getDistanceError() {
@@ -126,7 +126,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Noah
      * @return the accumulated error over time in the distance between where the robot is and where it should be in inches.
      */
     public double getAccumulatedDistanceError() {
@@ -137,7 +137,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Noah
      * @return the error in the angle between what angle the robot is at and the angle it should be at in degrees.
      */
     public double getAngleError() {
@@ -148,7 +148,7 @@ public class DriveTrapezoidProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Noah
      * @return the accumulated error over time in the angle between what angle the robot is at and the angle it should be at in degrees.
      */
     public double getAccumulatedAngleError() {

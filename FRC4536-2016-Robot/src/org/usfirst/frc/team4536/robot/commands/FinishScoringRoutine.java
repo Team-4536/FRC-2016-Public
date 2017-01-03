@@ -6,7 +6,7 @@ import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * @author Liam
+ * @author Noah
  * Right goal enter true for right, left goal enter false for left
  */
 public class FinishScoringRoutine extends CommandGroup {

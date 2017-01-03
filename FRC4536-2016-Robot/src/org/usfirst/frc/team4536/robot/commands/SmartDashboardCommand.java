@@ -7,6 +7,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4536.robot.TurningTrapezoidProfile;
 import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 
+/**
+ * @author Noah
+ *
+ */
 public class SmartDashboardCommand extends CommandBase {
 	
 	public SmartDashboardCommand() {
@@ -33,14 +37,11 @@ public class SmartDashboardCommand extends CommandBase {
 		SmartDashboard.putNumber("Secondary Joystick X: ", OI.secondaryStick.getX());
 		SmartDashboard.putNumber("Tertiary Joystick Y: ", OI.tertiaryStick.getY());
 		SmartDashboard.putNumber("Tertiary Joystick X: ", OI.tertiaryStick.getX());
-		//SmartDashboard.putNumber("Voltage: ", Utilities.getVoltage());
-		//SmartDashboard.putNumber("Total Current: ", Utilities.getTotalCurrent());
 		SmartDashboard.putNumber("Drive Train Left Encoder: ", driveTrain.getLeftEncoder());
 		SmartDashboard.putNumber("Drive Train Right Encoder: ", driveTrain.getRightEncoder());
 		SmartDashboard.putNumber("Drive Train Right Rate: ", driveTrain.getRightRate());
 		SmartDashboard.putNumber("Drive Train Left Rate: ", driveTrain.getLeftRate());
 		SmartDashboard.putNumber("Turn Rate in Degrees per Second: ", driveTrain.getYawRate());
-		//SmartDashboard.putNumber("range", maxUltra.getRange());
 		SmartDashboard.putNumber("Offset: ", driveTrain.getOffset());
 		SmartDashboard.putNumber("Ball Distance: ", intake.getdistance());
 		

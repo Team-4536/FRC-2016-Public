@@ -4,10 +4,9 @@ import edu.wpi.first.wpilibj.Timer;
 import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.Profile;
 import org.usfirst.frc.team4536.robot.Utilities;
-import java.util.ArrayList;
 
 /**
- *@author Liam
+ *@author Noah
  */
 public class DriveProfile extends CommandBase {
 
@@ -22,7 +21,7 @@ public class DriveProfile extends CommandBase {
 	
 	//Correction Constants
 	private double turnProportionality = Constants.TURNING_TRAPEOID_GYRO_PROPORTIONALITY; //TODO change constant
-	private double turnIntegral = Constants.TURNING_TRAPEZOID_INTEGRAL;
+	//private double turnIntegral = Constants.TURNING_TRAPEZOID_INTEGRAL;
 	private double driveProportionality = Constants.TRAPEZOID_FORWARD_PROPORTIONALITY;
 	private double driveIntegral = Constants.TRAPEZOID_INTEGRAL;
 	
@@ -53,7 +52,7 @@ public class DriveProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Noah
      * @return time in seconds since the command was started
      */
     public double getTime() {
@@ -99,7 +98,7 @@ public class DriveProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Noah
      * @return the error in the distance between where the robot is and where it should be in inches.
      */
     public double getLeftDistanceError() {
@@ -110,7 +109,7 @@ public class DriveProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Noah
      * @return the error in the distance between where the robot is and where it should be in inches.
      */
     public double getRightDistanceError() {
@@ -121,7 +120,7 @@ public class DriveProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Noah
      * @return the accumulated error over time in the distance between where the robot is and where it should be in inches.
      */
     public double getAccumulatedLeftDistanceError() {
@@ -132,7 +131,7 @@ public class DriveProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Noah
      * @return the accumulated error over time in the distance between where the robot is and where it should be in inches.
      */
     public double getAccumulatedRightDistanceError() {
@@ -143,7 +142,7 @@ public class DriveProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Noah
      * @return the error in the angle between what angle the robot is at and the angle it should be at in degrees.
      */
     public double getAngleError() {
@@ -156,7 +155,7 @@ public class DriveProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Noah
      * @return the accumulated error over time in the angle between what angle the robot is at and the angle it should be at in degrees.
      */
     public double getAccumulatedAngleError() {

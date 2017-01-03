@@ -2,11 +2,10 @@ package org.usfirst.frc.team4536.robot.commands;
 
 import org.usfirst.frc.team4536.robot.Constants;
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import org.usfirst.frc.team4536.robot.TurningTrapezoidProfile;
 import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 
 /**
- *@author Liam
+ *@author Noah
  *This command group reaches the outerworks
  */
 public class ReachOuterWorks extends CommandGroup {

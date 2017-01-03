@@ -6,7 +6,7 @@ import org.usfirst.frc.team4536.robot.Utilities;
 import edu.wpi.first.wpilibj.Timer;
 
 /**
- * @author Liam
+ * @author Noah
  * Only works with values between [-180, 180]
  */
 public class TurnTrapezoidProfile extends CommandBase {
@@ -18,7 +18,7 @@ public class TurnTrapezoidProfile extends CommandBase {
 	private double accumulatedError = 0.0; // The accumulated error over time
 	
 	/**
-	 * @author Liam
+	 * @author Noah
 	 * @param angle the angle desired to be traveled to in degrees
 	 * Sets the max angular speed in degrees per second and acceleration in degrees per second squared to the defaults defined in Constants
 	 */
@@ -28,7 +28,7 @@ public class TurnTrapezoidProfile extends CommandBase {
 	}
 
 	/**
-	 * @author Liam
+	 * @author Noah
 	 * @param angle The desired angle the robot should travel to in degrees. May be negative or positive to indicate direction on the range [-180, 180]. Negative is left and positive is right.
 	 * @param maxAngularSpeed The maximum possible angular speed the robot could be traveling at in degrees per second. Scalar value so always positive.
 	 * @param maxAngularAcceleration The maximum possible angular acceleration in degrees per second squared the speed can change by. Always positive.
@@ -42,7 +42,7 @@ public class TurnTrapezoidProfile extends CommandBase {
     }
     
 	/**
-	 * @author Liam
+	 * @author Noah
 	 * @param angle The desired angle the robot should travel to in degrees. May be negative or positive to indicate direction.
 	 * @param maxAngularSpeed The maximum possible angular speed the robot could be traveling at in degrees per second. Scalar so always positive.
 	 * @param maxAngularAcceleration The maximum possible angular acceleration in degrees per second squared the speed can change by. Always positive.
@@ -55,7 +55,7 @@ public class TurnTrapezoidProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Noah
      * @return time in seconds since the command was started
      */
     public double getTime() {
@@ -64,7 +64,7 @@ public class TurnTrapezoidProfile extends CommandBase {
     }
     
     /**
-     * @author Liam
+     * @author Noah
      * @return time needed from the trapezoid profile method in seconds
      */
     public double getNeededTime(){
@@ -73,7 +73,7 @@ public class TurnTrapezoidProfile extends CommandBase {
     }
     
 	/**
-	 * @author Liam
+	 * @author Noah
 	 * @return the accumulatedError in degree seconds
 	 */
 	public double getAccumulatedError() {
@@ -84,7 +84,7 @@ public class TurnTrapezoidProfile extends CommandBase {
 	}
 	
 	/**
-	 * @author Liam
+	 * @author Noah
 	 * @return the error from the most recent cycle of code in degree seconds
 	 */
 	public double getError() {

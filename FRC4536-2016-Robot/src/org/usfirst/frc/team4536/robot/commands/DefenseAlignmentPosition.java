@@ -6,7 +6,8 @@ import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *@author Liam
+ * @author Noah
+ * This is a command group to move the robot to a scoring position based on which defense the robot is starting at.
  */
 public class DefenseAlignmentPosition extends CommandGroup {
     

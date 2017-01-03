@@ -4,8 +4,8 @@ import org.usfirst.frc.team4536.robot.Constants;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *@author Liam
- *This command group reaches the outerworks
+ *@author Noah
+ *
  */
 public class PickUpBoulder extends CommandGroup {
     

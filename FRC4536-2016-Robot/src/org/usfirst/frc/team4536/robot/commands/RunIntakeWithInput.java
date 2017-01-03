@@ -1,12 +1,9 @@
 package org.usfirst.frc.team4536.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 /**
- *
+ * @author Noah
  */
 public class RunIntakeWithInput extends CommandBase {
-	
 	
 	double throttle;
 

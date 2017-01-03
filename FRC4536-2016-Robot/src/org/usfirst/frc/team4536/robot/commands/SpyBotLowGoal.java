@@ -6,7 +6,7 @@ import org.usfirst.frc.team4536.robot.TrapezoidProfile;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * @author Noah
  */
 public class SpyBotLowGoal extends CommandGroup {
     

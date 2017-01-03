@@ -3,7 +3,7 @@ package org.usfirst.frc.team4536.robot.commands;
 import org.usfirst.frc.team4536.robot.Constants;
 
 /**
- * @author Sheila
+ * @author Noah
  * Intakes the ball with an accel limit
  */
 public class IntakeBallAccelLimited extends CommandBase {
