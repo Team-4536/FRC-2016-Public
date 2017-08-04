@@ -9,7 +9,7 @@ public class Constants {
 	public static final double SPEED_CURVE_STRAIGHT = 2.4; // Unitless exponent
 	public static final double SPEED_CURVE_TURN = 1.5; // Unitless exponent
 	public static final double SPEED_CURVE = 2.4; // Unitless exponent
-	public static final double SPEED_LIMIT = 1; // In throttle
+	public static final double SPEED_LIMIT = 0.75; // In throttle
 	public static final double ACCEL_LIMIT_DRIVE = 0.1; // The time it takes to reach full speed in seconds
 	public static final double ACCEL_LIMIT_INTAKE = 0.1; // The time it takes to reach full speed in seconds
 	public static final double FORWARD_STICTION = 0.07; //No climber with fully charged battery
